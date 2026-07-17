@@ -45,7 +45,19 @@ Rounding differs slightly from the cost model's $4.75 because this table adds cl
 
 ## 2. Prompt contracts (the 5 calls that matter)
 
-Common rules for all five: **inputs are digest-first — the model never receives raw Thread history**, only the maintained Digest + a bounded window of recent Sparks/Breadcrumbs (each with `spark_id`/`crumb_id`). Output is structured JSON validated against schema; invalid JSON → one retry → deterministic fallback (§5). Tone: warm, second person, zero guilt. **Banned words (hard post-filter, regenerate on hit): overdue, streak, failed, behind, lazy** (plus brief-banned nouns: task list, to-do, backlog, inbox). Grounding: any text presented as the user's own words must be a **verbatim substring of a supplied Spark, citing its `spark_id`**; a post-generation checker verifies substring match and drops/regenerates on failure. If supplied memory is insufficient, the model must return the honest-fallback field, never invent.
+Common rules for all five: **inputs are digest-first — the model never receives raw Thread history**, only the maintained Digest + a bounded window of recent Sparks/Breadcrumbs (each with `spark_id`/`crumb_id`). Every request uses the shared envelope:
+
+```json
+{
+  "contract": "briefing.v1",          // versioned; part of the cache key
+  "profile": { "...": "cached prefix: frozen system prompt + user profile block" },
+  "context": { "digest": "...", "sparks": [{"spark_id": "spk_...", "text": "verbatim"}],
+                "breadcrumbs": [{"crumb_id": "brc_...", "text": "..."}] },
+  "signals": { "days_away": 0, "capacity": "full|low", "exchange_count": 0 }
+}
+```
+
+Output is structured JSON validated against schema; invalid JSON → one retry → deterministic fallback (§5). Tone: warm, second person, zero guilt. **Banned words (hard post-filter, regenerate on hit): overdue, streak, failed, behind, lazy** (plus brief-banned nouns: task list, to-do, backlog, inbox). Grounding: any text presented as the user's own words must be a **verbatim substring of a supplied Spark, citing its `spark_id`**; a post-generation checker verifies substring match and drops/regenerates on failure. If supplied memory is insufficient, the model must return the honest-fallback field, never invent.
 
 ### 2.1 Filing (M1)
 - **In:** Spark text (≤500 tok), thread index (id, name, 1-line digest headline, last-touched), user's last 10 corrections as few-shot exemplars (§6).
@@ -96,7 +108,15 @@ New-thread creation always requires ≥ 0.80 or lands Loose (a wrong new thread 
 
 **When AI must NOT act:**
 - Never writes to the calendar; never auto-schedules anything (calendar is read-only, phase 2).
-- Never initiates contact beyond the capped, self-silencing notification budget (max 1 Doorway ping/day + capped deadline-arc leads; ignored 3× → that channel self-silences).
+- Never initiates contact beyond the capped, self-silencing notification budget:
+
+  | Channel | Cap | Self-silence rule |
+  |---|---|---|
+  | Doorway morning ping | 1/day | Ignored 3 consecutive days → drops to 2/week; ignored again → silent until next open |
+  | Deadline-arc lead ("leave-by" class, phase 2) | ≤ 2/week per arc | Only from deterministic backwards-planned math; copy from pre-generated pool |
+  | Welcome-back | 1 per absence ≥ 14 days | Never repeats for the same absence |
+
+  Copy is drawn from the anti-habituation pool (M5); scheduling is deterministic code (§4) — the model writes words, never chooses moments.
 - Never makes medical, diagnostic, or therapeutic claims; never role-plays coach/therapist; unstick is a bounded script, **hard-capped at 3 exchanges then suggests a break** — enforced in application code.
 - Never deletes, merges, or retires a Thread on its own; Retire with honor is user-initiated only.
 - Never fabricates memory: no quote without a verbatim-verified spark_id, ever.

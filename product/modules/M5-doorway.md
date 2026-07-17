@@ -91,7 +91,11 @@ The Doorway is Ember's daily anchor: one bounded morning card (≤3 items, done 
 
 ## 9. Scale
 
-The card is O(1) by design: always ≤3 items whether the user has 5 Threads or 500. At 10×/100× data, cost is in candidate selection, which is deterministic pre-filtering (warm Threads + resurface-eligible Sparks scored by recency/deadline/dial, top ~20 candidates passed to the model) — token input stays bounded because generation reads Digests, not history. Notification copy pool is constant-size per user. Card archive is pruned (30 days for skipped, 12 months for closed cards feeding variety checks, then deleted). Performance budgets: card render from cache <200 ms; dial regeneration <5 s p95 (deterministic low-spoon fallback at 8 s); nightly Batch completion before earliest user wake window, monitored per timezone cohort.
+- The card is O(1) by design: always ≤3 items whether the user has 5 Threads or 500. The surface never paginates because it never grows.
+- At 10×/100× data, cost concentrates in candidate selection, which is deterministic pre-filtering: warm Threads and resurface-eligible Sparks scored by recency, deadline proximity, and dial position; only the top ~20 candidates are passed to the model.
+- Token input stays bounded at any corpus size because generation reads Digests, never raw history (digest-first architecture, R6).
+- Notification copy pool is constant-size per user; card archive is pruned per §4 retention rules.
+- Performance budgets: card render from cache <200 ms; dial regeneration <5 s p95 (deterministic fallback served at 8 s); nightly Batch completion before the earliest wake window in each timezone cohort, monitored as an SLO.
 
 ## 10. Errors
 
