@@ -30,13 +30,17 @@ Terminology and objects per `product-brief.md`. Wireframe IDs (`W-…`) defined 
 | W-09 | Arc proposal review (edit milestones before accept) | both | M4 |
 | W-10 | Arc view (milestones collapsed; next Pebble hero) | both | M4 |
 | W-10b | Arc — re-planned diff ("the plan bent, it didn't break") | both | M4 |
+| W-10c | Arc — deadline-missed amnesty fork (re-aim · shrink · retire) | both | M4 |
 | W-11 | Search & recall (hybrid; temporal filters) | both | M2 |
 | W-12 | Loose Sparks tray (one-drag filing) | both | M1 |
-| W-13 | Import wizard (Apple Notes/Notion; progress; summary) | web | M1 |
+| W-13 | Import wizard (Apple Notes/Notion; progress) | web | M1 |
+| W-13b | Import summary ("1,204 sparks joined 9 threads") + guided Loose triage | web | M1 |
 | W-14 | Settings: account, notifications, capacity default, privacy/export | both | — |
 | W-15 | Billing (honest: price, two-tap cancel, pause state) | both | — |
-| W-16 | Onboarding (3 steps: first Catch → first Thread → Doorway preview) | both | — |
+| W-16 | Onboarding (first Catch → first Thread → Doorway preview + notification-window picker + server-ASR consent, skippable) | both | — |
 | W-17 | Empty/first-run states gallery (Shelf, Doorway, Search) | both | — |
+
+Additional canonical states: W-01 includes a **night-ASR-retry card** (playable audio from failed night transcription) and the phase-2 **felt-time line** ("leave by 1:15"); W-01 has an optional **evening close** variant **W-01d** (silent rollover, no debt); W-03 includes an **"Imported, unsorted"** holding section state; W-10 includes a **deadline-approaching** state.
 
 ## Modals & overlays
 
@@ -49,15 +53,16 @@ Terminology and objects per `product-brief.md`. Wireframe IDs (`W-…`) defined 
 | O-05 | Closing Note preview (editable before saving) | M3 |
 | O-06 | Capacity dial (3-position control on Doorway) | M5 |
 | O-07 | Notification check-in ("These pings aren't landing — pause them?") | anti-habituation self-silencing |
-| O-08 | Merge threads confirm | bulk action |
+| O-08 | Merge threads confirm (incl. arc-survivor conflict resolution: which Arc survives, loser pauses) | bulk action |
 | O-09 | Delete/export data confirm (typed confirm for delete) | privacy |
-| O-10 | Crisis-resource sheet (deterministic trigger on crisis language) | never AI-improvised |
+| O-10 | Crisis-resource sheet (deterministic static response; detection = local patterns + Haiku assist) | never AI-improvised |
+| O-11 | Digest viewer panel ("What Ember knows about this thread" + "Correct something") | R3 trust mitigation |
 
 ## Core flows (happy path → failure paths)
 
 **F1 Capture:** anywhere → [+] → speak/type → close. O-01 confirms filing; low confidence → W-12 Loose Sparks (visible, never hidden). *Failures:* offline → queued badge "safe, will file when online"; ASR fail → raw audio kept + retry chip.
 
-**F2 Morning:** notification (varied copy, capped) → W-01 Doorway → tap Pebble → W-07 do-it-now → done → deterministic reward + tomorrow's card seeds. *Failure:* card skipped → nothing; no rollover debt.
+**F2 Morning:** notification (varied copy, capped) → W-01 Doorway → tap Pebble → **W-07 do-it-now directly**, with the thread's whisper line embedded at the top of the focus surface (canonical ruling D-016: one tap to action; whisper context preserved without a detour through the thread). → done → deterministic reward + tomorrow's card seeds. *Failure:* card skipped → nothing; no rollover debt.
 
 **F3 Re-entry (crown jewel):** open W-03 Shelf → tap resting thread → W-05 briefing → four buttons → `Do it now` → W-07. *Failures:* insufficient memory → honest fallback (thread story + last Breadcrumb); AI down → W-04 story view with banner "memory view only right now".
 
