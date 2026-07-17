@@ -71,11 +71,34 @@ The Doorway is Ember's daily anchor: one bounded morning card (≤3 items, done 
 
 ## 7. Workflows
 
-- **Happy path — morning open (WF-D1, wireframe DW-01→DW-03):** 03:00 local Batch job writes today's card at the remembered dial position → 08:15 one notification from the varied copy pool → Maya taps → card renders instantly (DW-01) → she reads the warm line, taps "Do the Pebble" → Thread opens with Warm Start whisper (M3, WS-01) → done in under 90 seconds; completion feeds tomorrow's generation.
-- **Failure path A — hard morning (WF-D2, DW-01→DW-04):** card feels like too much → she flips the dial to low-spoon → card regenerates in ≤5 s into the complete one-tiny-thing plan (DW-04) → she does it or taps "Not today." Either way, tomorrow pre-generates at low-spoon; no apology, no comparison.
-- **Failure path B — three silent weeks (WF-D3, DW-05):** notifications self-silenced at day ~5 with one gentle check-in; days 6–21 fully quiet. Day 22 she opens the app → welcome-back Doorway (DW-05): "Welcome back. Nothing is lost." + 2 warm Threads + one tiny step + billing-pause note if applicable → "show me" → Shelf Warm row or full Briefing (M3).
-- **Evening close (optional, WF-D4, DW-06):** if she opens Ember after her quiet-hours start minus 2h, an optional one-line close ("Today's card is done with you — anything to drop off before tomorrow?") with a capture field. Anything untouched rolls over silently — nothing "moves to overdue"; tomorrow's card simply regenerates fresh. The close never notifies; it only appears in-app.
-- **Night capture routing (WF-D5, with M1):** Sparks captured 22:00–06:00 via night mode file normally but are flagged `night_captured`; they surface as the resurfaced-Spark slot candidate on the NEXT morning's card and never trigger any notification at night.
+**Happy path — morning open (WF-D1, wireframes DW-01 → DW-03)**
+1. 03:00 local: nightly Batch job writes today's card at the remembered dial position.
+2. 08:15 (inside her chosen window): ONE notification fires, copy drawn from the varied pool.
+3. Maya taps it → card renders instantly from cache (DW-01); ignore counter resets to 0.
+4. She reads the warm-threads line, glances at the resurfaced Spark, taps "Do the Pebble."
+5. The Thread opens with its Warm Start whisper (M3, WS-01); the Doorway is done in under 90 seconds.
+6. Pebble completion feeds tomorrow's generation and the deterministic micro-reward layer.
+
+**Failure path A — hard morning (WF-D2, DW-01 → DW-04)**
+1. The normal card feels like too much; she flips the dial to low-spoon.
+2. Card regenerates in ≤5 s into the complete one-tiny-thing plan (DW-04) — no trace of the fuller card.
+3. She does the tiny thing, or taps "Not today." Either way tomorrow pre-generates at low-spoon.
+4. No apology, no comparison, no record shown of what the fuller card would have been.
+
+**Failure path B — three silent weeks (WF-D3, DW-05)**
+1. Days 1–5 of absence: scheduled pings fire, get ignored; at the 5th consecutive ignore the engine self-silences and queues one gentle check-in.
+2. Days 6–21: fully quiet. No escalation, no "we miss you" pressure.
+3. Day 22: she opens the app → welcome-back Doorway (DW-05): "Welcome back. Nothing is lost. Here's what's still warm." + 2 warm Threads + one tiny step; billing-pause line if the 45-day auto-pause fired.
+4. "Show me" → Shelf Warm row (M2) or the top Thread's full Briefing (M3). Normal daily cards resume the next morning at her remembered dial position.
+
+**Evening close — optional (WF-D4, DW-06)**
+- If she opens Ember within 2 h before quiet-hours start, an optional one-line close appears: "Today's card is done with you — anything to drop off before tomorrow?" with a capture field.
+- Anything untouched rolls over silently — nothing "moves to overdue"; tomorrow's card simply regenerates fresh. The close never notifies; it exists only in-app and is skippable like everything else.
+
+**Night capture routing (WF-D5, with M1)**
+- Sparks captured 22:00–06:00 via night mode file normally but carry the `night_captured` flag.
+- They become priority candidates for the resurfaced-Spark slot on the NEXT morning's card ("You had a thought at 1 am — it's safe here").
+- Nothing pings at night, ever: the quiet-hours guard is evaluated at send time, deterministically.
 
 ## 8. AI behavior
 

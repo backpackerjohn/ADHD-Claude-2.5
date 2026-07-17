@@ -156,7 +156,7 @@ Nothing user-facing ever blocks on a model call except sync briefings/unstick, w
 
 ## 6. Learning loop
 
-**Misfile corrections as training signal (no fine-tuning).** Every one-drag correction writes an exemplar `{spark_text, wrong_thread, right_thread, timestamp}` to a **per-user few-shot exemplar store**; the filing prompt injects the 10 most recent/relevant exemplars. Store is per-user, capped at 200 (LRU by usefulness), deletable. Expected effect: filing accuracy climbs per user in week one — the R3 mitigation.
+**Misfile corrections as training signal (no fine-tuning).** Every one-drag correction writes an exemplar `{spark_text, wrong_thread, right_thread, timestamp}` to a **per-user few-shot exemplar store**; the filing prompt injects the 10 most relevant exemplars (embedding-similarity to the incoming Spark, recency-weighted). Store is per-user, capped at 200 (LRU by retrieval usefulness), user-viewable and deletable. Exemplars sit after the cache breakpoint so the cached prefix stays stable. Expected effect: per-user filing accuracy climbs within week one — the R3 mitigation. No gradient ever leaves the user's account; "learning" is retrieval, not weights.
 
 **Briefing feedback.** Every briefing carries a quiet "that's not what I meant" affordance → user picks what was off (wrong emphasis / wrong quote / wrong step / tone) → (a) the Digest gets a correction annotation Haiku applies at next maintenance, (b) the thumbs-down + category logs to the eval set (§7). Two strikes on one Thread → next briefing runs with the honest-fallback bias (quote more, synthesize less).
 
@@ -164,7 +164,7 @@ Nothing user-facing ever blocks on a model call except sync briefings/unstick, w
 
 ## 7. Eval plan
 
-- **Golden sets:** seeded from Wizard-of-Oz concierge transcripts (winner.md steal-list #5): real capture streams + operator-written filings, Doorways, and briefings become reference outputs. Grown weekly from production thumbs-downs (anonymized, consented).
+- **Golden sets:** seeded from Wizard-of-Oz concierge transcripts (winner.md steal-list #5): real capture streams + operator-written filings, Doorways, and briefings become reference outputs. Minimum viable set before launch: 200 filing cases (incl. ambiguous/multi-thread Sparks), 40 briefing scenarios spanning whisper/brief/full and thin-memory cases, 20 arc decompositions, 15 Doorway days, 12 unstick sessions. Grown weekly from production thumbs-downs (anonymized, consented).
 - **Filing accuracy:** target **≥ 85% correct-thread at v1** (auto-file decisions, measured against user corrections as ground truth), **measured weekly**; Loose-Spark rate tracked as companion metric (goal: <20% after week one per user). Below 80% for two weeks → routing/prompt review is mandatory.
 - **Briefing quality rubric (R6)** — each golden-set briefing scored 1–5 on: **Groundedness** (every claim traceable to Digest/Spark; any fabricated quote = automatic 1), **Warmth** (tone rules, zero guilt, banned-word absence), **Actionability** ("could the user restart from this alone?" — the concierge threshold ≥ 50% yes, target 70%). Scored by Opus-as-judge (offline, per cost-model role) with a 10% human-audited sample.
 - **Regression gates:** no prompt, model, or threshold change ships without a golden-set run; gate = no metric drops > 2 points absolute vs current baseline, zero banned-word emissions, zero grounding failures. Unstick and safety-card paths have dedicated red-team suites (crisis phrasing variants must always yield the static card).
