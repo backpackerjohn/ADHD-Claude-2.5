@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ember — M4 Year Arc wireframes (W-09 · W-10 · W-10b · W-10c · O-04)</title>
+<link rel="stylesheet" href="../wireframe-kit.css">
+<style>
+  /* ------- page furniture only (not product UI) ------- */
+  body { margin: 0; background: var(--em-surface-sunken); }
+  .pg-header {
+    padding: var(--em-space-10) var(--em-space-12) var(--em-space-6);
+    border-bottom: 1px solid var(--em-border);
+    background: var(--em-bg);
+  }
+  .pg-header h1 { font: var(--em-weight-semibold) var(--em-text-title1)/1.2 var(--em-font-serif); margin: 0 0 var(--em-space-2); }
+  .pg-header p  { max-width: 72ch; color: var(--em-text-2); margin: 0 0 var(--em-space-2); }
+  .pg-header a  { color: var(--em-accent-text); }
+  .pg-section { padding: var(--em-space-10) var(--em-space-8) var(--em-space-4); }
+  .pg-section > h2 {
+    font: var(--em-weight-semibold) var(--em-text-title2)/1.25 var(--em-font-serif);
+    margin: 0 0 var(--em-space-1);
+  }
+  .pg-section > .pg-sub { color: var(--em-text-2); font-size: var(--em-text-body-sm); max-width: 82ch; margin: 0; }
+  .pg-id {
+    display: inline-block;
+    font: var(--em-weight-semibold) var(--em-text-caption)/1 var(--em-font-mono);
+    background: var(--em-dusty-deep); color: #fff;
+    padding: 5px 9px; border-radius: 6px;
+    margin-right: var(--em-space-2); vertical-align: 2px;
+    letter-spacing: 0.04em;
+  }
+  .pg-statechip {
+    display: inline-flex; align-items: center;
+    font: var(--em-weight-medium) var(--em-text-caption)/1 var(--em-font-sans);
+    border: 1px dashed var(--em-dusty);
+    color: var(--em-dusty-deep);
+    border-radius: var(--em-radius-full);
+    padding: 5px 10px; margin: var(--em-space-2) 0 0;
+    background: var(--em-surface);
+  }
+  .em-canvas { min-height: 0; padding-top: var(--em-space-8); }
+  .em-desktop { position: relative; }               /* anchor note dots */
+  .pg-statecard { width: 330px; }                    /* small side-state panels */
+  .pg-framecap {
+    width: 100%; flex-basis: 100%;
+    text-align: center; color: var(--em-text-3);
+    font-size: var(--em-text-caption); margin-top: calc(-1 * var(--em-space-8));
+  }
+  /* wireframe-only helpers */
+  .wf-milestone-row { align-items: center; }
+  .wf-editicons { margin-left: auto; display: flex; gap: var(--em-space-2); }
+  .wf-editicons button {
+    min-width: var(--em-tap-min); min-height: var(--em-tap-min);
+    border: 1px solid var(--em-border); background: var(--em-surface);
+    border-radius: var(--em-radius-md); cursor: pointer; color: var(--em-text-2);
+    font-size: var(--em-text-body-sm);
+  }
+  .wf-ghost { opacity: 0.45; text-decoration: line-through; text-decoration-thickness: 1px; }
+  .wf-month {
+    flex: none; width: 44px; text-align: right;
+    font: var(--em-weight-medium) var(--em-text-caption)/1.35 var(--em-font-sans);
+    color: var(--em-text-3); padding-top: 3px;
+  }
+  .wf-drag { color: var(--em-text-3); cursor: grab; flex: none; }
+</style>
+</head>
+<body class="em-kit">
+
+<!-- ====================================================================== -->
+<header class="pg-header">
+  <h1>M4 — Year Arc</h1>
+  <p><strong>W-09 · W-10 · W-10b · W-10c · O-04</strong> + arc-complete celebration + phase-2 felt-time variant.
+     Hero content: Maya's <em>Etsy shop</em> spring-launch arc (validation/day-in-the-life.md, Day 6 &amp; the return).
+     Canonical IDs per product/navigation-map.md; behavior per product/modules/M4-year-arc.md.</p>
+  <p>Blue numbered dots are the spec annotation layer (never shipped). State minimums covered:
+     <em>draft</em> (W-09) · <em>active</em> (W-10) · <em>paused/resting</em> (W-10 side panel) · <em>complete</em> (celebration) ·
+     plus loading, offline, AI-degraded, returning-after-weeks.</p>
+  <p><a href="index.html">← Back to wireframe index</a></p>
+</header>
+
+<!-- ====================================================================== -->
+<!-- W-09 — ARC PROPOSAL REVIEW                                             -->
+<!-- ====================================================================== -->
+<section class="pg-section">
+  <h2><span class="pg-id">W-09</span>Arc proposal review — edit before anything is real</h2>
+  <p class="pg-sub">F4: W-04 thread → “Make this an arc” → this review → accept → W-10. The proposal is a <em>draft Arc</em> —
+     not a separate object. User edits are immutable constraints in all later re-plans. Discarded silently if never approved (kept 7 days).</p>
+  <span class="pg-statechip">Arc state: draft</span>
+
+  <div class="em-canvas">
+
+    <!-- Web proposal review (primary surface for arc planning) -->
+    <div class="em-desktop">
+      <div class="em-note-dot" style="top:120px; left:610px;">1</div>
+      <div class="em-note-dot" style="top:250px; left:920px;">2</div>
+      <div class="em-note-dot" style="top:342px; left:920px;">3</div>
+      <div class="em-note-dot" style="top:472px; left:920px;">4</div>
+      <div class="em-note-dot" style="top:600px; left:520px;">5</div>
+      <div class="em-note-dot" style="top:660px; left:840px;">6</div>
+      <div class="em-desktop__bar">
+        <div class="em-desktop__dots"><i></i><i></i><i></i></div>
+        <div class="em-desktop__url">ember.app / shelf / etsy-shop / arc-proposal</div>
+      </div>
+      <div class="em-desktop__body">
+        <nav class="em-sidebar">
+          <div class="em-sidebar__wordmark">ember</div>
+          <div class="em-quickcapture">Catch a thought… <kbd>C</kbd></div>
+          <a class="em-sidebar__item" href="#">Doorway</a>
+          <a class="em-sidebar__item is-active" href="#">Shelf</a>
+          <a class="em-sidebar__item" href="#">Search</a>
+          <a class="em-sidebar__item" href="#">Loose Sparks</a>
+          <a class="em-sidebar__item" href="#">Settings</a>
+        </nav>
+        <main class="em-main">
+          <div class="em-stack--loose em-stack" style="max-width:720px;">
+            <div class="em-stack em-stack--tight">
+              <span class="em-caption">Etsy shop · arc proposal</span>
+              <h1 class="em-title-1" style="margin:0;">Here’s a shape for the spring launch.</h1>
+              <p class="em-meta em-prose">Drafted from this thread’s story — your captures, what’s already done, and the fair
+                 date you mentioned. Nothing here is real until you accept. Edit anything; your edits win.</p>
+            </div>
+
+            <div class="em-row">
+              <span class="em-chip">Goal: shop live before the spring craft fair</span>
+              <span class="em-chip">Deadline: Apr 18 (yours — tap to change)</span>
+              <span class="em-chip">Pace: steady</span>
+            </div>
+
+            <!-- Draft milestones, each with one warm rationale sentence -->
+            <div class="em-card">
+              <div class="em-list">
+                <div class="em-spark-row wf-milestone-row">
+                  <span class="wf-drag">⋮⋮</span><span class="wf-month">Feb</span>
+                  <div class="em-spark-row__body">
+                    <p style="margin:0;font-weight:var(--em-weight-medium);">Banner &amp; branding settled</p>
+                    <p class="em-spark-row__meta">Anna’s banner file is already in the thread — you’re closer than it feels.</p>
+                  </div>
+                  <div class="wf-editicons"><button>Rename</button><button>Shrink</button><button>Delete</button></div>
+                </div>
+                <div class="em-spark-row wf-milestone-row">
+                  <span class="wf-drag">⋮⋮</span><span class="wf-month">Feb–Mar</span>
+                  <div class="em-spark-row__body">
+                    <p style="margin:0;font-weight:var(--em-weight-medium);">Product photos, phone + window light <span class="em-chip em-chip--warm" style="margin-left:8px;">shrunk by you</span></p>
+                    <p class="em-spark-row__meta">Was “full photo setup” — you shrank it. Ember plans around your version.</p>
+                  </div>
+                  <div class="wf-editicons"><button>Rename</button><button>Shrink</button><button>Delete</button></div>
+                </div>
+                <div class="em-spark-row wf-milestone-row">
+                  <span class="wf-drag">⋮⋮</span><span class="wf-month">Mar</span>
+                  <div class="em-spark-row__body">
+                    <p style="margin:0;font-weight:var(--em-weight-medium);">Ten listings written</p>
+                    <p class="em-spark-row__meta">You capture listing ideas at night — those sparks are already gathered here.</p>
+                  </div>
+                  <div class="wf-editicons"><button>Rename</button><button>Shrink</button><button>Delete</button></div>
+                </div>
+                <div class="em-spark-row wf-milestone-row">
+                  <span class="wf-drag">⋮⋮</span><span class="wf-month">Mar</span>
+                  <div class="em-spark-row__body">
+                    <p class="wf-ghost" style="margin:0;font-weight:var(--em-weight-medium);">Wholesale outreach list</p>
+                    <p class="em-spark-row__meta">Deleted by you — undo?</p>
+                  </div>
+                  <div class="wf-editicons"><button>Undo</button></div>
+                </div>
+                <div class="em-spark-row wf-milestone-row">
+                  <span class="wf-drag">⋮⋮</span><span class="wf-month">Apr</span>
+                  <div class="em-spark-row__body">
+                    <p style="margin:0;font-weight:var(--em-weight-medium);">Soft launch to friends, then the fair</p>
+                    <p class="em-spark-row__meta">A quiet audience first — you wrote “nobody but me will ever notice” about the fonts. They won’t.</p>
+                  </div>
+                  <div class="wf-editicons"><button>Rename</button><button>Shrink</button><button>Delete</button></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- energy note quoted from her own captures -->
+            <blockquote class="em-spark-quote" style="margin:0;">“I’m useless on weeknights — weekends are when the shop stuff actually happens.”
+              <br><span class="em-meta">Your words, from a February capture. The plan leans on weekends because of it.</span></blockquote>
+
+            <div class="em-row">
+              <input type="text" placeholder="Try again with a hint — e.g. “photos matter less than listings”" style="flex:1;min-height:44px;border:1px solid var(--em-border);border-radius:var(--em-radius-md);padding:0 var(--em-space-4);background:var(--em-surface);font:inherit;color:var(--em-text);">
+              <button class="em-btn em-btn--secondary">Redraft</button>
+            </div>
+
+            <div class="em-row">
+              <button class="em-btn em-btn--primary em-btn--lg">Accept this arc</button>
+              <button class="em-btn em-btn--secondary">Revert my edits</button>
+              <button class="em-btn em-btn--quiet">Not now — discard quietly</button>
+              <span class="em-spacer"></span>
+              <span class="em-meta">Free plan: this is your 1 arc. Plain limit, no tricks.</span>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Annotations -->
+    <aside class="em-notes">
+      <p class="em-notes__title">W-09 · Spec notes</p>
+      <p class="em-notes__item"><b>1</b><span>Draft state. “Nothing here is real until you accept” is literal: no Pebbles generated, nothing surfaces on Doorway, draft silently deleted after 7 days (M4 §4). Protects R3 trust.</span></p>
+      <p class="em-notes__item"><b>2</b><span>Every draft milestone carries one warm rationale sentence sourced from the Digest — never raw history (M4 §6, §8 inputs).</span></p>
+      <p class="em-notes__item"><b>3</b><span>Inline edit verbs: rename · shrink · delete · drag to re-order · change months. User edits are immutable constraints in later re-plans — “user edits win” (M4 §8 guardrails).</span></p>
+      <p class="em-notes__item"><b>4</b><span>Delete is undoable in place; ghosted row, no confirm modal, no alarm color (brand law: no red, destructive = ink typography).</span></p>
+      <p class="em-notes__item"><b>5</b><span>“Try again with a hint” free-text re-prompt = failure path A for weak decomposition (M4 §7). Redraft keeps her edits pinned.</span></p>
+      <p class="em-notes__item"><b>6</b><span>Exactly one ember on screen: <em>Accept this arc</em>. Deadline is user-set only — AI never sets or moves dates; lead-time back-scheduling is deterministic date math run at accept (M4 §8, “deliberately NOT AI”).</span></p>
+    </aside>
+
+    <!-- Secondary states: loading + AI-degraded + offline -->
+    <div class="em-card pg-statecard">
+      <p class="em-caption" style="margin:0 0 var(--em-space-3);">W-09 · loading (shell &lt;300 ms, skeleton after)</p>
+      <div class="em-stack em-stack--tight">
+        <p class="em-meta" style="margin:0;">Reading this thread’s story…</p>
+        <div class="em-skeleton em-skeleton--title"></div>
+        <div class="em-skeleton em-skeleton--line"></div>
+        <div class="em-skeleton em-skeleton--line"></div>
+        <div class="em-skeleton em-skeleton--card"></div>
+      </div>
+      <hr class="em-divider">
+      <p class="em-caption" style="margin:0 0 var(--em-space-3);">W-09 · AI-degraded fallback (deterministic skeleton arc)</p>
+      <div class="em-banner">Ember’s planning brain is napping. Here’s a simple frame to start — it’ll be refined when it’s back.</div>
+      <div class="em-stack em-stack--tight" style="margin-top:var(--em-space-3);">
+        <span class="em-chip">Milestone 1 · Feb — you name it</span>
+        <span class="em-chip">Milestone 2 · Mar — you name it</span>
+        <span class="em-chip">Milestone 3 · Apr — you name it</span>
+        <span class="em-meta">3 evenly spaced milestones; you write the first Pebble (M4 §8 fallback).</span>
+      </div>
+      <hr class="em-divider">
+      <p class="em-caption" style="margin:0 0 var(--em-space-3);">W-09 · offline</p>
+      <span class="em-chip em-chip--queued">Safe — will draft this arc when you’re back online</span>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================================== -->
+<!-- W-10 — ARC VIEW (mobile + web)                                         -->
+<!-- ====================================================================== -->
+<section class="pg-section">
+  <h2><span class="pg-id">W-10</span>Arc view — next Pebble as hero; the wall stays folded</h2>
+  <p class="pg-sub">The display law: exactly <em>one</em> next Pebble, always. Milestones are collapsed by default on every open —
+     one tap shows the months-horizon (titles + target months, steps stay summarized as counts). Includes the
+     <em>deadline-approaching</em> computed state and the “nudge the plan” free-text affordance.</p>
+  <span class="pg-statechip">Arc state: active (+ deadline-approaching display condition · paused shown right)</span>
+
+  <div class="em-canvas">
+
+    <!-- MOBILE: active, milestones collapsed -->
+    <div class="em-phone">
+      <div class="em-note-dot" style="top:150px; left:340px;">1</div>
+      <div class="em-note-dot" style="top:300px; left:20px;">2</div>
+      <div class="em-note-dot" style="top:420px; left:340px;">3</div>
+      <div class="em-note-dot" style="top:560px; left:20px;">4</div>
+      <div class="em-phone__status"></div>
+      <div class="em-phone__screen">
+        <header class="em-appbar">
+          <span class="em-appbar__title">Etsy shop</span>
+          <button class="em-appbar__action" aria-label="Arc menu">⋯</button>
+        </header>
+        <div class="em-screen">
+          <!-- Arc header: goal + warmth, glow motif -->
+          <div class="em-card em-glow">
+            <span class="em-caption">Year arc · active</span>
+            <h2 class="em-title-2" style="margin:var(--em-space-1) 0;">Shop live before the spring craft fair</h2>
+            <p class="em-meta" style="margin:0;">2 of 4 milestones behind you. Warm since yesterday.</p>
+          </div>
+
+          <!-- THE hero: one next pebble -->
+          <div class="em-pebble" style="min-height:64px;">
+            Export the banner file Anna sent
+            <span class="em-pebble__time">~2 min</span>
+          </div>
+          <button class="em-btn em-btn--primary em-btn--block em-btn--lg">Do it now</button>
+          <div class="em-row" style="justify-content:center;">
+            <button class="em-btn em-btn--quiet">Snooze</button>
+            <button class="em-btn em-btn--quiet">Shrink</button>
+            <button class="em-btn em-btn--quiet">Not this one</button>
+          </div>
+
+          <hr class="em-divider">
+
+          <!-- Collapsed milestones: one tap to expand -->
+          <button class="em-btn em-btn--secondary em-btn--block">View milestones (4) — the whole shape, folded ▸</button>
+
+          <!-- Nudge the plan -->
+          <div class="em-card" style="padding:var(--em-space-4);">
+            <p class="em-caption" style="margin:0 0 var(--em-space-2);">Nudge the plan</p>
+            <input type="text" placeholder="Tell it in plain words — “I have March off”, “push everything a month”" style="width:100%;min-height:44px;border:1px solid var(--em-border);border-radius:var(--em-radius-md);padding:0 var(--em-space-4);background:var(--em-surface);font:inherit;color:var(--em-text);">
+            <p class="em-meta" style="margin:var(--em-space-2) 0 0;">Ember re-plans quietly and shows you the change before anything moves.</p>
+          </div>
+
+          <span class="em-hours"><b>6.5</b> ember hours on this arc so far</span>
+        </div>
+        <nav class="em-bottomnav">
+          <a class="em-tab" href="#"><i class="em-tab__icon">⌂</i>Doorway</a>
+          <a class="em-tab is-active" href="#"><i class="em-tab__icon">▤</i>Shelf</a>
+          <button class="em-catch-btn" aria-label="Catch a thought">+</button>
+          <a class="em-tab" href="#"><i class="em-tab__icon">◌</i>Search</a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- MOBILE: milestones EXPANDED (months horizon) + deadline-approaching -->
+    <div class="em-phone">
+      <div class="em-note-dot" style="top:130px; left:340px;">5</div>
+      <div class="em-note-dot" style="top:330px; left:20px;">6</div>
+      <div class="em-note-dot" style="top:600px; left:340px;">7</div>
+      <div class="em-phone__status"></div>
+      <div class="em-phone__screen">
+        <header class="em-appbar">
+          <span class="em-appbar__title">Etsy shop</span>
+          <button class="em-appbar__action" aria-label="Arc menu">⋯</button>
+        </header>
+        <div class="em-screen">
+          <!-- deadline-approaching: gentle, backwards-planned lead time -->
+          <div class="em-banner">The fair is Apr 18. To arrive calm, listings want to be done around Apr 4 — that’s the only date that matters this week.</div>
+
+          <button class="em-btn em-btn--secondary em-btn--block">Fold milestones back up ▾</button>
+
+          <!-- Months horizon: titles + target months; steps stay summarized -->
+          <div class="em-card">
+            <div class="em-list">
+              <div class="em-spark-row">
+                <span class="wf-month">Feb</span><span class="em-spark-row__dot em-spark-row__dot--pebble"></span>
+                <div class="em-spark-row__body">
+                  <p style="margin:0;font-weight:var(--em-weight-medium);">Banner &amp; branding settled</p>
+                  <p class="em-spark-row__meta">Done in February <span class="em-chip em-chip--done">done</span></p>
+                </div>
+              </div>
+              <div class="em-spark-row">
+                <span class="wf-month">Mar</span><span class="em-spark-row__dot em-spark-row__dot--pebble"></span>
+                <div class="em-spark-row__body">
+                  <p style="margin:0;font-weight:var(--em-weight-medium);">Product photos, phone + window light</p>
+                  <p class="em-spark-row__meta">Done in March <span class="em-chip em-chip--done">done</span></p>
+                </div>
+              </div>
+              <div class="em-spark-row">
+                <span class="wf-month">Mar–Apr</span><span class="em-spark-row__dot"></span>
+                <div class="em-spark-row__body">
+                  <p style="margin:0;font-weight:var(--em-weight-medium);">Ten listings written</p>
+                  <p class="em-spark-row__meta">4 small steps live here — Ember hands you one at a time. Checkpoint: around Apr 4.</p>
+                </div>
+              </div>
+              <div class="em-spark-row">
+                <span class="wf-month">Apr</span><span class="em-spark-row__dot em-spark-row__dot--breadcrumb"></span>
+                <div class="em-spark-row__body">
+                  <p style="margin:0;font-weight:var(--em-weight-medium);">Soft launch, then the fair</p>
+                  <p class="em-spark-row__meta">3 small steps live here. Soft launch by Apr 11 — plain date math from Apr 18, no AI involved.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- The one next pebble persists even in expanded view -->
+          <div class="em-pebble">
+            Write one listing — the ring dish first
+            <span class="em-pebble__time">~15 min</span>
+          </div>
+          <button class="em-btn em-btn--primary em-btn--block">Do it now</button>
+        </div>
+        <nav class="em-bottomnav">
+          <a class="em-tab" href="#"><i class="em-tab__icon">⌂</i>Doorway</a>
+          <a class="em-tab is-active" href="#"><i class="em-tab__icon">▤</i>Shelf</a>
+          <button class="em-catch-btn" aria-label="Catch a thought">+</button>
+          <a class="em-tab" href="#"><i class="em-tab__icon">◌</i>Search</a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Annotations for mobile pair -->
+    <aside class="em-notes">
+      <p class="em-notes__title">W-10 mobile · Spec notes</p>
+      <p class="em-notes__item"><b>1</b><span>Arc header = goal + progress warmth in words (“2 of 4 behind you”), one soft glow. No percent ring, no chart (brand §1.3).</span></p>
+      <p class="em-notes__item"><b>2</b><span><strong>Next-Pebble-only display law:</strong> the arc renders exactly one Pebble, sized 2 min–1 hr. The wall of steps is the documented paralysis trigger and is never the default view (M4 §6).</span></p>
+      <p class="em-notes__item"><b>3</b><span>Milestones collapsed by default on <em>every</em> open — expansion never persists across sessions (M4 §5 “See the whole shape”).</span></p>
+      <p class="em-notes__item"><b>4</b><span>“Nudge the plan” free-text → silent re-plan → W-10b diff. Diff always has “keep old plan” (M4 §5).</span></p>
+      <p class="em-notes__item"><b>5</b><span>Deadline-approaching state: gentle banner, terracotta-warm, <em>no red, no countdown</em>. Copy is chosen from a fixed pre-written set — proximity changes timing, never tone (M4 §7 failure path A′).</span></p>
+      <p class="em-notes__item"><b>6</b><span>Expanded = months-horizon: milestone titles + target months; inner steps stay summarized as counts (“4 small steps live here”). Never a checklist.</span></p>
+      <p class="em-notes__item"><b>7</b><span>Lead-time checkpoints (listings by Apr 4, soft launch by Apr 11) are <strong>deterministic backwards-planned date math</strong> from the user’s Apr 18 date — inspectable, never AI-generated (M4 §8).</span></p>
+    </aside>
+
+    <p class="pg-framecap">&nbsp;</p>
+
+    <!-- WEB: arc view -->
+    <div class="em-desktop">
+      <div class="em-note-dot" style="top:150px; left:700px;">8</div>
+      <div class="em-note-dot" style="top:330px; left:540px;">9</div>
+      <div class="em-note-dot" style="top:180px; left:1120px;">10</div>
+      <div class="em-desktop__bar">
+        <div class="em-desktop__dots"><i></i><i></i><i></i></div>
+        <div class="em-desktop__url">ember.app / shelf / etsy-shop / arc</div>
+      </div>
+      <div class="em-desktop__body">
+        <nav class="em-sidebar">
+          <div class="em-sidebar__wordmark">ember</div>
+          <div class="em-quickcapture">Catch a thought… <kbd>C</kbd></div>
+          <a class="em-sidebar__item" href="#">Doorway</a>
+          <a class="em-sidebar__item is-active" href="#">Shelf</a>
+          <a class="em-sidebar__item" href="#">Search</a>
+          <a class="em-sidebar__item" href="#">Loose Sparks</a>
+          <a class="em-sidebar__item" href="#">Settings</a>
+        </nav>
+        <main class="em-main">
+          <div class="em-row" style="align-items:flex-start; gap:var(--em-space-8);">
+            <div class="em-stack em-stack--loose" style="flex:1.4; position:relative;" >
+              <div class="em-card em-glow" style="padding:var(--em-space-6);">
+                <span class="em-caption">Etsy shop · year arc · active</span>
+                <h1 class="em-title-1" style="margin:var(--em-space-1) 0;">Shop live before the spring craft fair</h1>
+                <p class="em-meta">2 of 4 milestones behind you · fair on Apr 18 · pace: steady</p>
+                <div class="em-pebble" style="margin-top:var(--em-space-4);">
+                  Write one listing — the ring dish first
+                  <span class="em-pebble__time">~15 min</span>
+                </div>
+                <div class="em-briefing-actions">
+                  <button class="em-btn em-btn--primary">Do it now</button>
+                  <button class="em-btn em-btn--quiet">Snooze</button>
+                  <button class="em-btn em-btn--quiet">Shrink</button>
+                  <button class="em-btn em-btn--quiet em-btn--retire">Retire with honor</button>
+                </div>
+              </div>
+              <button class="em-btn em-btn--secondary">View milestones (4) — the whole shape, folded ▸</button>
+              <div class="em-card" style="padding:var(--em-space-4);">
+                <p class="em-caption" style="margin:0 0 var(--em-space-2);">Nudge the plan</p>
+                <input type="text" placeholder="“I have March off” · “push everything a month” · “the fair moved”" style="width:100%;min-height:44px;border:1px solid var(--em-border);border-radius:var(--em-radius-md);padding:0 var(--em-space-4);background:var(--em-surface);font:inherit;color:var(--em-text);">
+              </div>
+            </div>
+
+            <!-- right rail: quiet arc facts + secondary states -->
+            <div class="em-stack" style="flex:1;">
+              <div class="em-card">
+                <p class="em-caption" style="margin:0 0 var(--em-space-2);">This arc, quietly</p>
+                <p class="em-meta" style="margin:0;">Started in February · re-planned twice, both times gently · <span class="em-hours"><b>6.5</b> ember hours</span></p>
+                <hr class="em-divider">
+                <p class="em-caption" style="margin:0 0 var(--em-space-2);">Arc menu</p>
+                <div class="em-stack em-stack--tight">
+                  <button class="em-btn em-btn--quiet" style="justify-content:flex-start;">Pause the arc — it’ll keep</button>
+                  <button class="em-btn em-btn--quiet" style="justify-content:flex-start;">Change the deadline (shows new date math first)</button>
+                  <button class="em-btn em-btn--quiet" style="justify-content:flex-start;">What changed lately (re-plan log)</button>
+                </div>
+              </div>
+              <div class="em-card">
+                <p class="em-caption" style="margin:0 0 var(--em-space-2);">W-10 · offline / local-first</p>
+                <span class="em-chip em-chip--queued">Plan &amp; next Pebble shown from this device — safe</span>
+                <p class="em-caption" style="margin:var(--em-space-4) 0 var(--em-space-2);">W-10 · AI-degraded</p>
+                <div class="em-banner">Memory view only right now — your plan is untouched; re-plans will catch up.</div>
+                <p class="em-caption" style="margin:var(--em-space-4) 0 var(--em-space-2);">W-10 · returning after weeks</p>
+                <p class="em-meta" style="margin:0;">Arc opens through the M3 Warm Start briefing; any absence re-plan arrives folded into the brief as one diff card (→ W-10b), never a separate alarm.</p>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- MOBILE: paused / resting -->
+    <div class="em-phone">
+      <div class="em-note-dot" style="top:250px; left:340px;">11</div>
+      <div class="em-phone__status"></div>
+      <div class="em-phone__screen">
+        <header class="em-appbar">
+          <span class="em-appbar__title">Room mural</span>
+          <button class="em-appbar__action" aria-label="Arc menu">⋯</button>
+        </header>
+        <div class="em-screen">
+          <div class="em-card" style="background:var(--em-surface-sunken);">
+            <span class="em-chip em-chip--resting">resting</span>
+            <h2 class="em-title-2" style="margin:var(--em-space-2) 0;">Two colors on the wall by autumn</h2>
+            <p class="em-meta" style="margin:0;">Paused, not failed. It’ll be here. No dates are counting while it rests.</p>
+          </div>
+          <button class="em-btn em-btn--secondary em-btn--block">Wake this arc up</button>
+          <p class="em-meta em-prose" style="text-align:center;">Waking it runs a quiet re-plan check first — if the shape shifted, you’ll see the change before anything moves.</p>
+          <div class="em-empty" style="padding:var(--em-space-8);">
+            <div class="em-empty__art">🕯</div>
+            <p class="em-empty__line">Resting is a shelf, not a penalty box.</p>
+          </div>
+        </div>
+        <nav class="em-bottomnav">
+          <a class="em-tab" href="#"><i class="em-tab__icon">⌂</i>Doorway</a>
+          <a class="em-tab is-active" href="#"><i class="em-tab__icon">▤</i>Shelf</a>
+          <button class="em-catch-btn" aria-label="Catch a thought">+</button>
+          <a class="em-tab" href="#"><i class="em-tab__icon">◌</i>Search</a>
+        </nav>
+      </div>
+    </div>
+
+    <aside class="em-notes">
+      <p class="em-notes__title">W-10 web + paused · Spec notes</p>
+      <p class="em-notes__item"><b>8</b><span>Web hero mirrors mobile: one Pebble, the M3 four-button row (one ember, three quiet). Same display law on every platform.</span></p>
+      <p class="em-notes__item"><b>9</b><span>Doorway rule cited here for the pipeline: M5 consumes at most <strong>one arc Pebble per Doorway card</strong> (M4 §3, §12) — this surface feeds it, never floods it.</span></p>
+      <p class="em-notes__item"><b>10</b><span>Deadline edits preview the recomputed lead-time before commit; milestone deletes undoable 30 days via replan_log (M4 §10).</span></p>
+      <p class="em-notes__item"><b>11</b><span>Paused state: follows the Thread to the Resting shelf. No date math runs, no surfacing, no debt accrues. Resume → re-plan check → active or re-planned (M4 §4). Dusty blue = evening, never failure (brand §3.4).</span></p>
+    </aside>
+  </div>
+</section>
+
+<!-- ====================================================================== -->
+<!-- W-10b — RE-PLANNED DIFF                                                -->
+<!-- ====================================================================== -->
+<section class="pg-section">
+  <h2><span class="pg-id">W-10b</span>Re-planned diff — “the plan bent, it didn’t break”</h2>
+  <p class="pg-sub">Silent re-planning semantics: the <em>work</em> is invisible (no push, no badge); the <em>change</em> is always disclosed,
+     gently, as this one-tap diff at the next natural visit — or folded into the Warm Start brief after absence.</p>
+  <span class="pg-statechip">Arc state: re-planned (transient → active on acknowledge, or after 48 h)</span>
+
+  <div class="em-canvas">
+    <div class="em-phone">
+      <div class="em-note-dot" style="top:170px; left:340px;">1</div>
+      <div class="em-note-dot" style="top:330px; left:20px;">2</div>
+      <div class="em-note-dot" style="top:470px; left:340px;">3</div>
+      <div class="em-note-dot" style="top:640px; left:20px;">4</div>
+      <div class="em-phone__status"></div>
+      <div class="em-phone__screen">
+        <header class="em-appbar">
+          <span class="em-appbar__title">Etsy shop</span>
+          <button class="em-appbar__action" aria-label="Close">✕</button>
+        </header>
+        <div class="em-screen">
+          <div class="em-card em-card--briefing">
+            <p class="em-briefing__kicker">While you were away</p>
+            <h2 class="em-briefing__headline" style="font-size:var(--em-text-title2);">The plan bent, it didn’t break.</h2>
+            <p class="em-meta" style="margin:0 0 var(--em-space-4);">You mentioned the accountant pushed taxes to May — the shop arc breathed around it. Only what changed is shown.</p>
+
+            <!-- minimal diff: moved / merged / dissolved only -->
+            <div class="em-list">
+              <div class="em-spark-row">
+                <span class="em-spark-row__dot"></span>
+                <div class="em-spark-row__body">
+                  <p style="margin:0;font-weight:var(--em-weight-medium);">Ten listings written</p>
+                  <p class="em-spark-row__meta"><span class="wf-ghost">Mar</span> → moved to <strong>Mar–Apr</strong></p>
+                </div>
+              </div>
+              <div class="em-spark-row">
+                <span class="em-spark-row__dot"></span>
+                <div class="em-spark-row__body">
+                  <p style="margin:0;font-weight:var(--em-weight-medium);">Soft launch + fair prep</p>
+                  <p class="em-spark-row__meta">merged — they were the same weekend anyway</p>
+                </div>
+              </div>
+              <div class="em-spark-row">
+                <span class="em-spark-row__dot em-spark-row__dot--breadcrumb"></span>
+                <div class="em-spark-row__body">
+                  <p style="margin:0;" class="wf-ghost">Pebble: reshoot the mug photos</p>
+                  <p class="em-spark-row__meta">dissolved quietly — the new photos you captured made it unnecessary</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="em-briefing-actions" style="grid-template-columns:1fr;">
+              <button class="em-btn em-btn--primary em-btn--block">Okay — carry on</button>
+              <button class="em-btn em-btn--quiet">Keep the old plan</button>
+              <button class="em-btn em-btn--quiet">See the whole shape ▸</button>
+            </div>
+          </div>
+          <p class="em-meta em-prose" style="text-align:center;">Everything above is also written to the re-plan log — a decision, not a verdict.</p>
+        </div>
+        <nav class="em-bottomnav">
+          <a class="em-tab" href="#"><i class="em-tab__icon">⌂</i>Doorway</a>
+          <a class="em-tab is-active" href="#"><i class="em-tab__icon">▤</i>Shelf</a>
+          <button class="em-catch-btn" aria-label="Catch a thought">+</button>
+          <a class="em-tab" href="#"><i class="em-tab__icon">◌</i>Search</a>
+        </nav>
+      </div>
+    </div>
+
+    <aside class="em-notes">
+      <p class="em-notes__title">W-10b · Spec notes</p>
+      <p class="em-notes__item"><b>1</b><span><strong>Silent re-planning:</strong> ran in the background (nightly Batch / trigger events, M4 §8) — no push, no badge, no interruption. This card simply waits at the next natural visit.</span></p>
+      <p class="em-notes__item"><b>2</b><span>Minimal diff contract: only moved / merged / dissolved items render; the old value is ghosted inline. Never the full plan, never a changelog wall (M4 §6, §8 output contract).</span></p>
+      <p class="em-notes__item"><b>3</b><span>Dissolved Pebble: outlived by the re-plan, dissolved silently — a Pebble is <em>never</em> “overdue” (brief object model; M4 §4). No accumulated-debt display, ever (never-render rules).</span></p>
+      <p class="em-notes__item"><b>4</b><span>One acknowledge tap → active. Ignored 48 h → auto-acknowledges to active. “Keep the old plan” is always present (M4 §5, §10). Diffs append to replan_log, capped at 50.</span></p>
+    </aside>
+  </div>
+</section>
+
+<!-- ====================================================================== -->
+<!-- W-10c — DEADLINE-MISSED AMNESTY FORK                                   -->
+<!-- ====================================================================== -->
+<section class="pg-section">
+  <h2><span class="pg-id">W-10c</span>Deadline amnesty fork — re-aim · shrink · retire</h2>
+  <p class="pg-sub">Computed display condition on an active arc: the date passed with milestones open. A fork in the road, not a
+     failure verdict. Whatever she picks, the re-plan log records it as a decision.</p>
+  <span class="pg-statechip">Arc state: active · display condition: deadline-missed (spec term — never user-facing)</span>
+
+  <div class="em-canvas">
+    <div class="em-phone">
+      <div class="em-note-dot" style="top:190px; left:340px;">1</div>
+      <div class="em-note-dot" style="top:400px; left:20px;">2</div>
+      <div class="em-note-dot" style="top:560px; left:340px;">3</div>
+      <div class="em-phone__status"></div>
+      <div class="em-phone__screen">
+        <header class="em-appbar">
+          <span class="em-appbar__title">Etsy shop</span>
+          <button class="em-appbar__action" aria-label="Arc menu">⋯</button>
+        </header>
+        <div class="em-screen">
+          <div class="em-card em-card--briefing">
+            <p class="em-briefing__kicker">About the fair date</p>
+            <h2 class="em-briefing__headline" style="font-size:var(--em-text-title2);">The date moved past us.</h2>
+            <p class="em-briefing__body" style="font-size:var(--em-text-body);">The spring fair happened without the shop — and the shop is still real: banner done, photos done, six listings drafted. Where to from here?</p>
+
+            <div class="em-stack" style="margin-top:var(--em-space-4);">
+              <button class="em-btn em-btn--primary em-btn--block em-btn--lg">Re-aim — pick a new date</button>
+              <button class="em-btn em-btn--secondary em-btn--block">Shrink — a smaller launch still counts</button>
+              <button class="em-btn em-btn--secondary em-btn--block em-btn--retire">Retire with honor — it taught you plenty</button>
+            </div>
+            <p class="em-meta" style="margin:var(--em-space-4) 0 0;">No rush on this either. The arc keeps warm while you decide.</p>
+          </div>
+
+          <blockquote class="em-spark-quote">“the summer makers’ market takes late signups”
+            <br><span class="em-meta">You caught this last week — it might be the new aim.</span></blockquote>
+        </div>
+        <nav class="em-bottomnav">
+          <a class="em-tab" href="#"><i class="em-tab__icon">⌂</i>Doorway</a>
+          <a class="em-tab is-active" href="#"><i class="em-tab__icon">▤</i>Shelf</a>
+          <button class="em-catch-btn" aria-label="Catch a thought">+</button>
+          <a class="em-tab" href="#"><i class="em-tab__icon">◌</i>Search</a>
+        </nav>
+      </div>
+    </div>
+
+    <aside class="em-notes">
+      <p class="em-notes__title">W-10c · Spec notes</p>
+      <p class="em-notes__item"><b>1</b><span>Amnesty copy is fixed and pre-written: “The date moved past us” — us, together. Zero guilt math: no “days late”, no count of open items as debt, no red (M4 §6; brand §5.3 banned list).</span></p>
+      <p class="em-notes__item"><b>2</b><span>Three-way fork: <em>Re-aim</em> (new user date → deterministic re-back-schedule → re-plan diff) · <em>Shrink</em> (opens O-04 below) · <em>Retire</em> (M3 flow → Closing Note, arc closes complete-retired). Each path shows its diff before commit (M4 §5).</span></p>
+      <p class="em-notes__item"><b>3</b><span>What led it here still counts: progress named in words, and her own spark quoted (amber-rule serif = sacred material) as a candidate new aim. If she ignores the fork entirely, the arc simply waits — notifications already self-silenced per M5 (M4 §7 failure path A′).</span></p>
+    </aside>
+  </div>
+</section>
+
+<!-- ====================================================================== -->
+<!-- O-04 — SHRINK SHEET                                                    -->
+<!-- ====================================================================== -->
+<section class="pg-section">
+  <h2><span class="pg-id">O-04</span>Shrink sheet — three preset shrinks + arc renegotiation</h2>
+  <p class="pg-sub">Reached from the M3 briefing button, the arc header, or the W-10c fork. Shrink renegotiates the arc:
+     smaller goal → re-plan to match → diff before anything changes.</p>
+  <span class="pg-statechip">Overlay on active arc · commit → re-planned → diff (W-10b)</span>
+
+  <div class="em-canvas">
+    <div class="em-phone">
+      <div class="em-note-dot" style="top:330px; left:340px;">1</div>
+      <div class="em-note-dot" style="top:470px; left:20px;">2</div>
+      <div class="em-note-dot" style="top:660px; left:340px;">3</div>
+      <div class="em-phone__status"></div>
+      <div class="em-phone__screen">
+        <header class="em-appbar">
+          <span class="em-appbar__title">Etsy shop</span>
+        </header>
+        <div class="em-screen" style="opacity:.9;">
+          <div class="em-card em-glow">
+            <span class="em-caption">Year arc · active</span>
+            <h2 class="em-title-2" style="margin:var(--em-space-1) 0;">Shop live before the spring craft fair</h2>
+          </div>
+        </div>
+        <!-- Scrim + sheet -->
+        <div class="em-scrim">
+          <div class="em-sheet">
+            <h3 class="em-title-3" style="margin:0 0 var(--em-space-1);">Make it smaller — it still counts.</h3>
+            <p class="em-meta" style="margin:0 0 var(--em-space-4);">Novels become novellas all the time. Pick a smaller shape, or write your own.</p>
+            <div class="em-stack em-stack--tight">
+              <button class="em-btn em-btn--secondary em-btn--block" style="justify-content:space-between;">
+                <span>Full shop, 24 listings → <strong>Mini shop, 8 favorites</strong></span><span class="em-meta">novel → novella</span>
+              </button>
+              <button class="em-btn em-btn--secondary em-btn--block" style="justify-content:space-between;">
+                <span>Launch at the fair → <strong>Launch online, quietly</strong></span><span class="em-meta">stage → living room</span>
+              </button>
+              <button class="em-btn em-btn--secondary em-btn--block" style="justify-content:space-between;">
+                <span>Everything styled → <strong>Phone photos, good light</strong></span><span class="em-meta">gallery → snapshot</span>
+              </button>
+              <input type="text" placeholder="…or your own smaller version, in your words" style="min-height:44px;border:1px solid var(--em-border);border-radius:var(--em-radius-md);padding:0 var(--em-space-4);background:var(--em-surface);font:inherit;color:var(--em-text);">
+            </div>
+            <hr class="em-divider">
+            <p class="em-meta" style="margin:0 0 var(--em-space-3);">Ember will renegotiate the arc around the smaller goal — milestones shrink with it, and you’ll see the change before anything moves. Nothing you’ve done is undone.</p>
+            <div class="em-row">
+              <button class="em-btn em-btn--primary" style="flex:1;">Shrink to this</button>
+              <button class="em-btn em-btn--quiet">Never mind</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="em-notes">
+      <p class="em-notes__title">O-04 · Spec notes</p>
+      <p class="em-notes__item"><b>1</b><span>Three preset shrinks, phrased as shape-changes (“novel → novella”), generated from the arc’s own milestones — plus one free-text line. Presets are tappable in one motion; the sheet keeps state if abandoned (no time-outs law, brand §9.9).</span></p>
+      <p class="em-notes__item"><b>2</b><span>Copy law: shrinking is renegotiation, not defeat — “it still counts”, “nothing you’ve done is undone”. Banned vocabulary absent (no “give up”, “reduce scope”, “lazy”).</span></p>
+      <p class="em-notes__item"><b>3</b><span>Commit → M4 re-plan to the smaller goal → arc enters re-planned → W-10b diff with “keep old plan”. User’s chosen shrink is an immutable constraint in the re-plan (M4 §5, §8, §12 — M3 Shrink → M4 renegotiation).</span></p>
+    </aside>
+  </div>
+</section>
+
+<!-- ====================================================================== -->
+<!-- ARC COMPLETE — celebration + Closing Note offer                        -->
+<!-- ====================================================================== -->
+<section class="pg-section">
+  <h2><span class="pg-id">W-10</span>Arc complete — celebration + Closing Note offer</h2>
+  <p class="pg-sub">Terminal state. Last milestone done (or user declares it). Deterministic micro-reward — one ≤300 ms glow bloom +
+     haptic tick, fired before any network round-trip. Lives with the Thread in the Finished gallery; never auto-deleted, never reopened
+     (a new arc can start on the same Thread).</p>
+  <span class="pg-statechip">Arc state: complete (immutable)</span>
+
+  <div class="em-canvas">
+    <div class="em-phone">
+      <div class="em-note-dot" style="top:200px; left:340px;">1</div>
+      <div class="em-note-dot" style="top:430px; left:20px;">2</div>
+      <div class="em-note-dot" style="top:600px; left:340px;">3</div>
+      <div class="em-phone__status"></div>
+      <div class="em-phone__screen">
+        <header class="em-appbar">
+          <span class="em-appbar__title">Etsy shop</span>
+        </header>
+        <div class="em-screen">
+          <div class="em-card em-card--briefing em-glow" style="text-align:left;">
+            <p class="em-briefing__kicker">Arc complete</p>
+            <h2 class="em-briefing__headline">The shop is live.</h2>
+            <p class="em-briefing__body" style="font-size:var(--em-text-body);">February to April: a banner file became a real shop with eight listings. You did that across four milestones and a lot of ordinary days.</p>
+            <div class="em-row" style="margin-top:var(--em-space-3);">
+              <span class="em-chip em-chip--done">complete</span>
+              <span class="em-hours"><b>14</b> ember hours across this arc</span>
+            </div>
+          </div>
+
+          <div class="em-card">
+            <p style="margin:0 0 var(--em-space-2);font-weight:var(--em-weight-medium);">Keep a Closing Note for the gallery?</p>
+            <p class="em-meta" style="margin:0 0 var(--em-space-4);">A short note on what this arc was and what it taught you — you can edit every word before it’s kept.</p>
+            <div class="em-row">
+              <button class="em-btn em-btn--primary" style="flex:1;">Draft the note</button>
+              <button class="em-btn em-btn--quiet">Maybe later</button>
+            </div>
+          </div>
+
+          <p class="em-meta em-prose" style="text-align:center;">This arc now rests in the Finished gallery with its thread. Want a next chapter someday? A new arc can start on this thread any time.</p>
+        </div>
+        <nav class="em-bottomnav">
+          <a class="em-tab" href="#"><i class="em-tab__icon">⌂</i>Doorway</a>
+          <a class="em-tab is-active" href="#"><i class="em-tab__icon">▤</i>Shelf</a>
+          <button class="em-catch-btn" aria-label="Catch a thought">+</button>
+          <a class="em-tab" href="#"><i class="em-tab__icon">◌</i>Search</a>
+        </nav>
+      </div>
+    </div>
+
+    <aside class="em-notes">
+      <p class="em-notes__title">Arc complete · Spec notes</p>
+      <p class="em-notes__item"><b>1</b><span>Celebration = one soft glow bloom (≤300 ms) + plain words naming what happened. Deterministic reward layer, never AI, fires instantly (M4 §8 “deliberately NOT AI”; brand §8: no confetti, no badge modal).</span></p>
+      <p class="em-notes__item"><b>2</b><span>Closing Note offer → O-05 editable preview (M3). If reached via Retire, arc closes as complete-retired with the note honoring what it taught (M4 §4, §12).</span></p>
+      <p class="em-notes__item"><b>3</b><span>Complete is terminal and immutable: no reopening — a fresh arc on the same Thread is the path forward. Completed arcs are cold storage, rendered from summary, no AI reads (M4 §4, §9).</span></p>
+    </aside>
+  </div>
+</section>
+
+<!-- ====================================================================== -->
+<!-- PHASE 2 — FELT-TIME ANNOTATED VARIANT                                  -->
+<!-- ====================================================================== -->
+<section class="pg-section">
+  <h2><span class="pg-id">W-01/W-10 · P2</span>Phase-2 felt-time variant — “leave by 1:15 to make the 2:00”</h2>
+  <p class="pg-sub">Read-only calendar, phase 2 of v1 (ships week 4 or is cut — R5). The “leave by” line is pure arithmetic
+     (event time − travel − prep buffers). AI’s only role: choosing one waiting-mode-sized Pebble for the dead zone before the appointment.</p>
+  <span class="pg-statechip">Display condition on Doorway/arc surfaces · calendar consent granted</span>
+
+  <div class="em-canvas">
+    <div class="em-phone">
+      <div class="em-note-dot" style="top:170px; left:340px;">1</div>
+      <div class="em-note-dot" style="top:330px; left:20px;">2</div>
+      <div class="em-note-dot" style="top:500px; left:340px;">3</div>
+      <div class="em-note-dot" style="top:640px; left:20px;">4</div>
+      <div class="em-phone__status"></div>
+      <div class="em-phone__screen">
+        <header class="em-appbar">
+          <span class="em-appbar__title">Doorway</span>
+        </header>
+        <div class="em-screen">
+          <div class="em-card em-card--doorway">
+            <h2 class="em-doorway__greeting">Saturday, fair day.</h2>
+            <p class="em-doorway__promise">One real time today, one small thing to fill the wait. Ninety seconds, then go.</p>
+
+            <!-- deterministic felt-time line -->
+            <div class="em-banner" style="background:var(--em-rest-surface);color:var(--em-rest);">
+              Leave by <strong>1:15</strong> to make the <strong>2:00</strong> table pickup — that’s the whole schedule.
+            </div>
+
+            <!-- waiting-mode-sized pebble -->
+            <div class="em-pebble" style="margin-top:var(--em-space-4);">
+              While you wait: label the price tags
+              <span class="em-pebble__time">~20 min · fits before you go</span>
+            </div>
+            <button class="em-btn em-btn--primary em-btn--block" style="margin-top:var(--em-space-3);">Do it now</button>
+            <button class="em-btn em-btn--quiet em-btn--block">Or just wait — waiting is allowed</button>
+          </div>
+
+          <p class="em-meta em-prose" style="text-align:center;">Calendar is read-only. Ember never schedules anything onto it.</p>
+        </div>
+        <nav class="em-bottomnav">
+          <a class="em-tab is-active" href="#"><i class="em-tab__icon">⌂</i>Doorway</a>
+          <a class="em-tab" href="#"><i class="em-tab__icon">▤</i>Shelf</a>
+          <button class="em-catch-btn" aria-label="Catch a thought">+</button>
+          <a class="em-tab" href="#"><i class="em-tab__icon">◌</i>Search</a>
+        </nav>
+      </div>
+    </div>
+
+    <aside class="em-notes">
+      <p class="em-notes__title">Phase 2 felt-time · Spec notes</p>
+      <p class="em-notes__item"><b>1</b><span>“Leave by 1:15 to make the 2:00” is <strong>deterministic math</strong>: event time − travel/prep buffers. Never a countdown timer; lead-time phrasing per brand law §9.8 (time-blindness respect). Dusty-blue banner: time info, not warning.</span></p>
+      <p class="em-notes__item"><b>2</b><span>Waiting-mode-sized Pebble: AI’s only role here — pick one Pebble ≤ the free window, low-stakes, physical-first (M4 §8 phase 2; Healthline “waiting mode”). Max one arc Pebble on the Doorway still holds.</span></p>
+      <p class="em-notes__item"><b>3</b><span>“Waiting is allowed” — the offer is optional; declining costs nothing and is never re-pushed today (M5 notification caps).</span></p>
+      <p class="em-notes__item"><b>4</b><span>Failure = silence: if the calendar read fails, the felt-time line is simply absent — never a stale “leave by” time (M4 §10). Consent: read-only OAuth, times/titles only, same-day transient processing, disconnect purges cache (M4 §11).</span></p>
+    </aside>
+  </div>
+</section>
+
+<footer class="pg-section" style="padding-bottom:var(--em-space-16);">
+  <p class="em-meta">Ember wireframes · M4 Year Arc · static HTML/CSS on wireframe-kit.css v1.0 · annotation layer is spec-only, strip before build · <a href="index.html" style="color:var(--em-accent-text);">wireframe index</a></p>
+</footer>
+
+</body>
+</html>

@@ -34,7 +34,7 @@ Catch is Ember's zero-decision capture layer and the daily verb of the product (
 - **filed → resurfaced:** set by M5 when the Doorway shows the Spark ("you had a good idea about the shop logo on Tuesday"); M1 only stores the flag.
 - **any → archived:** user swipe, or side-effect of Thread retirement (M2). Undo highlighted for 30 days; restorable forever after that.
 - **Deletion:** only by explicit user delete — hard-deletes body, transcript, and audio within 24h. Default retention is forever: memory is the product; there is no auto-purge.
-- **Audio:** raw audio kept 7 days after a successful transcription, then deleted; the transcript is permanent. Audio with no transcript yet is kept indefinitely (see §10 ASR failure).
+- **Audio:** default retention — the transcript is permanent; raw audio is deleted 7 days after a successful transcription. A user setting **"Keep original audio"** (off by default) instead retains the audio in cold storage. Audio with no transcript yet is kept indefinitely (see §10 ASR failure).
 
 **ImportBatch:**
 - **Created by:** the web-app import wizard (§5). One batch per uploaded export file.
@@ -49,7 +49,7 @@ Catch is Ember's zero-decision capture layer and the daily verb of the product (
 | Capture text | Lockscreen widget · in-app big button (home, thumb-zone, ≥64pt) · web quick-capture (global `C` hotkey) | typed text | Spark created locally, instant feedback (§8 deterministic layer), enqueue for filing | Delete within toast (5s "Undo") |
 | Capture voice | Same surfaces, hold-or-tap mic | audio | Spark created with `audio_ref`; on-device transcription starts immediately | Same |
 | Share into Ember | OS share sheet (iOS/Android) | text/URL/image-with-caption | Spark created; source URL kept in body | Same |
-| Night catch | Widget long-press or in-app moon toggle (auto-offered 23:00–06:00) | text/voice | Black screen, no sounds, no toast, no filing shown; Spark routes to tomorrow's Doorway (M5) | Silent; undo available next morning |
+| Night catch | Widget long-press or in-app moon toggle (auto-offered 22:00–06:00) | text/voice | Black screen, no sounds, no toast, no filing shown; Spark routes to tomorrow's Doorway (M5) | Silent; undo available next morning |
 | One-drag correction | Spark card (Loose Sparks tray, Thread view, toast) | drag Spark onto a Thread on the Shelf strip, or long-press → "Move to…" | Refile; emits training signal (§8); toast "Moved to *X* — I'll learn from that" | Drag back / Undo in toast |
 | Confirm/adopt proposed Thread | Loose Sparks tray card | tap "Yes, new thread" / "No, belongs in…" | Creates Thread (M2) or refiles | Undo in toast |
 | Start graveyard import | Web app → Settings → "Import the wreckage" | Apple Notes export (.zip of .txt/.html) or Notion export (.zip md/csv) | Creates ImportBatch; background processing (§8) | Cancel keeps already-imported Sparks; batch deletable in one tap ("Remove this import") |
@@ -64,35 +64,35 @@ No watch app, no browser clipper in v1 (R5: month-one scope is mobile app + widg
 - **Loading / filing-pending:** Spark shows a soft "settling…" shimmer, never a spinner-blocked UI; user can keep capturing; the queue never blocks the mic.
 - **Offline:** full capture works; Sparks enter the local queue with state chip "safe on your phone — will file when back online." Never an error tone, never a retry demand. On reconnect, queue files in order; one summary toast ("6 thoughts filed while you were away"), not six toasts.
 - **Transcription failure:** on-device ASR fails or returns garbage-confidence → Spark keeps audio, card shows play button + "Couldn't hear this one — tap to retry or type it." One tap retries via server ASR (consented in onboarding, skippable). A failed-ASR Spark still counts as caught; it is never silently dropped.
-- **Misfile-correction:** user drags Spark out of the wrong Thread; origin→destination flash on the Shelf strip; copy: "Got it — *shop logo* things go to *Etsy shop*." No shame language, no "error," no confirmation dialog.
-- **Loose Sparks tray:** always visible from home, warm framing ("Ember is holding these — 4 sparks"), badge is an ember count, never red, never named "inbox" (terminology rule). Capped visually at top 20 + "older sparks" fold.
+- **Misfile-correction (O-02):** user drags Spark out of the wrong Thread; origin→destination flash on the Shelf strip; copy: "Got it — *shop logo* things go to *Etsy shop*." No shame language, no "error," no confirmation dialog.
+- **Loose Sparks tray:** always visible from home, warm framing ("Ember is holding these — 4 sparks"), badge is an ember count, never red, never named "inbox" (terminology rule). Renders the top 20 + a lazy-loaded "older sparks" fold; Loose Sparks never expire and are never auto-archived.
 - **Import-in-progress:** progress card on web + mobile ("312 of 4,000 notes read · 61 duplicates skipped"), pausable and resumable; if the cost cap pauses it: "Paused to keep things affordable — the rest files itself tonight."
 - **Returning after weeks:** Catch itself never scolds and never changes shape — widget and big button identical to day one (muscle-memory preservation, R1). If Loose Sparks accumulated, one gentle merge offer: "A few sparks piled up — want me to refile them in one go?" → batch-files everything above threshold in one tap. Welcome-back narrative belongs to M5/M3, not here.
 
 ## 7. Workflows
 
-**W1 — Happy path (voice, widget)** [wireframes WF-M1-01…04]
-1. Lockscreen widget tap → mic screen (WF-M1-01), already recording; no login wall, no navigation.
-2. Speak, release (or auto-stop on 1.5s silence). Deterministic catch animation + haptic fires <300ms (WF-M1-02); phone can be pocketed now — everything after is async.
+**W1 — Happy path (voice, widget)** [wireframes W-02 → O-01 → W-02c]
+1. Lockscreen widget tap → mic screen (W-02 Catch overlay), already recording; no login wall, no navigation.
+2. Speak, release (or auto-stop on 1.5s silence). Deterministic catch animation + haptic fires <300ms (W-02); phone can be pocketed now — everything after is async.
 3. On-device transcription → Spark queued → Haiku classifier files it.
-4. Toast (if app/lockscreen visible): "Caught → filed to *Etsy shop*" with Thread ember glyph warming (WF-M1-03); Spark sits atop the Thread story (WF-M1-04).
+4. Toast (if app/lockscreen visible): "Caught → filed to *Etsy shop*" with Thread ember glyph warming (O-01 / W-02c filed-toast state); Spark sits atop the Thread story (W-04, M2).
 5. Total demanded attention: ~2 seconds; total decisions: zero.
 
-**W2 — Failure path: low-confidence filing** [WF-M1-05]
-1. Classifier confidence < 0.5 → Spark lands in Loose Sparks tray: "Ember is holding this one."
+**W2 — Failure path: low-confidence filing** [W-12]
+1. Classifier confidence < 0.55 → Spark lands in Loose Sparks tray: "Ember is holding this one."
 2. Card shows top-2 Thread guesses as one-tap chips + "new thread?" chip; or user drags it onto the Shelf strip.
 3. Tap/drag files it and logs the correction as a training exemplar (§8). Tray items never expire, never turn red, and are resurfaced by M5 at most once each.
 
-**W3 — Failure path: offline + ASR failure at night** [WF-M1-06]
+**W3 — Failure path: offline + ASR failure at night** [W-02b → W-01 night-ASR-retry card state]
 1. 1am, airplane mode, night catch: black screen, audio stored locally, zero processing attempted (night mode defers everything — no light, no toast, no result to look at).
 2. Morning, back online: on-device ASR runs in the batch release.
 3. If ASR fails, the Spark surfaces in today's Doorway as a playable audio card: "from last night — tap to hear yourself," with retry-via-server and type-it options. Nothing lost, nothing demanded at 1am.
 
-**W4 — Graveyard import** [WF-M1-07…09]
-1. Web app → Settings → "Import the wreckage" (WF-M1-07): pick Apple Notes export or Notion export zip.
-2. Parse + dedupe locally in the browser where feasible (§9); upload survivors; ImportBatch starts (WF-M1-08 progress card, pausable, cost-capped).
+**W4 — Graveyard import** [W-13 → W-13b]
+1. Web app → Settings → "Import the wreckage" (W-13 import wizard): pick Apple Notes export or Notion export zip.
+2. Parse + dedupe locally in the browser where feasible (§9); upload survivors; ImportBatch starts (W-13 progress-card state, pausable, cost-capped).
 3. Batched classification files notes into existing/proposed Threads; leftovers land in "Imported, unsorted."
-4. Completion (WF-M1-09): "1,240 notes are now memory. 61 duplicates skipped. 3 threads look alive — want a Warm Start on any of them?" (hand-off to M3). The framing is memory-not-guilt, per winner.md #16.
+4. Completion (W-13b import summary): "1,240 notes are now memory. 61 duplicates skipped. 3 threads look alive — want a Warm Start on any of them?" (hand-off to M3). The framing is memory-not-guilt, per winner.md #16.
 
 ## 8. AI behavior
 
