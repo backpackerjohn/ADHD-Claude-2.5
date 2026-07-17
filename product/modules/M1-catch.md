@@ -48,30 +48,46 @@ No watch app, no browser clipper in v1 (R5: month-one scope is mobile app + widg
 
 ## 6. States
 
-- **Empty / first-run:** big button + one line: "Say anything. Ember will file it." First capture triggers a one-time 3-second explainer of the toast ("It went to a thread — watch"). No Thread exists yet → first 1–3 Sparks create proposed Threads; cold-start is expected and fine (capture relief is day-one value).
+- **Empty / first-run:** big button + one line: "Say anything. Ember will file it." First capture triggers a one-time 3-second explainer of the toast ("It went to a thread — watch"). No Thread exists yet → first 1–3 Sparks create proposed Threads; cold-start is expected and fine (capture relief is day-one value; no setup, no folder-making onboarding).
 - **Ideal:** capture → <300ms deterministic feedback → within ~2–5s toast "Caught → filed to *Etsy shop*" with the Thread's ember glyph warming.
-- **Loading / filing-pending:** Spark shows a soft "settling…" shimmer, never a spinner-blocked UI; user can keep capturing.
-- **Offline:** full capture works; Sparks enter the local queue with state chip "safe on your phone — will file when back online." Never an error tone. On reconnect, queue files in order; one summary toast ("6 thoughts filed while you were away"), not six toasts.
-- **Transcription failure:** on-device ASR fails or confidence garbage → Spark keeps audio, card shows play button + "Couldn't hear this one — tap to retry or type it." One tap retries via server ASR (consented in onboarding, skippable). Never silently dropped.
-- **Misfile-correction:** user drags Spark from wrong Thread; both Threads flash origin→destination; copy: "Got it — *shop logo* things go to *Etsy shop*." No shame language, no "error."
-- **Loose Sparks tray:** visible, warm ("Ember is holding these — 4 sparks"), badge is an ember count, never red, never named "inbox." Tray capped visually at top 20 + "older sparks" fold.
-- **Import-in-progress:** progress card on web + mobile ("312 of 4,000 notes read · 61 duplicates skipped"), pausable; if the cost cap pauses it: "Paused to keep things affordable — resumes tonight."
-- **Returning after weeks:** Catch itself never scolds. Widget and big button unchanged; Loose Sparks tray shows a gentle merge offer ("A few sparks piled up — want me to refile them in one go?") which batch-files everything above threshold. Welcome-back framing belongs to M5/M3, not here.
+- **Loading / filing-pending:** Spark shows a soft "settling…" shimmer, never a spinner-blocked UI; user can keep capturing; the queue never blocks the mic.
+- **Offline:** full capture works; Sparks enter the local queue with state chip "safe on your phone — will file when back online." Never an error tone, never a retry demand. On reconnect, queue files in order; one summary toast ("6 thoughts filed while you were away"), not six toasts.
+- **Transcription failure:** on-device ASR fails or returns garbage-confidence → Spark keeps audio, card shows play button + "Couldn't hear this one — tap to retry or type it." One tap retries via server ASR (consented in onboarding, skippable). A failed-ASR Spark still counts as caught; it is never silently dropped.
+- **Misfile-correction:** user drags Spark out of the wrong Thread; origin→destination flash on the Shelf strip; copy: "Got it — *shop logo* things go to *Etsy shop*." No shame language, no "error," no confirmation dialog.
+- **Loose Sparks tray:** always visible from home, warm framing ("Ember is holding these — 4 sparks"), badge is an ember count, never red, never named "inbox" (terminology rule). Capped visually at top 20 + "older sparks" fold.
+- **Import-in-progress:** progress card on web + mobile ("312 of 4,000 notes read · 61 duplicates skipped"), pausable and resumable; if the cost cap pauses it: "Paused to keep things affordable — the rest files itself tonight."
+- **Returning after weeks:** Catch itself never scolds and never changes shape — widget and big button identical to day one (muscle-memory preservation, R1). If Loose Sparks accumulated, one gentle merge offer: "A few sparks piled up — want me to refile them in one go?" → batch-files everything above threshold in one tap. Welcome-back narrative belongs to M5/M3, not here.
 
 ## 7. Workflows
 
-**W1 — Happy path (voice, widget)** [wireframes WF-M1-01…04]: lockscreen widget tap → mic screen (WF-M1-01) → speak, release → deterministic catch animation <300ms (WF-M1-02) → on-device transcript → classifier files → toast "Caught → filed to *Etsy shop*" (WF-M1-03) → Spark visible atop Thread (WF-M1-04). Total user attention: ~2s.
+**W1 — Happy path (voice, widget)** [wireframes WF-M1-01…04]
+1. Lockscreen widget tap → mic screen (WF-M1-01), already recording; no login wall, no navigation.
+2. Speak, release (or auto-stop on 1.5s silence). Deterministic catch animation + haptic fires <300ms (WF-M1-02); phone can be pocketed now — everything after is async.
+3. On-device transcription → Spark queued → Haiku classifier files it.
+4. Toast (if app/lockscreen visible): "Caught → filed to *Etsy shop*" with Thread ember glyph warming (WF-M1-03); Spark sits atop the Thread story (WF-M1-04).
+5. Total demanded attention: ~2 seconds; total decisions: zero.
 
-**W2 — Failure: low-confidence filing** [WF-M1-05]: classifier returns confidence < threshold → Spark lands in Loose Sparks tray with top-2 Thread guesses as one-tap chips + "new thread?" chip → user taps or drags → correction logged as training signal. Tray item never expires and is resurfaced at most once by M5.
+**W2 — Failure path: low-confidence filing** [WF-M1-05]
+1. Classifier confidence < 0.5 → Spark lands in Loose Sparks tray: "Ember is holding this one."
+2. Card shows top-2 Thread guesses as one-tap chips + "new thread?" chip; or user drags it onto the Shelf strip.
+3. Tap/drag files it and logs the correction as a training exemplar (§8). Tray items never expire, never turn red, and are resurfaced by M5 at most once each.
 
-**W3 — Failure: offline + ASR failure at night** [WF-M1-06]: 1am, airplane mode, night catch → audio stored, no transcription attempted (night mode defers all processing) → morning: device back online, on-device ASR runs; if it fails, Spark appears in tomorrow's Doorway as playable audio card "from last night — tap to hear yourself." Nothing lost, nothing demanded at 1am.
+**W3 — Failure path: offline + ASR failure at night** [WF-M1-06]
+1. 1am, airplane mode, night catch: black screen, audio stored locally, zero processing attempted (night mode defers everything — no light, no toast, no result to look at).
+2. Morning, back online: on-device ASR runs in the batch release.
+3. If ASR fails, the Spark surfaces in today's Doorway as a playable audio card: "from last night — tap to hear yourself," with retry-via-server and type-it options. Nothing lost, nothing demanded at 1am.
 
-**W4 — Graveyard import** [WF-M1-07…09]: web app wizard → upload export → parse locally in browser where possible → dedupe pass (§9) → batched classification into Threads/Loose → completion screen: "1,240 notes are now memory. 3 threads look alive — want a Warm Start on any of them?" (hand-off to M3).
+**W4 — Graveyard import** [WF-M1-07…09]
+1. Web app → Settings → "Import the wreckage" (WF-M1-07): pick Apple Notes export or Notion export zip.
+2. Parse + dedupe locally in the browser where feasible (§9); upload survivors; ImportBatch starts (WF-M1-08 progress card, pausable, cost-capped).
+3. Batched classification files notes into existing/proposed Threads; leftovers land in "Imported, unsorted."
+4. Completion (WF-M1-09): "1,240 notes are now memory. 61 duplicates skipped. 3 threads look alive — want a Warm Start on any of them?" (hand-off to M3). The framing is memory-not-guilt, per winner.md #16.
 
 ## 8. AI behavior
 
-- **Trigger:** every non-night Spark on creation (night Sparks: next morning, batched). **Input:** Spark text + candidate list of the user's Thread names with one-line Digest summaries (prompt-cached stable prefix). **Model:** Haiku-tier (workhorse per brief; ≈$1.31/mo at 25 captures/day, thesis-B §8).
-- **Output contract (JSON):** `{thread_id | new_thread_proposal{name} | loose, confidence: 0–1, alt_thread_ids[≤2]}`. Malformed output ⇒ treated as `loose`.
+- **Trigger:** every non-night Spark on creation (night Sparks: next morning, batched). **Model:** Haiku-tier (workhorse per brief; ≈$1.31/mo at 25 captures/day, thesis-B §8).
+- **Prompt contract (input):** cached stable prefix = system instructions + the user's Thread candidate list (name + one-line Digest summary each) + last-30 correction exemplars; variable suffix = the Spark text and `captured_at`. One call per Spark; imports batch ~20 Sparks per call.
+- **Output contract (JSON, strict):** `{"decision": "file" | "propose_new_thread" | "loose", "thread_id": "...", "new_thread_name": "...", "confidence": 0.0–1.0, "alt_thread_ids": [≤2]}`. Malformed or non-JSON output ⇒ treated as `loose` (fail safe, never fail wrong).
 - **Confidence gate (R3 mitigation):** confidence ≥ 0.8 → auto-file with visible toast naming the Thread (filing is always announced, never silent). 0.5–0.8 → file but toast carries an inline "not right? drag it" affordance. < 0.5 → Loose Sparks tray, **never a hidden inbox** ("out of sight, out of mind is a neurological reality" — [Medium/Brunell](https://raymond-brunell.medium.com/i-deleted-47-productivity-apps-in-30-days-heres-what-actually-worked-for-my-adhd-brain-52c292c6ba6b)). Week-one conservative mode: thresholds shifted up 0.1 while corrections < 10, because early misfiles are the trust-killer.
 - **Corrections as training:** every one-drag correction appends `(spark_text → correct_thread)` to a per-user few-shot exemplar block (last 30 corrections, cached) injected into the classifier prompt. No fine-tuning in v1.
 - **Import classification:** same classifier, Batch API (50% off), hard cap **$1.50 of model spend per ImportBatch** (cost-capped per winner.md #16); past cap → remaining items land pre-deduped in an "Imported, unsorted" holding shelf section, classified opportunistically by the nightly batch over following nights.
