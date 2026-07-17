@@ -9,7 +9,7 @@
 ### P1. The execution gap: task-initiation paralysis ("wall of awful") — severity 5/5
 Knowing exactly what needs doing and being physically unable to start. Not procrastination — a neurological freeze wrapped in an emotional wall built from years of failure.
 - "ADHD paralysis is sitting on the couch, staring at the dishes, knowing they need to be done, and being physically unable to make yourself get up and do them." — [Inflow](https://www.getinflow.io/post/adhd-couch-lock)
-- "Getting Started Blues" survey: mental paralysis reported by **62%** vs 44% procrastination — [ThriveWithADD](https://thrivewithadd.com/paralysis-beats-procrastination-as-problem-for-add-adhd-adults-according-to-getting-started-blues-survey/)
+- "Getting Started Blues" survey: mental paralysis reported by **62%** vs 44% procrastination — [ThriveWithADD](https://thrivewithadd.com/paralysis-beats-procrastination-as-problem-for-add-adhd-adults-according-to-getting-started-blues-survey/) *(self-run coach survey, methodology unpublished — community signal only; see verification.md)*
 - Covered by [Cleveland Clinic](https://health.clevelandclinic.org/adhd-paralysis), [ADDA](https://add.org/adhd-paralysis/), the ["Wall of Awful"](https://www.adhdessentials.com/essentials/the-wall-of-awful/) framework.
 - **Why underserved:** every tool attacks the plan (Goblin Tools "generates a beautiful list of steps and then stops at the plan" — [Thawly](https://thawly.ai/reviews/goblin-tools)) or the scheduled moment (body doubling), not the freeze itself. The emotional layer is only served by $170–225/hr coaches ([Coaching Executive Function](https://www.coachingexecutivefunction.com/post/how-much-does-adhd-coaching-cost)).
 
@@ -26,7 +26,7 @@ Ideas evaporate before capture; what does get captured scatters into unfindable,
 - "When it vanishes, it's like being betrayed by your own mind." — [InFocus First](https://infocusfirst.com/adhd-forgetfulness/)
 - "Notion requires an organizational decision at the moment of every save… so the system gets silently abandoned despite an enthusiastic setup. It's a design-fit problem, not a willpower problem." — [MindStash](https://www.mindstash.app/blogs/why-your-adhd-brain-hates-notion-and-what-actually-works-instead)
 - "I know I wrote it down somewhere… But is it in my Apple Notes, my Kindle highlights, Scrivener, a random Word document, one of my notebooks…?" — [Passionate Writer Coaching](https://passionatewritercoaching.com/best-free-note-taking-apps/)
-- Night dimension: "Up to 70% of people with ADHD report insomnia" — [Eureka Health](https://www.eurekahealth.com/resources/racing-thoughts-at-bedtime-insomnia-adhd-connection-en); "Your brain races because it's afraid of forgetting" — [Built for ADHD](https://www.builtforadhd.com/blog/adhd-brain-dump-method-clear-47-mental-tabs/)
+- Night dimension: insomnia in 66.8% of adult ADHD vs 28.8% of controls — [Brevik et al. (peer-reviewed)](https://pubmed.ncbi.nlm.nih.gov/28547881/); "Your brain races because it's afraid of forgetting" — [Built for ADHD](https://www.builtforadhd.com/blog/adhd-brain-dump-method-clear-47-mental-tabs/)
 - **Why underserved:** incumbents offload organization onto the user; the startups selling auto-organization (MindStash, Saner.AI) are tiny and don't close the loop to resurfacing at the moment of relevance.
 
 ### P4. Time blindness & "waiting mode" — severity 5/5
