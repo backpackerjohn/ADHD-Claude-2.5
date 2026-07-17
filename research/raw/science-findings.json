@@ -1,0 +1,130 @@
+{
+  "angle": "adhd-science-behavior",
+  "collected": "2026-07-17",
+  "method": "WebSearch retrieval (direct fetch blocked by sandbox egress policy — see build-log.md D-002). Quotes are verbatim from search-retrieved content; paraphrases labeled as such.",
+  "angle_summary": "Adult ADHD is best understood, per Barkley, as a disorder of self-regulation and executive function rather than of attention per se. Core deficits span working memory, time perception ('time blindness'), and a dopamine-driven reward system biased toward immediate, novel, salient rewards (steep delay discounting). The unifying design principle is 'externalization at the point of performance': because the internal executive apparatus is unreliable, ADHD support should move rules, time, motivation, and reminders out into the physical/digital environment at the exact moment and place an action must occur. Evidence-backed scaffolds include external cues/prosthetics, if-then implementation intentions, gamified immediate reward, body doubling (social facilitation), and CBT skills. Prevalence data (CDC 2024) show ~15.5M U.S. adults / 6.0% diagnosed, roughly half diagnosed in adulthood, validating a large, under-supported adult market.",
+  "searches_run": [
+    "adult ADHD executive function working memory deficits meta-analysis",
+    "ADHD time blindness time perception research Barkley",
+    "Barkley point of performance externalizing information ADHD executive function treatment",
+    "ADHD dopamine reward deficiency novelty seeking motivation research",
+    "body doubling ADHD research evidence study productivity",
+    "implementation intentions ADHD Gollwitzer meta-analysis goal attainment",
+    "CBT for adult ADHD efficacy meta-analysis cognitive behavioral therapy randomized",
+    "CDC adult ADHD prevalence 2024 15.5 million diagnosis statistics",
+    "adult ADHD diagnosis rates rising 2025 2026 statistics prescriptions",
+    "ADHD delay discounting temporal reward preference immediate reward smaller sooner",
+    "ADHD task initiation procrastination gamification digital intervention apps evidence",
+    "Barkley ADHD self-regulation time 1997 working memory prosthetic model executive function theory"
+  ],
+  "findings": [
+    {
+      "topic": "Working memory deficits in adult ADHD",
+      "claim": "Adults with ADHD show moderate-magnitude deficits across both phonological and visuospatial working memory relative to controls, and executive-function deficits appear across all EF dimensions.",
+      "design_implication": "Never rely on the user to hold multi-step instructions, dates, or context in their head. Persist state visibly: break tasks into single displayed steps, keep prior context on-screen, and auto-surface 'what's next' rather than requiring recall.",
+      "evidence": [
+        { "type": "paraphrase", "text": "A meta-analytic review of 38 studies found moderate-magnitude between-group effect sizes for adults with ADHD vs. healthy controls across both phonological and visuospatial working memory domains.", "url": "https://pubmed.ncbi.nlm.nih.gov/23688211/", "source": "Alderson et al., PubMed / J. Neuropsychology (meta-analytic review)", "date": "2013" },
+        { "type": "paraphrase", "text": "A meta-analysis of EF facets and ADHD (N=83 studies, k=6703) found significant deficits across all executive function dimensions in individuals with ADHD.", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11485171/", "source": "PMC (executive function deficits in ADHD and ASD)" }
+      ]
+    },
+    {
+      "topic": "Time blindness / temporal myopia",
+      "claim": "ADHD involves an impaired ability to use time to regulate behavior (time reproduction/forethought), not merely to perceive elapsed duration; Barkley frames ADHD as fundamentally a disorder of time.",
+      "design_implication": "Make time visible and concrete. Use countdown timers, elapsed-time displays, visual schedules, and proactive time-until-event nudges so the app supplies the 'sense of time' the user's executive system does not generate internally.",
+      "evidence": [
+        { "type": "paraphrase", "text": "Barkley found ADHD and non-ADHD participants estimated how long a light was on with similar accuracy, but time-reproduction tasks showed significantly more errors in ADHD groups, indicating the problem is using time to regulate behavior rather than raw perception.", "url": "https://www.occupationaltherapy.com/articles/time-blindness-critical-executive-function-5790", "source": "OccupationalTherapy.com (review of Barkley's time-reproduction work)" },
+        { "type": "paraphrase", "text": "Barkley's comprehensive 1997 theory positions self-regulation and an internalized sense of time as central to ADHD; working memory is described as responsible for hindsight, forethought, and our in-built sense of time.", "url": "https://pubmed.ncbi.nlm.nih.gov/9276836/", "source": "Barkley, Psychological Bulletin (PubMed 9276836)", "date": "1997" }
+      ]
+    },
+    {
+      "topic": "Externalization at the point of performance (Barkley's core principle)",
+      "claim": "Because ADHD is an executive-function/performance disorder, the most effective support externalizes rules, time, and motivation into physical prompts placed at the point where and when the action must occur.",
+      "design_implication": "This is the app's foundational design law: deliver reminders, cues, and motivators contextually at the moment of action (right task, right time, right place), not as abstract to-do lists reviewed elsewhere. Treat the app as a 'prosthetic' working memory.",
+      "evidence": [
+        { "type": "paraphrase", "text": "Behavioral treatment provides artificial prosthetic cues to substitute for working-memory deficits (signs, lists, cards, charts, posters) and artificial prosthetic consequences to bridge the large time gaps between behavior and natural consequences; support should externalize time, rules, and motivators at the point of performance.", "url": "https://www.russellbarkley.org/factsheets/ADHD_EF_and_SR.pdf", "source": "Russell A. Barkley, 'The Important Role of Executive Functioning and Self-Regulation in ADHD' (factsheet)" },
+        { "type": "quote", "text": "people with executive-function differences are best helped by externalizing information—putting it into physical form in the environment, at the point where the action needs to happen.", "url": "https://www.scienceworkshealth.com/post/external-systems-for-adhd-at-work", "source": "Science Works Health (summary of Barkley's model)" }
+      ]
+    },
+    {
+      "topic": "Dopamine, reward pathway, and motivation deficit",
+      "claim": "Adult ADHD is associated with measurable dysfunction of the dopamine reward pathway, which underlies motivation deficits; ADHD brains are driven more by interest, urgency, novelty, and salience than by stated importance.",
+      "design_implication": "Engineer motivation externally: provide frequent, immediate, salient positive feedback and reframe low-interest tasks with urgency/novelty hooks. Do not assume 'importance' alone will drive action.",
+      "evidence": [
+        { "type": "paraphrase", "text": "PET imaging showed decreased function in the brain dopamine reward pathway in adults with ADHD, which the authors argue could underlie the motivation deficits in the disorder.", "url": "https://www.nature.com/articles/mp201097", "source": "Volkow et al., Molecular Psychiatry, 'Motivation deficit in ADHD is associated with dysfunction of the dopamine reward pathway'", "date": "2011" },
+        { "type": "paraphrase", "text": "ADHD brains are often motivated by interest, urgency, novelty, or emotional connection rather than importance alone.", "url": "https://www.neurodiversecounselingllc.com/post/adhd-and-dopamine-why-motivation-feels-so-different", "source": "Neurodiverse Counseling LLC (clinical explainer)" }
+      ]
+    },
+    {
+      "topic": "Novelty seeking",
+      "claim": "People with ADHD consistently score higher on novelty-seeking across ages and subtypes; aberrant novelty and reward-related processing is a disorder-specific feature improved by stimulants.",
+      "design_implication": "Build in variety and freshness—rotating visuals, new challenge framings, varied reward types—to counter habituation, since familiar/static interfaces will stop being rewarding and get abandoned.",
+      "evidence": [
+        { "type": "paraphrase", "text": "Aberrant substantia nigra/ventral tegmental area novelty processing plays an important role in the suboptimal reward-related decision-making characteristic of ADHD, and these novelty/reward-learning abnormalities were improved by stimulant medication, suggesting disorder-specific targets.", "url": "https://academic.oup.com/brain/article/141/5/1545/4934119", "source": "Brain (Oxford Academic), neurocomputational account of reward and novelty processing in ADHD", "date": "2018" }
+      ]
+    },
+    {
+      "topic": "Delay discounting / preference for immediate rewards",
+      "claim": "Individuals with ADHD choose small immediate rewards over larger delayed ones more often than controls (steeper temporal discounting), a pattern linked to daily-life executive-function problems.",
+      "design_implication": "Collapse the delay between action and reward. Deliver immediate micro-rewards on task initiation and completion; break long-horizon goals into short, quickly-rewarded steps so payoff isn't discounted away.",
+      "evidence": [
+        { "type": "paraphrase", "text": "Comparative meta-analysis found participants with ADHD choose small immediate over large delayed rewards more frequently than controls, with strong preference for small immediate rewards specifically associated with the hyperactivity–impulsivity symptom domain.", "url": "https://journals.sagepub.com/doi/10.1177/1087054718772138", "source": "Marx, Hacker, Yu, Cortese & Sonuga-Barke, Journal of Attention Disorders (meta-analysis)", "date": "2021" },
+        { "type": "paraphrase", "text": "Steep temporal discounting was associated with daily-life executive-function problems and weaker learning/study strategies in college students with ADHD symptoms.", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7912943/", "source": "PMC pilot study on temporal reward discounting in college students with ADHD" }
+      ]
+    },
+    {
+      "topic": "Implementation intentions (if-then planning)",
+      "claim": "Implementation intentions ('If situation Y, then I will do X') produce medium-to-large improvements in goal attainment and specifically aid response inhibition and delay of gratification in children with ADHD.",
+      "design_implication": "Prompt users to author if-then plans that bind a concrete cue to a specific action, and let the app detect the trigger context and fire the plan—turning vague intentions into automatic cue-driven responses.",
+      "evidence": [
+        { "type": "stat", "text": "Gollwitzer and Sheeran's meta-analysis of 94 independent tests showed implementation intentions had a positive effect of medium-to-large magnitude (d = .65) on goal attainment.", "url": "https://www.researchgate.net/publication/37367696_Implementation_Intentions_and_Goal_Achievement_A_Meta-Analysis_of_Effects_and_Processes", "source": "Gollwitzer & Sheeran, Advances in Experimental Social Psychology (meta-analysis)", "date": "2006" },
+        { "type": "paraphrase", "text": "Research shows implementation intentions facilitate response inhibition and benefit delay-of-gratification performance in children with ADHD.", "url": "https://eprints.whiterose.ac.uk/id/eprint/94825/3/WRRO_94825.pdf", "source": "White Rose Research (review of if-then planning in ADHD)" }
+      ]
+    },
+    {
+      "topic": "CBT for adult ADHD efficacy",
+      "claim": "CBT produces moderate-to-large improvements in adult ADHD core symptoms versus waitlist and additional benefit over active controls, and adds value on top of medication, including for emotional symptoms and executive function.",
+      "design_implication": "Embed CBT-derived skills (cognitive restructuring, planning/organization routines, breaking avoidance) as guided in-app modules; position the app as a complement to medication, not a replacement.",
+      "evidence": [
+        { "type": "stat", "text": "Meta-analysis found CBT superior to waiting list with a moderate-to-large effect size (SMD = 0.76) and superior to active control groups with a small-to-moderate effect size (SMD = 0.43).", "url": "https://pubmed.ncbi.nlm.nih.gov/27554190/", "source": "Young, Moghaddam & Tickle, Journal of Attention Disorders (systematic review & meta-analysis of RCTs)", "date": "2020" },
+        { "type": "paraphrase", "text": "Meta-analytic evidence (14 RCTs) shows significant benefits of CBT for core ADHD symptoms, depressive mood, anxiety/stress, and executive function.", "url": "https://www.sciencedirect.com/science/article/abs/pii/S0165032725025492", "source": "ScienceDirect, meta-analysis of CBT intervention effect on adult ADHD" }
+      ]
+    },
+    {
+      "topic": "Body doubling / social facilitation",
+      "claim": "Body doubling is widely used and mechanistically plausible (social facilitation, implicit accountability, co-regulation, commitment structure), with early controlled evidence positive but the overall research base still thin.",
+      "design_implication": "Offer body-doubling / co-working features (scheduled focus sessions, presence cues, accountability check-ins) as a supported tool, but frame honestly as promising rather than definitively proven, and pair with other scaffolds.",
+      "evidence": [
+        { "type": "paraphrase", "text": "A 2025 virtual-reality study of adults with ADHD found participants completed tasks faster and perceived greater accuracy and sustained attention when working with either a human or an AI body double compared with working alone.", "url": "https://arxiv.org/abs/2509.12153", "source": "arXiv, 'You Are Not Alone: Designing Body Doubling for ADHD in Virtual Reality'", "date": "2025" },
+        { "type": "paraphrase", "text": "Reviews note the research base for body doubling remains thin, with most evidence anecdotal or from small samples; proposed mechanisms include social facilitation, implicit accountability, co-regulation, and commitment structure that converts 'sometime' into 'now'.", "url": "https://www.simplypsychology.com/articles/body-doubling-adhd", "source": "Simply Psychology (evidence review)", "date": "2026" }
+      ]
+    },
+    {
+      "topic": "Gamification for task initiation and procrastination",
+      "claim": "Gamified digital interventions improve attention, executive function, and task completion in ADHD by supplying the immediate feedback loop, visible urgency, and step-by-step chunking the ADHD reward system needs.",
+      "design_implication": "Use gamified mechanics—visible countdowns, incremental step-unlocking, real-time progress and rewards—to lower the activation energy for task initiation and convert overwhelming tasks into small, rewarded actions.",
+      "evidence": [
+        { "type": "paraphrase", "text": "Procrastination in ADHD often stems from tasks that feel overwhelming, uncertain, or not engaging enough to activate the reward system; visible countdown timers and time-bound challenges externalize time and create urgency that can override procrastination, and gamification forces breaking large tasks into small incremental steps.", "url": "https://www.tiimoapp.com/resource-hub/gamification-adhd", "source": "Tiimo App resource hub (evidence-informed explainer)" },
+        { "type": "paraphrase", "text": "Research indicates digital/gamified interventions significantly improve attention, executive function (self-control, flexible thinking), and working memory across children aged 4–17 diagnosed with ADHD, with reduced reaction times indicating improved attentional efficiency.", "url": "https://www.frontiersin.org/journals/education/articles/10.3389/feduc.2025.1668260/full", "source": "Frontiers in Education, 8-week RCT of a gamified educational application for children with ADHD", "date": "2025" }
+      ]
+    },
+    {
+      "topic": "Adult ADHD prevalence and adult-onset diagnosis (market grounding)",
+      "claim": "As of 2023 CDC data, an estimated 15.5 million U.S. adults (6.0%) have a current ADHD diagnosis, and roughly half were diagnosed at age 18 or older.",
+      "design_implication": "The adult ADHD population is large and includes many recently/late-diagnosed adults lacking childhood-established coping systems—a strong fit for an app that teaches and scaffolds executive-function skills from scratch.",
+      "evidence": [
+        { "type": "stat", "text": "In 2023, an estimated 15.5 million U.S. adults (6.0%) had a current ADHD diagnosis based on self-report; approximately one half received the diagnosis at age ≥18 years.", "url": "https://www.cdc.gov/mmwr/volumes/73/wr/mm7340a1.htm", "source": "CDC MMWR, ADHD Diagnosis, Treatment, and Telehealth Use in Adults (NCHS Rapid Surveys System)", "date": "2024-10" },
+        { "type": "stat", "text": "About one third of adults with ADHD took a stimulant medication in the previous year, and 71.5% of them reported difficulty filling their prescription because it was unavailable.", "url": "https://www.cdc.gov/mmwr/volumes/73/wr/mm7340a1.htm", "source": "CDC MMWR (NCHS Rapid Surveys System, Oct–Nov 2023 data)", "date": "2024-10" }
+      ]
+    },
+    {
+      "topic": "Rising adult diagnosis trend and treatment gap",
+      "claim": "Adult ADHD diagnosis has risen sharply (6.0% vs. an earlier 4.4% estimate; ~15.5M vs. ~8.7M in 2018), yet a large share of diagnosed adults receive no treatment.",
+      "design_implication": "Growing awareness plus a persistent treatment/access gap (medication shortages, untreated adults) creates demand for accessible, non-pharmacological daily-support tools the app can fill.",
+      "evidence": [
+        { "type": "paraphrase", "text": "CDC rapid-survey data put current adult ADHD at 6.0% (~15.5 million), described as a sharp rise from the previously held 4.4% estimate and nearly double the 2018 figure of ~8.7 million.", "url": "https://theworlddata.com/adhd-diagnosis-statistics-in-us/", "source": "The World Data, ADHD Diagnosis Statistics in US (citing CDC rapid surveys)", "date": "2026" },
+        { "type": "stat", "text": "Despite increased awareness, 36.5% of U.S. adults with ADHD received no treatment (medication or counseling) in the past 12 months.", "url": "https://theworlddata.com/adhd-treatment-statistics-in-us/", "source": "The World Data, ADHD Treatment Statistics in US", "date": "2026" }
+      ]
+    }
+  ],
+  "quality_notes": "CDC MMWR figures are primary-source. Barkley externalization and 1997 theory are foundational, well-sourced. Volkow 2011, Marx 2021 meta-analysis, Gollwitzer & Sheeran d=.65, Young et al. CBT SMD=0.76 are peer-reviewed. Body doubling flagged as promising-but-thin. theworlddata.com figures are secondary aggregations of CDC data."
+}

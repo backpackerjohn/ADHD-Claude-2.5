@@ -1,0 +1,174 @@
+{
+  "angle": "competitors-landscape",
+  "collected": "2026-07-17",
+  "method": "WebSearch retrieval (24 searches). Pricing figures come from search-result summaries with URLs; unconfirmable items explicitly marked 'unverified'. Most evidence entries are paraphrases of search summaries since full page text was not fetchable.",
+  "angle_summary": "The ADHD productivity app market (2025-2026) has split into four lanes: (1) neurodivergent-native visual planners (Tiimo — Apple's 2025 iPhone App of the Year, Llama Life, Structured, Routinery); (2) clinical/behavioral apps (Inflow — acquired by Cerebral, Numo, Shimmer) at premium prices ($200+/yr); (3) general power-planners adopted by ADHD users (Motion, Sunsama, Amazing Marvin) criticized for cost and executive-function overhead; (4) a fast-emerging AI-native wave (Saner.AI, Goblin Tools, rivva/Nia, alfred_, Fomi AI body-doubling, Shimmer 2.0) that outsources executive function itself. Recurring criticisms: subscription fatigue ('ADHD tax' pricing), billing/trial-cancellation complaints, iOS-first neglect, and tools that require the very executive function they promise to replace. No major shutdowns found; the space is expanding.",
+  "cross_cutting_findings": [
+    "Cerebral's acquisition of Inflow is the biggest corporate event found — the clinical lane is consolidating into telehealth (https://www.mobihealthnews.com/news/cerebral-acquires-adhd-app-inflow-expand-mental-health-platform)",
+    "Tiimo's App of the Year win + $4.8M raise makes it the category's mainstream breakout (https://daringfireball.net/2025/12/2025_app_store_award_winners, https://tech.eu/2024/08/28/neurodivergent-focused-app-tiimo-secures-16m-in-funding-round/)",
+    "No shutdowns surfaced; the negative pattern is billing/trial complaints (Inflow, Finch) and 'requires the executive function it replaces' critiques (Sunsama)",
+    "The whitespace being attacked by 2025-2026 AI-native entrants is outsourcing executive function — overnight auto-planning, zero-entry capture, AI body doubling — rather than better task display"
+  ],
+  "apps": [
+    {
+      "name": "Tiimo",
+      "what_it_does": "Visual daily planner built by and for neurodivergent people; color-coded timeline, visual blocks, countdown timers, gentle reminders, AI task breakdown, AI Co-Planner. Won Apple's iPhone App of the Year 2025.",
+      "pricing": "$12/month or $54/year; free tier; 7-day Pro trial (https://yourappland.com/tiimo-app-review/)",
+      "platforms": "iOS, Apple Watch, Android (rebuilt May 2026), web planner",
+      "core_loop": "Plan day on visual timeline → colored blocks with countdown timers → gentle nudges; missed tasks roll forward, no guilt messaging; AI breaks big tasks into steps",
+      "strengths": "Neurodivergent-first design; no-shame model; App of the Year credibility; cross-platform; ad-free; $4.8M raised",
+      "criticisms": "Subscription price seen as steep; timer bugs; limited customization; aggressive rating prompts (three in first 10 minutes per one reviewer — https://aiinsightsnews.net/tiimo/); Android historically lagged; Trustpilot complaints that canceling is 'almost impossible' (https://www.trustpilot.com/review/tiimo.dk); reminder notifications failing (https://justuseapp.com/en/app/1480220328/tiimo-visual-daily-planner/reviews)",
+      "key_urls": ["https://www.tiimoapp.com/resource-hub/tiimo-android-relaunch", "https://daringfireball.net/2025/12/2025_app_store_award_winners", "https://tech.eu/2024/08/28/neurodivergent-focused-app-tiimo-secures-16m-in-funding-round/"]
+    },
+    {
+      "name": "Inflow",
+      "what_it_does": "Science-based ADHD self-management app on CBT principles: learning modules, exercises, journaling, optional human coaching. YC alum; acquired by Cerebral.",
+      "pricing": "~$47.99/mo or ~$199.99/yr with coaching; base ~$22.49/mo or $95.99/yr; 7-day trial (https://www.choosingtherapy.com/inflow-adhd-app-review/)",
+      "platforms": "iOS, Android",
+      "core_loop": "Daily CBT-style modules → journaling/reflection → optional coach check-ins",
+      "strengths": "Clinical/CBT grounding; human coaching layer; $14M+ raised; 100k+ Google Play downloads by Aug 2024; affordability program (2,909 free annual memberships in six months)",
+      "criticisms": "Prominent billing complaints (charged despite canceling; charged two years in a row; unresponsive support — https://www.trustpilot.com/review/getinflow.io); heavy reading load ironic for ADHD audience; ~$200/yr price",
+      "key_urls": ["https://techcrunch.com/2023/01/11/inflow-a-platform-for-managing-adhd-through-cbt-raises-11m/", "https://www.mobihealthnews.com/news/cerebral-acquires-adhd-app-inflow-expand-mental-health-platform"]
+    },
+    {
+      "name": "Numo",
+      "what_it_does": "'Cringe-free' gamified ADHD to-do app with social accountability 'squads', Karma points, levels, bite-size psychoeducation.",
+      "pricing": "$7.99-15.99/month depending on region (regional variance; single canonical price unverified)",
+      "platforms": "iOS, Android",
+      "core_loop": "Add tasks (private or squad-public) → earn Karma, level up → squadmates' activity motivates → short interactive lessons",
+      "strengths": "Squad accountability mechanic differentiated; gamification suits dopamine-seeking; irreverent tone; ~$320K raised (https://www.crunchbase.com/organization/mindist)",
+      "criticisms": "Price called unreasonable — reviewers suggested $1-$3/month fair (https://apps.apple.com/us/app/numo-cringe-free-adhd-app/id1628994767); regional price inconsistency; mixed reviews",
+      "key_urls": ["https://numo.ai/reviews"]
+    },
+    {
+      "name": "Goblin Tools",
+      "what_it_does": "Free suite of single-purpose AI micro-tools by solo dev Bram De Buyser: Magic ToDo (breakdown with 'spiciness' slider), Formalizer, Judge, Estimator, Compiler, Chef.",
+      "pricing": "Web 100% free, no ads/signup/limits; mobile one-time $2.99 iOS / $3.49 Android (https://goblin.tools/About)",
+      "platforms": "Web (primary), iOS, Android",
+      "core_loop": "Paste a daunting task → AI decomposes at chosen granularity (down to 'pick up the sponge') → check off steps",
+      "strengths": "Zero-friction; genuinely free; spiciness slider widely praised; viral grassroots adoption 2023-2024; one-time pricing an outlier",
+      "criticisms": "Not a full planner — no scheduling, reminders, persistence; 'Brilliant But Not Enough' (https://thawly.ai/reviews/goblin-tools); no personalization, no memory, each session starts fresh (https://www.focushack.io/reviews/goblin-tools-adhd-review/)",
+      "key_urls": []
+    },
+    {
+      "name": "Structured",
+      "what_it_does": "Timeline day planner ('#1 most downloaded day planner'); day as colored blocks on a vertical timeline; energy tracking; Structured AI assist.",
+      "pricing": "Free core; Pro $19.99/year or $64.99 lifetime (https://play.google.com/store/apps/details?id=io.unorderly.structured)",
+      "platforms": "iOS flagship, Watch, Android, web (Android/web lag)",
+      "core_loop": "Drag tasks into visual timeline → follow block by block → unfinished reschedule; energy tracking matches tasks to rhythms",
+      "strengths": "1.5M active users, 400k+ five-star ratings; calm visual timeline; cheap; lifetime option",
+      "criticisms": "Too limited for complex projects/teamwork; iCloud sync falters; Android/web behind iOS (https://habi.app/insights/best-daily-planner-apps/)",
+      "key_urls": []
+    },
+    {
+      "name": "Routinery",
+      "what_it_does": "Routine app turning routines into guided timed sequences: step-by-step with per-step timer, reads tasks aloud, templates, stats, AI assistant.",
+      "pricing": "$39.99/year; 7-day trial; full features paywalled",
+      "platforms": "iOS, Android, Apple Watch",
+      "core_loop": "Build/pick routine → start at set time → app announces each step aloud with countdown → stats and streak badges",
+      "strengths": "Strongest guided routine timer; users credit 20-30 min faster mornings; voice prompts reduce screen-checking (https://habi.app/insights/best-daily-routine-apps/)",
+      "criticisms": "Perceived overpriced; rigid (routines must begin at set times); AI assistant schedules tasks on wrong days (https://justuseapp.com/en/app/1450486923/routinery-ritual-routine/reviews); aggressive paywall — free tier cut to two routines (https://habi.app/insights/routinery-alternatives/)",
+      "key_urls": []
+    },
+    {
+      "name": "Finch",
+      "what_it_does": "Gamified self-care pet companion (ADHD-adjacent): virtual bird grows via micro self-care actions — mood check-ins, journaling, breathing, small goals.",
+      "pricing": "Generous free tier; Finch Plus ~$40-70/yr with documented platform gap (~$70/yr Android vs promotional ~$15/yr iOS; partly unverified)",
+      "platforms": "iOS, Android",
+      "core_loop": "Pet bird asks how you are → tiny 'journeys' → bird gains energy/currency → caring for the bird externalizes motivation",
+      "strengths": "Extremely low-pressure; no streak punishment; neurodivergent users report it sticking when others didn't ('doing it for the bird'); strong word-of-mouth",
+      "criticisms": "Trustpilot ~3.4/5 dragged down by billing complaints (trial auto-renewal without promised notification, surprise ~EUR 80 charge, unanswered support — https://www.trustpilot.com/review/finchcare.com); Android/iOS price disparity called unfair; cluttered menus; shallow analytics (https://habitbox.app/blog/finch-app-review)",
+      "key_urls": []
+    },
+    {
+      "name": "Motion",
+      "what_it_does": "AI calendar + project manager: auto-prioritizes and time-blocks all tasks, re-optimizes the schedule continually (~1,000 parameters).",
+      "pricing": "Pro AI $19/mo ($12.73 annual) with 7,500 AI credits; Business $29/seat ($19.43 annual); no free plan; credit overages cost extra (https://www.usemotion.com/pricing)",
+      "platforms": "Web/desktop, iOS, Android",
+      "core_loop": "Dump tasks with deadlines/durations → AI auto-schedules into calendar gaps → auto-reshuffles on slippage → do the next block",
+      "strengths": "Removes daily planning burden entirely; automatic rescheduling absorbs chaos; full PM + calendar in one",
+      "criticisms": "Cost rises unpredictably with heavy AI use (https://www.morgen.so/blog-posts/motion-pricing); no widgets; weak non-customizable notifications; missing travel time and month view (https://www.kristian-larsen.com/reviews/motion-review/); packs days too tight, oppressive schedules (https://www.saner.ai/blogs/motion-reviews)",
+      "key_urls": []
+    },
+    {
+      "name": "Sunsama",
+      "what_it_does": "Deliberate, mindful daily planner for professionals: guided morning planning ritual pulling from 16 integrations, realistic-day warnings, evening shutdown ritual.",
+      "pricing": "$20/mo or $16/mo annual; 14-day trial; deliberately no free plan",
+      "platforms": "Web/desktop primary; mobile apps 'read-only companions'",
+      "core_loop": "10-15 min guided morning ritual → estimate and commit to a realistic day → work plan → evening shutdown ritual",
+      "strengths": "Polished anti-hustle design; overcommitment warnings counter time blindness; deep integrations",
+      "criticisms": "Price 2-4x typical ('borderline unacceptable' — https://productivewithchris.com/app-reviews/sunsama-review-2025/); minimal AI, manual by design; mobile limited (https://thebusinessdive.com/sunsama-review); for ADHD, the daily ritual itself requires executive function — 'another thing to fail at' (https://blog.rivva.app/p/best-sunsama-alternatives-for-adhders)",
+      "key_urls": []
+    },
+    {
+      "name": "Llama Life",
+      "what_it_does": "Single-task-focus timeboxing app by an ADHD founder (Marie Ng): one task at a time with countdown, total-list time and estimated finish time to fight time blindness.",
+      "pricing": "$6/mo, $39/yr; 7-day trial; 30-day money-back (https://llamalife.co/pricing); $29.99 lifetime appears in aggregators (unverified/stale)",
+      "platforms": "Web, iOS, Android",
+      "core_loop": "Short list → timebox each task → see projected finish time → run one task at a time with playful timer (confetti, sounds)",
+      "strengths": "Radical simplicity; 'when will I actually finish' math counters time blindness; ADHD-founder authenticity; fair pricing reputation (https://www.focusbear.io/blog-post/review-of-llama-life-by-an-audhder)",
+      "criticisms": "Subscription required even to try; narrow scope — a session tool, not a full planner, so users need a second system",
+      "key_urls": []
+    },
+    {
+      "name": "Amazing Marvin",
+      "what_it_does": "Hyper-customizable task manager marketed for ADHD — a toolbox of togglable 'strategies' (time blocking, day planning, procrastination-busting) to build your own system.",
+      "pricing": "$8/mo (~$96/yr); no free version; 14-day trial; former $300 lifetime deal discontinued",
+      "platforms": "Web, Windows, macOS, iOS, Android (mobile weaker/dated)",
+      "core_loop": "Pick strategies from library → plan each day into custom framework → reconfigure when novelty wears off",
+      "strengths": "Fanatical user base ('the only app that finally works'); unmatched customizability lets ADHD users rebuild without migrating (https://www.producthunt.com/products/amazing-marvin/reviews)",
+      "criticisms": "Sync problems ('problematic for an app costing $96/year' — https://toolguide.io/en/tool/amazing-marvin/); overwhelming complexity, steep learning curve; dated UI; no free tier",
+      "key_urls": []
+    },
+    {
+      "name": "Saner.AI",
+      "what_it_does": "AI-native 'personal assistant for ADHD' ('your Jarvis'): chat assistant (Skai) over notes, email, calendar — voice/text/extension capture, auto-organizes, plans proactively, checks in. Multi-model (GPT-4, Claude, Gemini).",
+      "pricing": "Free plan; Starter $8/mo annual ($12 monthly); Standard $16/mo annual ($20 monthly) (https://opentools.ai/tools/sanerai)",
+      "platforms": "Web, iOS, Chrome extension",
+      "core_loop": "Braindump into Skai → AI auto-organizes and links → chat to retrieve/plan/triage → proactive daily plan and check-ins",
+      "strengths": "Very low learning curve; quick capture + semantic search praised; Product Hunt 4.8/5; genuinely AI-first; targets reduced cognitive load",
+      "criticisms": "Beta-stage reliability; limited offline; restrictive free plan; email-only support (https://www.primeproductiv4.com/apps-tools/saner-ai-review)",
+      "key_urls": []
+    },
+    {
+      "name": "Shimmer",
+      "what_it_does": "Leading 1:1 ADHD coaching platform (45,000+ sessions); 'Shimmer 2.0' (Jan 2025) added embedded AI (session summaries, action insights, progress tracking) amplifying human coaches.",
+      "pricing": "Coaching-plan pricing unverified in searches; earlier reviews cite ~$230/month (conflicting with older $16.50/mo + per-session tiers)",
+      "platforms": "Web + mobile; video sessions + async",
+      "core_loop": "Weekly 1:1 coach sessions → AI summarizes takeaways and actions → between-session nudges → journey history",
+      "strengths": "Human accountability augmented by AI; YC-backed; $2.2M seed Jan 2024, ~$3.6M total (https://techcrunch.com/2024/01/10/shimmer-a-platform-for-11-personalized-adhd-coaching-raises-2-2m/)",
+      "criticisms": "None captured verbatim; coaching inherently expensive relative to apps",
+      "key_urls": ["https://www.shimmer.care/blog/adhd-coaching-2-ai-launch"]
+    },
+    {
+      "name": "rivva (Nia)",
+      "what_it_does": "AI assistant claiming to handle executive function itself: plans your entire day overnight, prioritizes, organizes commitments, decides what to do next.",
+      "pricing": "Unverified",
+      "platforms": "Unverified",
+      "core_loop": "Feed tasks → Nia auto-plans overnight → wake to a ready-made plan → execute rather than organize",
+      "strengths": "Directly targets the 'planning tools require the executive function they promise to replace' critique",
+      "criticisms": "Too new for documented criticisms (vendor content only — https://blog.rivva.app/p/ai-assistants-for-adhd)",
+      "key_urls": []
+    },
+    {
+      "name": "alfred_",
+      "what_it_does": "AI assistant for ADHD professionals focused on email: auto-triages, extracts tasks from messages without manual entry, tracks follow-ups, morning Daily Brief.",
+      "pricing": "Unverified",
+      "platforms": "Unverified",
+      "core_loop": "Connect inbox → AI converts messages into tasks/follow-ups → morning Daily Brief",
+      "strengths": "Attacks email — a top ADHD failure surface — with zero-manual-entry capture",
+      "criticisms": "Too new for documented criticisms (vendor content — https://get-alfred.ai/blog/ai-assistant-for-adhd)",
+      "key_urls": []
+    },
+    {
+      "name": "Fomi",
+      "what_it_does": "AI body-doubling companion: an always-available virtual co-worker that watches focus sessions and actively nudges ('throws a virtual tomato at your screen' on drift).",
+      "pricing": "Unverified",
+      "platforms": "Unverified (desktop implied)",
+      "core_loop": "Start session with AI body double → engagement monitored → drift triggers active nudge",
+      "strengths": "On-demand accountability with no social overhead; a 2025 VR study reportedly found AI body doubles comparable to human ones for task speed/attention in adults with ADHD (secondhand — https://www.mindvortex.app/en/blog/body-doubling-for-adhd-science-how-to-guide-virtual-options-2025)",
+      "criticisms": "Too new for documented criticisms (vendor content — https://www.fomilab.ai/post/body-doubling-for-introverts-why-ai-is-better-than-a-stranger-on-zoom)",
+      "key_urls": []
+    }
+  ]
+}

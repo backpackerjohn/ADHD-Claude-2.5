@@ -1,0 +1,85 @@
+{
+  "angle": "task-breakdown-paralysis",
+  "collected": "2026-07-17",
+  "method": "WebSearch retrieval. Items labeled 'quote' reproduce text exactly as it appeared in WebSearch output (which itself summarizes/excerpts pages). Several widely-circulated stats flagged as secondary. Direct Reddit thread URLs not retrievable; ADHDandMarriage.com forum threads are the strongest first-person forum evidence with concrete URLs.",
+  "angle_summary": "Adults with ADHD facing big, multi-step, long-running projects. Core pains: task paralysis / 'wall of awful'; inability to decompose projects and pick a first step; extreme re-entry friction after weeks away ('where was I?'); a graveyard of 80%-finished projects straining relationships; shame spirals making avoidance self-reinforcing. The coping stack (Goblin Tools, body doubling, coaches, to-do apps) helps with planning OR momentary accountability, but nothing bridges plan-to-execution over weeks, preserves project context for re-entry, or addresses the emotional/shame layer.",
+  "problems": [
+    {
+      "name": "Task paralysis at the foot of the 'wall of awful'",
+      "severity_1_5": 5,
+      "frequency_signal": "Cited: 'ADHD paralysis affects up to 80% of adults with ADHD'; a 2025 European Psychiatry study finding '58% of adults with ADHD experience this kind of paralysis at least weekly'; 'Getting Started Blues' survey: mental paralysis reported by 62% vs 44% procrastination.",
+      "evidence": [
+        {"type": "quote", "text": "ADHD paralysis is sitting on the couch, staring at the dishes, knowing they need to be done, and being physically unable to make yourself get up and do them.", "url": "https://www.getinflow.io/post/adhd-couch-lock", "source": "Inflow blog"},
+        {"type": "quote", "text": "The Wall of Awful is the emotional barrier that grows out of repeated failure, preventing us from taking risks and initiating tasks... because those with ADHD fail more often than others, usually in the same or similar ways, their walls tend to be larger.", "url": "https://www.hackingyouradhd.com/podcast/the-wall-of-awful-with-brendan-mahan", "source": "Hacking Your ADHD podcast (Brendan Mahan)"},
+        {"type": "quote", "text": "In a \"Getting Started Blues\" survey, mental paralysis (paralyzed and unable to start) was reported by 62% of respondents, compared to 44% for procrastination and 38% for distraction.", "url": "https://thrivewithadd.com/paralysis-beats-procrastination-as-problem-for-add-adhd-adults-according-to-getting-started-blues-survey/", "source": "ThriveWithADD survey"},
+        {"type": "paraphrase", "text": "Clinical sources stress this is a neurological freeze, not laziness — the brain 'cannot find the first step', wants to process everything at once, and shuts down; once at rest, restarting feels nearly impossible ('couch lock').", "url": "https://add.org/adhd-paralysis/", "source": "ADDA + Modern Psychiatry + PX Docs"}
+      ],
+      "existing_solutions": "Wall-of-awful framing, body doubling, medication, coaches, '5-minute rule' timers, Goblin Tools for a first step.",
+      "gap": "Tools attack either the plan (breakdown) or the moment (body doubling), but nothing detects the freeze state and intervenes with emotional-state-first support. The emotional layer is only handled by $170-225/hr coaches or therapy."
+    },
+    {
+      "name": "Multi-step life projects (taxes, moving, job hunt) are undecomposable and become avoidance spirals",
+      "severity_1_5": 4,
+      "frequency_signal": "Dedicated guides per domain (ADDitude tax guide, Understood taxes episode, ADHD-moving guides, job-search guides); ADDitude runs a 'Where Do I Start?!?' advice column format.",
+      "evidence": [
+        {"type": "paraphrase", "text": "For ADHD adults taxes feel overwhelming because 'the project pieces are usually not organized' — 'What do I do first', 'it's so complicated', 'I don't know where anything is' — and avoidance increases because even thinking about taxes triggers guilt, stress, and self-judgment.", "url": "https://www.additudemag.com/a-guide-to-filing-taxes-for-adhd-adults/", "source": "ADDitude Magazine"},
+        {"type": "quote", "text": "Moving can be so overwhelming that people experience ADHD paralysis, a state where nothing gets done because there's either so much to get done or the brain simply can't compute the task due to overwhelm.", "url": "https://adhdonline.com/articles/moving-the-adhd-way-a-guide/", "source": "ADHD Online"},
+        {"type": "quote", "text": "With ADHD, people easily become overwhelmed by job search demands, making executive dysfunction worse, and may lose track of emails and important files, miss application deadlines, and struggle to prioritize job leads effectively.", "url": "https://www.whatinthebrain.com/adhd-blog-post/job-searching-with-adhd", "source": "What in the ADHD? blog"},
+        {"type": "paraphrase", "text": "'All the steps involved in a project tend to merge into one big, intimidating task' and people 'can't differentiate between what should come first and what can wait, making us feel stuck before we begin.'", "url": "https://www.additudemag.com/where-do-i-start-adhd-organization/", "source": "ADDitude 'Where Do I Start?!?' + adhdbright.com"}
+      ],
+      "existing_solutions": "Domain-specific checklists, Goblin Tools Magic ToDo, spreadsheets, brain-dump + chunking advice, professional organizers, accountants.",
+      "gap": "Breakdown advice is generic and one-shot. Goblin Tools doesn't know your deadlines, documents, or energy. No tool manages a weeks-long project end-to-end: sequencing, deadline pressure, document gathering, adapting the plan as reality changes."
+    },
+    {
+      "name": "Re-entry friction: returning to a paused project feels like starting from zero",
+      "severity_1_5": 4,
+      "frequency_signal": "Strong recurring theme in r/ADHD and r/ADHD_Programmers discussions (per search summaries), plus coach/therapist articles on losing momentum after interruptions.",
+      "evidence": [
+        {"type": "quote", "text": "When ADHD working memory is overloaded, restarting after an interruption may feel like beginning the whole task again. That friction makes restarting harder than starting something new.", "url": "https://www.adhdphiladelphia.com/blog/why-adults-with-adhd-lose-momentum-so-easily-after-interruptions", "source": "ADHD Philadelphia"},
+        {"type": "quote", "text": "Projects often die because you lose context—you open the document and can't remember where you were or what you were thinking, the shape of the project that was so clear has dissolved, and the re-entry cost feels enormous.", "url": "https://fabric.so/blog/how-to-finish-projects-when-your-brain-keeps-starting-new-ones", "source": "Fabric blog"},
+        {"type": "paraphrase", "text": "One source claims ADHD brains take 45-60 minutes to fully re-engage with a task after a switch, versus about 23 minutes for neurotypical brains. (Secondary stat; treat cautiously.)", "url": "https://www.adhdphiladelphia.com/blog/why-adults-with-adhd-lose-momentum-so-easily-after-interruptions", "source": "ADHD Philadelphia"},
+        {"type": "paraphrase", "text": "Community threads describe returning to abandoned projects as 'starting from scratch psychologically'; DIY mitigations — 'leaving breadcrumbs' notes, work journals, detailed code comments — are all manual and depend on the very executive function that's impaired.", "url": "https://www.reddit.com/r/ADHD_Programmers/", "source": "WebSearch summary of Reddit community discussions (no single thread URL returned)"}
+      ],
+      "existing_solutions": "Manual breadcrumb notes, work journals, recurring '15 minutes with this project' calendar tasks, environment changes for novelty.",
+      "gap": "Every mitigation requires remembering to leave notes at the exact moment focus breaks — precisely what ADHD prevents. No mainstream tool automatically captures project state and generates a warm, judgment-free 'here's where you were, here's the tiny next step' re-entry briefing after weeks away. Arguably the most under-served pain found: paralysis and breakdown have dedicated tools; re-entry has none."
+    },
+    {
+      "name": "The 'project graveyard': projects stall at 80% and pile up, damaging relationships",
+      "severity_1_5": 4,
+      "frequency_signal": "ADHDandMarriage.com hosts multiple dedicated threads; Tiimo, ADDitude, Simply Psychology and coaching sites all have 'why you start but don't finish' content.",
+      "evidence": [
+        {"type": "quote", "text": "People with ADHD often have a graveyard of 80%-finished projects because the first 20% offers novelty, the last 20% offers completion's reward, but the middle offers neither, and that's where things stall.", "url": "https://www.tiimoapp.com/resource-hub/finishing-what-you-start-adhd", "source": "Tiimo App resource hub"},
+        {"type": "paraphrase", "text": "ADHD and Marriage forum threads include a spouse describing 2.5 years with no kitchen plus endless unfinished home projects; accounts of living areas '5 different colors with every wall half painted a different color' and trim in garage boxes for 7+ years; a cited study found 58% of non-ADHD partners feel like a 'parent' in the relationship.", "url": "https://www.adhdmarriage.com/content/2-12-years-w-no-kitchen-endless-unfinished-projects-homehelp-me-understand", "source": "ADHDandMarriage.com forums (Melissa Orlov community)"},
+        {"type": "paraphrase", "text": "'Hobby hopping' as a biological dopamine-seeking drive: one cited user described their last few years as a blur of gardening, gluten-free baking, Spanish, wall climbing, painting, Minecraft, and 3D modeling — each started with intensity and abandoned.", "url": "https://www.simplypsychology.org/adhd-hobby-jumping.html", "source": "Simply Psychology"}
+      ],
+      "existing_solutions": "Visual planners, advice to re-break-down tasks mid-project, couples strategies, accountability partners.",
+      "gap": "Tools celebrate starting, not finishing: nothing supports the low-dopamine 'middle 60%' with progress visibility, micro-rewards, or renegotiating scope ('finish, shrink, or consciously kill this project')."
+    },
+    {
+      "name": "Shame spiral makes avoidance self-reinforcing and poisons the tools themselves",
+      "severity_1_5": 4,
+      "frequency_signal": "Many dedicated articles; CHADD survey cited: over 70% of ADHD adults say procrastination is among their most impairing symptoms.",
+      "evidence": [
+        {"type": "quote", "text": "The task that would have taken two hours on Tuesday becomes a week-long shame spiral, and the symptoms create shame, while the shame makes the symptoms worse.", "url": "https://heal-thrive.com/adhd-and-shame-spirals-how-one-bad-day-becomes-a-week-of-avoidance/", "source": "Heal and Thrive Psychotherapy"},
+        {"type": "quote", "text": "By avoiding the thing, the thing grows bigger—the email that was 1 day late is now 5 days late, making the shame even worse.", "url": "https://uporbit.app/blog/adhd-guilt-shame", "source": "UpOrbit blog"},
+        {"type": "quote", "text": "If you use Todoist as your only ADHD tool, you will eventually accumulate a graveyard of overdue tasks and abandon it in shame.", "url": "https://thawly.ai/reviews/todoist-for-adhd", "source": "Thawly review"}
+      ],
+      "existing_solutions": "Therapy (shame naming, self-compassion), ADHD-informed coaching, communities for normalization, gentler-framing apps.",
+      "gap": "Productivity tools are shame-naive: overdue badges, red counts, streak-breaking actively trigger the spiral. No mainstream tool does 'shame-safe' design — auto-amnesty for stale tasks, no visible overdue debt, re-onboarding that assumes you'll disappear for weeks and welcomes you back without a backlog wall."
+    },
+    {
+      "name": "The current coping stack is fragmented: planning tools don't execute, accountability doesn't scale, coaching doesn't afford",
+      "severity_1_5": 3,
+      "frequency_signal": "Whole review genre ('I deleted 47 productivity apps'); 2026 roundups explicitly name the 'execution gap' as the unsolved problem.",
+      "evidence": [
+        {"type": "quote", "text": "Magic ToDo generates a beautiful list of steps and then that's it—it hands you the list and walks away. For many ADHD users, the list was never the problem. It's a planning tool, not an execution tool.", "url": "https://thawly.ai/reviews/goblin-tools", "source": "Thawly Goblin Tools review"},
+        {"type": "quote", "text": "None of the tools are deeply personalized, they don't learn your patterns, don't integrate with your calendar or task manager, and each session starts fresh.", "url": "https://www.focushack.io/reviews/goblin-tools-adhd-review/", "source": "FocusHack Goblin Tools review"},
+        {"type": "quote", "text": "ADHD coaching typically costs between $170 and $225 per individual session... Monthly coaching packages... range from $475 to $675 per month. [and] ADHD coaching is rarely covered by insurance.", "url": "https://www.coachingexecutivefunction.com/post/how-much-does-adhd-coaching-cost", "source": "Coaching Executive Function cost guide"},
+        {"type": "paraphrase", "text": "Body doubling caveats: may not work for everyone, the double can distract or overstimulate, over-reliance risk, presence effect can wear off, little formal research; Focusmate requires scheduling a camera-on session with a stranger — itself an initiation barrier.", "url": "https://www.medicalnewstoday.com/articles/body-doubling-adhd", "source": "Medical News Today + Elevated Psychotherapy + Focusmate reviews"},
+        {"type": "quote", "text": "For ADHD professionals doing knowledge work, the gap between \"I know what to do and when\" and \"I can actually get it done\" is where many planning tools stop helping—if your bottleneck is execution rather than scheduling, you will need something else alongside them.", "url": "https://lifestack.ai/blog/best-ai-assistants-for-adhd", "source": "Lifestack 2026 AI-assistant roundup"}
+      ],
+      "existing_solutions": "Goblin Tools (free breakdown), Focusmate/Flow Club (body doubling), Tiimo/Inflow (planners), coaches ($475-675/mo), emerging AI assistants (Saner.ai, Lifestack, Sprout).",
+      "gap": "No affordable product combines all four functions coaches provide across a weeks-long project: (1) contextual breakdown that knows your life, (2) in-the-moment activation, (3) persistent memory of where you left off, (4) emotionally intelligent, shame-free accountability. Reviews still find each tool covering one slice and starting every session fresh."
+    }
+  ]
+}

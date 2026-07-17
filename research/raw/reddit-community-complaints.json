@@ -1,0 +1,87 @@
+{
+  "angle": "reddit-community-complaints",
+  "collected": "2026-07-17",
+  "method": "WebSearch retrieval. Reddit itself is not crawlable by the search tool, so community discourse is evidenced via sources that document/quote/crowdsource it (ADDitude reader-submission roundups, first-person essays, clinical articles on Reddit-born terms). Caveat: ADDitude reader quotes and the 96% partner-survey stat were presented in search summaries spanning sibling URLs; URL assignments there are best-fit.",
+  "angle_summary": "Six problems with strong emotional signal: task-initiation paralysis, doom-pile household chaos, out-of-sight-out-of-mind relationship neglect, the financial 'ADHD tax', time blindness/waiting mode, and the partner mental-load spiral. Cross-cutting: conventional planners/to-do apps are serially abandoned ('10 unused planners').",
+  "problems": [
+    {
+      "name": "Task-initiation paralysis (ADHD paralysis / 'wall of awful')",
+      "description": "Knowing exactly what needs doing and being physically unable to start — freezing on the couch, brain-fog 'shutdown'. Community language frames it as being 'frozen', not lazy: an emotional wall built from years of repeated failure and shame.",
+      "severity_1_5": 5,
+      "frequency_signal": "Dedicated coined terms with 9+ major clinical/coaching sites covering it (Cleveland Clinic, ADDA, Talkspace, Psychology Today).",
+      "evidence": [
+        {"type": "paraphrase", "text": "ADHD paralysis feels like being frozen or stuck when needing to complete a task, even simple ones — overwhelm, brain fog, difficulty making decisions, or struggling to get out of bed despite wanting to start the day; a long to-do list alone can trigger the freeze. Not intentional procrastination — people feel mentally and physically blocked.", "url": "https://health.clevelandclinic.org/adhd-paralysis", "source": "Cleveland Clinic (corroborated by add.org/adhd-paralysis and growtherapy.com/blog/adhd-paralysis/)"},
+        {"type": "paraphrase", "text": "The 'Wall of Awful' (coach Brendan Mahan's term) is the emotional barrier that grows out of repeated failure, built from disappointment, rejection, and shame, preventing initiation of tasks; because people with ADHD fail more often in the same ways, their walls are larger.", "url": "https://www.adhdessentials.com/essentials/the-wall-of-awful/", "source": "ADHD Essentials (Brendan Mahan)"},
+        {"type": "quote", "text": "You have 10 unused planners, and you buy one more because it's shiny and new.", "url": "https://www.additudemag.com/adhd-memes-jokes-relatable-funny/", "source": "ADDitude reader submission ('You know you have ADHD when ___', 375 reader responses)"}
+      ],
+      "existing_solutions": "Generic to-do apps and planners (serially abandoned), body doubling services (Flow Club, Focusmate), ADHD coaching, '5-minute rule' advice articles.",
+      "gap": "Tools assume the problem is remembering or organizing; the actual blocker is emotional/dopaminergic initiation. An AI that actively initiates with the user (talks them into motion, breaks the task live, provides synthetic body-doubling) rather than passively listing tasks is unserved."
+    },
+    {
+      "name": "Doom piles and household-clutter shutdown",
+      "description": "Every flat surface accumulating 'DOOM' piles (Didn't Organize, Only Moved) because decision fatigue makes each object an unanswerable question. The mess then generates shame and overwhelm that further blocks cleaning ('depression rooms').",
+      "severity_1_5": 4,
+      "frequency_signal": "Term born on ADHD social media, now covered by Psychology Today, ADDitude, Yahoo Life, professional-organizer and BCBA blogs.",
+      "evidence": [
+        {"type": "quote", "text": "I can't decide what to do with it, so I'm just not going to do anything with it.", "url": "https://www.psychologytoday.com/us/blog/mythbusting-adhd/202306/is-your-adhd-making-you-a-doom-piler", "source": "Psychology Today — designer Lenore Brooks on what ADHD clients say"},
+        {"type": "paraphrase", "text": "DOOM piles are framed as an executive-function load problem, not a character flaw; a cluttered home adds stress, overwhelm, and shame — 'DOOM piles aren't laziness'.", "url": "https://lifeskillsadvocate.com/blog/doom-piles/", "source": "Life Skills Advocate (BCBA), with additudemag.com/doom-piling-adhd-sign-clutter/"},
+        {"type": "quote", "text": "You can complete a 1,000-piece puzzle in one evening, but you have to rewash the laundry four times because you forget to take it out.", "url": "https://www.additudemag.com/adhd-memes-jokes-relatable-funny/", "source": "ADDitude reader submission"}
+      ],
+      "existing_solutions": "Professional organizers, decluttering method blogs, cleaning-with-ADHD TikTok content, chore schedulers (Sweepy, Tody).",
+      "gap": "Existing advice requires the very decision-making that's broken. Nothing makes the per-object decisions FOR the user — e.g., AI that turns a photographed pile into a sequenced, one-decision-at-a-time triage."
+    },
+    {
+      "name": "Out of sight, out of mind: forgetting people, texts, and follow-ups",
+      "description": "Unanswered texts piling up for weeks, forgotten birthdays and check-ins, accidental 'ghosting' — not from not caring but because anything not physically present vanishes from working memory. Followed by disproportionate guilt and real relationship damage.",
+      "severity_1_5": 4,
+      "frequency_signal": "Community shorthand 'object permanence' issues; multiple first-person essays plus clinical explainers (Talkiatry, Attn Center NYC).",
+      "evidence": [
+        {"type": "quote", "text": "If I'm not seeing a friend very often — if they are \"out of sight, out of mind\" — I really struggle to keep in touch with them. I forget their birthdays, I forget to check-in, I forget to respond to their texts.", "url": "https://themighty.com/topic/adhd/adhd-forget-friends-love-me-object-permanence/", "source": "The Mighty, first-person essay"},
+        {"type": "quote", "text": "Someone can tell me to do something, and about 30 seconds later I will have already forgotten to do it", "url": "https://www.buzzfeed.com/maggyvaneijk/dont-worry-im-listening", "source": "BuzzFeed, 'This Is What It's Like To Have ADHD In Your Twenties'"},
+        {"type": "paraphrase", "text": "Forgetting to reply is distraction, not neglect — with guilt lingering for days or weeks; friends and partners end up feeling neglected and disregarded.", "url": "https://www.theminiadhdcoach.com/living-with-adhd/adhd-texting", "source": "The Mini ADHD Coach"}
+      ],
+      "existing_solutions": "Phone reminders, pinned conversations, birthday calendar apps, snooze/nudge features in messaging apps.",
+      "gap": "Reminders are user-configured, so the forgetting problem recursively defeats them. Underserved: a relationship-memory layer that detects unanswered messages and dormant relationships and helps draft the shame-laden re-engagement."
+    },
+    {
+      "name": "The ADHD tax: forgetting-driven money bleed",
+      "description": "Constant financial loss from executive dysfunction: late fees, unreturned purchases, duplicate buying, subscriptions never cancelled, food expiring — plus the shame of paying for the same mistakes repeatedly.",
+      "severity_1_5": 4,
+      "frequency_signal": "'ADHD tax' is an established community term; ADDitude has multiple articles/webinars built on reader-submitted stories.",
+      "evidence": [
+        {"type": "quote", "text": "I sometimes buy the same item twice because I put the first one away out of sight and forget I have it.", "url": "https://www.additudemag.com/adhd-tax-impulse-spending-late-fees/", "source": "ADDitude reader story"},
+        {"type": "quote", "text": "That subscription service is billing me again because I forgot to cancel it.", "url": "https://www.additudemag.com/adhd-tax-impulse-spending-late-fees/", "source": "ADDitude reader story"},
+        {"type": "quote", "text": "I have run into my garage door twice because I've forgotten to put my car in park before running inside to grab 'that one thing I forgot.'", "url": "https://www.additudemag.com/adhd-tax-impulse-spending-late-fees/", "source": "ADDitude reader 'Emily'"},
+        {"type": "paraphrase", "text": "The ADHD Tax is paid with every late fee, fine, lost item replaced, piece of food wasted, or impulse purchase forgotten.", "url": "https://www.additudemag.com/adhd-tax-late-fees-fines-shame/", "source": "ADDitude"}
+      ],
+      "existing_solutions": "Budgeting apps (YNAB, Rocket Money), autopay, ADDitude webinars, financial-wellness coaching.",
+      "gap": "Budgeting apps track spending after the fact and demand sustained engagement. Missing: a proactive guard watching ADHD-tax patterns (return windows closing, duplicates, dormant subscriptions) intervening at the decision moment with near-zero maintenance."
+    },
+    {
+      "name": "Time blindness and 'waiting mode'",
+      "description": "No felt sense of passing time: chronic lateness, wild underestimation of duration, surfacing at 3:30am from a weather check — plus 'waiting mode', where a single 2pm appointment vaporizes the whole day.",
+      "severity_1_5": 4,
+      "frequency_signal": "'Waiting mode' described as particularly popular on Reddit; time-management impairment described as the most-reported functional impairment among adults with ADHD.",
+      "evidence": [
+        {"type": "quote", "text": "\"Waiting mode\" is a term used for the phenomenon in which those with ADHD are unable to do anything productive in the hours or days leading up to an important appointment or event.", "url": "https://www.healthline.com/health/adhd/adhd-waiting-mode", "source": "Healthline (noting popularity on Reddit)"},
+        {"type": "quote", "text": "You look at your phone to check the weather, and then suddenly its 3:30 am and you know everything there is to know about killer whales, the Peloponnesian War, and Metallica.", "url": "https://www.additudemag.com/adhd-memes-jokes-relatable-funny/", "source": "ADDitude reader submission"},
+        {"type": "stat", "text": "Time management reported as the single most reported functional impairment among adults with ADHD; baseline on-time arrival average for ADHD adults of 60-65% (vs target of 85%+). Directional — attribution spread across results.", "url": "https://www.occupationaltherapy.com/articles/time-blindness-critical-executive-function-5790", "source": "OccupationalTherapy.com / Refresh Psychiatry via search summary"}
+      ],
+      "existing_solutions": "Time Timer visual clocks, calendar alerts, time-blocking, Tiimo-style visual schedulers.",
+      "gap": "Calendars show clock time, which ADHD brains don't feel. Underserved: felt-time translation — dynamic 'you must start X now to make Y' backwards-planning, and waiting-mode support that fits safe, right-sized tasks into the dead zone."
+    },
+    {
+      "name": "Partner mental-load spiral (the r/ADHD_partners complaint)",
+      "description": "The non-ADHD partner absorbs all planning, reminding, and follow-through; resentment builds on one side, shame and infantilization on the other, collapsing into a parent-child dynamic.",
+      "severity_1_5": 5,
+      "frequency_signal": "An entire subreddit (r/ADHD_partners) exists for this; a ~700-partner survey repeatedly cited; dedicated coverage from ADDA, WebMD, HelpGuide, HealthCentral, Psychology Today.",
+      "evidence": [
+        {"type": "stat", "text": "96% of spouses of adults with ADHD reported that their partner's symptoms make it harder to manage their household and raise kids; more than 90% said they had to do more to make up for their spouse's difficulties (survey of ~700 ADHD partners).", "url": "https://www.webmd.com/add-adhd/adult-adhd-marriage", "source": "WebMD (alongside adhdrollercoaster.org/about-the-adhd-partner-survey/)"},
+        {"type": "paraphrase", "text": "Many couples feel stuck in an unsatisfying parent-child relationship — starting when the ADHD partner fails to follow through; the managing partner feels burdened and disrespected while the ADHD partner feels infantilized and ashamed.", "url": "https://www.helpguide.org/mental-health/adhd/adult-adhd-and-relationships", "source": "HelpGuide"},
+        {"type": "paraphrase", "text": "A predictable loop: the ADHD partner forgets, avoids, or delays; the non-ADHD partner becomes resentful; the ADHD partner feels shame and defensiveness; resentment arises because the extra work is invisible.", "url": "https://laconciergepsychologist.com/blog/mental-load-in-adhd-relationships/", "source": "LA Concierge Psychologist"}
+      ],
+      "existing_solutions": "Couples therapy, books (Melissa Orlov), chore-split apps built for neurotypical couples, ADDA burnout-support articles.",
+      "gap": "Chore apps redistribute lists but the reminder burden stays with the non-ADHD partner. Underserved: a neutral third party that takes over the reminding/follow-through role — externalizing the nag so it stops coming from the spouse."
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "angle": "market-willingness",
+  "collected": "2026-07-17",
+  "method": "WebSearch retrieval (direct fetch blocked by sandbox egress policy — see build-log.md D-002). Quotes verbatim from search-retrieved content; paraphrases labeled; conflicting figures reported side by side.",
+  "angle_summary": "The evidence supports a strong market thesis for an ADHD app: the dedicated ADHD-app market is already ~$2B and forecast to grow 12-17.5% CAGR toward $4.4-7.5B by 2033-34, riding a documented surge in adult diagnoses (15.5M US adults, ~half diagnosed as adults, with women 23-49 the fastest-growing segment). ADHD adults already pay heavily out of pocket — $75-250/hr for coaching, $22-230/month for existing apps, and up to $555-824/month for brand-name medication — proving willingness to pay, while loud community complaints about 'predatory' subscription pricing and the 'ADHD tax' signal an opening for transparent, fairly priced products. Distribution channels are enormous (r/ADHD at 2.3M members; #ADHD at ~24.7B TikTok views), and the still-unresolved stimulant shortage (Oct 2022 through mid-2026, 71.5% of medicated adults unable to fill at some point) is actively pushing demand toward non-medication supports, which the FDA itself is encouraging via digital-therapeutic clearances.",
+  "findings": [
+    {
+      "topic": "ADHD app market size and growth",
+      "claim": "The dedicated ADHD-apps market is roughly $1.8-2.8B today and forecast to reach $4.4-10.3B within a decade at 12-17.5% CAGR; estimates conflict across research firms, so both should be reported.",
+      "evidence": [
+        {"type": "stat", "text": "The global ADHD Apps Market, valued at USD 2.08 Billion in 2024, is expected to reach USD 7.55 Billion by 2033 at a CAGR of 15.39%", "url": "https://www.businessresearchinsights.com/market-reports/adhd-apps-market-118094", "source": "Business Research Insights"},
+        {"type": "stat", "text": "The ADHD apps market size was valued at USD 1.9 billion in 2025 and is projected to grow from USD 2.2 billion in 2026 to USD 6.7 billion by 2033, at a CAGR of 17.5%. North America dominated the global market in 2025 and accounted for the largest revenue share of 47.2%... the adults (18+) segment held the largest revenue share in 2025", "url": "https://www.grandviewresearch.com/industry-analysis/adhd-apps-market-report", "source": "Grand View Research"},
+        {"type": "stat", "text": "The global ADHD Apps Market size was USD 1.79 billion in 2025 and is projected to reach USD 4.4 billion by 2034, exhibiting a CAGR of 11.9% (a fourth source cited USD 2.78 billion in 2026 rising to USD 10.31 billion by 2035)", "url": "https://www.globalgrowthinsights.com/market-reports/adhd-apps-market-122250", "source": "Global Growth Insights (conflicting figure from Data Insights Market)"}
+      ]
+    },
+    {
+      "topic": "Broader digital-health / digital-therapeutics context",
+      "claim": "The surrounding markets are much larger and growing fast: mental-health apps ~$7.5-10B in 2025, digital therapeutics ~$10B in 2025 growing at ~23.6% CAGR, and a dedicated ADHD digital-therapy segment of ~$472M in 2026 at 18% CAGR.",
+      "evidence": [
+        {"type": "stat", "text": "The global mental health apps market in 2025 is estimated in the $7.5-$10 billion range across firms: $9.94B (Markets and Markets), $7.48B (Fortune Business Insights), $8.54B (Straits Research), $8.53B (Precedence Research)", "url": "https://www.marketsandmarkets.com/Market-Reports/mental-health-apps-market-179040407.html", "source": "Multiple market research firms (paraphrased comparison from search results)"},
+        {"type": "stat", "text": "The global digital therapeutics market size was valued at USD 10.15 billion in 2025 and is projected to grow from USD 12.45 billion in 2026 to USD 67.58 billion by 2034, exhibiting a CAGR of 23.55%", "url": "https://www.fortunebusinessinsights.com/digital-therapeutics-market-103501", "source": "Fortune Business Insights"},
+        {"type": "stat", "text": "The global ADHD digital therapy market is estimated to be valued at USD 472.0 million in 2026 and is expected to grow at an 18.0% CAGR between 2026 and 2036", "url": "https://www.futuremarketinsights.com/reports/adhd-digital-therapy-market", "source": "Future Market Insights"}
+      ]
+    },
+    {
+      "topic": "Surge in adult ADHD diagnoses",
+      "claim": "Adult ADHD diagnosis has surged: 6.0% of US adults (~15.5M) now have a current diagnosis, over half diagnosed in adulthood, with diagnosis rates up ~61-64% in adults 30-64 between 2021 and 2024.",
+      "evidence": [
+        {"type": "stat", "text": "An estimated 6.0% of U.S. adults had a current ADHD diagnosis, equal to about 15.5 million adults, approximately one half of whom received their diagnosis in adulthood", "url": "https://www.cdc.gov/mmwr/volumes/73/wr/mm7340a1.htm", "source": "CDC MMWR (NCHS Rapid Surveys, Oct-Nov 2023)", "date": "2024"},
+        {"type": "stat", "text": "From January 2021 to October 2024, the rate increased by approximately 61% in adults ages 30 to 44 and 64% in those 45 to 64", "url": "https://www.epicresearch.org/articles/number-of-adhd-patients-rising-especially-among-women/", "source": "Epic Research"},
+        {"type": "stat", "text": "Over half (55.9%) of all adults with a current ADHD diagnosis received their formal diagnosis in adulthood (age 18 or older)", "url": "https://huntingtonpsych.com/blog/adult-adhd-statistics", "source": "Huntington Psych adult ADHD statistics roundup", "date": "2026"}
+      ]
+    },
+    {
+      "topic": "Late diagnoses in women",
+      "claim": "Women are the fastest-growing diagnosed segment: new ADHD diagnoses among women 23-49 nearly doubled from 2020 to 2022, stimulant fills for women rose sharply during the pandemic, and women are historically diagnosed years later than men.",
+      "evidence": [
+        {"type": "stat", "text": "The incidence of ADHD diagnosis in the 23-29-year-old and 30-49-year-old female populations nearly doubled from 2020 to 2022; currently 44.2% of diagnosed adults are female", "url": "https://www.epicresearch.org/articles/number-of-adhd-patients-rising-especially-among-women/", "source": "Epic Research"},
+        {"type": "stat", "text": "The percentages of females aged 15-44 years with prescription stimulant fills increased by more than 10% during 2020-2021; among women ages 20 to 24, there was a nearly 20% increase", "url": "https://www.cdc.gov/mmwr/volumes/72/wr/mm7213a1.htm", "source": "CDC MMWR, Trends in Stimulant Prescription Fills 2016-2021", "date": "2023"},
+        {"type": "paraphrase", "text": "A Swedish population study of 85,330 individuals with ADHD found females were diagnosed on average 4 years later than males; the childhood boy:girl diagnosis ratio of 3-4:1 equalizes to ~1:1 by adulthood, and late diagnosis in women is linked to worse self-esteem and psychosocial outcomes", "url": "https://www.sciencedirect.com/science/article/pii/S2590291124001748", "source": "ScienceDirect / psychiatric literature via search summary"}
+      ]
+    },
+    {
+      "topic": "What ADHD adults pay: coaching",
+      "claim": "ADHD coaching runs roughly $75-250 per hour or $300-900 per month in packages, almost always paid out of pocket because insurance rarely covers it — establishing a high anchor price for ADHD support.",
+      "evidence": [
+        {"type": "stat", "text": "You can expect to pay anywhere from $75 to $200 per hour for ADHD coaching services; most ADHD coaches charge between $100 and $250 per session, with experienced coaches charging $175-$250+", "url": "https://www.coachingexecutivefunction.com/post/how-much-does-adhd-coaching-cost", "source": "Coaching Executive Function / Surf The Reaction (paraphrased aggregate)"},
+        {"type": "stat", "text": "The average monthly cost for ADHD coaching falls between $300 and $600 a month; a typical monthly package (4 weekly sessions plus check-ins) runs $400-$900/month", "url": "https://surfthereaction.com/blog/how-much-does-adhd-coaching-cost", "source": "Surf The Reaction"},
+        {"type": "paraphrase", "text": "Most insurance plans don't cover ADHD coaching unless prescribed by a doctor, so clients usually pay fully out of pocket, unlike therapy", "url": "https://www.shimmer.care/blog/what-if-i-cant-afford-an-adhd-coach", "source": "Shimmer blog"}
+      ]
+    },
+    {
+      "topic": "What ADHD adults pay: app subscriptions",
+      "claim": "Current ADHD app pricing spans a wide band: self-serve apps run ~$8-48/month (Focusmate $8-12, Inflow $22.49-47.99, Flow Club $29) while human-coaching hybrids like Shimmer reach $230/month.",
+      "evidence": [
+        {"type": "stat", "text": "Inflow: for $47.99 monthly or $199.99 yearly, users get access to the app with coaching services; without coaching, $22.49 monthly or $95.99 annually", "url": "https://www.choosingtherapy.com/inflow-adhd-app-review/", "source": "Choosing Therapy Inflow review", "date": "2025"},
+        {"type": "stat", "text": "Shimmer's membership is $230 per month (an older cited tier was $16.50/month for the app with video sessions billed separately at $90/month or $30/session — sources conflict on current pricing)", "url": "https://www.zenmasterwellness.com/shimmer-review/", "source": "Zen Master Wellness Shimmer review", "date": "2024"},
+        {"type": "stat", "text": "Focusmate: free tier with 3 sessions/week, $8/month (annual) or $12/month for unlimited; Flow Club: $29/month flat rate", "url": "https://brightmind.club/blog/body-doubling-apps", "source": "BrightMind body-doubling app comparison"}
+      ]
+    },
+    {
+      "topic": "What ADHD adults pay: medication",
+      "claim": "Brand-name ADHD medication costs $347-824/month without insurance (Vyvanse ~$555), though generics with discount cards can drop to $13-56/month — meaning many uninsured adults face triple-digit monthly costs that make a $10-30 app look cheap by comparison.",
+      "evidence": [
+        {"type": "stat", "text": "Without insurance, brand-name Adderall IR (20mg, 60 tablets) averages around $814-824 monthly; a 30-day supply of brand-name Adderall XR (30mg) costs approximately $347; generic amphetamine salt combo starts as low as $12.99 for 30 tablets", "url": "https://www.singlecare.com/blog/adderall-without-insurance/", "source": "SingleCare / GBC Health (aggregated)", "date": "2026"},
+        {"type": "stat", "text": "Vyvanse can cost over $555 per month without insurance (about $19 per pill for 30mg capsules); GoodRx coupons can bring it to as low as $56.38, about 84% off average retail", "url": "https://www.singlecare.com/blog/vyvanse-without-insurance/", "source": "SingleCare"},
+        {"type": "stat", "text": "Annual healthcare costs for adults with ADHD were around $4,920 to $5,650, versus about $1,470 to $2,770 for other adults", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1180839/", "source": "A review of the economic burden of ADHD (PMC)"}
+      ]
+    },
+    {
+      "topic": "Complaints about ADHD app subscription pricing",
+      "claim": "The ADHD community loudly criticizes subscription pricing — accusations of 'predatory' cash-grab apps, billing-on-cancellation complaints about Inflow on Reddit, and frustration with locked free tiers — creating an opening for transparent, fair pricing.",
+      "evidence": [
+        {"type": "paraphrase", "text": "There are fake, scammy ADHD products preying on vulnerable people who are searching desperately for tools to help them... Many companies saw the opportunity for a quick cash grab in the ADHD product market; critics call for 'fair pricing models that don't turn into insidious monthly subscriptions'", "url": "https://futureadhd.com/articles/adhd-product-scammer-callout/", "source": "Future ADHD, 'We Need to Talk About ADHD Product Scammers'"},
+        {"type": "paraphrase", "text": "Negative Reddit reviews of Inflow report the subscription fee being charged even when canceling within the 24-hour window, and users who downloaded the app but did not find it helpful; positive reviewers felt the price was justified only with daily active use", "url": "https://www.choosingtherapy.com/inflow-adhd-app-review/", "source": "Choosing Therapy Inflow review (summarizing Reddit feedback)", "date": "2025"},
+        {"type": "quote", "text": "it wasn't allowing me to experiment with things and find what's right for me before purchasing", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6018235/", "source": "JMIR survey/focus-group study on health apps for mental health needs"}
+      ]
+    },
+    {
+      "topic": "Evidence of willingness to pay",
+      "claim": "Willingness to pay is demonstrated both by survey data (~40% of consumers willing to pay for digital mental-health services) and by revealed behavior: consumers are 44.3% of ADHD app revenue, premium iOS users drive ~68-69% of it, and Inflow reached an estimated ~$80k/month revenue and $14M in venture funding on a ~$200/year product.",
+      "evidence": [
+        {"type": "stat", "text": "40% of consumers show willingness to pay for digital mental health services, closely behind weight loss services at 43%", "url": "https://research2guidance.com/customers-are-willing-to-pay-for-digital-health-services-what-are-the-top-three-services-in-demand/", "source": "research2guidance consumer survey"},
+        {"type": "stat", "text": "The individuals/consumers segment accounted for 44.3% of the ADHD apps market in 2025, with iOS users contributing nearly 68-69% of global app revenue — reflecting a premium user base with higher willingness to pay for subscription applications", "url": "https://www.grandviewresearch.com/industry-analysis/adhd-apps-market-report", "source": "Grand View Research ADHD apps report"},
+        {"type": "stat", "text": "Inflow raised $11M Series A ($14M total since 2020 founding); an October 2024 estimate put the app at roughly $80k in revenue in the prior month, on subscriptions of around $200 per year", "url": "https://techcrunch.com/2023/01/11/inflow-a-platform-for-managing-adhd-through-cbt-raises-11m/", "source": "TechCrunch / The Census (revenue estimate)", "date": "2023-2024"}
+      ]
+    },
+    {
+      "topic": "Size of ADHD communities",
+      "claim": "ADHD communities are massive distribution channels: r/ADHD has ~2.3M members, and the #ADHD TikTok hashtag has accumulated tens of billions of views (24.7B as of May 2023; other counts of 11B and 14.5B at different dates — figures conflict by measurement date).",
+      "evidence": [
+        {"type": "stat", "text": "r/ADHD is a subreddit with 2.3M members (confirmed across multiple stat trackers)", "url": "https://subredditstats.com/r/ADHD", "source": "SubredditStats / GummySearch"},
+        {"type": "stat", "text": "The hashtag #ADHD on TikTok returned 24.7 billion hits when searched on May 10, 2023", "url": "https://www.sciencedirect.com/science/article/pii/S266656032500101X", "source": "ScienceDirect study on ADHD portrayal on TikTok", "date": "2023-05-10"},
+        {"type": "stat", "text": "Other counts: over 11 billion views on #ADHD; 14.5 billion views; the top 100 #ADHD videos alone amassed nearly half a billion views (PLOS One, data collected January 2023)", "url": "https://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0319335", "source": "PLOS One 'A double-edged hashtag' + press coverage (conflicting date-dependent figures)", "date": "2025"}
+      ]
+    },
+    {
+      "topic": "Medication shortage severity and persistence",
+      "claim": "The stimulant shortage that began October 2022 remains unresolved as of mid-2026: 71.5% of medicated adults with ADHD have had trouble filling prescriptions, ADDitude found 38% of 10,936 surveyed patients disrupted, and full supply-demand equilibrium is not projected until late 2026-2027.",
+      "evidence": [
+        {"type": "stat", "text": "Approximately one third of adults with ADHD take stimulant medication; 71.5% had difficulty filling their prescription because the medication was unavailable", "url": "https://www.cdc.gov/mmwr/volumes/73/wr/mm7340a1.htm", "source": "CDC MMWR (NCHS Rapid Surveys)", "date": "2024"},
+        {"type": "stat", "text": "According to an ADDitude survey of 10,936 caregivers and adults with ADHD, roughly 38% of all patients have had trouble finding and filling their prescription medication over the last year and 21% continue to suffer treatment disruptions", "url": "https://www.additudemag.com/adhd-medication-shortage-adderall-vyvanse/", "source": "ADDitude Magazine reader survey"},
+        {"type": "paraphrase", "text": "As of June-July 2026 the Adderall shortage that began in October 2022 remains unresolved — ASHP still lists amphetamine mixed salts in active shortage and the FDA's October 2022 notice remains live; despite an October 2025 DEA quota increase of 25% (21.2M to 26.5M grams d-amphetamine), equilibrium is projected only for late 2026 to 2027", "url": "https://www.medfinder.com/blog/amphetamine-shortage-update-what-patients-need-to-know-in-2026", "source": "Medfinder shortage update / ISSUP", "date": "2026-06"}
+      ]
+    },
+    {
+      "topic": "Shortage driving demand for non-medication support",
+      "claim": "The shortage is actively redirecting demand toward non-medication supports: patients are switching treatments, roughly a third of diagnosed adults receive no treatment at all, and the FDA explicitly supports non-drug options — with digital therapeutics like EndeavorRx and the newly cleared adult-ADHD LumosityRx gaining regulatory traction.",
+      "evidence": [
+        {"type": "paraphrase", "text": "GoodRx analysis shows Adderall shortages led to increased fills of other ADHD medication types; clinicians note nonstimulants and behavioral therapies are underutilized and CBT works synergistically with medication", "url": "https://www.goodrx.com/healthcare-access/research/adderall-shortage-new-generics-lead-to-changes-in-types-of-adhd-medications-used", "source": "GoodRx Research / AJMC"},
+        {"type": "paraphrase", "text": "The FDA stated it supports development of alternative treatments such as nonstimulant drugs or nondrug options like game-based digital therapies to improve attention", "url": "https://www.ajmc.com/view/us-adhd-stimulant-shortage-highlights-growing-challenges-in-adult-treatment", "source": "AJMC on the US ADHD stimulant shortage"},
+        {"type": "paraphrase", "text": "In May 2026 Lumosity received FDA 510(k) clearance for LumosityRx, a prescription digital therapeutic for adults with ADHD, following EndeavorRx's 2020 De Novo clearance for pediatric ADHD; separately, about one-third of adults with current ADHD were receiving no ADHD treatment (CDC), and 46% had used telehealth for ADHD services", "url": "https://www.futuremarketinsights.com/reports/adhd-digital-therapy-market", "source": "Future Market Insights (LumosityRx) + CDC MMWR (treatment gap)", "date": "2026-05"}
+      ]
+    }
+  ],
+  "quality_notes": "Market-size figures conflict across research firms (reported side by side, not averaged). TikTok view counts vary by measurement date; 24.7B has clearest attribution (May 2023). Shimmer pricing conflicts across 2023 vs 2024 reviews, likely a pricing change."
+}

@@ -1,0 +1,85 @@
+{
+  "angle": "time-memory-life-admin",
+  "collected": "2026-07-17",
+  "method": "WebSearch retrieval. Items marked 'quote' appeared word-for-word in WebSearch output; 'paraphrase'/'stat (paraphrased)' faithfully restate content the search tool returned from the cited source.",
+  "angle_summary": "Systematic 'life-admin' failure driven by time blindness, prospective memory deficits, and 'out of sight, out of mind' working-memory lapses. Measurable fallout: 60-90% higher missed-GP-appointment rates, 57% missing loan payments, chronic lateness affecting up to 80%, involuntary 'ghosting', wasted food, lapsed prescriptions. Standard fixes fail because ADHD brains habituate to static alarms and abandon apps once novelty wears off. Emotional cost severe: shame-avoidance cycles amplified by RSD, partners absorbing the mental load, ~2x divorce rates.",
+  "problems": [
+    {
+      "name": "Time blindness: hours vanish, chronically late, 'waiting mode' eats whole days",
+      "severity_1_5": 5,
+      "frequency_signal": "Up to 80% of adults with ADHD reportedly struggle with time management/punctuality; one-third of 1,859 surveyed adults said time-management problems contribute the greatest stress to their lives.",
+      "evidence": [
+        {"type": "stat", "text": "ADDitude surveyed 1,859 adults with ADHD, one-third of whom said that problems with time management and productivity contribute the greatest amount of stress to their lives.", "url": "https://www.additudemag.com/punctuality-time-blindness-adhd-apps-tips/", "source": "ADDitude Magazine"},
+        {"type": "stat", "text": "Studies have shown that up to 80% of adults with ADHD struggle with time management and punctuality issues.", "url": "https://neurolaunch.com/adhd-and-being-late/", "source": "NeuroLaunch (secondary)"},
+        {"type": "paraphrase", "text": "In 'waiting mode', a person can't start anything before an appointment — accomplishing nothing despite 6 hours available — because past experiences of missing appointments make not-starting feel safer than losing track of time.", "url": "https://www.sagebrushcounseling.com/blog/what-is-adhd-waiting-mode", "source": "Sagebrush Counseling"},
+        {"type": "paraphrase", "text": "Time blindness linked to reduced prefrontal cortex activation and dopamine pathway irregularities; hours pass as if minutes ('time agnosia') during hyperfocus.", "url": "https://www.additudemag.com/wasting-time-adhd-and-time-perception/", "source": "ADDitude Magazine"}
+      ],
+      "existing_solutions": "Visual timers (Time Timer ~$35-45), Pomodoro apps, time-blocking, planner apps.",
+      "gap": "Visual timers useless during hyperfocus; single-beep timers dismissed as 'not urgent'; ticking countdowns trigger time anxiety. Nothing bridges 'felt time' contextually or addresses waiting-mode paralysis."
+    },
+    {
+      "name": "Forgotten bills and the compounding 'ADHD tax'",
+      "severity_1_5": 5,
+      "frequency_signal": "57% of people with ADHD miss loan payments; default rates grow exponentially by middle age; projected lifetime income deficit of $1.27M vs controls.",
+      "evidence": [
+        {"type": "stat", "text": "According to Reuters, 57% of people with ADHD miss loan payments, more than half have a bad credit rating, and 71% have not saved for retirement; 62% shop impulsively.", "url": "https://www.additudemag.com/adhd-tax-late-fees-fines-shame/", "source": "ADDitude Magazine (citing Reuters)"},
+        {"type": "stat", "text": "People with ADHD start adulthood with normal credit demand and default rates, but in middle age their default rates grow exponentially; by age 30 the earnings trajectory projected a lifetime income deficit of $1.27 million vs controls.", "url": "https://www.science.org/doi/10.1126/sciadv.aba1551", "source": "Science Advances — 'ADHD, financial distress, and suicide in adulthood: A population study'"},
+        {"type": "stat", "text": "In a 2020 study of nearly 1,300 people, only 20% of adults with ADHD had saved for retirement vs 42% of neurotypical peers; ADHD symptoms correlate with carried credit balances, late payments, and pawn-service use.", "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7549773/", "source": "PMC — Financial decision-making in a community sample"},
+        {"type": "paraphrase", "text": "People report entering car registration numbers wrong (parking fines) and not noticing council tax direct debits had stopped for over a year.", "url": "https://happiful.com/why-life-admin-feels-so-overwhelming-with-adhd", "source": "Happiful"}
+      ],
+      "existing_solutions": "Autopay, recurring calendar reminders, budgeting apps, ADHD-money coaching content.",
+      "gap": "Autopay fails for one-off invoices, renewals, mailed notices, anything requiring a decision. No tool watches the whole obligation surface and escalates only what will actually cost money if ignored."
+    },
+    {
+      "name": "Missed appointments and prospective-memory failures",
+      "severity_1_5": 4,
+      "frequency_signal": "60-90% more likely to miss GP appointments (n=2,453 vs 12,200 controls); 38% miss at least one GP appointment annually; forgetfulness is the #1 reason for medication non-adherence (39%).",
+      "evidence": [
+        {"type": "quote", "text": "Patients with ADHD (Attention-Deficit Hyperactivity Disorder) are 60-90 percent more likely to miss appointments with their doctors, compared to the general population", "url": "https://www.bath.ac.uk/announcements/new-study-reveals-high-rates-of-missed-gp-appointments-among-patients-with-adhd/", "source": "University of Bath", "date": "2024"},
+        {"type": "quote", "text": "Annually 38% of those age ≥18 years missed at least one GP appointment.", "url": "https://journals.plos.org/mentalhealth/article?id=10.1371%2Fjournal.pmen.0000045", "source": "PLOS Mental Health"},
+        {"type": "stat", "text": "Individuals with ADHD showed clear deficits in everyday prospective memory performance, recalling and executing fewer of their own real-life intentions than controls.", "url": "https://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0058338", "source": "PLOS One — Complex Prospective Memory in Adults with ADHD"},
+        {"type": "stat", "text": "Up to 80% of adults prescribed ADHD medications fail to adhere within the first year; an Express Scripts pilot of 600,000 patients identified forgetfulness as the single largest reason for non-adherence at 39%.", "url": "https://adheretech.com/a-scoping-overview-of-medication-non-adherence-to-adhd-medications/", "source": "AdhereTech"}
+      ],
+      "existing_solutions": "Clinic SMS reminders, calendar apps, pill organizers, episodic-future-thinking interventions (research stage).",
+      "gap": "Clinic reminders arrive on the clinic's schedule, not at the actionable moment; no consumer product closes the loop from 'reminder seen' to 'left the house on time' (transit-aware, escalating, confirmation-seeking)."
+    },
+    {
+      "name": "Involuntary ghosting: unanswered texts, emails, and inbox avoidance",
+      "severity_1_5": 4,
+      "frequency_signal": "Named community phenomena ('involuntary ghosting', 'the 2-second or 2-week response pattern') with dedicated content across Inflow, Mini ADHD Coach, Klarity, therapy practices.",
+      "evidence": [
+        {"type": "paraphrase", "text": "'Involuntary ghosting': people with ADHD forget to respond to texts; as unanswered messages pile up so does guilt — a negative feedback loop devastating to self-esteem; friends stop reaching out and good friendships fade away.", "url": "https://www.getinflow.io/post/adhd-involuntary-ghosting-texting-friends", "source": "Inflow"},
+        {"type": "paraphrase", "text": "Task initiation makes even a simple reply hard to start; time blindness turns 'in a minute' into days; out of sight slips completely out of attention; messages carrying pressure become emotionally overwhelming to open.", "url": "https://www.helloklarity.com/post/adhd-texting-habits-understanding-the-2-second-or-2-week-response-pattern/", "source": "Klarity Health"},
+        {"type": "paraphrase", "text": "With mail avoidance, bills go unpaid, tickets and taxes gather interest, credit goes down, services get cut off, invitations missed; every glance at the unopened stack brings dread.", "url": "https://untappedbrilliance.com/adhd-mail/", "source": "Untapped Brilliance"},
+        {"type": "paraphrase", "text": "Every unopened email represents a potential obligation and possible failure; rejection sensitivity causes shame over delayed responses; a mixed inbox triggers avoidance rather than action.", "url": "https://www.getinflow.io/post/email-anxiety-avoidance-adhd-friendly-strategies", "source": "Inflow"}
+      ],
+      "existing_solutions": "Email cleanup tools, snooze features, pinned messages, coping-strategy content.",
+      "gap": "Generic tools organize but don't resurface human obligations (the friend's text from 9 days ago, the RSVP); nothing distinguishes shame-blocked replies from forgotten ones or drafts the low-friction way back in. The social-repair layer is entirely unserved."
+    },
+    {
+      "name": "Reminder habituation: alarms and apps stop working within weeks",
+      "severity_1_5": 4,
+      "frequency_signal": "Described as universal across ADHD reminder guides; app abandonment a recurring theme; even ADHD-specific app makers acknowledge single-point notifications fail.",
+      "evidence": [
+        {"type": "paraphrase", "text": "ADHD brains filter out alarms via executive dysfunction, cue desensitisation, and emotional overload: the notification sound that once jolted you into action now barely registers; visual cues become invisible wallpaper — the brain has habituated.", "url": "https://mypatientadvice.co.uk/knowledge-base/why-do-adhd-brains-still-ignore-phone-alarms/", "source": "My Patient Advice"},
+        {"type": "paraphrase", "text": "Standard phone reminders are not effective on their own for most people with ADHD: single-point notifications are easily dismissed due to alarm fatigue, timing mismatches, and the micro-decision problem; a reminder every 10 minutes causes you to ignore them all.", "url": "https://recallify.ai/adhd-friendly-reminders/", "source": "Recallify"},
+        {"type": "paraphrase", "text": "A timer that beeps once is easy to dismiss during hyperfocus — the brain categorizes the sound as 'not urgent'; for some, ticking countdowns trigger time anxiety rather than awareness.", "url": "https://super-productivity.com/blog/adhd-time-blindness-strategies/", "source": "Super Productivity blog"}
+      ],
+      "existing_solutions": "Layered/escalating reminders, varied tones, persistent until-done alerts, smart-home cues, proof-of-action alarm apps.",
+      "gap": "No mainstream product implements anti-habituation as a core mechanic: rotating modalities/voices/channels, salience calibrated to consequence, confirmation that the ACTION (not the dismissal) happened, detection of stale cues."
+    },
+    {
+      "name": "Mental-load offloading and the shame spiral: relationships absorb the failure",
+      "severity_1_5": 5,
+      "frequency_signal": "96% of 700 surveyed spouses say ADHD makes household management harder; ~2x divorce rates (50-60% vs ~30%); 38% report being 'close to divorce'.",
+      "evidence": [
+        {"type": "stat", "text": "ADHD-affected couples have a divorce rate 2x higher than the general population (around 50-60% vs 30%); 38% of ADHD couples report being 'close to divorce'; a survey of 700 ADHD partners found 96% of spouses say ADHD makes household management harder.", "url": "https://www.alabamagazette.com/story/2026/07/13/news/can-adhd-contribute-to-divorce-how-adhd-symptoms-affect-marriage-child-custody-and-divorce/11787.html", "source": "Stacker syndicated report (Alabama Gazette)", "date": "2026-07-13"},
+        {"type": "paraphrase", "text": "The partner without ADHD absorbs planning, reminding, follow-through while the ADHD partner faces a steady stream of correction — one feels like a manager, the other a perpetual disappointment; resentment builds while shame grows.", "url": "https://wellnesspsychologicalservices.com/nov-25-blog-2-the-invisible-mental-load-for-partners-of-adults-with-adhd", "source": "Wellness Psychological Services"},
+        {"type": "paraphrase", "text": "Repeated prospective-memory failures create a shame cycle that mimics depression — every missed date reinforces 'I am a bad friend/partner/child'; partners interpret forgotten dates as evidence of not caring.", "url": "https://thawly.ai/overcome/adhd-forgetting-birthdays-important-dates", "source": "Thawly"},
+        {"type": "paraphrase", "text": "Rejection Sensitive Dysphoria amplifies the emotional pain of perceived criticism, exacerbating shame and leading to self-criticism, anxiety, and depression.", "url": "https://www.additudemag.com/rejection-sensitive-dysphoria-adhd-anxiety-depression/", "source": "ADDitude Magazine"}
+      ],
+      "existing_solutions": "Couples therapy, medication + CBT, shared calendars, written finance agreements, body-doubling apps (Dubbii: 500k+ users; Focusmate, FLOWN).",
+      "gap": "Every mitigation either bills by the hour or quietly re-installs the partner as project manager. No neutral third party holds the mental load itself — tracking obligations, doing the nagging, confirming completion — so neither partner has to be the parent."
+    }
+  ]
+}

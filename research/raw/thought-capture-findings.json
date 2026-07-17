@@ -1,0 +1,76 @@
+{
+  "angle": "thought-capture",
+  "collected": "2026-07-17",
+  "method": "WebSearch retrieval. Reddit-targeted queries returned no indexed links; community pain evidenced via first-person Medium essays, ADHD coaching blogs, ADDitude/ADDA, forum threads. Quotes labeled verbatim-from-search-result vs paraphrase.",
+  "angle_summary": "A compounding pipeline failure around one's own thoughts: weak working memory means ideas evaporate seconds after arising; racing thoughts peak at night when capture is hardest; capture tools that demand a filing decision (Notion, Obsidian) trigger decision paralysis and silent abandonment; and what does get captured scatters into a 'notes graveyard' that is never reviewed and can't be searched. A wave of new 'brain dump' startups confirms both the pain and that mainstream note apps fail ADHD users.",
+  "problems": [
+    {
+      "name": "Thoughts evaporate before they can be captured",
+      "description": "Working-memory deficits mean ideas, insights, and intentions vanish seconds after arising — mid-sentence, mid-task, in the shower, or while driving — before any app can even be opened. The loss is emotionally painful, not just inconvenient.",
+      "severity_1_5": 5,
+      "frequency_signal": "Described as a 'hallmark symptom of ADHD'; an entire product category (voice-first capture apps) now exists to address it.",
+      "evidence": [
+        {"type": "quote", "text": "Especially if the lost thought felt important—like a spark of insight, a plan, a curiosity, or something you really meant to act on—when it vanishes, it's like being betrayed by your own mind.", "url": "https://infocusfirst.com/adhd-forgetfulness/", "source": "InFocus First, 'ADHD Forgetfulness: Why It Happens'"},
+        {"type": "quote", "text": "Even if we lived in total isolation, we'd still generate the same ideas over and over again, wishing we could remember them at the right time.", "url": "https://www.additudemag.com/too-many-ideas-adhd/", "source": "ADDitude Magazine, 'Too Many Ideas in My ADHD Brain'"},
+        {"type": "paraphrase", "text": "Working memory challenges look like doing one or two steps of a task, getting distracted, and saying 'Wait, what was I just doing?' — even a brief sneeze is enough to lose track of a thought.", "url": "https://www.adhdsolutionstherapy.com/blog/working-memory-adhd", "source": "ADHD Solutions LLC / Mental Health Forum thread"},
+        {"type": "paraphrase", "text": "First-person essay title: 'Dear ADHD Brain, The Tragic Fate of My Brilliant Ideas'; coaches recommend dry-erase markers on the bathroom mirror and notepads in every room because ideas won't survive the walk to a device.", "url": "https://medium.com/@elizabeth_lord/dear-adhd-brain-the-tragic-fate-of-my-brilliant-ideas-e1b97c87bca7", "source": "Elizabeth Lord, MA, CPC on Medium; adhdhomestead.net/write-on-the-wall/", "date": "2025-07"}
+      ],
+      "existing_solutions": "Notepads in every room, shower markers, voice memos, phone Notes; new AI voice-capture apps (Audionotes, Braindump, Brain Spill).",
+      "gap": "Analog workarounds fragment capture across dozens of surfaces; phone capture's unlock-open-app-type sequence outlasts the thought. Capture must be near-zero-latency and flow into one findable place."
+    },
+    {
+      "name": "Racing thoughts at night with no good capture outlet",
+      "description": "ADHD brains race hardest at bedtime — looping on ideas and undone tasks 'because it's afraid of forgetting.' The moment of highest thought volume is when opening a phone is most self-destructive, so thoughts are either lost or cost hours of sleep.",
+      "severity_1_5": 5,
+      "frequency_signal": "Up to 70% of people with ADHD report insomnia; multiple ADDitude articles, ADDA Q&As, clinics, and Etsy printables target this exact moment.",
+      "evidence": [
+        {"type": "quote", "text": "Up to 70% of people with ADHD report insomnia, most often difficulty falling asleep.", "url": "https://www.eurekahealth.com/resources/racing-thoughts-at-bedtime-insomnia-adhd-connection-en", "source": "Eureka Health"},
+        {"type": "quote", "text": "Your brain races because it's afraid of forgetting; dumping everything gives it permission to shut down.", "url": "https://www.builtforadhd.com/blog/adhd-brain-dump-method-clear-47-mental-tabs/", "source": "Built for ADHD, 'The ADHD Brain Dump Method'"},
+        {"type": "paraphrase", "text": "Research found racing thoughts in adults with ADHD increased in the evening and at bedtime and tracked with insomnia severity; ADDA advises paper and pen on the nightstand; advice explicitly warns the bedtime brain dump should be analog because 'the phone hands you a hundred new loops the moment you unlock it.'", "url": "https://www.simplypsychology.org/adhd-racing-thoughts.html", "source": "Simply Psychology; ADDA (add.org/what-can-i-do-for-my-racing-thoughts-at-night/); mypatientadvice.co.uk"}
+      ],
+      "existing_solutions": "Paper notebook on nightstand, pre-bed brain-dump rituals and printable templates, white noise, sleep-hygiene formulas.",
+      "gap": "Paper capture at 2am produces illegible, unsearchable scraps disconnected from the digital system; phone capture destroys sleep. No mainstream app has a night-safe, frictionless capture mode that routes nighttime thoughts back into next-day workflow."
+    },
+    {
+      "name": "Filing decisions kill capture: Notion/Obsidian-style tools demand executive function ADHD doesn't have",
+      "description": "Every save forces a taxonomy decision ('Which folder? What tags?'), turning a 2-second capture into decision paralysis. Setup and maintenance overhead leads to enthusiastic builds followed by silent abandonment.",
+      "severity_1_5": 4,
+      "frequency_signal": "Dedicated explainer articles ('Why Your ADHD Brain Hates Notion'); community consensus that Obsidian requires a stripped-down setup; abandonment described as 'common and expected.'",
+      "evidence": [
+        {"type": "quote", "text": "Notion requires an organizational decision at the moment of every save and ongoing maintenance afterward, and ADHD specifically makes in-the-moment decision-making and consistent maintenance unreliable, so the system gets silently abandoned despite an enthusiastic setup. It's a design-fit problem, not a willpower problem.", "url": "https://www.mindstash.app/blogs/why-your-adhd-brain-hates-notion-and-what-actually-works-instead", "source": "MindStash"},
+        {"type": "quote", "text": "Because ADHD brains struggle with consistency, you end up with 47 tags that mean roughly the same thing and zero confidence you'll ever find anything again.", "url": "https://www.mindstash.app/blogs/why-your-adhd-brain-hates-notion-and-what-actually-works-instead", "source": "MindStash"},
+        {"type": "quote", "text": "Most productivity apps assume you will remember the task long enough to open the app, find the right list, type the task, assign a priority, and set a due date. For someone with ADHD, that sequence is often three steps too many.", "url": "https://recallify.ai/adhd-apps-productivity-tools/", "source": "Recallify, 'ADHD Productivity Tools: What Actually Works (2026 Guide)'"},
+        {"type": "paraphrase", "text": "ADHD users report Obsidian's learning curve, plugins, backlinks and graph features create decision paralysis and a temptation to endlessly build the 'perfect' system instead of taking notes.", "url": "https://blog.shuvangkardas.com/obsidian-note-organization/", "source": "ADHD/Obsidian community discussion; Shuvangkar Das blog"}
+      ],
+      "existing_solutions": "Minimalist Obsidian vaults, pre-made templates, 'capture first, organize later' advice, Apple Notes.",
+      "gap": "Organization is offloaded onto the user in every mainstream tool. ADHD users need zero-decision capture with organization done FOR them (auto-categorization, auto-linking) — currently offered mostly by tiny new startups, not incumbents."
+    },
+    {
+      "name": "The notes graveyard: captured but never findable or revisited",
+      "description": "Even when capture succeeds, notes scatter across Apple Notes, notebooks, sticky notes, Word docs, and paper scraps. Retrieval fails, and writing something down licenses the brain to forget it — notes are written once and never reviewed.",
+      "severity_1_5": 4,
+      "frequency_signal": "Called 'often the top problem for people with ADHD'; a Medium author described decluttering 4,000 accumulated Apple Notes.",
+      "evidence": [
+        {"type": "quote", "text": "I know I wrote it down somewhere… But is it in my Apple Notes, my Kindle highlights, Scrivener, a random Word document, one of my notebooks, or on one of the pieces of paper that's floating around my house?", "url": "https://passionatewritercoaching.com/best-free-note-taking-apps/", "source": "Passionate Writer Coaching"},
+        {"type": "quote", "text": "clutter that stared back at me, silently mocking my disorganization", "url": "https://medium.com/macoclock/how-i-decluttered-4-000-apple-notes-in-15-minutes-a-week-7417819ba159", "source": "Mohamed Dosou on Medium — 'How I Decluttered 4,000 Apple Notes' ('hundreds of untitled notes', 'forgotten ideas')", "date": "2026-07"},
+        {"type": "quote", "text": "scattered sticky notes, digital files lost in a maze of folders, half-remembered flashes of genius drifting into the ether", "url": "https://medium.com/@theo-james/note-taking-for-adhd-how-to-stay-organized-without-overwhelm-83ef42a73dee", "source": "Theo James on Medium, 'Note-Taking for ADHD'"},
+        {"type": "paraphrase", "text": "Finding notes taken long ago is described as the top problem for people with ADHD — they won't know which of hundreds of places holds the note; many ADHD brains 'seem to think that once something has been written down, they can then forget about it' — so notes are never reviewed.", "url": "https://thrivewithadd.com/its-not-add-to-write-it-down/", "source": "Thrive With ADD; zackproser.com/blog/adhd-meeting-notes-strategy"}
+      ],
+      "existing_solutions": "Advice to centralize into one system, scheduled review rituals, search/tagging, professional organizers.",
+      "gap": "All existing fixes require the exact habit-consistency ADHD lacks. Nothing proactively resurfaces old notes at the moment they're relevant; search only works if you remember what you wrote and where."
+    },
+    {
+      "name": "Chronic app-hopping and system abandonment (the productivity 'ADHD tax')",
+      "description": "Novelty-seeking dopamine makes every new note app feel like 'maybe this will finally work'; users cycle through dozens of tools, leaving data stranded in each. Once an app isn't visually present, it ceases to exist.",
+      "severity_1_5": 3,
+      "frequency_signal": "A Medium author documented deleting 47 productivity apps; abandonment called 'common and expected with ADHD'; a whole genre of 'why apps fail ADHD brains' content.",
+      "evidence": [
+        {"type": "quote", "text": "Out of sight, out of mind isn't just a saying for us — it's a neurological reality.", "url": "https://raymond-brunell.medium.com/i-deleted-47-productivity-apps-in-30-days-heres-what-actually-worked-for-my-adhd-brain-52c292c6ba6b", "source": "Raymond Brunell on Medium, 'I Deleted 47 Productivity Apps in 30 Days'"},
+        {"type": "quote", "text": "ADHD brains crave novelty, as a shiny new planner or app brings a dopamine rush, that exciting feeling of \"maybe this will finally work.\"", "url": "https://www.rgvadhdcounseling.com/blog/when-the-sticky-notes-planners-and-apps-stop-working-adhd-coaching-in-mcallen-tx-helps-you-build-real-systems", "source": "Kathryn Chacra Psychotherapy"},
+        {"type": "paraphrase", "text": "App abandonment is 'almost always a design mismatch, not a personal failure'; the ADHD tax includes paying for forgotten subscriptions; first-person accounts include 'Every Productivity App Failed My ADHD Brain. So I Built My Own.'", "url": "https://www.tiimoapp.com/resource-hub/why-productivity-systems-fail-adhd", "source": "Tiimo; addrc.org; medium.com/startup-insider-edge (2026-02 essay)"}
+      ],
+      "existing_solutions": "Commitment devices, subscription-audit apps, ADHD-specific apps marketing 'the last app you'll switch to.'",
+      "gap": "Each switch orphans past notes. A sticky solution needs ambient visibility/resurfacing and near-zero maintenance so there is nothing to abandon — plus painless import of the wreckage from prior apps."
+    }
+  ]
+}

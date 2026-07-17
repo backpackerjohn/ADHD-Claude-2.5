@@ -1,0 +1,83 @@
+{
+  "angle": "app-reviews",
+  "collected": "2026-07-17",
+  "method": "WebSearch retrieval. Search returned summarized content, so most items are labeled paraphrase (with quoted fragments preserved where the results presented them in quotation marks). All URLs exactly as returned; nothing invented.",
+  "angle_summary": "Across Finch, Routinery, Tiimo, Structured, Sunsama, Motion, Todoist, Goblin Tools, Numo, Inflow, Lunatask, Amazing Marvin, and Llama Life, ADHD users describe a repeating failure loop: apps hook them with novelty, then demand exactly the executive functions ADHD impairs (daily manual planning, setup, consistency). Streaks and overdue-task counts convert inevitable inconsistency into shame, notifications habituate into invisibility, plans stop at the list without helping execution, and pricey subscriptions plus dark-pattern cancellation flows turn the category into an 'ADHD tax.' The gap is a system designed for inconsistent engagement: near-zero setup, guilt-free re-entry after absence, novelty-preserving cues, and execution support.",
+  "problems": [
+    {
+      "name": "Streaks and gamified consistency trigger shame spirals and app abandonment",
+      "severity_1_5": 5,
+      "frequency_signal": "Named the single most common failure pattern in multiple ADHD-focused design analyses (Klarity, Kabit, Sprout); a whole sub-genre of 'guilt-free' apps now markets itself around not punishing missed days.",
+      "evidence": [
+        {"type": "paraphrase", "text": "For people with ADHD, streak features often create anxiety, avoidance, and eventually app abandonment; when a streak breaks — practically inevitable given ADHD executive-function challenges — users report feelings of failure disproportionate to the setback, leading to complete abandonment of the app and the habit it supported.", "url": "https://www.helloklarity.com/post/breaking-the-chain-why-streak-features-fail-adhd-users-and-how-to-design-better-alternatives/", "source": "Klarity Health blog"},
+        {"type": "paraphrase", "text": "Streak-based habit trackers called the single worst design choice for ADHD users: ADHD brains have inherently inconsistent days, and a streak system punishes that inconsistency, creating shame spirals.", "url": "https://kabitapp.com/blog/habit-tracker-adhd", "source": "Kabit blog"},
+        {"type": "paraphrase", "text": "Finch's flip side: because streaks never penalize missed days, accountability is softened — no streak stats, completion-rate analytics, or long-term calendar views; some anxious users still report the goal structure sending them into panic attacks.", "url": "https://habitbox.app/blog/finch-app-review", "source": "HabitBox Finch review (2026)"}
+      ],
+      "existing_solutions": "Finch and Tiimo remove punishment entirely; Klarity recommends cumulative tracking, optional streak visibility, recovery mechanics.",
+      "gap": "No mainstream app offers accountability that survives absence: cumulative/bounce-back progress models that welcome the user back without guilt yet still give meaningful long-term metrics. Apps pick either guilt (streaks) or no feedback (Finch), not resilient feedback."
+    },
+    {
+      "name": "Setup and daily-maintenance burden demands the executive function users don't have",
+      "severity_1_5": 4,
+      "frequency_signal": "Appears in reviews of nearly every 'serious' planner; Amazing Marvin shipped a workflow library specifically to reduce feature overwhelm.",
+      "evidence": [
+        {"type": "paraphrase", "text": "Sunsama requires roughly 15-20 minutes of manual planning every day (80+ hours/year); if you skip the morning ritual it 'loses most of its value' — early on it feels like the app is 'constantly asking you to do one more thing before you can just start working.'", "url": "https://thebusinessdive.com/sunsama-review", "source": "The Business Dive Sunsama review (2026)"},
+        {"type": "paraphrase", "text": "Amazing Marvin's sheer number of options overwhelms some users; the learning curve is 'a bit overwhelming' at first, particularly for folks with ADHD; the developer shipped premade workflow setups in response.", "url": "https://appsumo.com/products/amazing-marvin/reviews/", "source": "AppSumo Amazing Marvin reviews"},
+        {"type": "paraphrase", "text": "Motion complaints: difficult onboarding, cluttered UI, weak mobile app, Reddit users who found the app too complicated — despite being marketed as ADHD-friendly automation.", "url": "https://www.saner.ai/blogs/motion-reviews", "source": "Saner.AI Motion reviews roundup (2026)"},
+        {"type": "paraphrase", "text": "Many traditional planners require so much setup or maintenance that they overwhelm ADHD brains; the planner 'just becomes one more thing you are behind on.'", "url": "https://lifeskillsadvocate.com/blog/adhd-planner/", "source": "Life Skills Advocate"}
+      ],
+      "existing_solutions": "Marvin's premade workflows; Motion's AI auto-scheduling (heavy onboarding); Goblin Tools' zero-setup single-purpose tools.",
+      "gap": "A tool useful on day one with zero configuration AND graceful degradation — keeps functioning (auto-triaging, auto-resurfacing) during the weeks the user doesn't plan, instead of becoming stale and shame-inducing."
+    },
+    {
+      "name": "Notification blindness: reminders habituate into background noise within days",
+      "severity_1_5": 4,
+      "frequency_signal": "A named phenomenon across multiple ADHD reminder guides; notification failures among top recurring complaints in Tiimo's app-store reviews.",
+      "evidence": [
+        {"type": "paraphrase", "text": "'Notification blindness': ADHD brains stop responding to single alerts, repeated identical tones get filtered like background noise within about a week, alarms trigger automatic swiping rather than action.", "url": "https://www.sproutapp.tech/blog/adhd-reminder-app", "source": "Sprout blog"},
+        {"type": "paraphrase", "text": "Tiimo user reviews report the app 'as a reminder app never sends reminder notifications,' notifications not working despite being enabled, random sign-outs — fatal flaws for people using it to externalize time.", "url": "https://justuseapp.com/en/app/1480220328/tiimo-visual-daily-planner/reviews", "source": "JustUseApp Tiimo reviews"},
+        {"type": "paraphrase", "text": "Routinery users can't get a quiet 'ding' between steps — only text-to-speech or push; critique questions whether the timer nagging is more annoying than helpful.", "url": "https://www.thebehavioralscientist.com/articles/routinery-product-critique", "source": "The Behavioral Scientist"}
+      ],
+      "existing_solutions": "Guides recommend multi-sensory, varied, novelty-preserving sounds and context-tied reminders; smartwatch haptics.",
+      "gap": "No major app systematically fights habituation — rotating modalities, escalating only for high-stakes items, context-aware timing, or detecting dismiss-without-act patterns and changing strategy."
+    },
+    {
+      "name": "Capture-without-execution: task graveyards and plans that stop at the list",
+      "severity_1_5": 4,
+      "frequency_signal": "'Task graveyard' and 'app graveyard' are recurring named concepts; industry retention data shows the pattern quantitatively.",
+      "evidence": [
+        {"type": "paraphrase", "text": "Todoist 'Graveyard' failure mode: users capture everything, never review, hit 87+ overdue tasks within a month, opening the app triggers shame, and they stop opening it; Todoist is 'a storage system, not an execution system.'", "url": "https://thawly.ai/reviews/todoist-for-adhd", "source": "Thawly Todoist for ADHD review (2026)"},
+        {"type": "paraphrase", "text": "Goblin Tools' Magic ToDo 'generates a beautiful list of steps and then stops at the plan' — a planning tool, not an execution tool; for many ADHD users the list was never the problem.", "url": "https://thawly.ai/reviews/goblin-tools", "source": "Thawly Goblin Tools review (2026)"},
+        {"type": "stat", "text": "Survival analysis of mobile mental-health/self-care app usage found median 15-day retention of ~3.9% and median 30-day retention of ~3.3% — roughly 95%+ of day-1 users gone within a month.", "url": "https://mhealth.jmir.org/2020/11/e16309/", "source": "JMIR mHealth and uHealth", "date": "2020"},
+        {"type": "paraphrase", "text": "Phones full of productivity apps sitting like 'digital ghosts,' abandoned after day three once novelty fades — the novelty-then-quit cycle framed as the default outcome.", "url": "https://productivewithchris.com/guides/best-planning-apps-adhd-2025/", "source": "Productive with Chris"}
+      ],
+      "existing_solutions": "Two-tool stacks (capture in Todoist, execute in Llama Life); Goblin Tools for breakdown; body-doubling services.",
+      "gap": "Nothing closes the loop from captured task → initiated action in one place: auto-decaying/archiving stale tasks so the graveyard never forms, shame-free list resets, and initiation scaffolding built into the same tool that captures."
+    },
+    {
+      "name": "Subscription fatigue and the 'ADHD tax': premium pricing plus cancellation dark patterns",
+      "severity_1_5": 4,
+      "frequency_signal": "Pricing/cancellation complaints appear in reviews of at least six of thirteen apps covered.",
+      "evidence": [
+        {"type": "paraphrase", "text": "Inflow reviewers report being charged despite canceling within the trial window, charged two years in a row while unable to cancel, and one reviewer alleging the maker deliberately makes canceling difficult, 'banking on users with ADHD not being able to manage multiple cancellation steps'; the $130-$200/yr price questioned.", "url": "https://www.choosingtherapy.com/inflow-adhd-app-review/", "source": "Choosing Therapy Inflow review"},
+        {"type": "paraphrase", "text": "Trustpilot/app-store feedback on Tiimo includes complaints that canceling the subscription is 'almost impossible,' alongside bug and reminder-failure reports.", "url": "https://www.trustpilot.com/review/tiimo.dk", "source": "Trustpilot (tiimo.dk)"},
+        {"type": "paraphrase", "text": "Recent Routinery reviews describe an aggressive paywall — free tier cut to two routines, previously free features moved behind $7.99/mo, the app 'harassing you to subscribe.'", "url": "https://habi.app/insights/routinery-alternatives/", "source": "Habi Routinery alternatives analysis (2026)"},
+        {"type": "paraphrase", "text": "A Numo App Store reviewer complains the $15-16/month price is too expensive specifically for an ADHD-targeted app; ADHD-Friendly explains how ADHD turns free trials into months of paying for unused services — the 'ADHD tax.'", "url": "https://www.adhdfriendly.com/when-adhd-meets-paid-subscriptions-the-struggle-to-keep-up/", "source": "ADHD-Friendly blog + Numo App Store reviews (apps.apple.com id1628994767)"}
+      ],
+      "existing_solutions": "Free/no-paywall planner roundups; Goblin Tools' near-free pricing; bundles like Setapp.",
+      "gap": "An honest-pricing position is wide open: cheap pricing, trial-expiry warnings, one-tap cancellation, pause-instead-of-cancel, 'you haven't used this in 30 days — want to stop paying?' prompts. No incumbent ships anti-ADHD-tax billing; it's a trust wedge."
+    },
+    {
+      "name": "Rigid schedules collide with time blindness and variable-capacity days",
+      "severity_1_5": 3,
+      "frequency_signal": "Recurs across reviews of Structured, Motion, and general ADHD planner guidance.",
+      "evidence": [
+        {"type": "paraphrase", "text": "ADDA warns strict hourly layouts may not work for adults with ADHD because time blindness makes it hard for things to go as scheduled, recommending broad blocks; Structured's visual timeline 'can become stressful if you fill every part of the day with tasks.'", "url": "https://add.org/adhd-planner/", "source": "ADDA + Calmevo Structured review (calmevo.com/structured-app-review/)"},
+        {"type": "paraphrase", "text": "Motion packs the day too tightly, leaving no room for unplanned work; the algorithm 'optimizes for fitting everything in' and produces an oppressive schedule.", "url": "https://www.saner.ai/blogs/motion-reviews", "source": "Saner.AI Motion reviews roundup (2026)"},
+        {"type": "paraphrase", "text": "Mainstream productivity systems assume consistent energy, reliable working memory, a stable internal sense of time, and on-demand task initiation — assumptions that almost never hold for ADHD; when the system fails, cultural narrative blames the user, and shame worsens executive function for the next attempt.", "url": "https://www.tiimoapp.com/resource-hub/why-productivity-systems-fail-adhd", "source": "Tiimo resource hub"}
+      ],
+      "existing_solutions": "Motion auto-reschedules (but re-packs just as tightly); Tiimo avoids red 'failed' states; guides recommend under-scheduling.",
+      "gap": "No app plans around variable capacity: energy-aware 'low-spoon day' mode that auto-shrinks the plan, deliberate slack enforcement, graceful mid-day replanning that reframes derailment as normal."
+    }
+  ]
+}
