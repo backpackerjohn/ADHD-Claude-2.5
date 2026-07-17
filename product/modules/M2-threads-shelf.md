@@ -91,19 +91,19 @@ Header: title, type badge, state, warmth indicator, "What Ember knows" menu item
 
 ## 7. Workflows
 
-Screens referenced: SHELF-00…05, THREAD-01, MODAL-M2-01 (merge conflict), PANEL-M2-01 (Digest viewer), GALLERY-01 (Finished & Retired).
+Screens referenced: W-03 (Shelf, incl. its empty / one-thread / 50+ / search-no-results / returning states), W-04 (Thread story), O-08 (merge confirm), O-11 (Digest viewer panel), W-03 gallery state (Finished & Retired).
 
-**W1 — Find and pick up (happy path):** Shelf (SHELF-02) → search "logo idea, around when I was into climbing" (§8 temporal anchor resolves to that era) → result: Spark in *Etsy shop* Thread → open story (THREAD-01) → M3 Briefing on top (time-away ≥3 days) → tiny step accepted → Thread `→ warm`.
-*Failure A — no results:* SHELF-04 → "include archived" → found in archived Sparks → restore to story.
+**W1 — Find and pick up (happy path):** Shelf (W-03) → search "logo idea, around when I was into climbing" (§8 temporal anchor resolves to that era) → result: Spark in *Etsy shop* Thread → open story (W-04) → M3 Briefing on top (time-away ≥3 days) → tiny step accepted → Thread `→ warm`.
+*Failure A — no results:* W-03 search-no-results state → "include archived" → found in archived Sparks → restore to story.
 *Failure B — found in wrong Thread:* long-press → Move to *Etsy shop* → undo toast → correction logged to M1 classifier.
 
-**W2 — Merge duplicates:** Maya notices *Etsy shop* and *shop logo* are one project → bulk-select both → Merge → survivor picker (MODAL-M2-01 if both have Arcs) → interleaved story, tombstones, Digest rebuild queued → toast "Merged — un-merge anytime this month."
+**W2 — Merge duplicates:** Maya notices *Etsy shop* and *shop logo* are one project → bulk-select both → Merge → survivor picker (O-08 if both have Arcs) → interleaved story, tombstones, Digest rebuild queued → toast "Merged — un-merge anytime this month."
 *Failure — wrong merge:* Un-merge restores both Threads from tombstones with their original stories; Sparks added post-merge stay with the survivor and are flagged for one-drag re-homing.
 
-**W3 — Return after three weeks away:** push notification? None from M2 (M5 owns the welcome-back Doorway). Maya opens the app → SHELF-05: banner "Welcome back. Nothing is lost.", Warm row holds whatever stayed warm, threads that auto-rested during the absence sit on the Resting shelf with era labels → she taps a resting Thread → story opens beneath a full (≥14-day) Briefing → one touch rekindles it to warm. Nothing anywhere counts the days she was gone.
+**W3 — Return after three weeks away:** push notification? None from M2 (M5 owns the welcome-back Doorway). Maya opens the app → W-03 returning state: banner "Welcome back. Nothing is lost.", Warm row holds whatever stayed warm, threads that auto-rested during the absence sit on the Resting shelf with era labels → she taps a resting Thread → story opens beneath a full (≥14-day) Briefing → one touch rekindles it to warm. Nothing anywhere counts the days she was gone.
 *Failure — everything auto-rested (empty Warm row):* Warm row shows "Everything's resting — pick anything up whenever" over the Resting shelf; never an empty-state that reads as failure.
 
-**W4 — Retire and rekindle:** From a Briefing, "Retire with honor" → Closing Note appears for edit → Thread to gallery. Months later, gallery card → Restore → rekindled to Warm row, Digest refreshed, Warm Start queued ("You retired this in March. Here's what you had…").
+**W4 — Retire and rekindle:** From a Briefing, "Retire with honor" → Closing Note appears for edit → Thread to gallery. Months later, gallery card → Restore → rekindled to Warm row, Digest refreshed, gap-tiered Warm Start queued (tier per M3 date math — "You retired this in March. Here's what you had…").
 
 ## 8. AI behavior
 
