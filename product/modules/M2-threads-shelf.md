@@ -73,21 +73,21 @@ Header: title, type badge, state, warmth indicator, "What Ember knows" menu item
 | Merge threads | Bulk bar → "Merge" (2+ Threads) | Pick survivor + title | Stories interleaved chronologically; Digest rebuilt; sources tombstoned | Un-merge within 30 days |
 | Bulk-rest | Bulk bar → "Let these rest" | Thread set | All `→ resting` | Single undo |
 | Archive Spark | Spark menu | — | Hidden from story, still searchable ("include archived" toggle) | Restore |
-| View Digest | Thread menu → "What Ember knows about this thread" | — | Read-only Digest panel + "Correct something" affordance | n/a |
+| View Digest | Thread menu → "What Ember knows about this thread" | — | Read-only Digest viewer panel (O-11) + "Correct something" affordance | n/a |
 | Adjust auto-rest | Shelf settings | N days (7–45) or off | Changes quiet-day threshold | Revert |
 
 ## 6. States
 
-- **Empty / first-run (SHELF-00):** No debt framing, no setup wizard (setup is where Notion-style systems die — "an organizational decision at the moment of every save" [MindStash](https://www.mindstash.app/blogs/why-your-adhd-brain-hates-notion-and-what-actually-works-instead)). One warm card: "Your shelf is empty — catch one thought and Ember starts a thread for you." Import-the-wreckage entry point beneath. No sample clutter.
-- **One thread (SHELF-01):** Single card in Warm row; Resting/Finished sections hidden until first occupied (no empty racks implying obligation).
-- **Ideal (SHELF-02):** Warm row (max ~7 visible, warmth-ordered), Resting shelf below ("Resting — paused isn't failed"), Finished & Retired gallery behind one tap, each card showing its Closing Note's first line.
-- **50+ threads (SHELF-03):** Warm row capped; Resting shelf groups by era ("This spring," "Last year"); type filter chips surface; search promoted to top.
+- **Empty / first-run (W-03 empty state):** No debt framing, no setup wizard (setup is where Notion-style systems die — "an organizational decision at the moment of every save" [MindStash](https://www.mindstash.app/blogs/why-your-adhd-brain-hates-notion-and-what-actually-works-instead)). One warm card: "Your shelf is empty — catch one thought and Ember starts a thread for you." Import-the-wreckage entry point beneath. No sample clutter.
+- **One thread (W-03 one-thread state):** Single card in Warm row; Resting/Finished sections hidden until first occupied (no empty racks implying obligation).
+- **Ideal (W-03):** Warm row (max ~7 visible, warmth-ordered), Resting shelf below ("Resting — paused isn't failed"), Finished & Retired gallery behind one tap, each card showing its Closing Note's first line.
+- **50+ threads (W-03 50+ state):** Warm row capped; Resting shelf groups by era ("This spring," "Last year"); type filter chips surface; search promoted to top.
 - **Loading:** Skeleton cards; cached shelf renders instantly from local store, syncs behind.
-- **Search-no-results (SHELF-04):** "Nothing surfaced — but nothing is lost." Offers: broaden to archived Sparks, widen the time window, or fuzzier semantic pass. Never a blank void.
-- **Merge-conflict (MODAL-M2-01):** Both sources have Arcs or conflicting titles/deadlines → modal asks which Arc survives (other pauses, kept in story); no silent data loss.
+- **Search-no-results (W-03 search-no-results state):** "Nothing surfaced — but nothing is lost." Offers: broaden to archived Sparks, widen the time window, or fuzzier semantic pass. Never a blank void.
+- **Merge-conflict (O-08):** Both sources have Arcs or conflicting titles/deadlines → modal asks which Arc survives (other pauses, kept in story); no silent data loss.
 - **Error:** Story page fails to load → "This part of the story is taking a moment" + retry; local Sparks always visible.
 - **Offline:** Shelf and cached stories readable; keyword search works locally; semantic search greyed with "back online soon" note; state changes queue.
-- **Returning after weeks (SHELF-05):** Shelf opens beneath a welcome-back banner ("Welcome back. Nothing is lost."); nothing red, nothing counted; threads auto-rested during absence sit calmly on the Resting shelf; the Doorway (M5) handles the welcome-back card, the Shelf just looks safe.
+- **Returning after weeks (W-03 returning state):** Shelf opens beneath a welcome-back banner ("Welcome back. Nothing is lost."); nothing red, nothing counted; threads auto-rested during absence sit calmly on the Resting shelf; the Doorway (M5) handles the welcome-back card, the Shelf just looks safe.
 
 ## 7. Workflows
 
