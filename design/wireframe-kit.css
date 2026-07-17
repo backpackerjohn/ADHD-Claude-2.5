@@ -1,0 +1,867 @@
+/* ==========================================================================
+   Ember — Wireframe Kit  (v1.0 · 2026-07-17)
+   Component stylesheet for the HTML wireframes (W-01 … W-17, O-01 … O-10).
+   Built ON TOP of tokens.css — link this file alone and tokens come with it.
+   No JavaScript required; all states are class-driven.
+
+     <link rel="stylesheet" href="wireframe-kit.css">
+
+   Conventions
+   ├─ every class is prefixed .em-
+   ├─ state modifiers: .is-active, .is-warm, .is-resting, .is-retired, .is-done
+   ├─ never-render rules apply: no red, no badges/dots on nav, one primary
+   │  (.em-btn--primary) per screen
+   └─ annotation layer (.em-note-dot / .em-notes) is for spec callouts only —
+      delete it from any user-facing build
+   ========================================================================== */
+
+@import url("tokens.css");
+
+/* --------------------------------------------------------------------------
+   0. KIT BASE
+   -------------------------------------------------------------------------- */
+.em-kit *,
+.em-kit *::before,
+.em-kit *::after { box-sizing: border-box; }
+
+.em-kit {
+  font-family: var(--em-font-sans);
+  color: var(--em-text);
+  line-height: var(--em-leading-body);
+}
+
+/* Wireframe page canvas: lay device frames out on a neutral workbench */
+.em-canvas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--em-space-12);
+  align-items: flex-start;
+  justify-content: center;
+  padding: var(--em-space-12);
+  background: var(--em-surface-sunken);
+  min-height: 100vh;
+}
+
+/* Layout helpers */
+.em-stack        { display: flex; flex-direction: column; gap: var(--em-space-4); }
+.em-stack--tight { gap: var(--em-space-2); }
+.em-stack--loose { gap: var(--em-space-6); }
+.em-row          { display: flex; align-items: center; gap: var(--em-space-3); }
+.em-row--between { justify-content: space-between; }
+.em-spacer       { flex: 1; }
+.em-divider      { border: 0; border-top: 1px solid var(--em-hairline); margin: var(--em-space-4) 0; }
+
+/* Type helpers (mirror brand §4) */
+.em-display { font: var(--em-weight-semibold) var(--em-text-display)/var(--em-leading-tight) var(--em-font-serif); }
+.em-title-1 { font: var(--em-weight-semibold) var(--em-text-title1)/var(--em-leading-tight) var(--em-font-serif); }
+.em-title-2 { font: var(--em-weight-semibold) var(--em-text-title2)/1.25 var(--em-font-serif); }
+.em-title-3 { font: var(--em-weight-semibold) var(--em-text-title3)/var(--em-leading-snug) var(--em-font-sans); }
+.em-body-lg { font-size: var(--em-text-body-lg); }
+.em-meta    { font-size: var(--em-text-body-sm); line-height: var(--em-leading-meta); color: var(--em-text-2); }
+.em-caption { font-size: var(--em-text-caption); font-weight: var(--em-weight-medium); color: var(--em-text-3); }
+.em-quote   { font: italic var(--em-weight-regular) var(--em-text-quote)/var(--em-leading-body) var(--em-font-serif); }
+.em-prose   { max-width: var(--em-measure); }
+
+/* The glow motif — position:relative parent required */
+.em-glow::before {
+  content: "";
+  position: absolute;
+  inset: auto -20% -40% auto;
+  width: 70%;
+  aspect-ratio: 1;
+  background: var(--em-glow);
+  opacity: var(--em-glow-opacity);
+  filter: blur(24px);
+  pointer-events: none;
+  z-index: 0;
+}
+.em-glow > * { position: relative; z-index: 1; }
+
+/* ==========================================================================
+   1. DEVICE FRAMES
+   ========================================================================== */
+
+/* --- Phone: 390 × 844 with device chrome ---------------------------------- */
+.em-phone {
+  width: 390px;
+  height: 844px;
+  flex: none;
+  background: var(--em-bg);
+  border-radius: 48px;
+  border: 10px solid #14100D;
+  box-shadow: var(--em-shadow-3);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* iOS-style status bar (decorative) */
+.em-phone__status {
+  flex: none;
+  height: 54px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0 var(--em-space-6) var(--em-space-2);
+  font-size: var(--em-text-body-sm);
+  font-weight: var(--em-weight-semibold);
+  color: var(--em-text);
+}
+.em-phone__status::before { content: "9:41"; }
+.em-phone__status::after  { content: "◧ ⌇ ▮"; letter-spacing: 3px; opacity: 0.75; font-weight: 400; }
+
+/* Dynamic-island notch */
+.em-phone::before {
+  content: "";
+  position: absolute;
+  top: 12px; left: 50%;
+  transform: translateX(-50%);
+  width: 118px; height: 34px;
+  background: #14100D;
+  border-radius: var(--em-radius-full);
+  z-index: var(--em-z-sticky);
+}
+
+/* Home indicator */
+.em-phone::after {
+  content: "";
+  position: absolute;
+  bottom: 8px; left: 50%;
+  transform: translateX(-50%);
+  width: 130px; height: 5px;
+  border-radius: var(--em-radius-full);
+  background: var(--em-text);
+  opacity: 0.35;
+  z-index: var(--em-z-sticky);
+}
+
+.em-phone__screen {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/* --- Desktop: browser chrome wrapper -------------------------------------- */
+.em-desktop {
+  width: 1200px;
+  max-width: 100%;
+  background: var(--em-bg);
+  border-radius: var(--em-radius-lg);
+  box-shadow: var(--em-shadow-3);
+  border: 1px solid var(--em-border);
+  overflow: hidden;
+}
+
+.em-desktop__bar {
+  display: flex;
+  align-items: center;
+  gap: var(--em-space-4);
+  padding: var(--em-space-3) var(--em-space-4);
+  background: var(--em-surface-sunken);
+  border-bottom: 1px solid var(--em-border);
+}
+/* traffic lights — warm neutrals, deliberately NOT red/yellow/green */
+.em-desktop__dots { display: flex; gap: 7px; }
+.em-desktop__dots i {
+  width: 11px; height: 11px;
+  border-radius: var(--em-radius-full);
+  background: var(--em-border);
+  display: inline-block;
+}
+.em-desktop__url {
+  flex: 1;
+  max-width: 460px;
+  margin-inline: auto;
+  padding: var(--em-space-1) var(--em-space-4);
+  min-height: 28px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--em-surface);
+  border: 1px solid var(--em-hairline);
+  border-radius: var(--em-radius-full);
+  font-size: var(--em-text-body-sm);
+  color: var(--em-text-3);
+}
+.em-desktop__body {
+  display: flex;
+  min-height: 720px;
+  align-items: stretch;
+}
+
+/* ==========================================================================
+   2. APP CHROME — app bar, bottom nav, sidebar
+   ========================================================================== */
+
+/* --- App bar (mobile top) -------------------------------------------------- */
+.em-appbar {
+  flex: none;
+  position: sticky;
+  top: 0;
+  z-index: var(--em-z-sticky);
+  display: flex;
+  align-items: center;
+  gap: var(--em-space-3);
+  min-height: 56px;
+  padding: var(--em-space-2) var(--em-space-5);
+  background: color-mix(in srgb, var(--em-bg) 88%, transparent);
+  backdrop-filter: blur(12px);
+}
+.em-appbar__title {
+  font: var(--em-weight-semibold) var(--em-text-title3)/1 var(--em-font-serif);
+}
+.em-appbar__action {
+  margin-left: auto;
+  min-width: var(--em-tap-min);
+  min-height: var(--em-tap-min);
+  display: grid; place-items: center;
+  border: 0; background: none;
+  border-radius: var(--em-radius-full);
+  color: var(--em-text-2);
+  font-size: var(--em-text-title3);
+  cursor: pointer;
+}
+
+/* --- Bottom nav: 3 tabs + big center Catch button -------------------------- */
+.em-bottomnav {
+  flex: none;
+  position: sticky;
+  bottom: 0;
+  z-index: var(--em-z-sticky);
+  display: grid;
+  grid-template-columns: 1fr 1fr 88px 1fr;  /* Doorway · Shelf · [Catch] · Search */
+  align-items: center;
+  padding: var(--em-space-2) var(--em-space-3) var(--em-space-6);
+  background: color-mix(in srgb, var(--em-surface) 94%, transparent);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid var(--em-hairline);
+}
+
+.em-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  min-height: var(--em-tap-min);
+  justify-content: center;
+  border: 0; background: none; cursor: pointer;
+  color: var(--em-text-3);
+  font-size: var(--em-text-caption);
+  font-weight: var(--em-weight-medium);
+  border-radius: var(--em-radius-md);
+  transition: color var(--em-dur-micro) var(--em-ease-enter);
+  text-decoration: none;
+}
+.em-tab__icon { font-size: 22px; line-height: 1; font-style: normal; }
+/* Active = filled icon + text color. NO dots, NO badges — ever (law §9.2). */
+.em-tab.is-active { color: var(--em-text); }
+
+/* The Catch button — the one hero target (≥64px), the one ember of the nav */
+.em-catch-btn {
+  width: var(--em-tap-hero);
+  height: var(--em-tap-hero);
+  margin: -26px auto 0;               /* floats above the bar */
+  display: grid; place-items: center;
+  border: 0; cursor: pointer;
+  border-radius: var(--em-radius-full);
+  background: var(--em-accent);
+  color: var(--em-on-accent);
+  font-size: 30px;
+  font-weight: var(--em-weight-semibold);
+  box-shadow: var(--em-shadow-glow);
+  transition: transform var(--em-dur-micro) var(--em-ease-enter),
+              background var(--em-dur-micro) var(--em-ease-enter);
+}
+.em-catch-btn:active { transform: scale(0.96); background: var(--em-accent-pressed); }
+
+/* --- Web sidebar (memory-first) -------------------------------------------- */
+.em-sidebar {
+  flex: none;
+  width: 248px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--em-space-1);
+  padding: var(--em-space-5) var(--em-space-3);
+  background: var(--em-surface-sunken);
+  border-right: 1px solid var(--em-hairline);
+}
+.em-sidebar__wordmark {
+  font: var(--em-weight-semibold) var(--em-text-title2)/1 var(--em-font-serif);
+  letter-spacing: -0.01em;
+  padding: var(--em-space-2) var(--em-space-3) var(--em-space-5);
+  position: relative;
+}
+/* spark accent above the b (approximation for wireframes) */
+.em-sidebar__wordmark::after {
+  content: "";
+  position: absolute;
+  top: 2px; left: 3.05em;
+  width: 7px; height: 7px;
+  border-radius: var(--em-radius-full);
+  background: radial-gradient(circle, var(--em-amber) 0%, var(--em-ember-core) 60%, transparent 100%);
+}
+.em-sidebar__item {
+  display: flex; align-items: center; gap: var(--em-space-3);
+  min-height: var(--em-tap-min);
+  padding: 0 var(--em-space-3);
+  border: 0; background: none; cursor: pointer;
+  border-radius: var(--em-radius-md);
+  color: var(--em-text-2);
+  font-size: var(--em-text-body);
+  text-align: left;
+  text-decoration: none;
+  transition: background var(--em-dur-micro) var(--em-ease-enter);
+}
+.em-sidebar__item:hover { background: color-mix(in srgb, var(--em-text) 6%, transparent); }
+.em-sidebar__item.is-active {
+  background: var(--em-surface);
+  color: var(--em-text);
+  font-weight: var(--em-weight-medium);
+  box-shadow: var(--em-shadow-1);
+}
+/* Pinned quick-capture field (web ⌘/C) */
+.em-quickcapture {
+  display: flex; align-items: center; gap: var(--em-space-2);
+  margin: 0 var(--em-space-1) var(--em-space-4);
+  padding: var(--em-space-3) var(--em-space-4);
+  min-height: var(--em-tap-min);
+  background: var(--em-surface);
+  border: 1px solid var(--em-border);
+  border-radius: var(--em-radius-md);
+  color: var(--em-text-3);
+  font-size: var(--em-text-body-sm);
+}
+.em-quickcapture kbd {
+  margin-left: auto;
+  padding: 1px 7px;
+  border: 1px solid var(--em-border);
+  border-bottom-width: 2px;
+  border-radius: 6px;
+  font: var(--em-weight-medium) var(--em-text-caption)/1.6 var(--em-font-mono);
+  color: var(--em-text-3);
+}
+
+.em-main {
+  flex: 1;
+  min-width: 0;
+  padding: var(--em-space-8) var(--em-space-10);
+  overflow-y: auto;
+}
+
+/* ==========================================================================
+   3. CARDS
+   ========================================================================== */
+.em-card {
+  position: relative;
+  background: var(--em-surface);
+  border: 1px solid var(--em-hairline);
+  border-radius: var(--em-radius-lg);
+  box-shadow: var(--em-shadow-1);
+  padding: var(--em-space-5);
+  overflow: hidden;
+}
+
+/* --- Doorway card (W-01): the bounded daily surface ------------------------ */
+.em-card--doorway {
+  border-radius: var(--em-radius-2xl);
+  padding: var(--em-space-6);
+  box-shadow: var(--em-shadow-2);
+}
+.em-card--doorway .em-doorway__greeting {
+  font: var(--em-weight-semibold) var(--em-text-title1)/var(--em-leading-tight) var(--em-font-serif);
+  margin: 0 0 var(--em-space-2);
+}
+.em-doorway__promise { color: var(--em-text-2); margin: 0 0 var(--em-space-5); }
+/* welcome-back variant gets the glow */
+.em-card--doorway.is-welcome-back { background: var(--em-surface-warm); }
+
+/* --- Thread card (W-03 Shelf) ---------------------------------------------- */
+.em-card--thread {
+  display: flex;
+  flex-direction: column;
+  gap: var(--em-space-2);
+  min-height: var(--em-tap-min);
+  cursor: pointer;
+  transition: box-shadow var(--em-dur-base) var(--em-ease-enter),
+              transform var(--em-dur-base) var(--em-ease-enter);
+}
+.em-card--thread:hover { box-shadow: var(--em-shadow-2); transform: translateY(-2px); }
+.em-card--thread .em-thread__title {
+  font: var(--em-weight-semibold) var(--em-text-title2)/1.25 var(--em-font-serif);
+  margin: 0;
+}
+.em-thread__last { color: var(--em-text-2); font-size: var(--em-text-body-sm); }
+
+/* warmth = recency (always paired with a text chip — never color alone) */
+.em-card--thread.is-warm    { background: var(--em-surface-warm); box-shadow: var(--em-shadow-glow); }
+.em-card--thread.is-resting { background: var(--em-surface-sunken); border-color: var(--em-hairline); }
+.em-card--thread.is-retired { background: var(--em-surface); opacity: 0.9; }
+
+/* --- Briefing card (W-05 Warm Start) ---------------------------------------- */
+.em-card--briefing {
+  border-radius: var(--em-radius-2xl);
+  padding: var(--em-space-6);
+  box-shadow: var(--em-shadow-2);
+  max-width: 560px;
+}
+.em-briefing__kicker {
+  font-size: var(--em-text-caption);
+  font-weight: var(--em-weight-medium);
+  letter-spacing: 0.02em;
+  color: var(--em-accent-text);
+  margin: 0 0 var(--em-space-2);
+}
+.em-briefing__headline {
+  font: var(--em-weight-semibold) var(--em-text-title1)/var(--em-leading-tight) var(--em-font-serif);
+  margin: 0 0 var(--em-space-4);
+}
+.em-briefing__body {
+  font-size: var(--em-text-body-lg);
+  max-width: var(--em-measure);
+  color: var(--em-text);
+}
+/* "your own words" — serif italic + amber rule (sacred material) */
+.em-briefing__quote,
+.em-spark-quote {
+  font: italic var(--em-weight-regular) var(--em-text-quote)/var(--em-leading-body) var(--em-font-serif);
+  border-left: 2px solid var(--em-amber);
+  padding-left: var(--em-space-4);
+  margin: var(--em-space-4) 0;
+  color: var(--em-text);
+}
+.em-briefing__quote cite { display: block; font: var(--em-weight-regular) var(--em-text-body-sm)/1.4 var(--em-font-sans); font-style: normal; color: var(--em-text-3); margin-top: var(--em-space-1); }
+
+/* The one tiny next step, visually a warm pebble */
+.em-pebble {
+  display: flex; align-items: center; gap: var(--em-space-3);
+  padding: var(--em-space-4);
+  background: var(--em-surface-warm);
+  border: 1px solid color-mix(in srgb, var(--em-accent) 25%, transparent);
+  border-radius: var(--em-radius-lg);
+  font-weight: var(--em-weight-medium);
+}
+.em-pebble::before { content: "●"; color: var(--em-accent); font-size: 12px; }
+.em-pebble__time { margin-left: auto; color: var(--em-text-3); font-size: var(--em-text-body-sm); font-variant-numeric: tabular-nums; }
+
+/* ==========================================================================
+   4. BUTTONS
+   ========================================================================== */
+.em-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--em-space-2);
+  min-height: var(--em-tap-min);
+  padding: 0 var(--em-space-5);
+  border-radius: var(--em-radius-md);
+  border: 1px solid transparent;
+  font: var(--em-weight-semibold) var(--em-text-body)/1 var(--em-font-sans);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background var(--em-dur-micro) var(--em-ease-enter),
+              transform var(--em-dur-micro) var(--em-ease-enter),
+              box-shadow var(--em-dur-micro) var(--em-ease-enter);
+}
+.em-btn:active { transform: scale(0.98); }
+
+/* Primary — THE ember. Exactly one per screen. Ink-on-ember (AA 4.89:1). */
+.em-btn--primary {
+  background: var(--em-accent);
+  color: var(--em-on-accent);
+  box-shadow: var(--em-shadow-1);
+}
+.em-btn--primary:hover  { box-shadow: var(--em-shadow-glow); }
+.em-btn--primary:active { background: var(--em-accent-pressed); color: var(--em-cream); }
+
+/* Secondary — outlined warm neutral */
+.em-btn--secondary {
+  background: var(--em-surface);
+  border-color: var(--em-border);
+  color: var(--em-text);
+}
+.em-btn--secondary:hover { border-color: var(--em-text-3); }
+
+/* Quiet — text-only, for gentle options (Snooze, Not today) */
+.em-btn--quiet {
+  background: none;
+  color: var(--em-text-2);
+  font-weight: var(--em-weight-medium);
+}
+.em-btn--quiet:hover { background: color-mix(in srgb, var(--em-text) 6%, transparent); }
+
+.em-btn--block { display: flex; width: 100%; }
+.em-btn--lg    { min-height: 52px; font-size: var(--em-text-body-lg); border-radius: var(--em-radius-lg); }
+
+/* --- The four-button briefing row (Do it now · Snooze · Shrink · Retire) ---- */
+.em-briefing-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--em-space-2);
+  margin-top: var(--em-space-5);
+}
+.em-briefing-actions .em-btn--primary { grid-row: 1; }   /* Do it now leads */
+@media (min-width: 480px) {
+  .em-briefing-actions { grid-template-columns: 2fr 1fr 1fr 1.4fr; }
+}
+/* Retire with honor is quiet + dusty — an exit with dignity, not a warning */
+.em-btn--retire { color: var(--em-rest); }
+
+/* ==========================================================================
+   5. CHIPS & TOASTS
+   ========================================================================== */
+.em-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--em-space-1);
+  min-height: 28px;
+  padding: 0 var(--em-space-3);
+  border-radius: var(--em-radius-full);
+  background: var(--em-surface-sunken);
+  color: var(--em-text-2);
+  font-size: var(--em-text-caption);
+  font-weight: var(--em-weight-medium);
+  border: 1px solid transparent;
+}
+.em-chip--warm    { background: color-mix(in srgb, var(--em-amber) 30%, var(--em-surface)); color: var(--em-text); }
+.em-chip--resting { background: var(--em-rest-surface);    color: var(--em-rest); }
+.em-chip--done    { background: var(--em-success-surface); color: var(--em-success); }
+.em-chip--gentle  { background: var(--em-warn-surface);    color: var(--em-warn); }   /* soft error/notice — never red */
+.em-chip--queued  { border-color: var(--em-border); background: var(--em-surface); color: var(--em-text-2); } /* "safe, will file when online" */
+/* interactive chip (filters, snooze presets) */
+.em-chip--action  { min-height: 36px; cursor: pointer; font-size: var(--em-text-body-sm); }
+.em-chip--action:hover { border-color: var(--em-text-3); }
+.em-chip--action.is-active { background: var(--em-text); color: var(--em-bg); }
+
+/* --- Toast (O-01 filed toast) ----------------------------------------------
+   Deterministic <300ms shell: renders instantly, thread name fills async. */
+.em-toast {
+  position: absolute;         /* absolute inside device frames; fixed in app */
+  left: 50%;
+  bottom: 118px;              /* clears the bottom nav */
+  transform: translateX(-50%);
+  z-index: var(--em-z-toast);
+  display: flex;
+  align-items: center;
+  gap: var(--em-space-3);
+  max-width: min(92%, 360px);
+  min-height: var(--em-tap-min);
+  padding: var(--em-space-3) var(--em-space-5);
+  background: var(--em-text);           /* inverted surface, both themes */
+  color: var(--em-bg);
+  border-radius: var(--em-radius-full);
+  box-shadow: var(--em-shadow-2);
+  font-size: var(--em-text-body-sm);
+  animation: em-toast-in var(--em-dur-slow) var(--em-ease-enter);
+}
+.em-toast strong { font-weight: var(--em-weight-semibold); font-style: italic; font-family: var(--em-font-serif); }
+.em-toast__spark { color: var(--em-amber); }
+.em-toast__correct {                       /* "tap to correct" affordance */
+  margin-left: var(--em-space-2);
+  border: 0; background: none; cursor: pointer;
+  color: inherit; opacity: 0.75;
+  text-decoration: underline;
+  font-size: inherit;
+  min-height: var(--em-tap-min);
+}
+@keyframes em-toast-in {
+  from { opacity: 0; transform: translate(-50%, 8px); }
+  to   { opacity: 1; transform: translate(-50%, 0); }
+}
+
+/* ==========================================================================
+   6. CAPACITY DIAL (O-06) — 3-position control on the Doorway
+   A low-capacity day renders a COMPLETE plan, never a degraded one:
+   all three states are equal siblings, no state looks like a warning.
+   ========================================================================== */
+.em-capacity {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--em-space-1);
+  padding: var(--em-space-1);
+  background: var(--em-surface-sunken);
+  border-radius: var(--em-radius-full);
+}
+.em-capacity__seg {
+  min-height: var(--em-tap-min);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  border: 0; background: none; cursor: pointer;
+  border-radius: var(--em-radius-full);
+  color: var(--em-text-3);
+  font-size: var(--em-text-caption);
+  font-weight: var(--em-weight-medium);
+  transition: background var(--em-dur-micro) var(--em-ease-enter),
+              color var(--em-dur-micro) var(--em-ease-enter);
+}
+.em-capacity__seg i { font-style: normal; font-size: var(--em-text-body); line-height: 1; }
+.em-capacity__seg.is-active {
+  background: var(--em-surface);
+  color: var(--em-text);
+  box-shadow: var(--em-shadow-1);
+}
+/* the selected segment's tint whispers its mood */
+.em-capacity__seg--low.is-active  { color: var(--em-rest); }     /* dusty: gentle */
+.em-capacity__seg--full.is-active { color: var(--em-accent-text); }
+
+/* ==========================================================================
+   7. LIST ROWS — spark rows (W-04 thread story, W-11 search, W-12 Loose)
+   ========================================================================== */
+.em-list { display: flex; flex-direction: column; }
+.em-spark-row {
+  display: flex;
+  gap: var(--em-space-4);
+  padding: var(--em-space-4) var(--em-space-2);
+  min-height: var(--em-tap-min);
+  border-bottom: 1px solid var(--em-hairline);
+  align-items: flex-start;
+}
+.em-spark-row:last-child { border-bottom: 0; }
+/* timeline dot */
+.em-spark-row__dot {
+  flex: none;
+  width: 8px; height: 8px;
+  margin-top: 8px;
+  border-radius: var(--em-radius-full);
+  background: var(--em-amber);
+}
+.em-spark-row__dot--breadcrumb { background: var(--em-text-3); }   /* auto-notes are neutral */
+.em-spark-row__dot--pebble     { background: var(--em-success); }  /* done steps */
+.em-spark-row__body { flex: 1; min-width: 0; }
+/* the captured thought itself — always quote-styled, the user's words */
+.em-spark-row__text {
+  font: italic var(--em-weight-regular) var(--em-text-quote)/var(--em-leading-body) var(--em-font-serif);
+  margin: 0 0 var(--em-space-1);
+}
+.em-spark-row__meta { font-size: var(--em-text-body-sm); color: var(--em-text-3); }
+.em-spark-row__meta mark {                 /* search-hit highlight */
+  background: color-mix(in srgb, var(--em-amber) 45%, transparent);
+  color: inherit;
+  border-radius: 3px;
+  padding: 0 2px;
+}
+/* Loose Sparks: draggable feel + a "point it home" affordance */
+.em-spark-row--loose { border: 1px dashed var(--em-border); border-radius: var(--em-radius-md); margin-bottom: var(--em-space-2); padding-inline: var(--em-space-4); cursor: grab; background: var(--em-surface); }
+
+/* ==========================================================================
+   8. NIGHT-MODE CAPTURE SURFACE (W-02b)
+   Wrap in data-theme="night" (tokens.css) — this class adds the layout.
+   Pure black, silent, no ember, routes to tomorrow's Doorway.
+   ========================================================================== */
+.em-night {
+  background: var(--em-night-bg);
+  color: var(--em-night-text);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--em-space-6);
+  height: 100%;
+  padding: var(--em-space-8);
+  text-align: center;
+}
+.em-night__hint  { color: var(--em-night-dim); font-size: var(--em-text-body-sm); }
+.em-night__field {
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--em-night-hairline);
+  color: var(--em-night-text);
+  font: italic var(--em-weight-regular) var(--em-text-title3)/var(--em-leading-body) var(--em-font-serif);
+  text-align: center;
+  padding: var(--em-space-3);
+  outline-offset: 4px;
+}
+.em-night__field::placeholder { color: var(--em-night-dim); font-style: italic; }
+.em-night__done {
+  align-self: center;
+  min-width: var(--em-tap-hero); min-height: var(--em-tap-min);
+  border: 1px solid var(--em-night-hairline);
+  background: none; cursor: pointer;
+  border-radius: var(--em-radius-full);
+  color: var(--em-night-text);
+  padding: 0 var(--em-space-6);
+  font-size: var(--em-text-body);
+}
+
+/* ==========================================================================
+   9. EMPTY STATES (W-17)
+   Warm invitation, never "no data". One inviting line + one action.
+   ========================================================================== */
+.em-empty {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--em-space-4);
+  text-align: center;
+  padding: var(--em-space-16) var(--em-space-8);
+  max-width: 420px;
+  margin-inline: auto;
+}
+.em-empty__art {                 /* placeholder for the flat warm illustration */
+  width: 96px; height: 96px;
+  border-radius: var(--em-radius-full);
+  background: var(--em-glow);
+  opacity: 0.8;
+  display: grid; place-items: center;
+  font-size: 36px;
+}
+.em-empty__title { font: var(--em-weight-semibold) var(--em-text-title2)/1.25 var(--em-font-serif); margin: 0; }
+.em-empty__line  { color: var(--em-text-2); max-width: 34ch; margin: 0; }
+
+/* ==========================================================================
+   10. SKELETON LOADING
+   Shell renders instantly; skeletons only appear after 300ms in-app.
+   Slow warm sweep — reduced-motion collapses it to a static block (tokens).
+   ========================================================================== */
+.em-skeleton {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--em-radius-sm);
+  background: var(--em-surface-sunken);
+  color: transparent !important;
+  user-select: none;
+  min-height: 1em;
+}
+.em-skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg,
+    transparent 0%,
+    color-mix(in srgb, var(--em-amber) 18%, transparent) 50%,
+    transparent 100%);
+  animation: em-shimmer var(--em-dur-shimmer) linear infinite;
+}
+@keyframes em-shimmer { to { transform: translateX(100%); } }
+@media (prefers-reduced-motion: reduce) {
+  .em-skeleton::after { animation: none; opacity: 0; }
+}
+.em-skeleton--line  { height: 1em; width: 100%; }
+.em-skeleton--title { height: 1.4em; width: 60%; }
+.em-skeleton--card  { height: 120px; border-radius: var(--em-radius-lg); }
+.em-skeleton--pill  { height: 28px; width: 88px; border-radius: var(--em-radius-full); }
+
+/* ==========================================================================
+   11. ANNOTATION LAYER (spec callouts — NOT product UI; strip before build)
+   Numbered dots pinned on frames + a notes panel beside them.
+   ========================================================================== */
+.em-note-dot {
+  position: absolute;
+  z-index: var(--em-z-modal);
+  width: 24px; height: 24px;
+  display: grid; place-items: center;
+  border-radius: var(--em-radius-full);
+  background: var(--em-dusty-deep);          /* spec-blue: clearly not product */
+  color: #FFFFFF;
+  font: var(--em-weight-semibold) var(--em-text-caption)/1 var(--em-font-sans);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--em-dusty-deep) 25%, transparent);
+  cursor: default;
+}
+
+.em-notes {
+  flex: none;
+  width: 280px;
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: var(--em-space-3);
+  padding: var(--em-space-5);
+  background: var(--em-surface);
+  border: 1px dashed var(--em-dusty);
+  border-radius: var(--em-radius-lg);
+  font-size: var(--em-text-body-sm);
+  line-height: var(--em-leading-meta);
+}
+.em-notes__title {
+  font-weight: var(--em-weight-semibold);
+  color: var(--em-dusty-deep);
+  font-size: var(--em-text-caption);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0;
+}
+.em-notes__item { display: flex; gap: var(--em-space-3); margin: 0; }
+.em-notes__item b {
+  flex: none;
+  width: 20px; height: 20px;
+  display: grid; place-items: center;
+  border-radius: var(--em-radius-full);
+  background: var(--em-dusty-deep);
+  color: #FFFFFF;
+  font: var(--em-weight-semibold) 11px/1 var(--em-font-sans);
+}
+.em-notes__item span { color: var(--em-text-2); }
+
+/* ==========================================================================
+   12. MISC WIREFRAME FURNITURE
+   ========================================================================== */
+
+/* Screen scaffold inside a frame */
+.em-screen {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--em-space-4);
+  padding: var(--em-space-4) var(--em-space-5) var(--em-space-6);
+  overflow-y: auto;
+}
+
+/* Scrim + bottom sheet (snooze picker, correction sheet, shrink sheet) */
+.em-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: var(--em-z-overlay);
+  background: color-mix(in srgb, var(--em-ink) 40%, transparent);
+  display: flex;
+  align-items: flex-end;
+}
+.em-sheet {
+  width: 100%;
+  z-index: var(--em-z-sheet);
+  background: var(--em-surface);
+  border-radius: var(--em-radius-2xl) var(--em-radius-2xl) 0 0;
+  padding: var(--em-space-5) var(--em-space-5) var(--em-space-10);
+  box-shadow: var(--em-shadow-3);
+  animation: em-sheet-in var(--em-dur-slow) var(--em-ease-enter);
+}
+.em-sheet::before {          /* grab handle */
+  content: "";
+  display: block;
+  width: 36px; height: 4px;
+  margin: 0 auto var(--em-space-4);
+  border-radius: var(--em-radius-full);
+  background: var(--em-border);
+}
+@keyframes em-sheet-in {
+  from { transform: translateY(16px); opacity: 0; }
+  to   { transform: translateY(0);   opacity: 1; }
+}
+
+/* Gentle status banner (AI-degraded, offline) — informative, never alarming */
+.em-banner {
+  display: flex; align-items: center; gap: var(--em-space-3);
+  padding: var(--em-space-3) var(--em-space-4);
+  border-radius: var(--em-radius-md);
+  background: var(--em-warn-surface);
+  color: var(--em-warn);
+  font-size: var(--em-text-body-sm);
+}
+.em-banner--rest { background: var(--em-rest-surface); color: var(--em-rest); }
+
+/* Ember-hours progress (cumulative, streak-free) — quiet numerals */
+.em-hours {
+  display: inline-flex; align-items: baseline; gap: var(--em-space-2);
+  color: var(--em-text-2);
+  font-size: var(--em-text-body-sm);
+}
+.em-hours b {
+  font-size: var(--em-text-title3);
+  font-weight: var(--em-weight-semibold);
+  color: var(--em-text);
+  font-variant-numeric: tabular-nums;
+}

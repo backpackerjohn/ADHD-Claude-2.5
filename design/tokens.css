@@ -1,0 +1,348 @@
+/* ==========================================================================
+   Ember — Design Tokens  (v1.0 · 2026-07-17)
+   Source of truth: design/brand-guidelines.md (§3 color, §4 type, §8 motion)
+
+   Usage:
+     <link rel="stylesheet" href="tokens.css">
+   Theming:
+     - Auto light/dark via prefers-color-scheme.
+     - Explicit override via <html data-theme="light"> or "dark".
+     - Night capture surface via data-theme="night" (pure black, silent).
+   All contrast pairs verified WCAG AA — ratios documented in
+   brand-guidelines.md §3.3. Do not tweak hexes without re-running the math.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. RAW PALETTE (theme-independent — prefer semantic tokens below)
+   -------------------------------------------------------------------------- */
+:root {
+  /* Warm neutrals — the hearth family */
+  --em-ink:              #231A12;  /* warm black: text on light, dark-btn text */
+  --em-cream:            #FAF4E8;  /* light app background */
+  --em-paper:            #FFFDF8;  /* light elevated card */
+  --em-parchment:        #F1E7D6;  /* light sunken / resting surface */
+  --em-hearth:           #181210;  /* dark app background */
+  --em-hearth-card:      #221B16;  /* dark elevated card */
+  --em-hearth-raised:    #2B231C;  /* dark sunken/raised alt surface */
+
+  /* Ember — THE accent (one per screen) */
+  --em-ember-core:       #E85D0F;  /* fills, large text, glow. 3.19:1 on cream — large/graphic only */
+  --em-ember-deep:       #B0400A;  /* text-safe ember on light (5.35:1), pressed */
+  --em-ember-bright:     #FF8E3D;  /* dark-theme accent (8.11:1 on hearth) */
+  --em-amber:            #F5B942;  /* glow centers, warm chips (ink on amber 9.69:1) */
+
+  /* Supporting hues */
+  --em-terracotta:       #C06A4D;  /* muted warmth, graphic */
+  --em-terracotta-deep:  #9A4B33;  /* error/emphasis text on light (5.59:1) */
+  --em-terracotta-bright:#E08A6D;  /* dark-theme muted warmth (7.08:1) */
+  --em-sage:             #7E9670;  /* success/growth, graphic */
+  --em-sage-deep:        #4A6141;  /* success text on light (6.23:1) */
+  --em-sage-bright:      #A5BC97;  /* success on dark (9.04:1) */
+  --em-sage-mist:        #DCE5D4;  /* success tint surface */
+  --em-dusty:            #7189B0;  /* rest/night, graphic */
+  --em-dusty-deep:       #44577C;  /* rest text on light (6.61:1) */
+  --em-dusty-bright:     #9FB4D8;  /* rest on dark (8.82:1) */
+  --em-dusty-mist:       #DDE4EF;  /* resting tint surface */
+
+  /* Night capture (pure-black OLED surface) */
+  --em-night-bg:         #000000;
+  --em-night-text:       #B8A28A;  /* 8.57:1 on black */
+  --em-night-dim:        #8A7660;  /* 4.84:1 on black */
+  --em-night-hairline:   #2A2118;
+}
+
+/* --------------------------------------------------------------------------
+   2. SEMANTIC COLOR — LIGHT (default)
+   -------------------------------------------------------------------------- */
+:root {
+  color-scheme: light;
+
+  --em-bg:               var(--em-cream);
+  --em-surface:          var(--em-paper);        /* cards, sheets */
+  --em-surface-sunken:   var(--em-parchment);    /* resting shelf, wells */
+  --em-surface-warm:     #FDF0DC;                /* warm-thread card tint */
+
+  --em-text:             var(--em-ink);          /* 15.61:1 */
+  --em-text-2:           #5C4F42;                /* secondary, 7.23:1 */
+  --em-text-3:           #7A6A58;                /* tertiary, 4.76:1 — smallest meta only */
+
+  --em-accent:           var(--em-ember-core);   /* fills & large accents */
+  --em-accent-text:      var(--em-ember-deep);   /* body-size accent text */
+  --em-on-accent:        var(--em-ink);          /* text ON ember fills (4.89:1) — never white */
+  --em-accent-pressed:   var(--em-ember-deep);
+
+  --em-success:          var(--em-sage-deep);
+  --em-success-surface:  var(--em-sage-mist);
+  --em-rest:             var(--em-dusty-deep);
+  --em-rest-graphic:     var(--em-dusty);
+  --em-rest-surface:     var(--em-dusty-mist);
+  --em-warn:             var(--em-terracotta-deep); /* gentle errors — never red */
+  --em-warn-surface:     #F6E3DA;
+
+  --em-border:           #E5D9C6;
+  --em-hairline:         #EFE6D6;
+  --em-focus-ring:       var(--em-ember-core);
+
+  /* The glow motif — warmth = recency (see brand §7) */
+  --em-glow:             radial-gradient(closest-side,
+                           rgba(245, 185, 66, 0.55) 0%,
+                           rgba(232, 93, 15, 0.28) 55%,
+                           rgba(232, 93, 15, 0) 100%);
+  --em-glow-opacity:     0.30;
+
+  /* Soft, warm-tinted shadows (never gray-blue) */
+  --em-shadow-1:         0 1px 2px rgba(58, 35, 20, 0.06),
+                         0 1px 6px rgba(58, 35, 20, 0.05);
+  --em-shadow-2:         0 2px 6px rgba(58, 35, 20, 0.07),
+                         0 8px 24px rgba(58, 35, 20, 0.08);
+  --em-shadow-3:         0 4px 12px rgba(58, 35, 20, 0.09),
+                         0 16px 48px rgba(58, 35, 20, 0.12);
+  --em-shadow-glow:      0 0 0 1px rgba(232, 93, 15, 0.10),
+                         0 4px 20px rgba(232, 93, 15, 0.18);
+}
+
+/* --------------------------------------------------------------------------
+   3. SEMANTIC COLOR — DARK  (auto + explicit)
+   -------------------------------------------------------------------------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+
+    --em-bg:               var(--em-hearth);
+    --em-surface:          var(--em-hearth-card);
+    --em-surface-sunken:   var(--em-hearth-raised);
+    --em-surface-warm:     #2E2015;
+
+    --em-text:             #F4EBDD;              /* 15.69:1 */
+    --em-text-2:           #C2B4A3;              /* 9.14:1 */
+    --em-text-3:           #94867A;              /* 5.25:1 */
+
+    --em-accent:           var(--em-ember-bright);
+    --em-accent-text:      var(--em-ember-bright); /* 8.11:1 — text-safe on dark */
+    --em-on-accent:        var(--em-hearth);       /* 8.11:1 on ember-bright */
+    --em-accent-pressed:   var(--em-ember-core);
+
+    --em-success:          var(--em-sage-bright);
+    --em-success-surface:  #26301F;
+    --em-rest:             var(--em-dusty-bright);
+    --em-rest-graphic:     var(--em-dusty-bright);
+    --em-rest-surface:     #1F2633;
+    --em-warn:             var(--em-terracotta-bright);
+    --em-warn-surface:     #33211A;
+
+    --em-border:           #3A3028;
+    --em-hairline:         #2B231C;
+    --em-focus-ring:       var(--em-ember-bright);
+
+    --em-glow:             radial-gradient(closest-side,
+                             rgba(245, 185, 66, 0.50) 0%,
+                             rgba(255, 142, 61, 0.26) 55%,
+                             rgba(255, 142, 61, 0) 100%);
+    --em-glow-opacity:     0.40;
+
+    --em-shadow-1:         0 1px 2px rgba(0, 0, 0, 0.35),
+                           0 1px 6px rgba(0, 0, 0, 0.28);
+    --em-shadow-2:         0 2px 6px rgba(0, 0, 0, 0.40),
+                           0 8px 24px rgba(0, 0, 0, 0.35);
+    --em-shadow-3:         0 4px 12px rgba(0, 0, 0, 0.45),
+                           0 16px 48px rgba(0, 0, 0, 0.50);
+    --em-shadow-glow:      0 0 0 1px rgba(255, 142, 61, 0.14),
+                           0 4px 20px rgba(255, 142, 61, 0.22);
+  }
+}
+
+/* Explicit dark override (wins over media query; mirrors block above) */
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --em-bg:               var(--em-hearth);
+  --em-surface:          var(--em-hearth-card);
+  --em-surface-sunken:   var(--em-hearth-raised);
+  --em-surface-warm:     #2E2015;
+
+  --em-text:             #F4EBDD;
+  --em-text-2:           #C2B4A3;
+  --em-text-3:           #94867A;
+
+  --em-accent:           var(--em-ember-bright);
+  --em-accent-text:      var(--em-ember-bright);
+  --em-on-accent:        var(--em-hearth);
+  --em-accent-pressed:   var(--em-ember-core);
+
+  --em-success:          var(--em-sage-bright);
+  --em-success-surface:  #26301F;
+  --em-rest:             var(--em-dusty-bright);
+  --em-rest-graphic:     var(--em-dusty-bright);
+  --em-rest-surface:     #1F2633;
+  --em-warn:             var(--em-terracotta-bright);
+  --em-warn-surface:     #33211A;
+
+  --em-border:           #3A3028;
+  --em-hairline:         #2B231C;
+  --em-focus-ring:       var(--em-ember-bright);
+
+  --em-glow:             radial-gradient(closest-side,
+                           rgba(245, 185, 66, 0.50) 0%,
+                           rgba(255, 142, 61, 0.26) 55%,
+                           rgba(255, 142, 61, 0) 100%);
+  --em-glow-opacity:     0.40;
+
+  --em-shadow-1:         0 1px 2px rgba(0, 0, 0, 0.35),
+                         0 1px 6px rgba(0, 0, 0, 0.28);
+  --em-shadow-2:         0 2px 6px rgba(0, 0, 0, 0.40),
+                         0 8px 24px rgba(0, 0, 0, 0.35);
+  --em-shadow-3:         0 4px 12px rgba(0, 0, 0, 0.45),
+                         0 16px 48px rgba(0, 0, 0, 0.50);
+  --em-shadow-glow:      0 0 0 1px rgba(255, 142, 61, 0.14),
+                         0 4px 20px rgba(255, 142, 61, 0.22);
+}
+
+/* --------------------------------------------------------------------------
+   4. NIGHT CAPTURE THEME (22:00–06:00 Catch surface — pure black, no accent)
+   Apply to the capture surface root only, e.g. <div data-theme="night">.
+   -------------------------------------------------------------------------- */
+[data-theme="night"] {
+  color-scheme: dark;
+  --em-bg:               var(--em-night-bg);
+  --em-surface:          var(--em-night-bg);
+  --em-surface-sunken:   var(--em-night-bg);
+  --em-surface-warm:     var(--em-night-bg);
+  --em-text:             var(--em-night-text);   /* 8.57:1 */
+  --em-text-2:           var(--em-night-dim);    /* 4.84:1 */
+  --em-text-3:           var(--em-night-dim);
+  --em-accent:           var(--em-night-text);   /* no ember at night — nothing glows */
+  --em-accent-text:      var(--em-night-text);
+  --em-on-accent:        var(--em-night-bg);
+  --em-border:           var(--em-night-hairline);
+  --em-hairline:         var(--em-night-hairline);
+  --em-focus-ring:       var(--em-night-text);
+  --em-glow:             none;
+  --em-glow-opacity:     0;
+  --em-shadow-1:         none;
+  --em-shadow-2:         none;
+  --em-shadow-3:         none;
+  --em-shadow-glow:      none;
+}
+
+/* --------------------------------------------------------------------------
+   5. TYPOGRAPHY  (brand §4 — system-first sans + Fraunces display serif)
+   -------------------------------------------------------------------------- */
+:root {
+  --em-font-sans:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                   "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --em-font-serif: "Fraunces", "Iowan Old Style", "Palatino Linotype",
+                   Georgia, "Times New Roman", serif;
+  --em-font-mono:  ui-monospace, "SF Mono", "Cascadia Mono", Menlo, monospace;
+
+  /* Scale — 1rem = 16px */
+  --em-text-display:   2.5rem;    /* 40px — hero */
+  --em-text-title1:    2rem;      /* 32px — briefing headline (serif) */
+  --em-text-title2:    1.5rem;    /* 24px — card/thread titles (serif) */
+  --em-text-title3:    1.25rem;   /* 20px — section heads (sans 600) */
+  --em-text-body-lg:   1.125rem;  /* 18px — briefing body */
+  --em-text-body:      1rem;      /* 16px — default; never smaller for reading */
+  --em-text-body-sm:   0.875rem;  /* 14px — metadata */
+  --em-text-caption:   0.75rem;   /* 12px — chips/nav labels only */
+  --em-text-quote:     1.0625rem; /* 17px — spark quotes (serif italic) */
+
+  --em-leading-tight:  1.2;       /* display/titles */
+  --em-leading-snug:   1.3;       /* title-3 */
+  --em-leading-body:   1.55;      /* reading copy */
+  --em-leading-meta:   1.45;      /* small text */
+
+  --em-weight-regular: 400;
+  --em-weight-medium:  500;
+  --em-weight-semibold:600;       /* max weight — never 700+ */
+
+  --em-measure:        62ch;      /* dyslexia-friendly max line length */
+}
+
+/* --------------------------------------------------------------------------
+   6. SPACING  (4px base scale)
+   -------------------------------------------------------------------------- */
+:root {
+  --em-space-1:  0.25rem;   /*  4px */
+  --em-space-2:  0.5rem;    /*  8px */
+  --em-space-3:  0.75rem;   /* 12px */
+  --em-space-4:  1rem;      /* 16px */
+  --em-space-5:  1.25rem;   /* 20px */
+  --em-space-6:  1.5rem;    /* 24px */
+  --em-space-8:  2rem;      /* 32px */
+  --em-space-10: 2.5rem;    /* 40px */
+  --em-space-12: 3rem;      /* 48px */
+  --em-space-16: 4rem;      /* 64px */
+
+  --em-tap-min:  44px;      /* minimum touch target (law §9.3) */
+  --em-tap-hero: 64px;      /* Catch button */
+}
+
+/* --------------------------------------------------------------------------
+   7. RADII  (generous & warm — nothing sharp)
+   -------------------------------------------------------------------------- */
+:root {
+  --em-radius-sm:   8px;    /* chips, small controls */
+  --em-radius-md:   12px;   /* buttons, inputs */
+  --em-radius-lg:   16px;   /* cards */
+  --em-radius-xl:   20px;   /* hero cards, sheets */
+  --em-radius-2xl:  24px;   /* Doorway card, modals */
+  --em-radius-full: 999px;  /* pills, Catch button, dots */
+}
+
+/* --------------------------------------------------------------------------
+   8. MOTION  (brand §8 — candlelight, never jarring)
+   -------------------------------------------------------------------------- */
+:root {
+  --em-dur-micro:  130ms;   /* press feedback, toggles */
+  --em-dur-base:   200ms;   /* standard transitions */
+  --em-dur-slow:   300ms;   /* large surfaces, glow blooms — the ceiling */
+  --em-dur-shimmer:1800ms;  /* skeleton sweep — slow, not a strobe */
+
+  --em-ease-enter: cubic-bezier(0.22, 0.61, 0.36, 1);  /* soft settle */
+  --em-ease-exit:  cubic-bezier(0.40, 0.00, 0.70, 1);
+  --em-ease-glow:  ease-in-out;
+  /* Never: bounce, elastic, overshoot, shake. */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --em-dur-micro:  1ms;
+    --em-dur-base:   1ms;
+    --em-dur-slow:   1ms;
+    --em-dur-shimmer:1ms;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   9. Z-LAYERS
+   -------------------------------------------------------------------------- */
+:root {
+  --em-z-base:     0;
+  --em-z-raised:   10;    /* cards hover, glow layers */
+  --em-z-sticky:   100;   /* app bars, bottom nav, sidebar */
+  --em-z-overlay:  500;   /* scrims, capture overlay */
+  --em-z-sheet:    600;   /* bottom sheets, pickers */
+  --em-z-modal:    800;   /* dialogs, confirms */
+  --em-z-toast:    900;   /* filed toast — above everything */
+}
+
+/* --------------------------------------------------------------------------
+   10. BASE ELEMENT DEFAULTS (minimal, opt-in via linking this file)
+   -------------------------------------------------------------------------- */
+body {
+  background: var(--em-bg);
+  color: var(--em-text);
+  font-family: var(--em-font-sans);
+  font-size: var(--em-text-body);
+  line-height: var(--em-leading-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--em-focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--em-radius-sm);
+}
+
+::selection {
+  background: rgba(245, 185, 66, 0.35);  /* amber, readable in both themes */
+}
