@@ -75,8 +75,8 @@ No new nouns are introduced. An "arc proposal" is a **draft Arc** (pre-lifecycle
 - **No-arc thread** (empty): Thread shows a quiet "This looks big. Want an arc?" affordance only when the Digest suggests multi-month scope; never nags.
 - **Arc-proposal review**: draft milestones + the reasoning in one warm sentence each ("Tax docs first — you mentioned the 1099 email is already found"). Nothing is real until approved.
 - **Loading**: "Reading this thread's story…" skeleton; decomposition may take seconds (Sonnet-tier).
-- **Ideal (active)**: arc header = goal + progress warmth ("3 of 7 milestones behind you") + **one next Pebble**. The wall of steps is never the default view.
-- **Expanded milestone view** (partial): one tap, opt-in, collapsible; months as a horizon, not a checklist.
+- **Ideal (active)**: arc header = goal + progress warmth ("3 of 7 milestones behind you") + **one next Pebble**. The wall of steps is never the default view — the wall is the documented paralysis trigger ([ADDitude](https://www.additudemag.com/where-do-i-start-adhd-organization/)).
+- **Expanded milestone view** (partial): exists for users who want the shape — one tap on the arc header, collapsed again by default on every open. Months render as a horizon (milestone titles + target months), not a checklist; individual steps inside milestones stay summarized as counts ("4 small steps live here").
 - **Re-planned diff view**: "The plan bent, it didn't break." Shows only what changed (moved / merged / dissolved), old plan ghosted, one acknowledge tap.
 - **Paused**: rests with the Thread; copy: "Paused, not failed. It'll be here."
 - **Deadline-approaching**: gentle Doorway surfacing inside the lead-time window; calm copy, no red, no countdown anxiety.
@@ -96,11 +96,20 @@ No new nouns are introduced. An "arc proposal" is a **draft Arc** (pre-lifecycle
 
 **Failure path A — Decomposition misses the mark:** proposal feels generic or wrong. Mitigation: full inline editing before approval; "try again with a hint" free-text re-prompt; if AI is unavailable or confidence is low, offer a 3-milestone manual skeleton (see §8 fallback). Nothing becomes real without approval — protects R3-class trust.
 
+**W2 — Deadline arc under pressure (deterministic, gentle)** (wireframes W-M4-05…06)
+1. Arc "Move apartments" has a hard date (lease end, Aug 31). At approval, the back-scheduler placed lead-time checkpoints: book movers by Aug 1, start packing by Aug 10, utilities by Aug 20 — pure date math, inspectable in the milestone view.
+2. On July 28 the arc enters `deadline-approaching` for the movers checkpoint. The Doorway carries the arc Pebble ("Get one mover quote, ~15 min") with calm copy — surfacing earlier and slightly more often within M5's notification caps, never louder. No red, no countdown.
+3. (Phase 2) Aug 30, a 2:00 pm walkthrough is on her calendar: the Doorway shows "leave by 1:15 to make the 2:00" and offers one waiting-mode-sized Pebble ("Label the kitchen boxes, ~20 min") for the dead zone before it.
+4. Deadline met → milestone celebration; deadline passes with items open → `deadline-missed` prompt: "The date moved past us — want to re-aim, shrink, or retire?" Whatever she picks, the replan_log records it as a decision, not a failure.
+
+**Failure path A' — Panic-escalation temptation (designed against):** deadline proximity never changes tone, only timing. The copy set for deadline-approaching is fixed and pre-written (§8 guardrails); if the user ignores surfacing, notifications self-silence per M5 — the arc simply waits, then offers the amnesty fork.
+
 **Failure path B — Long absence + moved deadline:** Maya vanishes 5 weeks; meanwhile she'd noted "accountant pushed us to May 1." Nightly job re-plans; on return, Warm Start (M3) opens with the brief, then one diff card: "While you were away the plan bent, it didn't break — two milestones slid to April." One tap acknowledges; next Pebble is already sized for restart momentum. No backlog of missed steps is ever shown ([absence is the norm: Baumel 2019](https://www.jmir.org/2019/9/e14567/)).
 
 ## 8. AI behavior
 
 - **Triggers:** (a) "Make this an arc" (interactive); (b) re-plan events — arc Pebble done/dissolved beyond threshold, milestone done, deadline changed, user nudge, resume-from-pause, absence ≥ 14 days (nightly Batch); (c) phase 2: pre-appointment waiting-mode Pebble selection.
+- **Silent re-planning semantics:** re-plans run in the background and never interrupt — no push, no badge. The result waits as the one-tap diff view at the user's next natural visit to the arc (or inside the Warm Start brief after absence). "Silent" means the *work* is invisible; the *change* is always disclosed, gently, before the new plan is acted on.
 - **Inputs:** Thread Digest (never raw history), open/done Pebbles, user-stated energy patterns and deadline mentions quoted from captures, current milestones + replan_log tail.
 - **Model tier:** Sonnet for decomposition and re-planning (judgment + tone); Haiku for cheap re-balance checks ("did enough change to warrant a Sonnet re-plan?"). Nightly re-plans via Batch API. Prompt caching on stable prefixes. Killswitch: past $5/mo → Haiku-only, re-plans become simple deterministic shifts.
 - **Prompt contract:** produce 3–9 milestones over the stated horizon; every milestone must have a first Pebble sized 2 min–1 hr; respect user-stated constraints verbatim; warm second person; never emit more than one "next step" for display.

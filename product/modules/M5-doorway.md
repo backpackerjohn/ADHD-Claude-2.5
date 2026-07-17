@@ -24,9 +24,23 @@ The Doorway is Ember's daily anchor: one bounded morning card (≤3 items, done 
 
 ## 4. Lifecycle
 
-- **Doorway Card:** `pre_generated` (nightly Batch) → `ready` (at user's local wake window) → `viewed` → `closed` (acted / dismissed) or `skipped` (never viewed by end of day). A dial change while `ready`/`viewed` → `regenerating` → `ready` (new complete card). At local midnight, today's card is archived and tomorrow's replaces it silently — no state called "missed," nothing rolls into "overdue"; a skipped card is retained 30 days for debugging, then deleted. One card per day maximum; welcome-back card supersedes today's card when absence ≥7 days.
-- **Capacity Dial:** persistent setting, defaults to `full`. Position is remembered day-to-day (a low-spoon week stays low-spoon without re-asking). Changing it regenerates today's card and sets the pre-gen default for tomorrow. Never expires, never auto-resets, never commented on.
-- **Notification schedule:** created at onboarding (user picks a morning window), lives until edited. `ignore_count` increments per undismissed-and-unopened notification; at N=5 consecutive ignores → `silenced` (self-silencing) and one gentle check-in is queued instead. Any Doorway open resets `ignore_count` to 0 and clears `silenced` only if the user re-enables in the check-in or settings.
+**Doorway Card**
+- `pre_generated` (nightly Batch) → `ready` (at user's local wake window) → `viewed` → `closed` (acted or dismissed) or `skipped` (never viewed by end of day).
+- Dial change while `ready`/`viewed` → `regenerating` → `ready` (a new complete card, not a filtered one).
+- At local midnight today's card is archived and tomorrow's silently replaces it — there is no state called "missed" and nothing rolls into "overdue."
+- Retention: skipped cards kept 30 days (debug only) then deleted; closed cards kept 12 months to feed variety checks, then deleted.
+- One card per calendar day maximum. When absence ≥7 days, the welcome-back card supersedes today's card.
+
+**Capacity Dial**
+- Persistent setting; defaults to `full`. Created at onboarding, never expires.
+- Remembered day-to-day: a low-spoon week stays low-spoon without re-asking.
+- Changing it regenerates today's card and sets the pre-gen default for tomorrow's Batch run.
+- Never auto-resets, never trends, never commented on — dial history exists only as a pre-gen input.
+
+**Notification schedule**
+- Created at onboarding (user picks a morning window); lives until edited; deterministic forever.
+- `ignore_count` increments per notification neither opened nor dismissed-with-intent; at N=5 consecutive ignores → `silenced`, and one gentle check-in is queued in its place ("Want us to keep knocking, or just leave the card by the door?").
+- Any Doorway open resets `ignore_count` to 0. `silenced` clears only via the check-in or settings — never automatically.
 
 ## 5. Actions
 
@@ -41,15 +55,19 @@ The Doorway is Ember's daily anchor: one bounded morning card (≤3 items, done 
 
 ## 6. States
 
-- **Normal day (ideal):** card with ≤3 items — (1) warm-threads line ("Three threads are warm today"), (2) ONE suggested Pebble with size estimate ("find the 1099 email — about 5 min"), (3) ONE resurfaced Spark with an action ("Tuesday's logo idea — want to look?"). Readable in ≤90 seconds.
-- **Low-spoon day:** dial at low-spoon renders a COMPLETE plan of exactly one tiny thing, framed as the whole plan ("Today: one 2-minute thing, and that's a full day"). Never a visibly trimmed list, never "reduced mode," no residue of the fuller card. Medium: 2 items, smaller Pebble.
-- **Welcome-back (returning after ≥7 quiet days):** headline "Welcome back. Nothing is lost. Here's what's still warm." — at most 2 warm Threads and one tiny step; explicitly NO backlog wall, no count of days away, no accumulated list. If auto-pause fired (45 idle days), one line: "We paused your billing while you were away — everything is safe."
-- **Nothing-warm / empty (fresh account, or every Thread resting):** no fake card; a single capture prompt instead ("Nothing's warm yet. Catch a thought and Ember will take it from there") plus, if Threads exist but all rest, one gentle Shelf link ("Your shelf is resting — browse it anytime").
-- **Loading / regenerating:** cached previous card shown grayed with a one-line shimmer only during dial-change regeneration (<5 s target); never a blank spinner at wake — pre-gen guarantees readiness.
-- **Notification-silenced:** notifications off after 5 consecutive ignores; Doorway still generates daily. Card carries a quiet one-liner: "We've stopped pinging you — the card is here whenever you want it. Turn pings back on?"
-- **Card-skipped:** no consequence state. Tomorrow's card regenerates as if today went fine. No "you missed yesterday," no streak, no visual debt.
-- **Offline:** last generated card shown from local cache with a subtle "as of last night" stamp; all deterministic actions (skip, dial, snooze) queue and sync.
-- **Error (pre-gen failed):** deterministic fallback card, see §10.
+- **Normal day (ideal):** card with ≤3 items —
+  1. warm-threads line ("Three threads are warm today"),
+  2. ONE suggested Pebble with size estimate ("find the 1099 email — about 5 min"),
+  3. ONE resurfaced Spark with an action attached ("Tuesday's logo idea — want to look?").
+  Readable in ≤90 seconds; no fourth item exists under any condition.
+- **Low-spoon day:** dial at low-spoon renders a COMPLETE plan of exactly one tiny thing, framed as the whole plan ("Today: one 2-minute thing, and that's a full day"). Never a visibly trimmed list, never a "reduced mode" label, no residue of the fuller card. Medium: 2 items with a smaller Pebble.
+- **Welcome-back (≥7 quiet days):** headline "Welcome back. Nothing is lost. Here's what's still warm." At most 2 warm Threads and one tiny step. Explicitly NO backlog wall, no count of days away, no accumulated list. If auto-pause fired (45 idle days), one added line: "We paused your billing while you were away — everything is safe."
+- **Nothing-warm / empty (fresh account, or every Thread resting):** no fake card. A single capture prompt instead ("Nothing's warm yet. Catch a thought and Ember will take it from there"); if Threads exist but all rest, one gentle Shelf link ("Your shelf is resting — browse it anytime").
+- **Loading / regenerating:** only during dial-change regeneration — previous card grayed with a one-line shimmer (<5 s target). Never a blank spinner at wake; pre-gen guarantees readiness.
+- **Notification-silenced:** pings off after 5 consecutive ignores; the Doorway still generates daily. Card carries a quiet one-liner: "We've stopped pinging you — the card is here whenever you want it. Turn pings back on?"
+- **Card-skipped:** a non-state by design. Tomorrow's card regenerates as if today went fine. No "you missed yesterday," no streak, no visual debt.
+- **Offline:** last generated card served from local cache with a subtle "as of last night" stamp; deterministic actions (skip, dial, snooze) queue and sync later.
+- **Error (pre-gen failed):** deterministic fallback card — see §10; the user never sees an error state at wake.
 
 ## 7. Workflows
 

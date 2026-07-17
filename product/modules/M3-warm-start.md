@@ -59,7 +59,13 @@ Warm Start eliminates project re-entry friction — the contest-winning, verifie
 - **First-ever briefing (thin corpus):** Thread has <3 Sparks and no Breadcrumbs. No fabricated warmth: "This thread is young — here's everything I have," shows the raw Sparks verbatim plus one suggested Pebble. Sets expectations honestly (R6: never fake richness).
 - **Whisper (gap <3 days):** one line inline at the top of the Thread, not a screen: "Yesterday you stopped mid-email to the accountant — the deduction question." No buttons except the Pebble chip.
 - **Brief (gap 3–13 days):** compact card (WS-02): where you were + last Breadcrumb + one Pebble + the four buttons.
-- **Full (gap ≥14 days):** full-screen warm briefing (WS-03), second person, five sections: **where you were → what you were thinking** (verbatim Spark quotes, visually marked as quotes with dates) → **why you cared → what changed while you were gone** (deadlines moved, related Sparks arrived) → **one tiny Pebble**. Four buttons. Tone: "Welcome back. Nothing is lost."
+- **Full (gap ≥14 days):** full-screen warm briefing (WS-03), second person, tone "Welcome back. Nothing is lost." Five sections in fixed order:
+  1. **Where you were** — last actions and the final Breadcrumb, narrated.
+  2. **What you were thinking** — verbatim Spark quotes, visually styled as quotes with dates: your past self talking to you.
+  3. **Why you cared** — the Thread's origin motivation, from the Digest.
+  4. **What changed while you were gone** — deadlines moved, related Sparks arrived, Arc re-plans.
+  5. **One tiny Pebble** — a single next step sized to restart momentum, never a step list.
+  Followed by the four buttons: **Do it now · Snooze · Shrink · Retire with honor.**
 - **Low-confidence / insufficient memory:** grounding check failed or Digest too sparse for the gap. Shows "I don't have enough memory of this thread yet" + raw thread story + last Breadcrumb + generic small Pebble ("re-read your last three notes"). Never guesses.
 - **AI unavailable (offline / outage):** deterministic fallback — raw thread story (chronological Sparks, steps, Breadcrumbs from M2) with last Breadcrumb pinned on top. Product remains usable; briefing marked "Ember's memory is resting — here's the raw story."
 - **Snoozed:** Thread shows a quiet "briefing resting" glyph; no countdown, no red.
@@ -68,11 +74,26 @@ Warm Start eliminates project re-entry friction — the contest-winning, verifie
 
 ## 7. Workflows
 
-**Happy path — full re-entry (WS-03 → WS-04):** Maya taps her resting "Etsy shop" Thread after 6 weeks (Shelf, or welcome-back Doorway link). Loading skeleton → full briefing: where she was, two verbatim Sparks from March, why she cared, what changed, Pebble: "open the shop banner file and just look at it (2 min)." She taps **Do it now** → focus surface with only the Pebble, the Thread's key links, and capture field. She works 20 minutes, marks done → sub-300ms micro-reward → exit writes auto-Breadcrumb → tomorrow's Doorway knows.
+**Happy path — full re-entry after 6 weeks (Shelf → WS-03 → WS-04):**
+1. Maya taps her resting "Etsy shop" Thread on the Shelf (or the welcome-back Doorway link, which deep-links to the same place).
+2. Loading skeleton with honest copy: "You've been away 6 weeks — warming this up…" (<4s).
+3. Full briefing (WS-03) renders: where she was (from Breadcrumbs), what she was thinking (two verbatim Sparks from March, dated and quote-styled), why she cared, what changed while she was gone (the craft-fair deadline moved), and one Pebble: "open the shop banner file and just look at it (2 min)."
+4. She taps **Do it now** → focus surface (WS-04): only the Pebble, the Thread's key links, and a capture field. No other UI.
+5. She works 20 minutes, marks the Pebble done → deterministic micro-reward fires in <300ms (novelty-rotated variant) → ember hours accrue.
+6. She leaves mid-flow (as ADHD focus breaks do) → auto-Breadcrumb writes itself on exit → tomorrow's Doorway knows.
 
-**Failure path 1 — freeze on the Pebble:** She reads the Pebble and freezes (the wall of awful, [ADHD Essentials](https://www.adhdessentials.com/essentials/the-wall-of-awful/)). Taps **Unstick** → 3 bounded exchanges (§8) → ends holding a 2-minute physical first move ("open the laptop and put the banner file on screen, that's all"). Do-it / not-today; not-today is accepted without guilt and the session closes.
+**Failure path 1 — freeze on the Pebble (WS-04 → WS-06):**
+1. She reads the Pebble and freezes — the wall of awful ([ADHD Essentials](https://www.adhdessentials.com/essentials/the-wall-of-awful/)).
+2. Taps **Unstick** ("why is this hard?") → exchange 1: name the feeling (chips + free text).
+3. Exchange 2: shrink the stakes ("this is a look, not a launch — nothing you do today is graded").
+4. Exchange 3: one 2-minute physical first move ("open the laptop and put the banner file on screen, that's all"). Session closes — no fourth turn exists.
+5. Two buttons: start the 2 minutes / not today. "Not today" is accepted without guilt; the Thread rests, nothing turns red.
 
-**Failure path 2 — the briefing lands wrong:** The briefing quotes a Spark she now disagrees with framing of. She long-presses → "that's not what I meant" → optional one-line correction → quote suppressed, feedback logged. Briefing offers regenerate-once. If she instead realizes the project itself is dead, **Retire with honor** → Closing Note draft → she edits one line → confirm → Retired gallery, shame converted to history.
+**Failure path 2 — the briefing lands wrong (WS-03 → WS-05):**
+1. The briefing quotes a Spark whose framing she now disputes. Long-press → "that's not what I meant" → optional one-line correction.
+2. Quote suppressed thread-wide; feedback logged to the eval set; briefing offers a one-time regenerate.
+3. If instead she realizes the project itself is dead: **Retire with honor** → AI drafts the Closing Note ("You built the hard part. It taught you resin casting.").
+4. She edits one line, taps **confirm** (explicit — retirement never happens on one tap) → Thread → retired, note shelved in the Finished & Retired gallery. Graveyard becomes history.
 
 ## 8. AI behavior
 
@@ -80,10 +101,23 @@ Warm Start eliminates project re-entry friction — the contest-winning, verifie
 - **Inputs (digest-first, R6):** the Thread's maintained **Digest** — never raw history — plus last 3 Breadcrumbs, candidate Pebbles from the Arc (M4), gap length, and top-k Sparks retrieved for quotation. Prompt caching on the stable system prefix.
 - **Model tier:** Sonnet-tier for briefings and Closing Notes; Haiku-tier for whisper one-liners and Unstick exchanges; killswitch drops all to Haiku past $5/mo/user. Cost per full briefing ≈ $0.026 (thesis-B §8: 20/mo ≈ $0.51).
 - **Output contract:** structured sections + `quoted_spark_ids[]`; tone warm, second person, zero guilt; exactly one Pebble, sized 2 min–1 hr to restart momentum, not finish (the middle-60% dead zone, [Tiimo](https://www.tiimoapp.com/resource-hub/finishing-what-you-start-adhd)).
-- **Grounding rule (hard):** every quoted line must byte-match a real stored Spark (post-generation verifier checks `quoted_spark_ids` against the corpus; mismatch → strip quote or regenerate once → else insufficient-memory state). Every factual section must trace to Digest or Breadcrumb content. **Never hallucinate memory; fallback is always "I don't have enough memory of this thread yet."**
-- **Unstick contract:** bounded 3-exchange script, hard-capped, NOT a chat: (1) *name the feeling* (chips + free text: "which is closest — too big / too boring / scared it'll be bad / don't know where to start?"), (2) *shrink the stakes* (reframes the step as an unmeasured draft/trial), (3) *2-minute physical first move* (concrete, bodily, timeboxed). No fourth turn exists in the UI. Transcripts feed the golden eval set (winner.md steal #5).
-- **Quality harness:** golden-set evals built from concierge transcripts; "that's not what I meant" flags feed the set (R6 mitigation).
-- **Deliberately NOT AI:** gap computation and tier selection, snooze handling, micro-rewards (deterministic, <300ms, novelty-rotating from a pre-built pool — delay-discounting compliance, [JAD meta-analysis](https://journals.sagepub.com/doi/10.1177/1087054718772138); rotation per novelty-processing evidence, [Brain](https://academic.oup.com/brain/article/141/5/1545/4934119)), ember-hours accrual, retire confirmation, notification scheduling.
+- **Grounding rule (hard, R6):**
+  - Every quoted line must byte-match a real stored Spark. A post-generation verifier (deterministic code, not AI) checks each `quoted_spark_id` against the corpus.
+  - Mismatch → strip the offending quote; if the briefing can't stand without it → regenerate once → else render the insufficient-memory state.
+  - Every factual claim in "where you were / what changed" must trace to Digest or Breadcrumb content; the model is instructed to omit, never invent.
+  - **Never hallucinate memory. The fallback is always honest: "I don't have enough memory of this thread yet."** A thin briefing that admits thinness beats a rich briefing that lies — briefing quality is the product (risk R6).
+- **Unstick contract (absorbed from Ignition — bounded, NOT a chat, hard-capped at 3 exchanges):**
+  1. *Name the feeling* — chips + free text: "which is closest — too big / too boring / scared it'll be bad / don't know where to start?"
+  2. *Shrink the stakes* — reframes the step as an unmeasured draft/trial, not a performance.
+  3. *2-minute physical first move* — concrete, bodily, timeboxed ("stand up and open the paint can").
+  - No fourth turn exists in the UI; there is no free-form chat surface anywhere in the flow (chat is a blank-page decision — thesis-B §6).
+  - Transcripts double as golden-set prompt-eval data (winner.md steal #5).
+- **Quality harness:** golden-set evals seeded from Wizard-of-Oz concierge transcripts; "that's not what I meant" flags continuously feed the set; ship gate mirrors the concierge threshold — ≥50% of briefings rated "I could restart from this alone" (thesis-B §9).
+- **Deliberately NOT AI:**
+  - Gap computation and tier selection (pure date math).
+  - Snooze handling and briefing cache/expiry.
+  - Micro-rewards: deterministic, fired in <300ms from a pre-built novelty-rotating pool, kept entirely out of the API round-trip — delay-discounting compliance ([JAD meta-analysis](https://journals.sagepub.com/doi/10.1177/1087054718772138)); rotation counters habituation ([Brain, novelty processing](https://academic.oup.com/brain/article/141/5/1545/4934119); alarm-blindness evidence, [My Patient Advice](https://mypatientadvice.co.uk/knowledge-base/why-do-adhd-brains-still-ignore-phone-alarms/)).
+  - Ember-hours accrual, retire confirmation, notification scheduling, billing.
 
 ## 9. Scale
 

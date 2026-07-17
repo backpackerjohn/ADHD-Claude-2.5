@@ -27,9 +27,20 @@ Catch is Ember's zero-decision capture layer and the daily verb of the product (
 
 ## 4. Lifecycle
 
-**Spark:** created by any capture surface or import → `unfiled (Loose)` or `filed` (see §8 gate) → may become `resurfaced` (by M5 Doorway) or `archived` (user action or Thread retirement). Transitions: Loose→filed (auto after classifier retry, or user one-drag); filed→filed' (one-drag correction, logged to `correction_history`); any→archived (user; undoable 30 days, then purge on request only — default retention is forever, memory is the product). Deletion: explicit user delete = hard delete of body + audio within 24h. Audio: raw audio kept 7 days after successful transcription then deleted; transcript is permanent.
+**Spark** (states per brief object model: unfiled (Loose) → filed → resurfaced / archived):
+- **Created by:** any §5 capture surface, or an ImportBatch. Creation is local-first: the Spark row is committed on-device before any network or AI work.
+- **unfiled (Loose) → filed:** classifier auto-file above threshold (§8), a later batch retry, or a user one-drag. There is no other exit from Loose — Loose Sparks never expire and are never auto-archived.
+- **filed → filed′ (refiled):** one-drag correction; old and new Thread ids appended to `correction_history` (this log is the classifier's training signal).
+- **filed → resurfaced:** set by M5 when the Doorway shows the Spark ("you had a good idea about the shop logo on Tuesday"); M1 only stores the flag.
+- **any → archived:** user swipe, or side-effect of Thread retirement (M2). Undo highlighted for 30 days; restorable forever after that.
+- **Deletion:** only by explicit user delete — hard-deletes body, transcript, and audio within 24h. Default retention is forever: memory is the product; there is no auto-purge.
+- **Audio:** raw audio kept 7 days after a successful transcription, then deleted; the transcript is permanent. Audio with no transcript yet is kept indefinitely (see §10 ASR failure).
 
-**ImportBatch:** created by web-app import wizard → `running` → `paused_cap` (hit per-batch AI spend cap; resumable) → `complete` or `partial` (some items failed). Retained as a receipt the user can reopen.
+**ImportBatch:**
+- **Created by:** the web-app import wizard (§5). One batch per uploaded export file.
+- **running → paused_cap:** per-batch AI spend cap hit (§8); resumes automatically via the nightly batch job, or manually.
+- **running → complete | partial:** `partial` when some items failed to parse (§10); the receipt lists them with one-tap retry.
+- **Retention:** kept permanently as a receipt; deletable as a unit, which archives (not deletes) its Sparks unless the user confirms full removal.
 
 ## 5. Actions
 
@@ -102,12 +113,13 @@ No watch app, no browser clipper in v1 (R5: month-one scope is mobile app + widg
 
 ## 10. Errors
 
-- **Sync conflicts (phone vs web):** Sparks are append-only, so creation never conflicts. Conflicting *filing* states (e.g., corrected on web while offline phone auto-filed) resolve last-writer-wins by `sync_rev` with one exception: a **user correction always beats a classifier decision** regardless of timestamp. Conflict is silent; no dialog ever asks the user to merge a thought.
-- **Partial import:** unreadable/failed items listed on the ImportBatch receipt with "retry these" one-tap; batch marked `partial`, re-running is idempotent. Never fail the whole batch for bad items.
-- **ASR failure:** see §6/§7-W3 — audio always retained until a transcript exists; retry ladder: on-device → server (consented) → "type it" with audio playback.
-- **AI outage:** everything routes to Loose with honest chip copy; recovery job files the backlog and emits one summary toast.
-- **User mistakes:** every destructive/filing action has toast-undo (5s) plus 30-day restore for archive; deleted-by-mistake import removable/re-runnable as a unit.
-- **Duplicate capture** (double-tap widget): identical Spark within 10s collapses into one, silently.
+- **Sync conflicts (phone vs web):** Sparks are append-only, so creation never conflicts — a Spark captured on both surfaces is two Sparks (then deduped per below). Conflicting *filing* states (e.g., corrected on web while the offline phone's queued auto-file lands later) resolve last-writer-wins by `sync_rev`, with one hard exception: a **user correction always beats a classifier decision**, regardless of timestamp. Resolution is silent; no dialog ever asks the user to merge a thought.
+- **Partial import:** unreadable/corrupt/oversize items are skipped and listed on the ImportBatch receipt with a one-tap "retry these"; batch marked `partial`, never failed wholesale. Re-running the same export is idempotent (`dedupe_hash`): already-imported notes are skipped and counted, not duplicated.
+- **ASR failure:** see §6 and §7-W3 — audio is always retained until a transcript exists; retry ladder: on-device retry → server ASR (consented) → "type it" with audio playback inline.
+- **AI outage / rate limit:** capture unaffected (deterministic path); filing backlog routes to Loose with honest chip copy ("settling later"); a recovery job drains the backlog when the API returns and emits one summary toast, not a storm.
+- **Partial write (Spark saved, embedding/digest enqueue lost):** outbox pattern — side-effects are re-derived from the Spark row by a reconciliation sweep; the Spark itself is the only write that must succeed at capture time.
+- **User mistakes:** every destructive or filing action has toast-undo (5s); archive has 30-day highlighted restore; an entire ImportBatch is removable or re-runnable as a unit ("Remove this import").
+- **Duplicate capture** (double-tap widget, share-sheet double-fire): identical body within 10s collapses into one Spark, silently.
 
 ## 11. Permissions
 
