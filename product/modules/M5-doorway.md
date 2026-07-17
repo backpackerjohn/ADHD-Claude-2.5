@@ -79,14 +79,15 @@ The Doorway is Ember's daily anchor: one bounded morning card (≤3 items, done 
 
 ## 8. AI behavior
 
-- **Trigger:** nightly Batch job (per-user local ~03:00) generates the Doorway Card; on-demand regeneration on dial change or first-open-after-absence (welcome-back).
-- **Inputs:** per-Thread Digests (never raw history), warm/resting states, next Pebbles from active Arcs (M4), night-captured and resurface-eligible Sparks, dial position, recent card history (to avoid repeating framing), days-since-last-open.
-- **Model tier:** Sonnet-tier for card composition and welcome-back copy; Batch API (50% off) for nightly pre-gen; Haiku-only under the $5/mo spend killswitch. Notification copy pool: ~2 weeks of varied lines pre-generated nightly/weekly in the same Batch run — notifications never call a model at send time.
-- **Prompt contract:** warm second person; select at most 3 items; exactly one Pebble and at most one Spark; low-spoon output must read as a complete plan of one tiny thing; vary opening line vs. last 7 cards; forbidden vocabulary enforced (no "task list," "overdue," "backlog," "streak," no guilt).
-- **Output contract:** strict JSON — `{warm_line, pebble_ref, pebble_framing, spark_ref?, spark_action, opening_variant_id}`; refs must be valid IDs (validated deterministically before render; invalid ref → that slot drops, card still renders).
-- **Guardrails:** never invents Threads/Pebbles/Sparks; never more than 3 items regardless of model output; never mentions dial history or days missed; welcome-back never enumerates the backlog.
-- **Fallback:** see §10 — deterministic card from cached data; the product never blocks on live inference at wake time.
-- **Deliberately NOT AI:** notification scheduling and caps, quiet hours, self-silencing counter, dial mechanics and persistence, skip/rollover logic, night-capture routing, billing-pause detection. All deterministic and inspectable — no model ever decides *when* to interrupt.
+- **Triggers:** nightly Batch job (per-user, local ~03:00) pre-generates the Doorway Card so it is ready at wake; on-demand regeneration on dial change; welcome-back composition on first open after ≥7 days.
+- **Inputs:** per-Thread Digests (never raw history), Thread warm/resting states, next Pebbles from active Arcs (M4), night-captured and resurface-eligible Sparks, current dial position, last 7 cards (framing-variety check), days-since-last-open, deadline lead-time flags.
+- **Model tier:** Sonnet-tier for card composition and welcome-back copy; nightly runs on the Batch API (50% off); drops to Haiku-only past the $5/mo spend killswitch.
+- **Notification copy pool:** ~2 weeks of varied notification lines pre-generated in the same Batch run and stored per user. Send time never calls a model — the deterministic scheduler draws the next unused line from the pool (anti-habituation via variation, per §1 evidence). Pool exhaustion falls back to a curated static set, still rotated.
+- **Prompt contract:** warm second person; at most 3 items; exactly one Pebble and at most one Spark; low-spoon output must read as a complete plan of one tiny thing; opening line must differ from the last 7 cards; forbidden vocabulary enforced (no "task list," "to-do," "overdue," "backlog," "streak"; zero guilt).
+- **Output contract:** strict JSON — `{warm_line, pebble_ref, pebble_framing, spark_ref?, spark_action, opening_variant_id}`. Refs are validated deterministically against real IDs before render; an invalid ref drops that slot and the card still renders.
+- **Guardrails:** never invents Threads/Pebbles/Sparks; the renderer hard-caps items at 3 regardless of model output; never mentions dial history or days missed; welcome-back never enumerates a backlog.
+- **Low-confidence / AI-unavailable fallback:** deterministic card from cached data (§10). The product never blocks on live inference at wake time.
+- **Deliberately NOT AI:** notification scheduling, the 2/day hard cap, quiet hours, the self-silencing counter, dial mechanics and persistence, skip/rollover logic, night-capture routing, billing-pause detection. All deterministic and inspectable — no model ever decides *when* to interrupt the user.
 
 ## 9. Scale
 

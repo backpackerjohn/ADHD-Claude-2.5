@@ -127,9 +127,14 @@ Warm Start eliminates project re-entry friction — the contest-winning, verifie
 
 ## 10. Errors
 
-- **Generation failure / timeout:** one silent retry → AI-unavailable fallback (raw thread story + last Breadcrumb). Never a blank screen; never "try again later" as the only content.
-- **Stale digest:** briefing detects `digest_version < last_activity` (e.g., last night's Batch missed new Sparks) → generates from Digest + delta of raw items since digest timestamp; if delta too large, shows "catching up on your latest notes" and runs an inline digest refresh first.
-- **User disputes a quote ("that's not what I meant"):** quote suppressed thread-wide, correction stored, logged to eval set; offer one regenerate. Repeated disputes on a Thread lower its briefing confidence → prefer showing raw Sparks over paraphrase.
+- **Generation failure / timeout:** one silent retry (8s hard timeout) → AI-unavailable fallback (raw thread story + last Breadcrumb). Never a blank screen; never "try again later" as the only content — the user came here to re-enter, and re-entry must always be possible.
+- **Stale digest:** briefing detects `digest_version < last_activity` (e.g., last night's Batch missed new Sparks).
+  - Small delta → generate from Digest + the raw items since the digest timestamp.
+  - Large delta (heavy capture burst, fresh import) → "catching up on your latest notes…" and run an inline digest refresh first; fall back to raw story if that fails too.
+- **User disputes a quote ("that's not what I meant"):**
+  - Quote suppressed thread-wide immediately; optional correction stored alongside the original Spark (the Spark itself is never edited).
+  - Dispute logged to the eval pipeline (R6 harness); one regenerate offered.
+  - Repeated disputes on a Thread lower its briefing confidence → future briefings prefer showing raw Sparks over AI paraphrase for that Thread.
 - **Accidental retire:** explicit confirm on the flow; un-retire from Shelf restores warm/resting state; Closing Note preserved as history.
 - **Sync conflict (two devices):** Briefings are device-local ephemera — regenerate, never merge. Pebble done/state conflicts resolve last-write-wins with union of Breadcrumbs (no data loss).
 - **Unstick misuse (user keeps reopening):** each session is fresh and capped at 3 exchanges; after 3 sessions on one Pebble in a day, offer Shrink instead ("this step might just be too big").

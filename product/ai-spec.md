@@ -149,3 +149,8 @@ Nothing user-facing ever blocks on a model call except sync briefings/unstick, w
 - **Briefing quality rubric (R6)** — each golden-set briefing scored 1–5 on: **Groundedness** (every claim traceable to Digest/Spark; any fabricated quote = automatic 1), **Warmth** (tone rules, zero guilt, banned-word absence), **Actionability** ("could the user restart from this alone?" — the concierge threshold ≥ 50% yes, target 70%). Scored by Opus-as-judge (offline, per cost-model role) with a 10% human-audited sample.
 - **Regression gates:** no prompt, model, or threshold change ships without a golden-set run; gate = no metric drops > 2 points absolute vs current baseline, zero banned-word emissions, zero grounding failures. Unstick and safety-card paths have dedicated red-team suites (crisis phrasing variants must always yield the static card).
 - **Live monitors:** weekly dashboards for filing accuracy, briefing thumbs-down rate by category, briefing→action-within-48h rate (the concierge metric), per-user spend distribution vs killswitch line.
+- **Cadence & ownership:** golden-set runs on every prompt PR (CI-gated); accuracy/rubric dashboards reviewed weekly; a monthly deep-dive re-reads a sample of raw briefings against Digests to catch drift the judge misses. The AI-systems owner signs off on every gate.
+
+## Change control
+
+This spec conforms to the brief; changes to routing tiers, thresholds, banned words, safety behavior, or any new AI call require editing this file, passing the §7 regression gates, and a build-log entry. The five prompt contracts in §2 are versioned; a contract version bump invalidates cached prefixes deliberately (cache key includes contract version).
