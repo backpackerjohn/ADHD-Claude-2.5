@@ -29,7 +29,7 @@ Warm Start eliminates project re-entry friction — the contest-winning, verifie
 - States: `generated → acted | snoozed` (brief's canonical states). Module-internal sub-outcomes of `acted`: did-pebble, shrunk, retired.
 - A snoozed Briefing expires when the Thread is next opened — regenerated fresh, because the gap has changed.
 - Cached 24h per Thread (a returning user re-opening the same Thread sees the same briefing, no double spend).
-- Retention: last 5 Briefings kept per Thread (for quote-dispute review); older ones deleted. Thread deletion hard-deletes all.
+- Retention: last 5 full Briefing artifacts kept per Thread (for quote-dispute review); older ones deleted — a lightweight permanent "came back here" story marker remains in the Thread story (owned by M2) even after pruning. Thread deletion hard-deletes all.
 
 **Closing Note**
 - Created: only via Retire with honor. Drafted by AI → optionally edited by the user → **explicitly confirmed** → stored with the retired Thread in the Finished & Retired gallery.
@@ -47,8 +47,8 @@ Warm Start eliminates project re-entry friction — the contest-winning, verifie
 |---|---|---|---|---|
 | Open briefing | Opening a Thread after a gap; tapping a resting Thread on the Shelf; "welcome back" link on Doorway Card | tap | Renders tiered Briefing (W-05b/W-05) | dismissible |
 | **Do it now** | Briefing button | tap | Opens focus surface (W-07) with the Pebble; Pebble → accepted | Back exits; auto-Breadcrumb writes on exit |
-| **Snooze** | Briefing button | tap (+ optional "how long?" chips: few days / next week / whenever) | Briefing → snoozed; Thread stays where it is (warm stays warm); no reminder debt, no badge | reopen Thread anytime |
-| **Shrink** | Briefing button | tap → scope sheet (O-04) | Renegotiates Arc scope with M4 ("novel" → "novella"; "whole room" → "one wall"); Arc → re-planned; new smaller Pebble offered | revert scope from Arc history |
+| **Snooze** | Briefing button | tap (+ optional "how long?" chips per O-03: tomorrow · next week · when I touch it) | Briefing → snoozed; Thread stays where it is (warm stays warm); no reminder debt, no badge | reopen Thread anytime |
+| **Shrink** | Briefing button | tap → scope sheet (O-04) | Renegotiates Arc scope with M4 ("novel" → "novella"; "whole room" → "one wall"); Arc → re-planned; new smaller Pebble offered. On an arc-less Thread the button renders as **"Smaller step"** and simply shrinks the offered Pebble (no Arc involved) | revert scope from Arc history |
 | **Retire with honor** | Briefing button | tap → Closing Note draft → **explicit confirm** | Thread → retired; AI Closing Note ("You built the hard part. It taught you resin casting.") saved to Finished & Retired gallery | un-retire from Shelf; note preserved |
 | **Unstick** ("why is this hard?") | Available on any Pebble — briefing, focus surface, Doorway | tap | Bounded 3-exchange script (W-06), see §8 | close anytime |
 | Mark Pebble done | Focus surface | tap | Pebble → done; deterministic micro-reward <300ms, novelty-rotating; ember hours accrue | un-mark within session |
@@ -65,18 +65,18 @@ Warm Start eliminates project re-entry friction — the contest-winning, verifie
   3. **Why you cared** — the Thread's origin motivation, from the Digest.
   4. **What changed while you were gone** — deadlines moved, related Sparks arrived, Arc re-plans.
   5. **One tiny Pebble** — a single next step sized to restart momentum, never a step list.
-  Followed by the four buttons: **Do it now · Snooze · Shrink · Retire with honor.**
+  Followed by the four buttons: **Do it now · Snooze · Shrink · Retire with honor.** (On arc-less Threads, Shrink renders as **"Smaller step"** and shrinks the offered Pebble itself — no Arc involved.)
 - **Low-confidence / insufficient memory:** grounding check failed or Digest too sparse for the gap. Shows "I don't have enough memory of this thread yet" + raw thread story + last Breadcrumb + generic small Pebble ("re-read your last three notes"). Never guesses.
 - **AI unavailable (offline / outage):** deterministic fallback — raw thread story (chronological Sparks, steps, Breadcrumbs from M2) with last Breadcrumb pinned on top. Product remains usable; briefing marked "Ember's memory is resting — here's the raw story."
 - **Snoozed:** Thread shows a quiet "briefing resting" glyph; no countdown, no red.
 - **Retired:** Thread shows its Closing Note; reopening offers "pick this back up?" (un-retire).
-- **Loading:** skeleton card with the Thread name and gap ("You've been away 5 weeks — warming this up…"); target <4s, else fallback per §10.
+- **Loading:** skeleton card with the Thread name and gap ("You've been away 5 weeks — warming this up…"); latency ladder per §9 (p50 2.5 s / p95 6 s / hard timeout 8 s → fallback per §10).
 
 ## 7. Workflows
 
 **Happy path — full re-entry after 6 weeks (Shelf → W-05 → W-07):**
 1. Maya taps her resting "Etsy shop" Thread on the Shelf (or the welcome-back Doorway link, which deep-links to the same place).
-2. Loading skeleton with honest copy: "You've been away 6 weeks — warming this up…" (<4s).
+2. Loading skeleton with honest copy: "You've been away 6 weeks — warming this up…" (p95 6 s).
 3. Full briefing (W-05) renders: where she was (from Breadcrumbs), what she was thinking (two verbatim Sparks from March, dated and quote-styled), why she cared, what changed while she was gone (the craft-fair deadline moved), and one Pebble: "open the shop banner file and just look at it (2 min)."
 4. She taps **Do it now** → focus surface (W-07): only the Pebble, the Thread's key links, and a capture field. No other UI.
 5. She works 20 minutes, marks the Pebble done → deterministic micro-reward fires in <300ms (novelty-rotated variant) → ember hours accrue.
@@ -99,7 +99,7 @@ Warm Start eliminates project re-entry friction — the contest-winning, verifie
 
 - **Trigger:** on-demand only (pull-based, at the point of performance — the anti-Mem lesson). Never push-generated except pre-warm when the nightly Batch job sees a welcome-back Doorway is due.
 - **Inputs (digest-first, R6):** the Thread's maintained **Digest** — never raw history — plus last 3 Breadcrumbs, candidate Pebbles from the Arc (M4), gap length, and top-k Sparks retrieved for quotation. Prompt caching on the stable system prefix.
-- **Model tier:** Sonnet-tier for briefings and Closing Notes; Haiku-tier for whisper one-liners and Unstick exchanges; killswitch drops all to Haiku past $5/mo/user. Cost per full briefing ≈ $0.026 (thesis-B §8: 20/mo ≈ $0.51).
+- **Model tier:** Sonnet-tier for brief/full briefings and Closing Notes; Haiku-tier for Unstick exchanges. The **whisper tier is deterministic** — a template rendering the last Breadcrumb + the Pebble chip, no AI call. Killswitch drops all to Haiku past $5/mo/user. Per-call cost figures: see `ai-spec` §1 routing table.
 - **Output contract:** structured sections + `quoted_spark_ids[]`; tone warm, second person, zero guilt; exactly one Pebble, sized 2 min–1 hr to restart momentum, not finish (the middle-60% dead zone, [Tiimo](https://www.tiimoapp.com/resource-hub/finishing-what-you-start-adhd)).
 - **Grounding rule (hard, R6):**
   - Every quoted line must byte-match a real stored Spark. A post-generation verifier (deterministic code, not AI) checks each `quoted_spark_id` against the corpus.
@@ -114,16 +114,16 @@ Warm Start eliminates project re-entry friction — the contest-winning, verifie
   - Transcripts double as golden-set prompt-eval data (winner.md steal #5).
 - **Quality harness:** golden-set evals seeded from Wizard-of-Oz concierge transcripts; "that's not what I meant" flags continuously feed the set; ship gate mirrors the concierge threshold — ≥50% of briefings rated "I could restart from this alone" (thesis-B §9).
 - **Deliberately NOT AI:**
-  - Gap computation and tier selection (pure date math).
+  - Gap computation and tier selection (pure date math) — and the entire whisper tier (deterministic template: last Breadcrumb + Pebble chip; no model call).
   - Snooze handling and briefing cache/expiry.
   - Micro-rewards: deterministic, fired in <300ms from a pre-built novelty-rotating pool, kept entirely out of the API round-trip — delay-discounting compliance ([JAD meta-analysis](https://journals.sagepub.com/doi/10.1177/1087054718772138)); rotation counters habituation ([Brain, novelty processing](https://academic.oup.com/brain/article/141/5/1545/4934119); alarm-blindness evidence, [My Patient Advice](https://mypatientadvice.co.uk/knowledge-base/why-do-adhd-brains-still-ignore-phone-alarms/)).
   - Ember-hours accrual, retire confirmation, notification scheduling, billing.
 
 ## 9. Scale
 
-- **10× (dozens of Threads, a year of history):** Digest-first keeps briefing input bounded (~6K tokens) regardless of Thread size; quote retrieval is top-k over embeddings, O(corpus) handled by M2 search infra. Briefing latency budget unchanged (<4s p90).
+- **10× (dozens of Threads, a year of history):** Digest-first keeps briefing input bounded (~6K tokens) regardless of Thread size; quote retrieval is top-k over embeddings, O(corpus) handled by M2 search infra. Briefing latency ladder unchanged (see below).
 - **100× (heavy importer: 4,000-note graveyard, multi-year Threads):** Digests are hierarchical (era summaries roll up); "what changed" section windows to since-last-touch only; per-Thread briefing cache prevents regeneration storms when a returning user opens ten Threads in one sitting; retired Threads' Digests are frozen (no nightly maintenance cost). Briefing history pagination: last 5 kept, rest pruned.
-- Performance budgets: whisper line renders from cache instantly (pre-computed nightly); full briefing p50 <2.5s, p90 <4s, hard timeout 8s → fallback state.
+- Performance budgets: whisper line renders instantly (deterministic template — no AI call); brief/full briefing latency ladder: **p50 2.5 s / p95 6 s / hard timeout 8 s → fallback state** (stated identically in `ai-spec` §5 and the scale plan's SLOs).
 
 ## 10. Errors
 
@@ -135,7 +135,7 @@ Warm Start eliminates project re-entry friction — the contest-winning, verifie
   - Quote suppressed thread-wide immediately; optional correction stored alongside the original Spark (the Spark itself is never edited).
   - Dispute logged to the eval pipeline (R6 harness); one regenerate offered.
   - Repeated disputes on a Thread lower its briefing confidence → future briefings prefer showing raw Sparks over AI paraphrase for that Thread.
-- **Accidental retire:** explicit confirm on the flow; un-retire from Shelf restores warm/resting state; Closing Note preserved as history.
+- **Accidental retire:** explicit confirm on the flow; restore from the gallery (defined once, in M2) rekindles the Thread to **warm**, with the queued Briefing's tier decided by M3 gap math; Closing Note preserved as history.
 - **Sync conflict (two devices):** Briefings are device-local ephemera — regenerate, never merge. Pebble done/state conflicts resolve last-write-wins with union of Breadcrumbs (no data loss).
 - **Unstick misuse (user keeps reopening):** each session is fresh and capped at 3 exchanges; after 3 sessions on one Pebble in a day, offer Shrink instead ("this step might just be too big").
 
@@ -148,5 +148,5 @@ Warm Start eliminates project re-entry friction — the contest-winning, verifie
 ## 12. Dependencies
 
 - **Consumes:** M2 Digest (sole synthesis input) + thread story (fallback) + last-touched timestamps; M4 Arc for candidate Pebbles and Shrink renegotiation; M5 Doorway welcome-back link (entry) ; M1 Sparks (quote source); cross-cutting reward layer + ember hours; nightly Batch (digest freshness, whisper pre-compute, welcome-back pre-warm).
-- **Emits:** `briefing_generated`, `briefing_acted/snoozed`, `pebble_accepted/done` (→ Doorway's next card, ember hours), `thread_shrunk` (→ M4 re-plan), `thread_retired` + Closing Note (→ Shelf Retired gallery), `quote_disputed` (→ eval pipeline), `unstick_completed`.
+- **Emits** (names per the product-brief event dictionary): `briefing.generated`, `briefing.acted(action)` (action ∈ did-pebble · snoozed · shrunk · retired), `pebble.accepted` / `pebble.done` (→ Doorway's next card, ember hours), `arc.shrunk` (→ M4 re-plan to a smaller goal), `thread.state_changed(retired)` + Closing Note (→ Shelf Retired gallery), `unstick.completed`. Quote disputes flow to the eval pipeline as internal telemetry, not bus events.
 - **Services:** Sonnet/Haiku-tier inference, embedding retrieval, grounding verifier, prompt cache. Degrades gracefully without all of them (§6 AI-unavailable).

@@ -34,7 +34,7 @@ No new nouns are introduced. An "arc proposal" is a **draft Arc** (pre-lifecycle
 - `draft` → created by "Make this an arc"; exists only in the proposal-review screen; discarded silently if never approved (kept 7 days, then deleted). Approval → `active`.
 - `active` → normal state; serves next Pebble.
 - `re-planned` → transient state after any silent re-plan; user sees the diff once, acknowledges (or ignores for 48 h) → back to `active`. Re-plan diffs append to `replan_log` (retained, capped at last 50).
-- `paused` → follows its Thread to the Resting shelf, or user pauses the arc alone. No date math runs, no surfacing, no debt accrues. Resume → re-plan check → `active` or `re-planned`.
+- `paused` → follows its Thread to the Resting shelf, or user pauses the arc alone. **Deadlines don't sleep:** for a deadline-bearing Arc, deterministic deadline math and lead-time Doorway surfacing CONTINUE while the arc is paused/resting — only AI maintenance pauses. No debt accrues. Resume → re-plan check (the absence ≥14d trigger runs here, §8) → `active` or `re-planned`.
 - `complete` → last milestone done or user declares it. Immutable; lives with the Thread in the Finished gallery. Never auto-deleted.
 - Deletion: only via Thread deletion (M2 rules). Retiring the Thread (M3) closes the arc as `complete (retired)` with the Closing Note.
 
@@ -73,9 +73,9 @@ No new nouns are introduced. An "arc proposal" is a **draft Arc** (pre-lifecycle
 ## 6. States
 
 - **No-arc thread** (empty): Thread shows a quiet "This looks big. Want an arc?" affordance only when the Digest suggests multi-month scope; never nags.
-- **Arc-proposal review**: draft milestones + the reasoning in one warm sentence each ("Tax docs first — you mentioned the 1099 email is already found"). Nothing is real until approved.
+- **Arc-proposal review (W-09)**: draft milestones + the reasoning in one warm sentence each ("Tax docs first — you mentioned the 1099 email is already found"). Nothing is real until approved.
 - **Loading**: "Reading this thread's story…" skeleton; decomposition may take seconds (Sonnet-tier).
-- **Ideal (active)**: arc header = goal + progress warmth ("3 of 7 milestones behind you") + **one next Pebble**. The wall of steps is never the default view — the wall is the documented paralysis trigger ([ADDitude](https://www.additudemag.com/where-do-i-start-adhd-organization/)).
+- **Ideal (active, W-10)**: arc header = goal + progress warmth ("3 of 7 milestones behind you") + **one next Pebble**. The wall of steps is never the default view — the wall is the documented paralysis trigger ([ADDitude](https://www.additudemag.com/where-do-i-start-adhd-organization/)).
 - **Expanded milestone view** (partial): exists for users who want the shape — one tap on the arc header, collapsed again by default on every open. Months render as a horizon (milestone titles + target months), not a checklist; individual steps inside milestones stay summarized as counts ("4 small steps live here").
 - **Re-planned diff view**: "The plan bent, it didn't break." Shows only what changed (moved / merged / dissolved), old plan ghosted, one acknowledge tap.
 - **Paused**: rests with the Thread; copy: "Paused, not failed. It'll be here."
@@ -108,7 +108,7 @@ No new nouns are introduced. An "arc proposal" is a **draft Arc** (pre-lifecycle
 
 ## 8. AI behavior
 
-- **Triggers:** (a) "Make this an arc" (interactive); (b) re-plan events — arc Pebble done/dissolved beyond threshold, milestone done, deadline changed, user nudge, resume-from-pause, absence ≥ 14 days (nightly Batch); (c) phase 2: pre-appointment waiting-mode Pebble selection.
+- **Triggers:** (a) "Make this an arc" (interactive); (b) re-plan events — arc Pebble done/dissolved beyond threshold, milestone done, deadline changed, user nudge, resume-from-pause; the **absence ≥ 14 days re-plan trigger runs as a resume-time check** (and via nightly Batch for deadline-bearing arcs only — deadlines don't sleep, §4); (c) phase 2: pre-appointment waiting-mode Pebble selection.
 - **Silent re-planning semantics:** re-plans run in the background and never interrupt — no push, no badge. The result waits as the one-tap diff view at the user's next natural visit to the arc (or inside the Warm Start brief after absence). "Silent" means the *work* is invisible; the *change* is always disclosed, gently, before the new plan is acted on.
 - **Inputs:** Thread Digest (never raw history), open/done Pebbles, user-stated energy patterns and deadline mentions quoted from captures, current milestones + replan_log tail.
 - **Model tier:** Sonnet for decomposition and re-planning (judgment + tone); Haiku for cheap re-balance checks ("did enough change to warrant a Sonnet re-plan?"). Nightly re-plans via Batch API. Prompt caching on stable prefixes. Killswitch: past $5/mo → Haiku-only, re-plans become simple deterministic shifts.

@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ember wireframes — M2: Shelf · Thread story · Search · Memory overlays</title>
+<link rel="stylesheet" href="../wireframe-kit.css">
+<style>
+  /* ---- wireframe-page furniture only (not product UI) ---- */
+  body { margin: 0; background: var(--em-surface-sunken); }
+  .wf-header {
+    padding: var(--em-space-8) var(--em-space-12) var(--em-space-6);
+    background: var(--em-surface);
+    border-bottom: 1px solid var(--em-border);
+  }
+  .wf-header h1 { margin: 0 0 var(--em-space-2); }
+  .wf-header p  { margin: 0; max-width: 72ch; }
+  .wf-idchip {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: var(--em-radius-full);
+    background: var(--em-dusty-deep);
+    color: #fff;
+    font: var(--em-weight-semibold) var(--em-text-caption)/1.8 var(--em-font-mono);
+    margin-right: var(--em-space-2);
+    vertical-align: 2px;
+  }
+  .wf-section { padding: var(--em-space-10) var(--em-space-8) 0; }
+  .wf-section > header { max-width: 980px; margin: 0 auto var(--em-space-4); }
+  .wf-section > header h2 { margin: 0 0 var(--em-space-2); }
+  .wf-section > header p  { margin: 0; color: var(--em-text-2); max-width: 72ch; }
+  .wf-canvas { min-height: 0; padding: var(--em-space-8) 0 var(--em-space-4); }
+
+  /* ---- small in-frame helpers built on the kit ---- */
+  .wf-search {
+    display: flex; align-items: center; gap: var(--em-space-3);
+    min-height: var(--em-tap-min);
+    padding: 0 var(--em-space-4);
+    background: var(--em-surface);
+    border: 1px solid var(--em-border);
+    border-radius: var(--em-radius-full);
+    color: var(--em-text-3);
+    font-size: var(--em-text-body);
+  }
+  .wf-search b { color: var(--em-text); font-weight: var(--em-weight-regular); }
+  .wf-chiprow { display: flex; flex-wrap: wrap; gap: var(--em-space-2); align-items: center; }
+  .wf-chiprow .wf-group { font-size: var(--em-text-caption); color: var(--em-text-3); margin-right: 2px; }
+  .wf-sectionlabel {
+    display: flex; align-items: baseline; gap: var(--em-space-3);
+    margin-top: var(--em-space-2);
+  }
+  .wf-sectionlabel .em-title-3 { margin: 0; }
+  .wf-sectionlabel small { color: var(--em-text-3); font-size: var(--em-text-body-sm); }
+  .wf-era { font-size: var(--em-text-caption); font-weight: var(--em-weight-medium); color: var(--em-text-3); letter-spacing: 0.03em; margin: var(--em-space-3) 0 var(--em-space-1); }
+  .wf-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(196px, 1fr)); gap: var(--em-space-3); }
+  .wf-card-compact { padding: var(--em-space-4); }
+  .wf-card-compact .em-thread__title { font-size: var(--em-text-body-lg); }
+  .wf-gallery-note {
+    font: italic var(--em-weight-regular) var(--em-text-body-sm)/var(--em-leading-meta) var(--em-font-serif);
+    color: var(--em-text-2);
+  }
+  .wf-daysep {
+    display: flex; align-items: center; gap: var(--em-space-3);
+    color: var(--em-text-3); font-size: var(--em-text-caption); font-weight: var(--em-weight-medium);
+    margin: var(--em-space-4) 0 0;
+  }
+  .wf-daysep::before, .wf-daysep::after { content: ""; flex: 1; border-top: 1px solid var(--em-hairline); }
+  .wf-fold {
+    text-align: center;
+    border: 1px dashed var(--em-border);
+    border-radius: var(--em-radius-md);
+    padding: var(--em-space-3) var(--em-space-4);
+    color: var(--em-text-3);
+    font-size: var(--em-text-body-sm);
+  }
+  .wf-breadcrumb-text { font-style: italic; color: var(--em-text-2); margin: 0 0 var(--em-space-1); }
+  .wf-briefing-inline {
+    display: flex; align-items: center; gap: var(--em-space-3);
+    background: var(--em-surface-warm);
+    border: 1px solid var(--em-hairline);
+    border-radius: var(--em-radius-md);
+    padding: var(--em-space-3) var(--em-space-4);
+    font-size: var(--em-text-body-sm);
+    color: var(--em-text-2);
+    margin: var(--em-space-2) 0;
+  }
+  .wf-decided {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: var(--em-text-caption); font-weight: var(--em-weight-medium);
+    color: var(--em-text-2);
+    border: 1px solid var(--em-border);
+    border-radius: var(--em-radius-full);
+    padding: 1px 8px;
+  }
+  .wf-menu {
+    position: absolute;
+    z-index: var(--em-z-sheet);
+    background: var(--em-surface);
+    border: 1px solid var(--em-border);
+    border-radius: var(--em-radius-md);
+    box-shadow: var(--em-shadow-2);
+    padding: var(--em-space-2);
+    width: 220px;
+    font-size: var(--em-text-body-sm);
+  }
+  .wf-menu div { padding: var(--em-space-2) var(--em-space-3); border-radius: var(--em-radius-sm); }
+  .wf-menu div:hover { background: var(--em-surface-sunken); }
+  .wf-menu hr { border: 0; border-top: 1px solid var(--em-hairline); margin: var(--em-space-1) 0; }
+  .wf-scrubber {
+    flex: none; width: 108px;
+    border-left: 1px solid var(--em-hairline);
+    padding-left: var(--em-space-4);
+    font-size: var(--em-text-caption);
+    color: var(--em-text-3);
+    display: flex; flex-direction: column; gap: var(--em-space-2);
+  }
+  .wf-scrubber b { color: var(--em-text-2); font-weight: var(--em-weight-medium); }
+  .wf-bulkbar {
+    position: absolute; left: 50%; bottom: 108px; transform: translateX(-50%);
+    z-index: var(--em-z-toast);
+    display: flex; align-items: center; gap: var(--em-space-2);
+    background: var(--em-text); color: var(--em-bg);
+    border-radius: var(--em-radius-full);
+    padding: var(--em-space-2) var(--em-space-4);
+    box-shadow: var(--em-shadow-2);
+    font-size: var(--em-text-body-sm);
+    white-space: nowrap;
+  }
+  .wf-bulkbar button {
+    border: 0; background: none; color: inherit; cursor: pointer;
+    font-size: inherit; min-height: 36px; padding: 0 var(--em-space-2);
+    border-radius: var(--em-radius-sm);
+  }
+  .wf-bulkbar button:hover { background: rgba(255,255,255,0.12); }
+  .wf-tick {
+    flex: none; width: 22px; height: 22px; margin-top: 4px;
+    border-radius: var(--em-radius-full);
+    border: 1.5px solid var(--em-border);
+    display: grid; place-items: center;
+    font-size: 13px; color: var(--em-bg); background: var(--em-surface);
+  }
+  .wf-tick.is-on { background: var(--em-text); border-color: var(--em-text); }
+  .wf-whymatch { font-size: var(--em-text-caption); color: var(--em-text-3); }
+  .wf-field {
+    display: block; width: 100%;
+    min-height: var(--em-tap-min);
+    padding: var(--em-space-3) var(--em-space-4);
+    border: 1px solid var(--em-border);
+    border-radius: var(--em-radius-md);
+    background: var(--em-surface);
+    font: var(--em-weight-regular) var(--em-text-body)/1.4 var(--em-font-mono);
+    color: var(--em-text);
+    box-sizing: border-box;
+  }
+  .wf-radio {
+    display: flex; gap: var(--em-space-3); align-items: flex-start;
+    border: 1px solid var(--em-border);
+    border-radius: var(--em-radius-md);
+    padding: var(--em-space-3) var(--em-space-4);
+    font-size: var(--em-text-body-sm);
+  }
+  .wf-radio.is-on { border-color: var(--em-text-2); background: var(--em-surface-sunken); }
+  .wf-radio i { font-style: normal; margin-top: 1px; }
+  .wf-restore { text-align: center; }
+</style>
+</head>
+<body class="em-kit">
+
+<!-- ═══════════════════════ PAGE HEADER ═══════════════════════ -->
+<header class="wf-header">
+  <p class="em-caption" style="margin-bottom: var(--em-space-2);"><a href="index.html" style="color: var(--em-dusty-deep);">← Wireframe index</a></p>
+  <h1 class="em-title-1">M2 — Threads &amp; Shelf: memory, search &amp; recovery</h1>
+  <p class="em-meta">
+    <span class="wf-idchip">W-03</span><span class="wf-idchip">W-04</span><span class="wf-idchip">W-04b</span><span class="wf-idchip">W-11</span><span class="wf-idchip">O-08</span><span class="wf-idchip">O-09</span><span class="wf-idchip">O-11</span>
+  </p>
+  <p class="em-meta" style="margin-top: var(--em-space-3);">
+    Canonical IDs per <code>product/navigation-map.md</code>; behaviors per <code>product/modules/M2-threads-shelf.md</code>; content is Maya's
+    (<code>validation/day-in-the-life.md</code>). Blue numbered dots are spec annotations — not product UI; strip before build.
+    Definition-of-done tools all visible: <strong>search · filter · bulk · archive · recovery (restore / undo / un-merge)</strong>.
+  </p>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 1 · W-03 — SHELF
+     ═══════════════════════════════════════════════════════════ -->
+<section class="wf-section" id="w-03">
+  <header>
+    <h2 class="em-title-2"><span class="wf-idchip">W-03</span> Shelf — Warm row · Resting shelf · Finished &amp; Retired gallery</h2>
+    <p>Mobile (ideal, SHELF-02 with the "Imported, unsorted" holding section) and web (50-thread density, SHELF-03).
+       Warmth is deterministic — recency + Pebble activity + Arc deadlines — never AI. Nothing here ever counts days or shows debt.</p>
+  </header>
+
+  <div class="em-canvas wf-canvas">
+
+    <!-- ── W-03 · MOBILE, ideal ─────────────────────────────── -->
+    <div class="em-phone">
+      <div class="em-note-dot" style="top: 118px; right: 18px;">1</div>
+      <div class="em-note-dot" style="top: 258px; left: 8px;">2</div>
+      <div class="em-note-dot" style="top: 470px; left: 8px;">3</div>
+      <div class="em-note-dot" style="top: 560px; left: 8px;">4</div>
+      <div class="em-note-dot" style="top: 700px; left: 8px;">5</div>
+      <div class="em-phone__status"></div>
+      <div class="em-phone__screen">
+        <header class="em-appbar">
+          <span class="em-appbar__title">Shelf</span>
+          <button class="em-appbar__action" aria-label="Shelf settings — auto-rest timing">⚙</button>
+        </header>
+        <div class="em-screen">
+          <div class="wf-search">⌕ <span>Search your memory…</span></div>
+          <div class="wf-chiprow">
+            <span class="em-chip em-chip--action is-active">All</span>
+            <span class="em-chip em-chip--action">Projects</span>
+            <span class="em-chip em-chip--action">Ideas</span>
+            <span class="em-chip em-chip--action">Life admin</span>
+            <span class="em-chip em-chip--action">People</span>
+          </div>
+
+          <div class="wf-sectionlabel">
+            <h3 class="em-title-3">Warm</h3>
+            <small>what's alive right now</small>
+          </div>
+
+          <div class="em-card em-card--thread is-warm em-glow">
+            <div class="em-row em-row--between">
+              <h4 class="em-thread__title">Etsy shop</h4>
+              <span class="em-chip em-chip--warm">Warm — this morning</span>
+            </div>
+            <span class="em-thread__last">You picked the serif banner. Next pebble: send it to Anna — 2 min.</span>
+            <div class="em-row"><span class="em-chip">Project</span><span class="em-chip">Arc — craft fair, spring</span></div>
+          </div>
+
+          <div class="em-card em-card--thread is-warm">
+            <div class="em-row em-row--between">
+              <h4 class="em-thread__title">Taxes</h4>
+              <span class="em-chip em-chip--warm">Warm — yesterday</span>
+            </div>
+            <span class="em-thread__last">Your accountant replied. You haven't read it yet — it'll keep.</span>
+            <div class="em-row"><span class="em-chip">Life admin</span></div>
+          </div>
+
+          <div class="em-card em-card--thread is-warm">
+            <div class="em-row em-row--between">
+              <h4 class="em-thread__title">Novel</h4>
+              <span class="em-chip em-chip--warm">Warm — this week</span>
+            </div>
+            <span class="em-thread__last">You stopped mid-scene, on purpose, right at the good part.</span>
+            <div class="em-row"><span class="em-chip">Project</span></div>
+          </div>
+
+          <div class="em-card em-card--thread is-warm">
+            <div class="em-row em-row--between">
+              <h4 class="em-thread__title">People: Sam</h4>
+              <span class="em-chip em-chip--warm">Warm — this week</span>
+            </div>
+            <span class="em-thread__last">Gift idea caught Tuesday: the ceramic tools she mentioned.</span>
+            <div class="em-row"><span class="em-chip">Person</span></div>
+          </div>
+
+          <div class="em-card" style="background: var(--em-surface-sunken); border-style: dashed;">
+            <div class="em-row em-row--between">
+              <h4 class="em-title-3" style="margin:0;">Imported, unsorted</h4>
+              <span class="em-chip">from Apple Notes</span>
+            </div>
+            <p class="em-meta" style="margin: var(--em-space-2) 0;">312 old sparks are resting here until they find homes. No rush — they're safe, and searchable already.</p>
+            <div class="em-row">
+              <button class="em-btn em-btn--secondary">Sort a few</button>
+              <button class="em-btn em-btn--quiet">Later</button>
+            </div>
+          </div>
+
+          <div class="wf-sectionlabel">
+            <h3 class="em-title-3">Resting</h3>
+            <small>paused isn't failed</small>
+          </div>
+
+          <div class="em-card em-card--thread is-resting">
+            <div class="em-row em-row--between">
+              <h4 class="em-thread__title">Two-color room</h4>
+              <span class="em-chip em-chip--resting">Resting — since spring</span>
+            </div>
+            <span class="em-thread__last">Rested itself quietly. One touch rekindles it.</span>
+          </div>
+          <div class="em-card em-card--thread is-resting">
+            <div class="em-row em-row--between">
+              <h4 class="em-thread__title">Job hunt</h4>
+              <span class="em-chip em-chip--resting">Resting — a while</span>
+            </div>
+            <span class="em-thread__last">Swipe ⟵ on any card to let it rest; tap to pick it back up.</span>
+          </div>
+
+          <div class="wf-sectionlabel">
+            <h3 class="em-title-3">Finished &amp; Retired</h3>
+            <small>a gallery, not a graveyard</small>
+          </div>
+          <div class="em-card em-card--thread is-retired">
+            <div class="em-row em-row--between">
+              <h4 class="em-thread__title">Macramé</h4>
+              <span class="em-chip em-chip--done">Retired with honor</span>
+            </div>
+            <span class="wf-gallery-note">"You made three wall hangings people actually kept…"</span>
+            <div class="em-row em-row--between">
+              <span class="em-meta">Closing note kept</span>
+              <button class="em-btn em-btn--quiet">Open the gallery →</button>
+            </div>
+          </div>
+        </div>
+        <nav class="em-bottomnav">
+          <a class="em-tab" href="#"><i class="em-tab__icon">⌂</i>Doorway</a>
+          <a class="em-tab is-active" href="#"><i class="em-tab__icon">▤</i>Shelf</a>
+          <button class="em-catch-btn" aria-label="Catch a thought">+</button>
+          <a class="em-tab" href="#"><i class="em-tab__icon">⌕</i>Search</a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- notes for mobile shelf -->
+    <aside class="em-notes">
+      <p class="em-notes__title">W-03 · mobile notes</p>
+      <p class="em-notes__item"><b>1</b><span>Gear = auto-rest setting: warm → resting after <strong>14 quiet days by default</strong> (D-005), user-adjustable 7–45 or off. Amnesty copy only — never "inactive" or "stale".</span></p>
+      <p class="em-notes__item"><b>2</b><span>Warm row is warmth-ordered, <strong>~7 max</strong>; the coolest card rests on its own. Warmth chip always pairs text with tint — never color alone (brand §3.4).</span></p>
+      <p class="em-notes__item"><b>3</b><span>"Imported, unsorted" holding section (canonical W-03 state, F9): import lands as safe-keeping, not as a sorting chore. Items are searchable before triage.</span></p>
+      <p class="em-notes__item"><b>4</b><span>Resting shelf: parchment + dusty tint. Any touch rekindles (`resting → warm`) — no ceremony, no "you're back" framing. Swipe-to-rest has a one-tap rekindle undo.</span></p>
+      <p class="em-notes__item"><b>5</b><span>Gallery cards lead with the Closing Note's first line — history, not shame (SHELF-02). Full gallery one tap away. Never-render rules hold: no red, no counts, no overdue.</span></p>
+    </aside>
+  </div>
+
+  <!-- ── W-03 · WEB, 50-thread density (SHELF-03) ─────────────── -->
+  <div class="em-canvas wf-canvas">
+    <div class="em-desktop" style="position: relative;">
+      <div class="em-note-dot" style="top: 76px; left: 640px;">6</div>
+      <div class="em-note-dot" style="top: 196px; left: 262px;">7</div>
+      <div class="em-note-dot" style="top: 560px; left: 262px;">8</div>
+      <div class="em-note-dot" style="bottom: 130px; left: 262px;">9</div>
+      <div class="em-desktop__bar">
+        <span class="em-desktop__dots"><i></i><i></i><i></i></span>
+        <span class="em-desktop__url">ember.app/shelf</span>
+      </div>
+      <div class="em-desktop__body">
+        <nav class="em-sidebar">
+          <div class="em-sidebar__wordmark">ember</div>
+          <div class="em-quickcapture">Catch a thought… <kbd>C</kbd></div>
+          <a class="em-sidebar__item" href="#">⌂ Doorway</a>
+          <a class="em-sidebar__item is-active" href="#">▤ Shelf</a>
+          <a class="em-sidebar__item" href="#">⌕ Search</a>
+          <a class="em-sidebar__item" href="#">✦ Loose Sparks</a>
+          <a class="em-sidebar__item" href="#">⚙ Settings</a>
+        </nav>
+        <main class="em-main em-stack--loose" style="display:flex; flex-direction:column; gap: var(--em-space-5);">
+          <div class="em-row">
+            <div class="wf-search" style="flex:1; max-width: 560px;">⌕ <span>Search your memory — meaning, words, or era…</span> <span class="em-spacer"></span><kbd style="font-family:var(--em-font-mono); font-size: var(--em-text-caption); color: var(--em-text-3);">/</kbd></div>
+            <span class="em-spacer"></span>
+            <button class="em-btn em-btn--secondary">New thread <small style="font-weight:400;">(N)</small></button>
+          </div>
+          <div class="em-row em-row--between">
+            <div class="wf-chiprow">
+              <span class="wf-group">Type</span>
+              <span class="em-chip em-chip--action is-active">All</span>
+              <span class="em-chip em-chip--action">Projects</span>
+              <span class="em-chip em-chip--action">Ideas</span>
+              <span class="em-chip em-chip--action">Life admin</span>
+              <span class="em-chip em-chip--action">People</span>
+              <span class="wf-group" style="margin-left: var(--em-space-3);">State</span>
+              <span class="em-chip em-chip--action">Warm</span>
+              <span class="em-chip em-chip--action">Resting</span>
+              <span class="em-chip em-chip--action">Finished &amp; Retired</span>
+              <span class="em-chip em-chip--action">Has a deadline</span>
+            </div>
+            <span class="em-meta">51 threads — 7 warm · 39 resting · 5 in the gallery</span>
+          </div>
+
+          <div>
+            <div class="wf-sectionlabel"><h3 class="em-title-3">Warm</h3><small>warmth-ordered · at most ~7 here</small></div>
+            <div class="wf-grid" style="margin-top: var(--em-space-2);">
+              <div class="em-card em-card--thread is-warm em-glow wf-card-compact">
+                <h4 class="em-thread__title">Etsy shop</h4>
+                <span class="em-chip em-chip--warm">Warm — today</span>
+                <span class="em-thread__last">Arc — craft fair, spring</span>
+              </div>
+              <div class="em-card em-card--thread is-warm wf-card-compact">
+                <h4 class="em-thread__title">Taxes</h4>
+                <span class="em-chip em-chip--warm">Warm — yesterday</span>
+                <span class="em-thread__last">Accountant replied</span>
+              </div>
+              <div class="em-card em-card--thread is-warm wf-card-compact">
+                <h4 class="em-thread__title">Novel</h4>
+                <span class="em-chip em-chip--warm">Warm — this week</span>
+                <span class="em-thread__last">Stopped mid-scene</span>
+              </div>
+              <div class="em-card em-card--thread is-warm wf-card-compact">
+                <h4 class="em-thread__title">People: Sam</h4>
+                <span class="em-chip em-chip--warm">Warm — this week</span>
+                <span class="em-thread__last">Gift idea, Tuesday</span>
+              </div>
+              <div class="em-card em-card--thread is-warm wf-card-compact">
+                <h4 class="em-thread__title">Water the plants</h4>
+                <span class="em-chip em-chip--warm">Warm — this week</span>
+                <span class="em-thread__last">2-minute pebble done</span>
+              </div>
+              <div class="em-card em-card--thread is-warm wf-card-compact">
+                <h4 class="em-thread__title">Studio corner</h4>
+                <span class="em-chip em-chip--warm">Warm — this week</span>
+                <span class="em-thread__last">Shelf sketch caught</span>
+              </div>
+              <div class="em-card em-card--thread is-warm wf-card-compact">
+                <h4 class="em-thread__title">Kiln research</h4>
+                <span class="em-chip em-chip--warm">Warm — a few days</span>
+                <span class="em-thread__last">Cooling — will rest soon</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="em-card" style="background: var(--em-surface-sunken); border-style: dashed; padding: var(--em-space-4);">
+            <div class="em-row">
+              <strong>Imported, unsorted</strong>
+              <span class="em-meta">312 sparks from Apple Notes, resting until they find homes — searchable now.</span>
+              <span class="em-spacer"></span>
+              <button class="em-btn em-btn--secondary">Sort a few</button>
+              <button class="em-btn em-btn--quiet">Later</button>
+            </div>
+          </div>
+
+          <div>
+            <div class="wf-sectionlabel"><h3 class="em-title-3">Resting</h3><small>paused isn't failed — grouped by era at this density</small></div>
+            <p class="wf-era">THIS SPRING · 8</p>
+            <div class="wf-grid">
+              <div class="em-card em-card--thread is-resting wf-card-compact"><h4 class="em-thread__title">Two-color room</h4><span class="em-chip em-chip--resting">Resting</span></div>
+              <div class="em-card em-card--thread is-resting wf-card-compact"><h4 class="em-thread__title">Job hunt</h4><span class="em-chip em-chip--resting">Resting</span></div>
+              <div class="em-card em-card--thread is-resting wf-card-compact"><h4 class="em-thread__title">Sourdough</h4><span class="em-chip em-chip--resting">Resting</span></div>
+              <div class="em-card em-card--thread is-resting wf-card-compact"><h4 class="em-thread__title">Garden beds</h4><span class="em-chip em-chip--resting">Resting</span></div>
+              <div class="em-card em-card--thread is-resting wf-card-compact"><h4 class="em-thread__title">Photo archive</h4><span class="em-chip em-chip--resting">Resting</span></div>
+              <div class="em-card em-card--thread is-resting wf-card-compact"><h4 class="em-thread__title">Bike tune-up</h4><span class="em-chip em-chip--resting">Resting</span></div>
+            </div>
+            <button class="em-btn em-btn--quiet">Show 2 more from this spring</button>
+            <p class="wf-era">THIS WINTER · 13</p>
+            <div class="wf-grid">
+              <div class="em-card em-card--thread is-resting wf-card-compact"><h4 class="em-thread__title">Spanish</h4><span class="em-chip em-chip--resting">Resting</span></div>
+              <div class="em-card em-card--thread is-resting wf-card-compact"><h4 class="em-thread__title">Closet purge</h4><span class="em-chip em-chip--resting">Resting</span></div>
+              <div class="em-card em-card--thread is-resting wf-card-compact"><h4 class="em-thread__title">Recipe zine</h4><span class="em-chip em-chip--resting">Resting</span></div>
+              <div class="em-card em-card--thread is-resting wf-card-compact"><h4 class="em-thread__title">Insurance switch</h4><span class="em-chip em-chip--resting">Resting</span></div>
+            </div>
+            <button class="em-btn em-btn--quiet">Show 9 more from this winter</button>
+            <p class="wf-era">LAST YEAR · 18</p>
+            <button class="em-btn em-btn--quiet">18 resting threads from last year — open when you're curious ▸</button>
+          </div>
+
+          <div>
+            <div class="wf-sectionlabel"><h3 class="em-title-3">Finished &amp; Retired</h3><small>closing notes kept forever</small></div>
+            <div class="wf-grid" style="margin-top: var(--em-space-2);">
+              <div class="em-card em-card--thread is-retired wf-card-compact">
+                <h4 class="em-thread__title">Macramé</h4>
+                <span class="em-chip em-chip--done">Retired with honor</span>
+                <span class="wf-gallery-note">"It taught you knots, patience, and that you like making gifts more than inventory."</span>
+                <button class="em-btn em-btn--quiet wf-restore">Restore — rekindles it</button>
+              </div>
+              <div class="em-card em-card--thread is-retired wf-card-compact">
+                <h4 class="em-thread__title">Wedding quilt</h4>
+                <span class="em-chip em-chip--done">Finished</span>
+                <span class="wf-gallery-note">"Eight months of stolen evenings. They cried."</span>
+                <button class="em-btn em-btn--quiet wf-restore">Restore — rekindles it</button>
+              </div>
+              <div class="em-card em-card--thread is-retired wf-card-compact">
+                <h4 class="em-thread__title">The move</h4>
+                <span class="em-chip em-chip--done">Finished</span>
+                <span class="wf-gallery-note">"You landed the apartment with the good light."</span>
+                <button class="em-btn em-btn--quiet wf-restore">Restore — rekindles it</button>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <aside class="em-notes">
+      <p class="em-notes__title">W-03 · web / density notes</p>
+      <p class="em-notes__item"><b>6</b><span>SHELF-03 (50+ threads): search promoted to the top, type + state filter chips surface, `/` focuses search, `N` = new thread. Shelf paints &lt;300ms from the local index — O(shelf), not O(history).</span></p>
+      <p class="em-notes__item"><b>7</b><span>Warm row stays capped at ~7 even at 51 threads; the count line is neutral inventory, never debt ("39 resting" is safe-keeping, not a backlog number).</span></p>
+      <p class="em-notes__item"><b>8</b><span>Resting shelf groups by era ("This spring", "Last year") — soft time per brand §5.1; never "47 days ago". Collapsed eras keep the page bounded.</span></p>
+      <p class="em-notes__item"><b>9</b><span><strong>Recovery is first-class:</strong> every gallery card carries Restore. Restore → thread rekindles to the Warm row, Digest refreshes, and a Warm Start is queued ("Retired in March — restored today" stays in the story). Not a settings-menu rescue.</span></p>
+    </aside>
+  </div>
+
+  <!-- ── W-03 · required states: empty · skeleton · returning-after-weeks ── -->
+  <div class="em-canvas wf-canvas">
+
+    <!-- SHELF-00 empty -->
+    <div class="em-phone">
+      <div class="em-note-dot" style="top: 300px; right: 20px;">10</div>
+      <div class="em-phone__status"></div>
+      <div class="em-phone__screen">
+        <header class="em-appbar"><span class="em-appbar__title">Shelf</span></header>
+        <div class="em-screen" style="justify-content: center;">
+          <div class="em-empty em-glow">
+            <div class="em-empty__art">✦</div>
+            <h3 class="em-empty__title">Your shelf is waiting for its first spark</h3>
+            <p class="em-empty__line">Catch anything — a thought, a worry, a maybe. Ember will find it a home and start a thread for you.</p>
+            <button class="em-btn em-btn--primary em-btn--lg">Catch a thought</button>
+            <button class="em-btn em-btn--quiet">Got old notes rotting somewhere? Bring the wreckage</button>
+          </div>
+        </div>
+        <nav class="em-bottomnav">
+          <a class="em-tab" href="#"><i class="em-tab__icon">⌂</i>Doorway</a>
+          <a class="em-tab is-active" href="#"><i class="em-tab__icon">▤</i>Shelf</a>
+          <button class="em-catch-btn" aria-label="Catch a thought">+</button>
+          <a class="em-tab" href="#"><i class="em-tab__icon">⌕</i>Search</a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- skeleton loading -->
+    <div class="em-phone">
+      <div class="em-note-dot" style="top: 190px; right: 20px;">11</div>
+      <div class="em-phone__status"></div>
+      <div class="em-phone__screen">
+        <header class="em-appbar"><span class="em-appbar__title">Shelf</span></header>
+        <div class="em-screen">
+          <div class="wf-search">⌕ <span>Search your memory…</span></div>
+          <div class="em-row">
+            <span class="em-skeleton em-skeleton--pill"></span>
+            <span class="em-skeleton em-skeleton--pill"></span>
+            <span class="em-skeleton em-skeleton--pill"></span>
+          </div>
+          <p class="em-skeleton em-skeleton--title"></p>
+          <div class="em-skeleton em-skeleton--card"></div>
+          <div class="em-skeleton em-skeleton--card"></div>
+          <p class="em-skeleton em-skeleton--title"></p>
+          <div class="em-skeleton em-skeleton--card"></div>
+          <div class="em-skeleton em-skeleton--card"></div>
+        </div>
+        <nav class="em-bottomnav">
+          <a class="em-tab" href="#"><i class="em-tab__icon">⌂</i>Doorway</a>
+          <a class="em-tab is-active" href="#"><i class="em-tab__icon">▤</i>Shelf</a>
+          <button class="em-catch-btn" aria-label="Catch a thought">+</button>
+          <a class="em-tab" href="#"><i class="em-tab__icon">⌕</i>Search</a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- SHELF-05 returning after weeks -->
+    <div class="em-phone">
+      <div class="em-note-dot" style="top: 150px; left: 8px;">12</div>
+      <div class="em-note-dot" style="top: 320px; left: 8px;">13</div>
+      <div class="em-phone__status"></div>
+      <div class="em-phone__screen">
+        <header class="em-appbar"><span class="em-appbar__title">Shelf</span></header>
+        <div class="em-screen">
+          <div class="em-card em-card--doorway is-welcome-back em-glow">
+            <h3 class="em-doorway__greeting" style="font-size: var(--em-text-title2);">Welcome back. Nothing is lost.</h3>
+            <p class="em-doorway__promise" style="margin-bottom:0;">Everything kept warm or went to rest on its own. Pick anything up whenever.</p>
+          </div>
+          <div class="wf-sectionlabel">
+            <h3 class="em-title-3">Warm</h3>
+          </div>
+          <div class="em-banner em-banner--rest">Everything's resting — pick anything up whenever.</div>
+          <div class="wf-sectionlabel">
+            <h3 class="em-title-3">Resting</h3>
+            <small>paused isn't failed</small>
+          </div>
+          <p class="wf-era">THIS SPRING</p>
+          <div class="em-card em-card--thread is-resting">
+            <div class="em-row em-row--between">
+              <h4 class="em-thread__title">Etsy shop</h4>
+              <span class="em-chip em-chip--resting">Resting — since June</span>
+            </div>
+            <span class="em-thread__last">Rested itself while you were away. One touch rekindles it.</span>
+          </div>
+          <div class="em-card em-card--thread is-resting">
+            <div class="em-row em-row--between">
+              <h4 class="em-thread__title">Taxes</h4>
+              <span class="em-chip em-chip--resting">Resting — since June</span>
+            </div>
+            <span class="em-thread__last">Your accountant's reply is waiting, safe.</span>
+          </div>
+          <div class="em-card em-card--thread is-resting">
+            <div class="em-row em-row--between">
+              <h4 class="em-thread__title">Novel</h4>
+              <span class="em-chip em-chip--resting">Resting — since June</span>
+            </div>
+            <span class="em-thread__last">Still mid-scene, right at the good part.</span>
+          </div>
+        </div>
+        <nav class="em-bottomnav">
+          <a class="em-tab" href="#"><i class="em-tab__icon">⌂</i>Doorway</a>
+          <a class="em-tab is-active" href="#"><i class="em-tab__icon">▤</i>Shelf</a>
+          <button class="em-catch-btn" aria-label="Catch a thought">+</button>
+          <a class="em-tab" href="#"><i class="em-tab__icon">⌕</i>Search</a>
+        </nav>
+      </div>
+    </div>
+
+    <aside class="em-notes">
+      <p class="em-notes__title">W-03 · required states</p>
+      <p class="em-notes__item"><b>10</b><span>SHELF-00 empty/first-run: warm invitation + one action, no setup wizard, no sample clutter. Import entry sits quietly beneath. (Copy verbatim from brand §5.2.)</span></p>
+      <p class="em-notes__item"><b>11</b><span>Loading: shell + search render instantly from the local cache; skeletons appear only after 300ms; shimmer is the slow 1.8s warm sweep (static block under reduced-motion).</span></p>
+      <p class="em-notes__item"><b>12</b><span>SHELF-05 returning-after-weeks: welcome banner, zero counts, nothing red. Threads that auto-rested during the absence (14 quiet days, D-005) sit calmly under era labels.</span></p>
+      <p class="em-notes__item"><b>13</b><span>Empty-Warm-row failure state (M2 W3): "Everything's resting" reads as an invitation, never as failure. The Doorway (M5) owns the welcome-back card; the Shelf just looks safe.</span></p>
+      <p class="em-notes__item"><b>—</b><span>Offline (not framed here): shelf + cached stories readable, keyword search local, semantic search greyed "back online soon", state changes queue with the amber "safe" chip.</span></p>
+    </aside>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 2 · W-04 — THREAD STORY
+     ═══════════════════════════════════════════════════════════ -->
+<section class="wf-section" id="w-04">
+  <header>
+    <h2 class="em-title-2"><span class="wf-idchip">W-04</span> Thread story — the chronological "story of this project" (THREAD-01)</h2>
+    <p>One stream, newest at the bottom: Sparks (the user's words, quote-styled), Pebbles, Decisions, Breadcrumbs, and past Briefings inline.
+       Serif italic + amber rule = Maya's own words, sacred and visibly distinct from AI text.</p>
+  </header>
+
+  <div class="em-canvas wf-canvas">
+    <div class="em-desktop" style="position: relative;">
+      <div class="em-note-dot" style="top: 130px; left: 640px;">1</div>
+      <div class="em-note-dot" style="top: 236px; left: 262px;">2</div>
+      <div class="em-note-dot" style="top: 356px; left: 262px;">3</div>
+      <div class="em-note-dot" style="top: 470px; left: 262px;">4</div>
+      <div class="em-note-dot" style="top: 585px; left: 262px;">5</div>
+      <div class="em-note-dot" style="top: 700px; left: 262px;">6</div>
+      <div class="em-note-dot" style="top: 300px; right: 320px;">7</div>
+      <div class="em-note-dot" style="top: 240px; right: 24px;">8</div>
+      <div class="em-desktop__bar">
+        <span class="em-desktop__dots"><i></i><i></i><i></i></span>
+        <span class="em-desktop__url">ember.app/thread/etsy-shop</span>
+      </div>
+      <div class="em-desktop__body">
+        <nav class="em-sidebar">
+          <div class="em-sidebar__wordmark">ember</div>
+          <div class="em-quickcapture">Catch a thought… <kbd>C</kbd></div>
+          <a class="em-sidebar__item" href="#">⌂ Doorway</a>
+          <a class="em-sidebar__item is-active" href="#">▤ Shelf</a>
+          <a class="em-sidebar__item" href="#">⌕ Search</a>
+          <a class="em-sidebar__item" href="#">✦ Loose Sparks</a>
+          <a class="em-sidebar__item" href="#">⚙ Settings</a>
+        </nav>
+        <main class="em-main" style="display:flex; gap: var(--em-space-6);">
+          <div class="em-prose" style="flex:1; min-width:0;">
+            <p class="em-meta"><a href="#" style="color: var(--em-text-3);">← Shelf</a></p>
+            <div class="em-row em-row--between" style="align-items: flex-start;">
+              <div>
+                <h3 class="em-title-1" style="margin: 0 0 var(--em-space-2);">Etsy shop</h3>
+                <div class="em-row">
+                  <span class="em-chip">Project</span>
+                  <span class="em-chip em-chip--warm">Warm — this morning</span>
+                  <span class="em-chip">Arc — craft fair, spring</span>
+                </div>
+              </div>
+              <button class="em-appbar__action" aria-label="Thread menu">⋯</button>
+            </div>
+            <!-- open thread menu (shown for spec) -->
+            <div class="wf-menu" style="right: 40px; top: 210px;">
+              <div>What Ember knows about this thread</div>
+              <div>Make this an arc</div>
+              <hr>
+              <div>Rename · type · cover</div>
+              <div>Merge with another thread…</div>
+              <hr>
+              <div>Let it rest</div>
+              <div>Finish</div>
+              <div>Retire with honor</div>
+              <hr>
+              <div>Export this thread</div>
+              <div>Delete…</div>
+            </div>
+
+            <hr class="em-divider">
+
+            <div class="wf-fold">
+              ⌃ Reaching back to 2024… 214 earlier entries live in the cold archive.
+              <button class="em-btn em-btn--quiet">Load earlier</button>
+            </div>
+
+            <div class="wf-daysep">BACK IN MARCH — MARCH 3</div>
+            <div class="em-list">
+              <div class="em-spark-row">
+                <span class="em-spark-row__dot"></span>
+                <div class="em-spark-row__body">
+                  <p class="em-spark-row__text">"the serif one feels more like a real shop but the sans matches the product photos"</p>
+                  <p class="em-spark-row__meta">Spark · caught by voice, morning <span class="em-chip" style="min-height:22px;">▶ 0:12</span></p>
+                </div>
+                <button class="em-appbar__action" aria-label="Spark menu" style="min-width:36px;min-height:36px;">⋯</button>
+              </div>
+              <div class="em-spark-row">
+                <span class="em-spark-row__dot"></span>
+                <div class="em-spark-row__body">
+                  <p class="em-spark-row__text">"going with the blue-green palette for everything"</p>
+                  <p class="em-spark-row__meta"><span class="wf-decided">◈ decided</span> &nbsp;Spark · typed, afternoon — the Digest marked this as a turning point</p>
+                </div>
+              </div>
+              <div class="em-spark-row">
+                <span class="em-spark-row__dot em-spark-row__dot--pebble"></span>
+                <div class="em-spark-row__body">
+                  <p style="margin:0 0 var(--em-space-1); font-weight: var(--em-weight-medium);">Pebble done — exported the banner file Anna sent (2 min)</p>
+                  <p class="em-spark-row__meta">a quiet milestone · +2 ember minutes</p>
+                </div>
+              </div>
+              <div class="em-spark-row">
+                <span class="em-spark-row__dot em-spark-row__dot--breadcrumb"></span>
+                <div class="em-spark-row__body">
+                  <p class="wf-breadcrumb-text">You stopped after emailing the accountant — you were waiting on his reply.</p>
+                  <p class="em-spark-row__meta">Breadcrumb · written by ember when you left · immutable</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="wf-daysep">MARCH 5</div>
+            <div class="em-list">
+              <div class="em-spark-row">
+                <span class="em-spark-row__dot"></span>
+                <div class="em-spark-row__body">
+                  <p class="em-spark-row__text">"just pick one, nobody but me will ever notice."</p>
+                  <p class="em-spark-row__meta">Spark · caught from the lockscreen, evening</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="wf-briefing-inline">
+              ✦ You came back here — full warm-start briefing, back in March
+              <span class="em-spacer"></span>
+              <button class="em-btn em-btn--quiet" style="min-height:36px;">Unfold ▾</button>
+            </div>
+
+            <div class="wf-daysep">TODAY</div>
+            <div class="em-list">
+              <div class="em-spark-row">
+                <span class="em-spark-row__dot em-spark-row__dot--pebble"></span>
+                <div class="em-spark-row__body">
+                  <p style="margin:0 0 var(--em-space-1); font-weight: var(--em-weight-medium);">Pebble done — picked the serif banner, with your gut (3 min)</p>
+                  <p class="em-spark-row__meta">this morning · the arc re-planned itself quietly</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="em-pebble" style="margin-top: var(--em-space-4);">
+              Next pebble: send the banner to Anna
+              <span class="em-pebble__time">~2 min</span>
+            </div>
+          </div>
+
+          <!-- jump-to-when scrubber -->
+          <aside class="wf-scrubber">
+            <b>Jump to when…</b>
+            <span>Today</span>
+            <span>June</span>
+            <span><b>This spring</b></span>
+            <span>Winter</span>
+            <span>2025</span>
+            <span>2024 ▾</span>
+          </aside>
+        </main>
+      </div>
+    </div>
+
+    <aside class="em-notes">
+      <p class="em-notes__title">W-04 · thread story notes</p>
+      <p class="em-notes__item"><b>1</b><span>Header: title, type badge, state chip, Arc chip, and the ⋯ menu — every M2 action lives here: What Ember knows (O-11), rest, finish, retire, merge, export, delete (O-09). Menu shown open for spec.</span></p>
+      <p class="em-notes__item"><b>2</b><span>Lazy-load fold: newest page (~50 entries) first, infinite scroll upward; months &gt;12 old rehydrate from cold archive per page (&lt;1s budget) behind an inline "reaching back…" shimmer. Fetch failure → retry affordance, never a blank story.</span></p>
+      <p class="em-notes__item"><b>3</b><span>Sparks are always the user's verbatim words: serif italic, 2px amber rule (brand §4.3). Voice sparks keep transcript + play chip. Spark ⋯ menu = Move to another thread · <strong>Archive spark</strong> (hidden from story, still searchable).</span></p>
+      <p class="em-notes__item"><b>4</b><span>Decisions get the subtle "decided" marker so turning points are scannable; Pebbles render as quiet done milestones — never unchecked debt; done/dissolved only, no "overdue".</span></p>
+      <p class="em-notes__item"><b>5</b><span>Breadcrumbs: auto-written stop-notes in a distinct hand, neutral dot, labeled immutable. Zero user effort — the app does its own warm starts.</span></p>
+      <p class="em-notes__item"><b>6</b><span>Past Briefings stay inline as collapsible "you came back here" moments — the story keeps its returns as part of the history.</span></p>
+      <p class="em-notes__item"><b>7</b><span>Day/era separators use soft time ("Back in March"), never elapsed-day counters (guilt numbers, brand §5.1).</span></p>
+      <p class="em-notes__item"><b>8</b><span>"Jump to when…" scrubber for long stories — year/era markers double as archive jump points.</span></p>
+    </aside>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 3 · W-04b — THREAD STORY + INLINE WHISPER
+     ═══════════════════════════════════════════════════════════ -->
+<section class="wf-section" id="w-04b">
+  <header>
+    <h2 class="em-title-2"><span class="wf-idchip">W-04b</span> Thread story — inline Warm Start whisper at top</h2>
+    <p>Time-away under 3 days → the briefing scales down to a whisper (M3 tiers: whisper &lt; 3 days · brief ≥ 3 days · full ≥ 14 days) and
+       renders atop the story instead of taking over the screen.</p>
+  </header>
+
+  <div class="em-canvas wf-canvas">
+    <div class="em-phone">
+      <div class="em-note-dot" style="top: 160px; left: 8px;">1</div>
+      <div class="em-note-dot" style="top: 320px; left: 8px;">2</div>
+      <div class="em-note-dot" style="top: 470px; left: 8px;">3</div>
+      <div class="em-phone__status"></div>
+      <div class="em-phone__screen">
+        <header class="em-appbar">
+          <button class="em-btn em-btn--quiet" style="min-height:36px; padding:0 var(--em-space-2);">←</button>
+          <span class="em-appbar__title">Taxes</span>
+          <button class="em-appbar__action" aria-label="Thread menu">⋯</button>
+        </header>
+        <div class="em-screen">
+          <div class="em-row">
+            <span class="em-chip">Life admin</span>
+            <span class="em-chip em-chip--warm">Warm — yesterday</span>
+          </div>
+
+          <div class="em-card em-card--briefing em-glow" style="padding: var(--em-space-5);">
+            <p class="em-briefing__kicker">WARM START · WHISPER</p>
+            <p class="em-briefing__body" style="font-size: var(--em-text-body);">
+              Yesterday you emailed the accountant your 1099 question. His reply came in overnight — unread, waiting.
+            </p>
+            <div class="em-pebble" style="margin-top: var(--em-space-4);">
+              Read his reply — that's the whole step
+              <span class="em-pebble__time">~2 min</span>
+            </div>
+            <div class="em-row" style="margin-top: var(--em-space-3);">
+              <button class="em-btn em-btn--primary">Do it now</button>
+              <button class="em-btn em-btn--quiet">Snooze</button>
+              <button class="em-btn em-btn--quiet em-btn--retire">Not this one</button>
+            </div>
+          </div>
+
+          <div class="wf-daysep">YESTERDAY</div>
+          <div class="em-list">
+            <div class="em-spark-row">
+              <span class="em-spark-row__dot em-spark-row__dot--pebble"></span>
+              <div class="em-spark-row__body">
+                <p style="margin:0 0 var(--em-space-1); font-weight: var(--em-weight-medium);">Pebble done — pasted the 1099 into a draft… then sent it anyway</p>
+                <p class="em-spark-row__meta">after an unstick · 2-minute version grew on its own</p>
+              </div>
+            </div>
+            <div class="em-spark-row">
+              <span class="em-spark-row__dot em-spark-row__dot--breadcrumb"></span>
+              <div class="em-spark-row__body">
+                <p class="wf-breadcrumb-text">You stopped after emailing the accountant — waiting on his reply.</p>
+                <p class="em-spark-row__meta">Breadcrumb · immutable</p>
+              </div>
+            </div>
+          </div>
+          <div class="wf-daysep">A FEW NIGHTS AGO</div>
+          <div class="em-list">
+            <div class="em-spark-row">
+              <span class="em-spark-row__dot"></span>
+              <div class="em-spark-row__body">
+                <p class="em-spark-row__text">"what if the 1099 from the contract gig never came"</p>
+                <p class="em-spark-row__meta">Spark · caught at night, filed here by morning</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <nav class="em-bottomnav">
+          <a class="em-tab" href="#"><i class="em-tab__icon">⌂</i>Doorway</a>
+          <a class="em-tab is-active" href="#"><i class="em-tab__icon">▤</i>Shelf</a>
+          <button class="em-catch-btn" aria-label="Catch a thought">+</button>
+          <a class="em-tab" href="#"><i class="em-tab__icon">⌕</i>Search</a>
+        </nav>
+      </div>
+    </div>
+
+    <aside class="em-notes">
+      <p class="em-notes__title">W-04b · whisper notes</p>
+      <p class="em-notes__item"><b>1</b><span>Briefing scaling is automatic from time-away (M3): under 3 days the whisper is one warm sentence + one pebble — it sits atop the story, it never hides it. At ≥14 days this becomes the full-screen W-05 brief.</span></p>
+      <p class="em-notes__item"><b>2</b><span>One ember per screen: "Do it now" is the only primary; siblings are quiet. Acting on the whisper counts as a touch → thread stays warm; ignoring it costs nothing.</span></p>
+      <p class="em-notes__item"><b>3</b><span>The story continues untouched below — night-caught spark filed by morning, breadcrumb explaining the stop. AI-down fallback: whisper is replaced by the last Breadcrumb + banner "memory view only right now" (F3 failure path).</span></p>
+    </aside>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 4 · W-11 — SEARCH & RECALL
+     ═══════════════════════════════════════════════════════════ -->
+<section class="wf-section" id="w-11">
+  <header>
+    <h2 class="em-title-2"><span class="wf-idchip">W-11</span> Search &amp; recall — hybrid: keyword + meaning + era (F8)</h2>
+    <p>"I know I wrote it down somewhere" always resolves. Query shown: <em>"that idea about the logo, sometime in spring"</em>.
+       Results group by thread, every hit says why it matched, and bulk actions run straight from results.</p>
+  </header>
+
+  <div class="em-canvas wf-canvas">
+
+    <!-- W-11 ideal + bulk mode -->
+    <div class="em-phone">
+      <div class="em-note-dot" style="top: 120px; left: 8px;">1</div>
+      <div class="em-note-dot" style="top: 214px; left: 8px;">2</div>
+      <div class="em-note-dot" style="top: 330px; left: 8px;">3</div>
+      <div class="em-note-dot" style="top: 470px; left: 8px;">4</div>
+      <div class="em-note-dot" style="bottom: 150px; left: 8px;">5</div>
+      <div class="em-phone__status"></div>
+      <div class="em-phone__screen" style="position: relative;">
+        <header class="em-appbar"><span class="em-appbar__title">Search</span></header>
+        <div class="em-screen">
+          <div class="wf-search" style="border-color: var(--em-text-3);">⌕ <b>that idea about the logo, sometime in spring</b></div>
+          <div class="wf-chiprow">
+            <span class="wf-group">Type</span>
+            <span class="em-chip em-chip--action is-active">All</span>
+            <span class="em-chip em-chip--action">Sparks</span>
+            <span class="em-chip em-chip--action">Decisions</span>
+            <span class="wf-group">State</span>
+            <span class="em-chip em-chip--action">Any</span>
+            <span class="wf-group">Time</span>
+            <span class="em-chip em-chip--action is-active">This spring</span>
+            <span class="em-chip em-chip--action">Include archived</span>
+          </div>
+          <p class="em-meta">5 sparks surfaced, grouped by thread · 2 selected</p>
+
+          <div class="wf-sectionlabel"><h3 class="em-title-3" style="font-size: var(--em-text-body-lg);">Etsy shop</h3><small>warm · 3 hits</small></div>
+          <div class="em-list em-card" style="padding: var(--em-space-2) var(--em-space-4);">
+            <div class="em-spark-row">
+              <span class="wf-tick is-on">✓</span>
+              <div class="em-spark-row__body">
+                <p class="em-spark-row__text">"what if the <mark>logo</mark> was a match?"</p>
+                <p class="em-spark-row__meta">matched: "<mark>logo</mark>" · era: this spring — tap opens the story, scrolled right to this spark</p>
+              </div>
+            </div>
+            <div class="em-spark-row">
+              <span class="wf-tick is-on">✓</span>
+              <div class="em-spark-row__body">
+                <p class="em-spark-row__text">"the serif one feels more like a real shop…"</p>
+                <p class="em-spark-row__meta">matched: meaning (branding) · era: this spring</p>
+              </div>
+            </div>
+            <div class="em-spark-row">
+              <span class="wf-tick"></span>
+              <div class="em-spark-row__body">
+                <p class="em-spark-row__text">"going with the blue-green palette"</p>
+                <p class="em-spark-row__meta"><span class="wf-decided">◈ decided</span> · matched: meaning · March</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="wf-sectionlabel"><h3 class="em-title-3" style="font-size: var(--em-text-body-lg);">Novel</h3><small>resting · 1 hit</small></div>
+          <div class="em-list em-card" style="padding: var(--em-space-2) var(--em-space-4);">
+            <div class="em-spark-row">
+              <span class="wf-tick"></span>
+              <div class="em-spark-row__body">
+                <p class="em-spark-row__text">"cover should feel hand-stamped, like a mark"</p>
+                <p class="em-spark-row__meta">matched: meaning (mark / emblem) · around when you were into climbing</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="wf-sectionlabel"><h3 class="em-title-3" style="font-size: var(--em-text-body-lg);">Loose Sparks</h3><small>1 hit, still homeless</small></div>
+          <div class="em-list em-card" style="padding: var(--em-space-2) var(--em-space-4); border-style: dashed;">
+            <div class="em-spark-row">
+              <span class="wf-tick"></span>
+              <div class="em-spark-row__body">
+                <p class="em-spark-row__text">"stamp <mark>logo</mark> on kraft paper bags??"</p>
+                <p class="em-spark-row__meta">matched: "<mark>logo</mark>" · drag it home from here</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- bulk action bar (2 selected) -->
+        <div class="wf-bulkbar">
+          2 selected
+          <button>Move to…</button>
+          <button>Merge</button>
+          <button>Archive</button>
+          <button>Let rest</button>
+        </div>
+
+        <nav class="em-bottomnav">
+          <a class="em-tab" href="#"><i class="em-tab__icon">⌂</i>Doorway</a>
+          <a class="em-tab" href="#"><i class="em-tab__icon">▤</i>Shelf</a>
+          <button class="em-catch-btn" aria-label="Catch a thought">+</button>
+          <a class="em-tab is-active" href="#"><i class="em-tab__icon">⌕</i>Search</a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- W-11 no-results (SHELF-04) -->
+    <div class="em-phone">
+      <div class="em-note-dot" style="top: 330px; right: 20px;">6</div>
+      <div class="em-phone__status"></div>
+      <div class="em-phone__screen">
+        <header class="em-appbar"><span class="em-appbar__title">Search</span></header>
+        <div class="em-screen" style="justify-content: flex-start;">
+          <div class="wf-search">⌕ <b>pottery wheel budget</b></div>
+          <div class="wf-chiprow">
+            <span class="em-chip em-chip--action is-active">Last year</span>
+            <span class="em-chip em-chip--action">Sparks</span>
+          </div>
+          <div class="em-empty">
+            <div class="em-empty__art">✦</div>
+            <h3 class="em-empty__title">Nothing surfaced — but nothing is lost</h3>
+            <p class="em-empty__line">It may be resting somewhere this search didn't reach yet.</p>
+            <button class="em-btn em-btn--secondary em-btn--block">Include archived sparks</button>
+            <button class="em-btn em-btn--secondary em-btn--block">Widen the time window</button>
+            <button class="em-btn em-btn--quiet">Try a fuzzier, meaning-first pass</button>
+          </div>
+        </div>
+        <nav class="em-bottomnav">
+          <a class="em-tab" href="#"><i class="em-tab__icon">⌂</i>Doorway</a>
+          <a class="em-tab" href="#"><i class="em-tab__icon">▤</i>Shelf</a>
+          <button class="em-catch-btn" aria-label="Catch a thought">+</button>
+          <a class="em-tab is-active" href="#"><i class="em-tab__icon">⌕</i>Search</a>
+        </nav>
+      </div>
+    </div>
+
+    <aside class="em-notes">
+      <p class="em-notes__title">W-11 · search notes</p>
+      <p class="em-notes__item"><b>1</b><span>Hybrid query (M2 §8): keyword (exact/fuzzy) + vector similarity + <strong>temporal anchoring</strong> — "sometime in spring" (or "around when I was into climbing") resolves an era window and time-weights results. Budget: &lt;1.5s at 10k sparks, 20/page.</span></p>
+      <p class="em-notes__item"><b>2</b><span>Filters requested by F8: <strong>type · thread state · time range</strong>, plus "include archived" — the archive recovery path (SHELF-04 failure A). Offline: keyword search still works locally; semantic greys out.</span></p>
+      <p class="em-notes__item"><b>3</b><span>Results grouped by thread; every hit shows <em>why it matched</em> (term, meaning, or era) — inspectable, never spooky. Tap → W-04 scrolled to that spark.</span></p>
+      <p class="em-notes__item"><b>4</b><span>Loose Sparks surface in results too — low-confidence captures are visible, never hidden (M1 contract), and can be dragged home from here.</span></p>
+      <p class="em-notes__item"><b>5</b><span>Bulk from results (long-press / shift-click): Move to… · Merge (→ O-08) · Archive · Let rest. Bulk move refiles as one batch training signal with a <strong>single undo</strong> toast ("Moved 2 sparks to Etsy shop — Undo").</span></p>
+      <p class="em-notes__item"><b>6</b><span>SHELF-04 no-results: "Nothing surfaced — but nothing is lost." Three recovery offers, never a blank void, no dead-end.</span></p>
+    </aside>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 5 · O-08 — MERGE CONFIRM
+     ═══════════════════════════════════════════════════════════ -->
+<section class="wf-section" id="o-08">
+  <header>
+    <h2 class="em-title-2"><span class="wf-idchip">O-08</span> Merge threads confirm — with arc-survivor conflict (MODAL-M2-01)</h2>
+    <p>Both selected threads carry an Arc, so the modal asks which plan survives; the other pauses and stays in the story. No silent data loss, ever.</p>
+  </header>
+
+  <div class="em-canvas wf-canvas">
+    <div class="em-phone">
+      <div class="em-note-dot" style="top: 290px; left: 8px;">1</div>
+      <div class="em-note-dot" style="top: 470px; left: 8px;">2</div>
+      <div class="em-note-dot" style="top: 660px; left: 8px;">3</div>
+      <div class="em-phone__status"></div>
+      <div class="em-phone__screen" style="position: relative;">
+        <header class="em-appbar"><span class="em-appbar__title">Shelf</span></header>
+        <div class="em-screen" style="opacity: 0.4;">
+          <div class="wf-search">⌕ <span>Search your memory…</span></div>
+          <div class="em-card em-card--thread is-warm"><h4 class="em-thread__title">Etsy shop</h4></div>
+          <div class="em-card em-card--thread is-resting"><h4 class="em-thread__title">Shop logo</h4></div>
+        </div>
+        <div class="em-scrim">
+          <div class="em-sheet em-stack">
+            <h3 class="em-title-3" style="margin:0;">Merge these two threads?</h3>
+            <p class="em-meta" style="margin:0;"><strong>Etsy shop</strong> + <strong>Shop logo</strong> — their stories will interleave in time order. Nothing is deleted; the sources are kept and this is undoable for a month.</p>
+
+            <p class="em-caption" style="margin: var(--em-space-2) 0 0;">WHICH NAME SURVIVES?</p>
+            <div class="wf-radio is-on"><i>◉</i><div><strong>Etsy shop</strong><br><span class="em-meta">suggested — the larger, warmer thread</span></div></div>
+            <div class="wf-radio"><i>○</i><div><strong>Shop logo</strong></div></div>
+
+            <div class="em-banner">Both threads have arcs. Which plan should keep going?</div>
+            <div class="wf-radio is-on"><i>◉</i><div><strong>Keep the Etsy shop arc</strong> — launch by the craft fair, spring<br><span class="em-meta">the Shop logo arc pauses and stays in the story</span></div></div>
+            <div class="wf-radio"><i>○</i><div><strong>Keep the Shop logo arc</strong> — logo final by April<br><span class="em-meta">the Etsy shop arc pauses and stays in the story</span></div></div>
+
+            <button class="em-btn em-btn--primary em-btn--lg em-btn--block">Merge threads</button>
+            <button class="em-btn em-btn--quiet em-btn--block">Not now</button>
+            <p class="em-meta" style="text-align:center; margin:0;">Un-merge anytime this month — both threads come back whole.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="em-notes">
+      <p class="em-notes__title">O-08 · merge notes</p>
+      <p class="em-notes__item"><b>1</b><span>Haiku merge assist proposes survivor title + unified type and flags contradictions to this modal rather than resolving them silently (M2 §8).</span></p>
+      <p class="em-notes__item"><b>2</b><span>Arc-survivor conflict (MODAL-M2-01): when both sources have Arcs, the user picks which survives; the loser <strong>pauses</strong> — kept in the story, never discarded. Terracotta banner = gentle notice, never red.</span></p>
+      <p class="em-notes__item"><b>3</b><span>Recovery: sources are tombstoned with pointers; <strong>un-merge within 30 days</strong> restores both with original stories (sparks added after the merge stay with the survivor, flagged for one-drag re-homing). Digest rebuild queued on confirm.</span></p>
+    </aside>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 6 · O-09 — DELETE / EXPORT CONFIRM
+     ═══════════════════════════════════════════════════════════ -->
+<section class="wf-section" id="o-09">
+  <header>
+    <h2 class="em-title-2"><span class="wf-idchip">O-09</span> Delete / export data confirm — typed confirm</h2>
+    <p>The only doubly-guarded action in Ember. Ink-weight typography carries the seriousness — no alarm color, no red (brand §3.4). Export is offered first.</p>
+  </header>
+
+  <div class="em-canvas wf-canvas">
+    <div class="em-phone">
+      <div class="em-note-dot" style="top: 320px; left: 8px;">1</div>
+      <div class="em-note-dot" style="top: 520px; left: 8px;">2</div>
+      <div class="em-note-dot" style="top: 660px; left: 8px;">3</div>
+      <div class="em-phone__status"></div>
+      <div class="em-phone__screen" style="position: relative;">
+        <header class="em-appbar"><span class="em-appbar__title">Two-color room</span></header>
+        <div class="em-screen" style="opacity: 0.4;">
+          <div class="em-card em-card--thread is-resting"><h4 class="em-thread__title">Two-color room</h4><span class="em-thread__last">14 sparks · resting since spring</span></div>
+        </div>
+        <div class="em-scrim" style="align-items: center; padding: var(--em-space-5);">
+          <div class="em-card em-stack" style="width: 100%; border-radius: var(--em-radius-2xl); padding: var(--em-space-6);">
+            <h3 class="em-title-2" style="margin:0;">Delete this thread for good?</h3>
+            <p class="em-meta" style="margin:0;">Deleting <strong>Two-color room</strong> removes its 14 sparks, story, digest, and closing note. You'll have <strong>30 days to undo</strong>; after that it's gone from Ember entirely.</p>
+            <button class="em-btn em-btn--secondary em-btn--block">Export it first — JSON + Markdown, one tap</button>
+            <hr class="em-divider" style="margin: var(--em-space-2) 0;">
+            <label class="em-caption" for="wf-typed">TYPE THE THREAD'S NAME TO CONFIRM</label>
+            <input class="wf-field" id="wf-typed" value="Two-color r" placeholder="Two-color room">
+            <button class="em-btn em-btn--secondary em-btn--block" style="opacity:0.5;" disabled>Delete — enabled when the name matches</button>
+            <button class="em-btn em-btn--quiet em-btn--block">Keep it — let it rest instead</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="em-notes">
+      <p class="em-notes__title">O-09 · delete/export notes</p>
+      <p class="em-notes__item"><b>1</b><span>Deletion is explicit-only and double-confirmed (M2 §4): this typed confirm is gate two. Plain language lists exactly what is purged (story, digest, closing note, embeddings — after the undo window). Privacy: export-everything also lives in Settings (W-14).</span></p>
+      <p class="em-notes__item"><b>2</b><span>Typed confirm: Delete stays disabled until the input matches the thread name exactly. Ink-weight button, not red — destructive ≠ alarming (color law §3.4-2). Draft input persists if she leaves mid-flow (no time-outs law).</span></p>
+      <p class="em-notes__item"><b>3</b><span>Recovery ladder is visible in-modal: export first · "let it rest instead" as the gentle exit · <strong>30-day undo</strong> after confirm. Merge never deletes — that path is O-08's tombstones.</span></p>
+    </aside>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 7 · O-11 — DIGEST VIEWER
+     ═══════════════════════════════════════════════════════════ -->
+<section class="wf-section" id="o-11" style="padding-bottom: var(--em-space-16);">
+  <header>
+    <h2 class="em-title-2"><span class="wf-idchip">O-11</span> Digest viewer — "What Ember knows about this thread" (PANEL-M2-01)</h2>
+    <p>The R3 trust mitigation: the memory working for Maya is inspectable, never spooky. Hidden by default (briefings are its human-facing product), one tap from any thread menu.</p>
+  </header>
+
+  <div class="em-canvas wf-canvas">
+    <div class="em-phone">
+      <div class="em-note-dot" style="top: 240px; left: 8px;">1</div>
+      <div class="em-note-dot" style="top: 430px; left: 8px;">2</div>
+      <div class="em-note-dot" style="top: 620px; left: 8px;">3</div>
+      <div class="em-note-dot" style="top: 730px; left: 8px;">4</div>
+      <div class="em-phone__status"></div>
+      <div class="em-phone__screen" style="position: relative;">
+        <header class="em-appbar"><span class="em-appbar__title">Etsy shop</span></header>
+        <div class="em-screen" style="opacity: 0.35;">
+          <div class="em-spark-row"><span class="em-spark-row__dot"></span><div class="em-spark-row__body"><p class="em-spark-row__text">"just pick one, nobody but me will ever notice."</p></div></div>
+        </div>
+        <div class="em-scrim">
+          <div class="em-sheet em-stack" style="max-height: 88%; overflow-y: auto;">
+            <h3 class="em-title-3" style="margin:0;">What Ember knows about this thread</h3>
+            <p class="em-meta" style="margin:0;">Rebuilt overnight · this is the memory your briefings are written from</p>
+
+            <p class="em-caption" style="margin: var(--em-space-2) 0 0;">WHERE THINGS STAND</p>
+            <p style="margin:0;">The banner is picked (serif) and exported. Next: send it to Anna. The shop is aimed at the spring craft fair, about five weeks of lead time.</p>
+
+            <p class="em-caption" style="margin: var(--em-space-2) 0 0;">KEY DECISIONS</p>
+            <p style="margin:0;" class="em-meta">◈ Blue-green palette — back in March<br>◈ Serif banner over sans — today</p>
+
+            <p class="em-caption" style="margin: var(--em-space-2) 0 0;">OPEN QUESTIONS</p>
+            <p style="margin:0;" class="em-meta">Shipping supplier still undecided; Anna's feedback on the banner not yet in.</p>
+
+            <p class="em-caption" style="margin: var(--em-space-2) 0 0;">WHY YOU CARED — YOUR WORDS</p>
+            <blockquote class="em-spark-quote" style="margin: var(--em-space-1) 0;">"I want the shop live before the spring craft fair — a real shop, mine."</blockquote>
+
+            <button class="em-btn em-btn--secondary em-btn--block">Correct something</button>
+            <div class="em-card" style="background: var(--em-surface-sunken); padding: var(--em-space-4);">
+              <p class="em-caption" style="margin: 0 0 var(--em-space-1);">YOUR CORRECTION</p>
+              <p class="em-quote" style="margin:0;">"Anna already replied — check the thread. And the fair is the LAST weekend of spring."</p>
+              <p class="em-meta" style="margin: var(--em-space-2) 0 0;">Saved. Pinned into tonight's rebuild — your corrections outrank ember's guesses.</p>
+            </div>
+            <button class="em-btn em-btn--quiet em-btn--block">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="em-notes">
+      <p class="em-notes__title">O-11 · digest notes</p>
+      <p class="em-notes__item"><b>1</b><span>Digest contract (M2 §8): structured — where things stand, key decisions with soft dates, open questions, why-she-cared. Rebuilt by the nightly batch only when the thread changed; marked stale after merges/restores; size-capped (~2k tokens) so briefing context stays bounded.</span></p>
+      <p class="em-notes__item"><b>2</b><span>Quotes are verbatim-only, rendered in the sacred spark style (serif italic + amber rule). No invented facts; banned-word lint applies to digest text.</span></p>
+      <p class="em-notes__item"><b>3</b><span>"Correct something" is the whole point: the note is pinned into the next rebuild's input, and briefings prefer user corrections over inferred content (M2 §10) — inspectable + correctable = R3 trust mitigation.</span></p>
+      <p class="em-notes__item"><b>4</b><span>Panel is read-only otherwise and never deleted while its thread exists; derived data (digest + embeddings) is deletable with the account (M2 §11).</span></p>
+    </aside>
+  </div>
+</section>
+
+</body>
+</html>

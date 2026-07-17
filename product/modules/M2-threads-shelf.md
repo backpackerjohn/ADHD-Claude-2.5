@@ -116,7 +116,7 @@ Screens referenced: W-03 (Shelf, incl. its empty / one-thread / 50+ / search-no-
 | **Duplicate suggestion** | Digest job detects high inter-Thread similarity | Haiku | At most one gentle "these might be one thread" chip on the Shelf; dismissible, never nags again for that pair. |
 
 **Digest visibility:** hidden by default (Briefings are the human-facing product of it), but always viewable via "What Ember knows about this thread," with a correction affordance — inspectability is the R3 trust mitigation.
-**Fallbacks:** AI down → keyword+recency search still works; Digest marked stale and Briefings (M3) say so; Closing Note falls back to a template quoting the last three Sparks. Low-confidence merge/dedupe suggestions are simply not shown.
+**Fallbacks:** AI down → keyword+recency search still works; Digest marked stale and Briefings (M3) say so; Closing Note fallback is M3's (template-based) — M2 just stores the result. Low-confidence merge/dedupe suggestions are simply not shown.
 **Deliberately NOT AI:** state transitions, auto-rest day-math, warmth ordering (deterministic: recency + Pebble activity + Arc deadlines), pagination, undo/restore, tombstones, archival.
 
 ## 9. Scale
