@@ -45,12 +45,12 @@ Warm Start eliminates project re-entry friction — the contest-winning, verifie
 
 | Action | Trigger surface | Input | Effect | Undo |
 |---|---|---|---|---|
-| Open briefing | Opening a Thread after a gap; tapping a resting Thread on the Shelf; "welcome back" link on Doorway Card | tap | Renders tiered Briefing (WS-01/02/03) | dismissible |
-| **Do it now** | Briefing button | tap | Opens focus surface (WS-04) with the Pebble; Pebble → accepted | Back exits; auto-Breadcrumb writes on exit |
+| Open briefing | Opening a Thread after a gap; tapping a resting Thread on the Shelf; "welcome back" link on Doorway Card | tap | Renders tiered Briefing (W-05b/W-05) | dismissible |
+| **Do it now** | Briefing button | tap | Opens focus surface (W-07) with the Pebble; Pebble → accepted | Back exits; auto-Breadcrumb writes on exit |
 | **Snooze** | Briefing button | tap (+ optional "how long?" chips: few days / next week / whenever) | Briefing → snoozed; Thread stays where it is (warm stays warm); no reminder debt, no badge | reopen Thread anytime |
-| **Shrink** | Briefing button | tap → scope sheet (WS-05) | Renegotiates Arc scope with M4 ("novel" → "novella"; "whole room" → "one wall"); Arc → re-planned; new smaller Pebble offered | revert scope from Arc history |
+| **Shrink** | Briefing button | tap → scope sheet (O-04) | Renegotiates Arc scope with M4 ("novel" → "novella"; "whole room" → "one wall"); Arc → re-planned; new smaller Pebble offered | revert scope from Arc history |
 | **Retire with honor** | Briefing button | tap → Closing Note draft → **explicit confirm** | Thread → retired; AI Closing Note ("You built the hard part. It taught you resin casting.") saved to Finished & Retired gallery | un-retire from Shelf; note preserved |
-| **Unstick** ("why is this hard?") | Available on any Pebble — briefing, focus surface, Doorway | tap | Bounded 3-exchange script (WS-06), see §8 | close anytime |
+| **Unstick** ("why is this hard?") | Available on any Pebble — briefing, focus surface, Doorway | tap | Bounded 3-exchange script (W-06), see §8 | close anytime |
 | Mark Pebble done | Focus surface | tap | Pebble → done; deterministic micro-reward <300ms, novelty-rotating; ember hours accrue | un-mark within session |
 | "That's not what I meant" | Long-press any quoted line | flag + optional correction | Quote suppressed from future briefings; feedback logged to eval set | unflag in settings |
 
@@ -58,8 +58,8 @@ Warm Start eliminates project re-entry friction — the contest-winning, verifie
 
 - **First-ever briefing (thin corpus):** Thread has <3 Sparks and no Breadcrumbs. No fabricated warmth: "This thread is young — here's everything I have," shows the raw Sparks verbatim plus one suggested Pebble. Sets expectations honestly (R6: never fake richness).
 - **Whisper (gap <3 days):** one line inline at the top of the Thread, not a screen: "Yesterday you stopped mid-email to the accountant — the deduction question." No buttons except the Pebble chip.
-- **Brief (gap 3–13 days):** compact card (WS-02): where you were + last Breadcrumb + one Pebble + the four buttons.
-- **Full (gap ≥14 days):** full-screen warm briefing (WS-03), second person, tone "Welcome back. Nothing is lost." Five sections in fixed order:
+- **Brief (gap 3–13 days):** compact card (W-05b): where you were + last Breadcrumb + one Pebble + the four buttons.
+- **Full (gap ≥14 days):** full-screen warm briefing (W-05), second person, tone "Welcome back. Nothing is lost." Five sections in fixed order:
   1. **Where you were** — last actions and the final Breadcrumb, narrated.
   2. **What you were thinking** — verbatim Spark quotes, visually styled as quotes with dates: your past self talking to you.
   3. **Why you cared** — the Thread's origin motivation, from the Digest.
@@ -74,22 +74,22 @@ Warm Start eliminates project re-entry friction — the contest-winning, verifie
 
 ## 7. Workflows
 
-**Happy path — full re-entry after 6 weeks (Shelf → WS-03 → WS-04):**
+**Happy path — full re-entry after 6 weeks (Shelf → W-05 → W-07):**
 1. Maya taps her resting "Etsy shop" Thread on the Shelf (or the welcome-back Doorway link, which deep-links to the same place).
 2. Loading skeleton with honest copy: "You've been away 6 weeks — warming this up…" (<4s).
-3. Full briefing (WS-03) renders: where she was (from Breadcrumbs), what she was thinking (two verbatim Sparks from March, dated and quote-styled), why she cared, what changed while she was gone (the craft-fair deadline moved), and one Pebble: "open the shop banner file and just look at it (2 min)."
-4. She taps **Do it now** → focus surface (WS-04): only the Pebble, the Thread's key links, and a capture field. No other UI.
+3. Full briefing (W-05) renders: where she was (from Breadcrumbs), what she was thinking (two verbatim Sparks from March, dated and quote-styled), why she cared, what changed while she was gone (the craft-fair deadline moved), and one Pebble: "open the shop banner file and just look at it (2 min)."
+4. She taps **Do it now** → focus surface (W-07): only the Pebble, the Thread's key links, and a capture field. No other UI.
 5. She works 20 minutes, marks the Pebble done → deterministic micro-reward fires in <300ms (novelty-rotated variant) → ember hours accrue.
 6. She leaves mid-flow (as ADHD focus breaks do) → auto-Breadcrumb writes itself on exit → tomorrow's Doorway knows.
 
-**Failure path 1 — freeze on the Pebble (WS-04 → WS-06):**
+**Failure path 1 — freeze on the Pebble (W-07 → W-06):**
 1. She reads the Pebble and freezes — the wall of awful ([ADHD Essentials](https://www.adhdessentials.com/essentials/the-wall-of-awful/)).
 2. Taps **Unstick** ("why is this hard?") → exchange 1: name the feeling (chips + free text).
 3. Exchange 2: shrink the stakes ("this is a look, not a launch — nothing you do today is graded").
 4. Exchange 3: one 2-minute physical first move ("open the laptop and put the banner file on screen, that's all"). Session closes — no fourth turn exists.
 5. Two buttons: start the 2 minutes / not today. "Not today" is accepted without guilt; the Thread rests, nothing turns red.
 
-**Failure path 2 — the briefing lands wrong (WS-03 → WS-05):**
+**Failure path 2 — the briefing lands wrong (W-05 → O-04):**
 1. The briefing quotes a Spark whose framing she now disputes. Long-press → "that's not what I meant" → optional one-line correction.
 2. Quote suppressed thread-wide; feedback logged to the eval set; briefing offers a one-time regenerate.
 3. If instead she realizes the project itself is dead: **Retire with honor** → AI drafts the Closing Note ("You built the hard part. It taught you resin casting.").

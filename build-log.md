@@ -23,3 +23,38 @@ Multi-agent workflows (explicitly mandated by the instruction file) run as seque
 3. Architecture: shared brief → parallel module specs on a common template → cross-review (scale challenge, AI-necessity audit, contradiction hunt).
 4. Design: design system → wireframes (web + mobile) → prototype → Playwright screenshot verification.
 5. Validation: red team → completeness critic → final integration pass → recap.html.
+
+## 2026-07-17 — Phase 6-8 integration decisions
+
+### D-004: Product name
+Winner keeps the name **Ember** (thesis metaphor: embers survive untended and re-kindle). Rejected renaming — the metaphor IS the thesis.
+
+### D-005: Auto-rest threshold (M2)
+Threads auto-move warm→resting after **14 quiet days** (user-adjustable 7–45). Introduced by M2 owner; canonicalized here. Copy is shame-free ("resting", never "stale").
+
+### D-006: Sonnet-escalation gap threshold (supersedes cost model wording)
+Briefing tiers per the brief: whisper <3d (Haiku), brief ≥3d and full ≥14d (Sonnet). The cost model's "re-entry gap ≥ 7 days" escalation rule is superseded. Cost impact absorbed by headroom (ai-spec roll-up ≈$4.89 < $5.99).
+
+### D-007: "Weekly review synthesis" removed
+Appeared only in the cost model's generic profile; maps to no module in the fixed five-module list. Excluded from routing; its budget is headroom.
+
+### D-008: Doorway generation is nightly Batch
+Per winner.md synthesis item 8; only welcome-back Doorways generate synchronously. Thesis-B §8's sync pricing superseded (cheaper).
+
+### D-009: Cold-start filing exception (M1)
+With zero Threads, the classifier auto-creates starter Threads (labeled Ember-started, renamable) to keep "zero-decision" true on day one. Canonical.
+
+### D-010: Free-tier COGS ceiling
+Hard cap **$0.25/mo** per free user (target $0.10), enforced by free-tier limits (3 unsticks/day, 1 arc). Canonical.
+
+### D-011: P90 cost planning number
+Two independent models produced $3.04 (thesis-B) and $4.75 (llm-cost-model) — different usage profiles, same architecture. Planning number is the conservative **$4.75**; ai-spec's fully-routed roll-up ≈$4.89 is the engineering budget. All under the $5.99 guardrail.
+
+### D-012: Metric name
+Cumulative streak-free metric is **"ember hours"** (brief) — winner.md's "engine hours" was Ignition's term.
+
+### D-013: Closing Note scope
+Closing Notes are written at *retirement* AND offered at *completion* (celebratory variant). Extends the brief's object table; canonical.
+
+### D-014: Wireframe ID reconciliation
+`product/navigation-map.md` IDs (W-xx/O-xx) are canonical; M3's placeholder WS-xx IDs remapped (W-05, W-05b, W-06, W-07, O-04). Module specs' template reference to a separate `object-model.md` resolves to the object table inside `product-brief.md` (no separate file).
