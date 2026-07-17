@@ -77,30 +77,30 @@ No new nouns are introduced. An "arc proposal" is a **draft Arc** (pre-lifecycle
 - **Loading**: "Reading this thread's story…" skeleton; decomposition may take seconds (Sonnet-tier).
 - **Ideal (active, W-10)**: arc header = goal + progress warmth ("3 of 7 milestones behind you") + **one next Pebble**. The wall of steps is never the default view — the wall is the documented paralysis trigger ([ADDitude](https://www.additudemag.com/where-do-i-start-adhd-organization/)).
 - **Expanded milestone view** (partial): exists for users who want the shape — one tap on the arc header, collapsed again by default on every open. Months render as a horizon (milestone titles + target months), not a checklist; individual steps inside milestones stay summarized as counts ("4 small steps live here").
-- **Re-planned diff view**: "The plan bent, it didn't break." Shows only what changed (moved / merged / dissolved), old plan ghosted, one acknowledge tap.
+- **Re-planned diff view (W-10b)**: "The plan bent, it didn't break." Shows only what changed (moved / merged / dissolved), old plan ghosted, one acknowledge tap.
 - **Paused**: rests with the Thread; copy: "Paused, not failed. It'll be here."
-- **Deadline-approaching**: gentle Doorway surfacing inside the lead-time window; calm copy, no red, no countdown anxiety.
-- **Deadline-missed** (amnesty): "The date moved past us — want to re-aim, shrink, or retire?" Three buttons, zero guilt math, no accumulated-overdue display.
+- **Deadline-approaching (W-10 deadline-approaching state)**: gentle Doorway surfacing inside the lead-time window; calm copy, no red, no countdown anxiety.
+- **Deadline-missed (amnesty, W-10c)**: "The date moved past us — want to re-aim, shrink, or retire?" Three buttons, zero guilt math, no accumulated-overdue display.
 - **Complete**: celebration (deterministic micro-reward layer) + offer of a Closing Note for the gallery.
 - **Returning after N weeks**: arc opens through M3 Warm Start; if a re-plan happened during absence, the diff is folded into the briefing, not shown as a separate alarm.
 - **Error / offline**: existing plan and next Pebble render from local store; "Make this an arc" queues politely (see §10).
 
 ## 7. Workflows
 
-**W1 — Happy path: Thread → Arc → months of Pebbles** (wireframes W-M4-01…04)
+**W1 — Happy path: Thread → Arc → months of Pebbles** (wireframes W-09 → W-10)
 1. Maya opens her "Taxes" Thread on web, taps **Make this an arc**, adds the April 15 deadline.
-2. AI reads the Digest — captures ("I dread the deduction question"), done history (accountant email drafted), stated energy ("I'm useless on weeknights") — and drafts 6 milestones across Feb–Apr (W-M4-02).
+2. AI reads the Digest — captures ("I dread the deduction question"), done history (accountant email drafted), stated energy ("I'm useless on weeknights") — and drafts 6 milestones across Feb–Apr (W-09).
 3. Proposal review: she renames one milestone, deletes another, approves. Arc → `active`; deterministic back-scheduler computes lead-time checkpoints from April 15.
 4. Thread now shows one Pebble: "Find the 1099 email (~5 min)." Doorway may carry it (max one arc Pebble, M5 rule).
 5. Weeks pass; Pebbles done/dissolved advance the arc; milestone completions trigger quiet re-balances.
 
 **Failure path A — Decomposition misses the mark:** proposal feels generic or wrong. Mitigation: full inline editing before approval; "try again with a hint" free-text re-prompt; if AI is unavailable or confidence is low, offer a 3-milestone manual skeleton (see §8 fallback). Nothing becomes real without approval — protects R3-class trust.
 
-**W2 — Deadline arc under pressure (deterministic, gentle)** (wireframes W-M4-05…06)
+**W2 — Deadline arc under pressure (deterministic, gentle)** (wireframes W-10 deadline-approaching state → W-10c)
 1. Arc "Move apartments" has a hard date (lease end, Aug 31). At approval, the back-scheduler placed lead-time checkpoints: book movers by Aug 1, start packing by Aug 10, utilities by Aug 20 — pure date math, inspectable in the milestone view.
 2. On July 28 the arc enters `deadline-approaching` for the movers checkpoint. The Doorway carries the arc Pebble ("Get one mover quote, ~15 min") with calm copy — surfacing earlier and slightly more often within M5's notification caps, never louder. No red, no countdown.
 3. (Phase 2) Aug 30, a 2:00 pm walkthrough is on her calendar: the Doorway shows "leave by 1:15 to make the 2:00" and offers one waiting-mode-sized Pebble ("Label the kitchen boxes, ~20 min") for the dead zone before it.
-4. Deadline met → milestone celebration; deadline passes with items open → `deadline-missed` prompt: "The date moved past us — want to re-aim, shrink, or retire?" Whatever she picks, the replan_log records it as a decision, not a failure.
+4. Deadline met → milestone celebration; deadline passes with items open → `deadline-missed` prompt (W-10c): "The date moved past us — want to re-aim, shrink, or retire?" Whatever she picks, the replan_log records it as a decision, not a failure.
 
 **Failure path A' — Panic-escalation temptation (designed against):** deadline proximity never changes tone, only timing. The copy set for deadline-approaching is fixed and pre-written (§8 guardrails); if the user ignores surfacing, notifications self-silence per M5 — the arc simply waits, then offers the amnesty fork.
 
