@@ -4,8 +4,7 @@ Build me a complete AI-powered ADHD product blueprint from scratch. Start with n
 
 Guardrails
 
-1. Realistic, helpful features that use ai to help people with adhd in normal everyday life, going about a typical day, that solve pain points.
-Check domain availability, don't buy.
+1. Realistic, helpful features that use ai to help people with adhd in normal everyday life, going about a typical day, that solve real pain points and that our target audience will use, and worth opening the app for. Do not suggest unrealistic features that involve an AI calling the user, or other complicated systems.
 2. Publish nothing. Everything stays local or in this repo. No deploying to the public internet,
 no posting anywhere, no emailing or messaging any real person.
 3. Invent nothing. Every quote, stat, complaint, competitor fact, and market claim in your
@@ -18,6 +17,8 @@ yourself with research and reasoning, then log the question, your answer, and wh
 build log. Blocked is not an option: if a tool or approach fails, find another route. If a phase
 stalls, ship the strong 80% version, note what got cut, and keep moving. Do not stop until
 the definition of done is met.
+6. Estimate pricing on llm models in our entire app for varying degrees of useage. On the high useage api calls for the llm models, should not cost more than $5.99 a month. So it is profitable.
+7. 1 Feature should help user organize thoughts. Another break down big task, that they can work all throughout the year. And they should be able to view, pick up and easily find their different thoughts and projects. 
 
 What “orchestrate” means here
 
@@ -26,9 +27,7 @@ sources and angles. Run tournaments where independent agents pitch competing bus
 ideas and judge panels score them. Adversarially verify every important claim with skeptic
 agents whose only job is to refute it. Use a completeness critic before you call any phase
 done. Design whatever orchestration shapes the work calls for; the patterns above are a
-floor, not a ceiling
-
-The arc
+floor, not a ceiling.
 
 The arc
 
@@ -44,6 +43,8 @@ The arc
 10. Prototype real daily use.
 11. Try to kill it.
 12. Package the founder-ready blueprint.
+
+Deliverables
 
 The deliverables list is a floor, not a ceiling
 
