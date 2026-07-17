@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ember wireframes — M1 Catch: capture &amp; onboarding</title>
+<link rel="stylesheet" href="../wireframe-kit.css">
+<style>
+  /* ---- Wireframe-page scaffolding only (wf- prefix; not product UI) ---- */
+  body { margin: 0; }
+  .wf-header {
+    padding: var(--em-space-8) var(--em-space-12) var(--em-space-6);
+    background: var(--em-surface);
+    border-bottom: 1px solid var(--em-border);
+  }
+  .wf-header h1 { font: var(--em-weight-semibold) var(--em-text-title1)/var(--em-leading-tight) var(--em-font-serif); margin: 0 0 var(--em-space-2); }
+  .wf-header p  { margin: 0; color: var(--em-text-2); max-width: 72ch; }
+  .wf-header a  { color: var(--em-accent-text); }
+  .wf-section-head {
+    padding: var(--em-space-8) var(--em-space-12) 0;
+    background: var(--em-surface-sunken);
+  }
+  .wf-section-head h2 {
+    font: var(--em-weight-semibold) var(--em-text-title2)/1.25 var(--em-font-serif);
+    margin: 0 0 var(--em-space-1);
+  }
+  .wf-section-head .wf-id {
+    display: inline-block;
+    font: var(--em-weight-semibold) var(--em-text-caption)/1 var(--em-font-mono);
+    background: var(--em-dusty-deep); color: #fff;
+    padding: 4px 8px; border-radius: var(--em-radius-sm);
+    margin-right: var(--em-space-2); vertical-align: 2px;
+    letter-spacing: 0.04em;
+  }
+  .wf-section-head p { margin: 0; color: var(--em-text-2); font-size: var(--em-text-body-sm); max-width: 82ch; }
+  .wf-canvas { min-height: 0; }             /* sections shouldn't each demand 100vh */
+  .wf-framelabel {
+    align-self: stretch; width: 100%; text-align: center;
+    font: var(--em-weight-medium) var(--em-text-caption)/1.4 var(--em-font-mono);
+    color: var(--em-text-3); letter-spacing: 0.05em; text-transform: uppercase;
+    margin: calc(-1 * var(--em-space-8)) 0 0;
+  }
+  .wf-frame { position: relative; }          /* anchors note dots on desktop frames */
+  .wf-cap {
+    width: 390px; flex: none;
+    font-size: var(--em-text-caption); color: var(--em-text-3);
+    text-align: center; margin-top: calc(-1 * var(--em-space-9, 2.25rem));
+  }
+  /* voice waveform (decorative wireframe furniture) */
+  .wf-wave { display: flex; align-items: center; justify-content: center; gap: 4px; height: 64px; }
+  .wf-wave i { width: 4px; border-radius: 2px; background: var(--em-amber); display: block; }
+  .wf-wave i:nth-child(odd)  { background: var(--em-accent); }
+  /* toast specimen shown in flow (anatomy section) */
+  .wf-toast-specimen { position: static; transform: none; margin: 0 auto; }
+  /* import dropzone */
+  .wf-dropzone {
+    border: 2px dashed var(--em-border); border-radius: var(--em-radius-lg);
+    padding: var(--em-space-10); text-align: center; color: var(--em-text-2);
+    background: var(--em-surface);
+  }
+  /* progress bar (deterministic, not a spinner) */
+  .wf-progress { height: 8px; border-radius: var(--em-radius-full); background: var(--em-surface-sunken); overflow: hidden; }
+  .wf-progress i { display: block; height: 100%; width: 42%; border-radius: inherit;
+    background: linear-gradient(90deg, var(--em-amber), var(--em-accent)); }
+  /* onboarding step dots (position indicator, not unread badges) */
+  .wf-steps { display: flex; gap: 6px; justify-content: center; }
+  .wf-steps i { width: 6px; height: 6px; border-radius: 999px; background: var(--em-border); }
+  .wf-steps i.is-on { background: var(--em-accent); }
+  /* shelf strip: horizontal drag-target row above bottom nav */
+  .wf-shelfstrip {
+    display: flex; gap: var(--em-space-2); overflow-x: auto;
+    padding: var(--em-space-2) var(--em-space-5) var(--em-space-3);
+    border-top: 1px dashed var(--em-border);
+  }
+  .wf-shelfstrip .em-chip { flex: none; }
+</style>
+</head>
+<body class="em-kit">
+
+<!-- ================================================================ -->
+<header class="wf-header">
+  <h1>ember — M1 Catch: capture &amp; onboarding wireframes</h1>
+  <p>
+    Surfaces W-02 · W-02b · W-02c · W-12 · W-13 · W-13b · O-01 · O-02 · W-16 · W-17, per
+    <code>product/navigation-map.md</code> and <code>product/modules/M1-catch.md</code>.
+    Content is Maya's real usage from <code>validation/day-in-the-life.md</code>.
+    Blue numbered dots are spec annotations — never product UI.
+    &nbsp;<a href="index.html">← Back to wireframe index</a>
+  </p>
+</header>
+
+<!-- ================================================================
+     W-02 — CATCH OVERLAY (mobile voice · mobile text · web quick-capture)
+     ================================================================ -->
+<section>
+  <div class="wf-section-head">
+    <h2><span class="wf-id">W-02</span>Catch overlay — voice &amp; text, mobile + web</h2>
+    <p>Zero-decision capture. Interactive &lt;200ms cold from widget; deterministic catch feedback &lt;300ms, on-device, unconditionally (M1 §9). No folder, no tag, no title — ever.</p>
+  </div>
+  <div class="em-canvas wf-canvas">
+
+    <!-- Mobile · VOICE RECORDING state -->
+    <div class="em-phone wf-frame">
+      <span class="em-note-dot" style="top: 120px; left: 20px;">1</span>
+      <span class="em-note-dot" style="top: 384px; right: 20px;">2</span>
+      <span class="em-note-dot" style="top: 620px; left: 20px;">3</span>
+      <div class="em-phone__status"></div>
+      <div class="em-phone__screen">
+        <div class="em-screen" style="justify-content: center; text-align: center; gap: var(--em-space-6);">
+          <p class="em-caption" style="letter-spacing: 0.04em;">CATCH · LISTENING</p>
+          <div class="wf-wave" aria-hidden="true">
+            <i style="height:14px"></i><i style="height:30px"></i><i style="height:52px"></i><i style="height:22px"></i><i style="height:44px"></i><i style="height:60px"></i><i style="height:34px"></i><i style="height:50px"></i><i style="height:18px"></i><i style="height:38px"></i><i style="height:26px"></i><i style="height:12px"></i>
+          </div>
+          <p class="em-quote" style="margin: 0 auto; max-width: 30ch;">“I still need to deal with the Etsy shop banner…”</p>
+          <p class="em-meta">Live transcript — on-device. Nothing has left your phone.</p>
+          <div style="position: relative; margin: var(--em-space-4) auto 0;">
+            <button class="em-catch-btn" style="margin: 0 auto; width: 84px; height: 84px;" aria-label="Stop and catch">■</button>
+          </div>
+          <p class="em-meta">Tap to catch — or it stops on its own after a quiet moment.</p>
+          <button class="em-btn em-btn--quiet">Never mind</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile · TEXT state -->
+    <div class="em-phone wf-frame">
+      <span class="em-note-dot" style="top: 150px; right: 20px;">4</span>
+      <span class="em-note-dot" style="top: 330px; left: 20px;">5</span>
+      <span class="em-note-dot" style="top: 470px; right: 20px;">6</span>
+      <div class="em-phone__status"></div>
+      <div class="em-phone__screen">
+        <div class="em-screen" style="gap: var(--em-space-5);">
+          <div class="em-row em-row--between">
+            <span class="em-caption" style="letter-spacing: 0.04em;">CATCH</span>
+            <button class="em-btn em-btn--quiet" style="min-height: var(--em-tap-min);">Close</button>
+          </div>
+          <div class="em-card" style="padding: var(--em-space-5);">
+            <p class="em-quote" style="margin: 0;">gift idea for Sam — that ceramics class she keeps mentioning<span style="border-left: 2px solid var(--em-accent); margin-left: 2px;">&nbsp;</span></p>
+          </div>
+          <p class="em-meta" style="margin: 0;">No folders. No tags. Ember files it after you let go.</p>
+          <div class="em-row">
+            <button class="em-btn em-btn--secondary" style="min-width: var(--em-tap-min);" aria-label="Switch to voice">🎙</button>
+            <button class="em-btn em-btn--secondary" style="min-width: var(--em-tap-min);" aria-label="Night catch">☾</button>
+            <span class="em-spacer"></span>
+            <button class="em-btn em-btn--primary em-btn--lg">Catch it</button>
+          </div>
+          <hr class="em-divider">
+          <p class="em-caption" style="letter-spacing: 0.03em;">SAME SCREEN · OFFLINE</p>
+          <div class="em-card" style="padding: var(--em-space-4);">
+            <p class="em-spark-row__text" style="margin: 0 0 var(--em-space-2);">“ask anna if the banner file was the final-final version”</p>
+            <span class="em-chip em-chip--queued">✦ safe on your phone — will file when back online</span>
+          </div>
+          <p class="em-caption" style="letter-spacing: 0.03em;">SAME SCREEN · TRANSCRIPTION FAILED</p>
+          <div class="em-card" style="padding: var(--em-space-4);">
+            <div class="em-row">
+              <button class="em-btn em-btn--secondary" style="min-width: var(--em-tap-min);" aria-label="Play recording">▶</button>
+              <div>
+                <p style="margin: 0; font-size: var(--em-text-body-sm);">Couldn’t hear this one — it’s kept safe.</p>
+                <p class="em-meta" style="margin: 0;">0:07 recording · from the widget</p>
+              </div>
+            </div>
+            <div class="em-row" style="margin-top: var(--em-space-3);">
+              <button class="em-chip em-chip--action">Try again</button>
+              <button class="em-chip em-chip--action">Type it instead</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Web quick-capture variant -->
+    <div class="em-desktop wf-frame">
+      <span class="em-note-dot" style="top: 118px; left: 232px;">7</span>
+      <span class="em-note-dot" style="top: 210px; left: 700px;">8</span>
+      <div class="em-desktop__bar">
+        <div class="em-desktop__dots"><i></i><i></i><i></i></div>
+        <div class="em-desktop__url">app.ember.day/shelf</div>
+      </div>
+      <div class="em-desktop__body">
+        <nav class="em-sidebar">
+          <div class="em-sidebar__wordmark">ember</div>
+          <div class="em-quickcapture" style="border-color: var(--em-accent); box-shadow: var(--em-shadow-glow); color: var(--em-text);">
+            ✦ Catch a thought… <kbd>C</kbd>
+          </div>
+          <a class="em-sidebar__item" href="#">◠ Doorway</a>
+          <a class="em-sidebar__item is-active" href="#">▤ Shelf</a>
+          <a class="em-sidebar__item" href="#">⌕ Search</a>
+          <a class="em-sidebar__item" href="#">✦ Loose Sparks</a>
+          <span class="em-spacer"></span>
+          <a class="em-sidebar__item" href="#">⚙ Settings</a>
+        </nav>
+        <main class="em-main">
+          <div class="em-card" style="max-width: 640px; margin: var(--em-space-6) auto 0; padding: var(--em-space-6); border-color: var(--em-accent); box-shadow: var(--em-shadow-2);">
+            <p class="em-caption" style="letter-spacing: 0.04em; margin: 0 0 var(--em-space-3);">QUICK CAPTURE — OPEN FROM ANYWHERE WITH <kbd style="font-family: var(--em-font-mono);">C</kbd></p>
+            <p class="em-quote" style="margin: 0 0 var(--em-space-4);">the serif one feels more like a real shop but the sans matches the product photos<span style="border-left: 2px solid var(--em-accent); margin-left: 2px;">&nbsp;</span></p>
+            <div class="em-row">
+              <span class="em-meta">Enter to catch · Esc to close · draft kept if you wander off</span>
+              <span class="em-spacer"></span>
+              <button class="em-btn em-btn--primary">Catch it</button>
+            </div>
+          </div>
+          <div class="em-toast wf-toast-specimen" style="margin-top: var(--em-space-10);" role="status">
+            <span class="em-toast__spark">✦</span>
+            <span>Caught → filed to <strong>Etsy shop</strong>.</span>
+            <button class="em-toast__correct">not right?</button>
+          </div>
+          <p class="em-meta" style="text-align:center; margin-top: var(--em-space-3);">Shelf content dimmed behind the capture card — capture never navigates you away.</p>
+        </main>
+      </div>
+    </div>
+
+    <!-- Notes -->
+    <aside class="em-notes">
+      <p class="em-notes__title">W-02 · spec notes</p>
+      <p class="em-notes__item"><b>1</b><span>Widget tap lands here <em>already recording</em> — no login wall, no navigation (M1 §7-W1). Surface interactive &lt;200ms cold.</span></p>
+      <p class="em-notes__item"><b>2</b><span>Live transcript is on-device ASR (default). Auto-stop after 1.5s silence; phone can be pocketed — everything after is async.</span></p>
+      <p class="em-notes__item"><b>3</b><span>“Never mind” is quiet, not destructive-styled. Drafts persist — no time-outs on input (brand law §9.9).</span></p>
+      <p class="em-notes__item"><b>4</b><span>Text state: one field, one primary. Mic and moon toggles are secondary; moon auto-offered 23:00–06:00.</span></p>
+      <p class="em-notes__item"><b>5</b><span>Offline: capture fully works; queued chip is amber-neutral — the only numeric badge allowed anywhere in Ember. Never an error tone (M1 §6).</span></p>
+      <p class="em-notes__item"><b>6</b><span>ASR failure: audio kept until a transcript exists; retry ladder on-device → server (consented) → “type it”. Still counts as caught (M1 §10).</span></p>
+      <p class="em-notes__item"><b>7</b><span>Web quick-capture pinned atop sidebar; global <code>C</code> hotkey. A page in the web app, not an extension (R5).</span></p>
+      <p class="em-notes__item"><b>8</b><span>Catch overlay is 100% system font — no webfont wait inside the &lt;300ms shell (brand §4.1).</span></p>
+    </aside>
+  </div>
+</section>
+
+<!-- ================================================================
+     W-02b — NIGHT MODE
+     ================================================================ -->
+<section>
+  <div class="wf-section-head">
+    <h2><span class="wf-id">W-02b</span>Catch — night mode (22:00–06:00)</h2>
+    <p>Pure black, silent, single field. No ember, no toast, no filing shown. The Spark routes to tomorrow’s Doorway (M5). Designed to not wake a partner — the 1 a.m. litmus test, literally.</p>
+  </div>
+  <div class="em-canvas wf-canvas">
+
+    <div class="em-phone wf-frame" data-theme="night" style="border-color:#000; background:#000;">
+      <span class="em-note-dot" style="top: 200px; left: 20px;">1</span>
+      <span class="em-note-dot" style="top: 420px; right: 20px;">2</span>
+      <span class="em-note-dot" style="top: 610px; left: 20px;">3</span>
+      <div class="em-phone__status" style="color: var(--em-night-dim);"></div>
+      <div class="em-phone__screen">
+        <div class="em-night">
+          <p class="em-night__hint">☾ &nbsp;Caught for the morning. Sleep.</p>
+          <input class="em-night__field" value="what if the 1099 from the contract gig never came" aria-label="Night catch">
+          <button class="em-night__done">Done</button>
+          <p class="em-night__hint">No sounds. No light. No result to look at.<br>This will be on tomorrow’s doorway.</p>
+        </div>
+      </div>
+    </div>
+
+    <aside class="em-notes">
+      <p class="em-notes__title">W-02b · spec notes</p>
+      <p class="em-notes__item"><b>1</b><span>OLED-true #000; single hairline; text #B8A28A (8.57:1 AAA). No accent — at night, nothing glows (tokens §4).</span></p>
+      <p class="em-notes__item"><b>2</b><span>Zero processing attempted at night: no filing, no toast, no ASR — everything defers to the morning batch (M1 §7-W3). Voice works too: long-press the widget records with the screen staying black.</span></p>
+      <p class="em-notes__item"><b>3</b><span>Silent undo: nothing to confirm now; undo is available next morning on the Doorway card (M1 §5).</span></p>
+      <p class="em-notes__item"><b>—</b><span>Maya, Day 3, 11:40pm: brain looping on taxes → phone down, thought safe. Insomnia evidence: Brevik 66.8%.</span></p>
+    </aside>
+  </div>
+</section>
+
+<!-- ================================================================
+     W-02c — FILED TOAST STATES
+     ================================================================ -->
+<section>
+  <div class="wf-section-head">
+    <h2><span class="wf-id">W-02c</span>Catch — filed toast states (confidence gate made visible)</h2>
+    <p>Filing is always announced, never silent (R3). Confidence ≥ 0.8 → auto-file toast · 0.5–0.8 → file + inline “not right?” · &lt; 0.5 → Loose Sparks, never a hidden inbox (M1 §8).</p>
+  </div>
+  <div class="em-canvas wf-canvas">
+
+    <!-- Phone: high-confidence toast in context -->
+    <div class="em-phone wf-frame">
+      <span class="em-note-dot" style="top: 560px; left: 20px;">1</span>
+      <span class="em-note-dot" style="bottom: 150px; right: 16px;">2</span>
+      <div class="em-phone__status"></div>
+      <div class="em-phone__screen">
+        <header class="em-appbar"><span class="em-appbar__title">Doorway</span></header>
+        <div class="em-screen">
+          <div class="em-card em-card--doorway em-glow" style="position: relative;">
+            <h3 class="em-doorway__greeting">Morning, Maya.</h3>
+            <p class="em-doorway__promise">One warm thread, one pebble, one old spark. Ninety seconds, then go live your day.</p>
+            <div class="em-pebble">Search email for the 1099-NEC <span class="em-pebble__time">~5 min</span></div>
+          </div>
+          <p class="em-meta" style="text-align:center;">…she catches a thought from the doorway; toast rises over whatever screen she’s on…</p>
+        </div>
+        <div class="em-toast" role="status" aria-live="polite">
+          <span class="em-toast__spark">✦</span>
+          <span>Caught → filed to <strong>Etsy shop</strong>.</span>
+          <button class="em-toast__correct">tap to correct</button>
+        </div>
+        <nav class="em-bottomnav">
+          <a class="em-tab is-active" href="#"><i class="em-tab__icon">◠</i>Doorway</a>
+          <a class="em-tab" href="#"><i class="em-tab__icon">▤</i>Shelf</a>
+          <button class="em-catch-btn" aria-label="Catch a thought">＋</button>
+          <a class="em-tab" href="#"><i class="em-tab__icon">⌕</i>Search</a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Phone: full ladder of toast variants -->
+    <div class="em-phone wf-frame">
+      <span class="em-note-dot" style="top: 130px; right: 16px;">3</span>
+      <span class="em-note-dot" style="top: 300px; left: 16px;">4</span>
+      <span class="em-note-dot" style="top: 452px; right: 16px;">5</span>
+      <span class="em-note-dot" style="top: 610px; left: 16px;">6</span>
+      <div class="em-phone__status"></div>
+      <div class="em-phone__screen">
+        <div class="em-screen" style="gap: var(--em-space-5);">
+          <p class="em-caption" style="letter-spacing: 0.04em;">TOAST LADDER — ONE PER CAPTURE, 5s, WITH UNDO</p>
+
+          <p class="em-meta" style="margin:0;">Shell first (&lt;300ms) — thread name fills async:</p>
+          <div class="em-toast wf-toast-specimen" role="status">
+            <span class="em-toast__spark">✦</span>
+            <span>Caught → filing to <span class="em-skeleton em-skeleton--pill" style="display:inline-block; vertical-align:middle; height:1em; width:72px;">thread</span></span>
+          </div>
+
+          <p class="em-meta" style="margin:0;">Confidence ≥ 0.8 — filed, named, correctable:</p>
+          <div class="em-toast wf-toast-specimen" role="status">
+            <span class="em-toast__spark">✦</span>
+            <span>Caught → filed to <strong>Taxes</strong>.</span>
+            <button class="em-toast__correct">tap to correct</button>
+          </div>
+
+          <p class="em-meta" style="margin:0;">Confidence 0.5–0.8 — filed, louder doubt:</p>
+          <div class="em-toast wf-toast-specimen" role="status">
+            <span class="em-toast__spark">✦</span>
+            <span>Caught → <strong>People: Sam</strong>, I think.</span>
+            <button class="em-toast__correct">not right? drag it</button>
+          </div>
+
+          <p class="em-meta" style="margin:0;">Confidence &lt; 0.5 — Loose, visibly held:</p>
+          <div class="em-toast wf-toast-specimen" role="status">
+            <span class="em-toast__spark">✦</span>
+            <span>Caught. Ember is holding this one until you point it home.</span>
+            <button class="em-toast__correct">view</button>
+          </div>
+
+          <p class="em-meta" style="margin:0;">Offline reconnect — one summary, never a storm:</p>
+          <div class="em-toast wf-toast-specimen" role="status">
+            <span class="em-toast__spark">✦</span>
+            <span>6 thoughts filed while you were away.</span>
+          </div>
+
+          <p class="em-meta" style="margin:0;">AI napping — capture still deterministic:</p>
+          <div class="em-banner">Ember’s memory-writing is napping. Everything you catch is safe — filing will catch up shortly.</div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="em-notes">
+      <p class="em-notes__title">W-02c · spec notes</p>
+      <p class="em-notes__item"><b>1</b><span>Toast is a polite live region; it never steals focus and never blocks the next capture (queue never blocks the mic, M1 §6).</span></p>
+      <p class="em-notes__item"><b>2</b><span>One ember per screen: the Catch button owns the accent; toast uses inverted ink surface (kit §5).</span></p>
+      <p class="em-notes__item"><b>3</b><span>Deterministic &lt;300ms shell renders before any network round-trip; the thread name arrives ~2–5s later (p90 &lt;5s, M1 §9). Skeleton only if it takes &gt;300ms.</span></p>
+      <p class="em-notes__item"><b>4</b><span>Week-one conservative mode shifts thresholds up 0.1 while corrections &lt; 10 — early misfiles are the trust-killer (M1 §8).</span></p>
+      <p class="em-notes__item"><b>5</b><span>Mid-band toast carries the drag affordance inline; tapping opens O-02 correction sheet.</span></p>
+      <p class="em-notes__item"><b>6</b><span>Low-band copy is canonical (brand §5.2): never “Uncategorized”, “Needs triage”, or “inbox”. 5s Undo lives in every toast.</span></p>
+    </aside>
+  </div>
+</section>
+
+<!-- ================================================================
+     O-01 — TOAST ANATOMY
+     ================================================================ -->
+<section>
+  <div class="wf-section-head">
+    <h2><span class="wf-id">O-01</span>Filed toast — anatomy</h2>
+    <p>The single most repeated feedback in the product. Every part is load-bearing; the &lt;300ms deterministic shell is the delay-discounting mitigation (R2).</p>
+  </div>
+  <div class="em-canvas wf-canvas">
+
+    <div class="em-card wf-frame" style="width: 640px; padding: var(--em-space-10); overflow: visible;">
+      <span class="em-note-dot" style="top: 84px;  left: 66px;">1</span>
+      <span class="em-note-dot" style="top: 56px;  left: 210px;">2</span>
+      <span class="em-note-dot" style="top: 56px;  left: 356px;">3</span>
+      <span class="em-note-dot" style="top: 132px; left: 470px;">4</span>
+      <div class="em-toast wf-toast-specimen" style="max-width: 100%;" role="status" aria-live="polite">
+        <span class="em-toast__spark">✦</span>
+        <span>Caught → filed to <strong>Etsy shop</strong>.</span>
+        <button class="em-toast__correct">tap to correct</button>
+      </div>
+      <hr class="em-divider" style="margin-top: var(--em-space-8);">
+      <div class="em-stack em-stack--tight" style="font-size: var(--em-text-body-sm); color: var(--em-text-2);">
+        <div class="em-row"><b style="min-width: 130px;">Timing</b><span>shell &lt;300ms (deterministic) · name fills async · auto-dismiss 5s · Undo inside the 5s window</span></div>
+        <div class="em-row"><b style="min-width: 130px;">Position</b><span>floats above the bottom nav (mobile) / bottom-center of main pane (web); never covers the Catch button</span></div>
+        <div class="em-row"><b style="min-width: 130px;">A11y</b><span>role="status", polite — announced once, no focus steal; entire toast is one ≥44px target</span></div>
+        <div class="em-row"><b style="min-width: 130px;">Reward layer</b><span>catch animation + haptic + 1 of 12 rotating micro-reward variants fire with the shell, out of the API round-trip</span></div>
+      </div>
+    </div>
+
+    <aside class="em-notes">
+      <p class="em-notes__title">O-01 · anatomy</p>
+      <p class="em-notes__item"><b>1</b><span>Amber spark glyph — the thread’s ember glyph “warms” when the name lands (300ms glow bloom, brand §8).</span></p>
+      <p class="em-notes__item"><b>2</b><span>Verb is always “Caught” — never “added”, “saved”, “processed” (brand §5.2).</span></p>
+      <p class="em-notes__item"><b>3</b><span>Thread name in serif italic — same “your world” voice as spark quotes. Honest about the machine: it names where it filed, every time.</span></p>
+      <p class="em-notes__item"><b>4</b><span>“tap to correct” opens O-02; corrections append to the classifier’s last-30 exemplar block (M1 §8 — corrections as training).</span></p>
+    </aside>
+  </div>
+</section>
+
+<!-- ================================================================
+     O-02 — CORRECTION SHEET
+     ================================================================ -->
+<section>
+  <div class="wf-section-head">
+    <h2><span class="wf-id">O-02</span>Misfile correction sheet — one drag or one tap</h2>
+    <p>Opened from any toast, spark card, or long-press → “Move to…”. Teaches the classifier; a user correction always beats a classifier decision, regardless of timestamp (M1 §10).</p>
+  </div>
+  <div class="em-canvas wf-canvas">
+
+    <div class="em-phone wf-frame">
+      <span class="em-note-dot" style="top: 300px; right: 16px;">1</span>
+      <span class="em-note-dot" style="top: 430px; left: 16px;">2</span>
+      <span class="em-note-dot" style="top: 680px; right: 16px;">3</span>
+      <div class="em-phone__status"></div>
+      <div class="em-phone__screen" style="position: relative;">
+        <header class="em-appbar"><span class="em-appbar__title">Doorway</span></header>
+        <div class="em-screen"><div class="em-skeleton em-skeleton--card"></div></div>
+        <div class="em-scrim">
+          <div class="em-sheet">
+            <p class="em-title-3" style="margin: 0 0 var(--em-space-2);">Where does this live?</p>
+            <blockquote class="em-spark-quote" style="margin-top: 0;">“that podcast about pricing handmade stuff — find it”</blockquote>
+            <p class="em-meta" style="margin: 0 0 var(--em-space-3);">Filed to <em>Macramé</em> a moment ago. Tap the right home:</p>
+            <div class="em-list">
+              <button class="em-spark-row" style="border: 0; background: none; cursor: pointer; text-align: left;">
+                <span class="em-spark-row__dot"></span>
+                <span class="em-spark-row__body"><strong>Etsy shop</strong> <span class="em-chip em-chip--warm">warm</span><br><span class="em-spark-row__meta">banner picked · arc aimed at the spring fair</span></span>
+              </button>
+              <button class="em-spark-row" style="border-bottom: 1px solid var(--em-hairline); background: none; cursor: pointer; text-align: left;">
+                <span class="em-spark-row__dot"></span>
+                <span class="em-spark-row__body"><strong>Macramé</strong> <span class="em-chip em-chip--resting">resting</span><br><span class="em-spark-row__meta">where it landed — keep it here?</span></span>
+              </button>
+              <button class="em-spark-row" style="border-bottom: 1px solid var(--em-hairline); background: none; cursor: pointer; text-align: left;">
+                <span class="em-spark-row__dot"></span>
+                <span class="em-spark-row__body"><strong>Taxes</strong> <span class="em-chip em-chip--warm">warm</span><br><span class="em-spark-row__meta">waiting on the accountant’s reply</span></span>
+              </button>
+            </div>
+            <div class="em-row" style="margin-top: var(--em-space-4);">
+              <button class="em-chip em-chip--action">＋ New thread</button>
+              <span class="em-spacer"></span>
+              <button class="em-btn em-btn--quiet">Leave it</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- After-state: confirmation copy -->
+    <div class="wf-cap" style="width: 320px; align-self: center; text-align: left;">
+      <div class="em-toast wf-toast-specimen" role="status" style="max-width: 100%;">
+        <span class="em-toast__spark">✦</span>
+        <span>Moved to <strong>Etsy shop</strong> — I’ll learn from that.</span>
+      </div>
+      <p class="em-meta" style="text-align: center; margin-top: var(--em-space-3);">After-state toast · origin→destination flash on the Shelf strip</p>
+    </div>
+
+    <aside class="em-notes">
+      <p class="em-notes__title">O-02 · spec notes</p>
+      <p class="em-notes__item"><b>1</b><span>The spark itself is quoted verbatim in serif italic with the amber rule — the user’s words are never paraphrased (brand §4.3).</span></p>
+      <p class="em-notes__item"><b>2</b><span>Warm threads listed first with state chips (warmth never encoded by color alone — always a text label, brand §3.4).</span></p>
+      <p class="em-notes__item"><b>3</b><span>No shame language, no “error”, no confirmation dialog (M1 §6 misfile-correction). Undo = drag back / toast Undo (5s).</span></p>
+      <p class="em-notes__item"><b>—</b><span>Each correction emits <code>(spark_text → correct_thread)</code> into the cached last-30 exemplar block — no fine-tuning in v1 (M1 §8).</span></p>
+    </aside>
+  </div>
+</section>
+
+<!-- ================================================================
+     W-12 — LOOSE SPARKS TRAY
+     ================================================================ -->
+<section>
+  <div class="wf-section-head">
+    <h2><span class="wf-id">W-12</span>Loose Sparks tray — visible holding, one-drag filing</h2>
+    <p>Where confidence &lt; 0.5 lands. Always visible from home, never called an inbox, never red, never expires. Top 20 + fold regardless of pile-up size (M1 §6, §9).</p>
+  </div>
+  <div class="em-canvas wf-canvas">
+
+    <div class="em-phone wf-frame">
+      <span class="em-note-dot" style="top: 78px;  right: 16px;">1</span>
+      <span class="em-note-dot" style="top: 160px; left: 16px;">2</span>
+      <span class="em-note-dot" style="top: 268px; right: 16px;">3</span>
+      <span class="em-note-dot" style="top: 470px; left: 16px;">4</span>
+      <span class="em-note-dot" style="bottom: 176px; right: 16px;">5</span>
+      <span class="em-note-dot" style="bottom: 108px; left: 16px;">6</span>
+      <div class="em-phone__status"></div>
+      <div class="em-phone__screen">
+        <header class="em-appbar">
+          <div>
+            <span class="em-appbar__title">Loose Sparks</span>
+            <div class="em-meta">Ember is holding these — 9 sparks</div>
+          </div>
+          <button class="em-appbar__action" aria-label="More">⋯</button>
+        </header>
+        <div class="em-screen" style="gap: var(--em-space-2);">
+
+          <div class="em-banner em-banner--rest" style="margin-bottom: var(--em-space-2);">
+            A few sparks piled up while you were away — want me to refile them in one go?
+            <span class="em-spacer"></span>
+            <button class="em-chip em-chip--action" style="flex:none;">Refile ✦</button>
+          </div>
+
+          <div class="em-spark-row em-spark-row--loose">
+            <span class="em-spark-row__dot"></span>
+            <div class="em-spark-row__body">
+              <p class="em-spark-row__text">“what if the logo was a match striking — too on the nose?”</p>
+              <p class="em-spark-row__meta">caught Tue morning · voice, widget</p>
+              <div class="em-row" style="margin-top: var(--em-space-2); flex-wrap: wrap; gap: var(--em-space-2);">
+                <button class="em-chip em-chip--action">→ Etsy shop</button>
+                <button class="em-chip em-chip--action">→ Novel</button>
+                <button class="em-chip em-chip--action">new thread?</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="em-spark-row em-spark-row--loose">
+            <span class="em-spark-row__dot"></span>
+            <div class="em-spark-row__body">
+              <p class="em-spark-row__text">“sam mentioned that ceramics class again — birthday??”</p>
+              <p class="em-spark-row__meta">caught yesterday · typed</p>
+              <div class="em-row" style="margin-top: var(--em-space-2); flex-wrap: wrap; gap: var(--em-space-2);">
+                <button class="em-chip em-chip--action">→ People: Sam</button>
+                <button class="em-chip em-chip--action">→ Etsy shop</button>
+                <button class="em-chip em-chip--action">new thread?</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="em-spark-row em-spark-row--loose">
+            <span class="em-spark-row__dot"></span>
+            <div class="em-spark-row__body">
+              <p class="em-spark-row__text">“check if the studio sublease needs renter’s insurance”</p>
+              <p class="em-spark-row__meta">caught yesterday · share sheet (Safari)</p>
+              <div class="em-row" style="margin-top: var(--em-space-2); flex-wrap: wrap; gap: var(--em-space-2);">
+                <button class="em-chip em-chip--action">→ Two-color room</button>
+                <button class="em-chip em-chip--action">→ Taxes</button>
+                <button class="em-chip em-chip--action">new thread?</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="em-spark-row em-spark-row--loose">
+            <span class="em-spark-row__dot"></span>
+            <div class="em-spark-row__body">
+              <p class="em-spark-row__text">“‘the room where the fire had been’ — chapter title?”</p>
+              <p class="em-spark-row__meta">caught Sun night · night catch</p>
+              <div class="em-row" style="margin-top: var(--em-space-2); flex-wrap: wrap; gap: var(--em-space-2);">
+                <button class="em-chip em-chip--action">→ Novel</button>
+                <button class="em-chip em-chip--action">→ Macramé</button>
+                <button class="em-chip em-chip--action">new thread?</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="em-spark-row em-spark-row--loose">
+            <span class="em-spark-row__dot"></span>
+            <div class="em-spark-row__body">
+              <p class="em-spark-row__text">“1099 folder maybe in the old gmail?”</p>
+              <p class="em-spark-row__meta">caught last week · voice, in app</p>
+              <div class="em-row" style="margin-top: var(--em-space-2); flex-wrap: wrap; gap: var(--em-space-2);">
+                <button class="em-chip em-chip--action">→ Taxes</button>
+                <button class="em-chip em-chip--action">→ Job hunt</button>
+                <button class="em-chip em-chip--action">new thread?</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="em-spark-row em-spark-row--loose">
+            <span class="em-spark-row__dot"></span>
+            <div class="em-spark-row__body">
+              <p class="em-spark-row__text">“repot the monstera before it eats the window”</p>
+              <p class="em-spark-row__meta">caught last week · typed</p>
+              <div class="em-row" style="margin-top: var(--em-space-2); flex-wrap: wrap; gap: var(--em-space-2);">
+                <button class="em-chip em-chip--action">→ Plants</button>
+                <button class="em-chip em-chip--action">→ Two-color room</button>
+                <button class="em-chip em-chip--action">new thread?</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="em-spark-row em-spark-row--loose">
+            <span class="em-spark-row__dot"></span>
+            <div class="em-spark-row__body">
+              <div class="em-row">
+                <button class="em-btn em-btn--secondary" style="min-width: var(--em-tap-min);" aria-label="Play recording">▶</button>
+                <div>
+                  <p style="margin:0; font-size: var(--em-text-body-sm);">Couldn’t hear this one — 0:11 kept safe.</p>
+                  <p class="em-spark-row__meta" style="margin:0;">from last night · night catch</p>
+                </div>
+              </div>
+              <div class="em-row" style="margin-top: var(--em-space-2);">
+                <button class="em-chip em-chip--action">Try server transcribe</button>
+                <button class="em-chip em-chip--action">Type it</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="em-spark-row em-spark-row--loose">
+            <span class="em-spark-row__dot"></span>
+            <div class="em-spark-row__body">
+              <p class="em-spark-row__text">“ask anna if the banner file was the final-final version”</p>
+              <p class="em-spark-row__meta">caught this morning · typed</p>
+              <div class="em-row" style="margin-top: var(--em-space-2);">
+                <span class="em-chip em-chip--queued">✦ settling later — filing will catch up</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="em-spark-row em-spark-row--loose">
+            <span class="em-spark-row__dot"></span>
+            <div class="em-spark-row__body">
+              <p class="em-spark-row__text">“is the craft fair table fee a write-off”</p>
+              <p class="em-spark-row__meta">caught in March · imported later</p>
+              <div class="em-row" style="margin-top: var(--em-space-2); flex-wrap: wrap; gap: var(--em-space-2);">
+                <button class="em-chip em-chip--action">→ Taxes</button>
+                <button class="em-chip em-chip--action">→ Etsy shop</button>
+                <button class="em-chip em-chip--action">new thread?</button>
+              </div>
+            </div>
+          </div>
+
+          <button class="em-btn em-btn--secondary em-btn--block" style="margin-top: var(--em-space-2);">11 older sparks — resting under the fold</button>
+        </div>
+
+        <div class="wf-shelfstrip" aria-label="Drag a spark onto a thread">
+          <span class="em-chip em-chip--warm">Etsy shop</span>
+          <span class="em-chip em-chip--warm">Taxes</span>
+          <span class="em-chip">Novel</span>
+          <span class="em-chip">People: Sam</span>
+          <span class="em-chip em-chip--resting">Macramé</span>
+          <span class="em-chip">Plants</span>
+        </div>
+        <nav class="em-bottomnav">
+          <a class="em-tab" href="#"><i class="em-tab__icon">◠</i>Doorway</a>
+          <a class="em-tab" href="#"><i class="em-tab__icon">▤</i>Shelf</a>
+          <button class="em-catch-btn" aria-label="Catch a thought">＋</button>
+          <a class="em-tab" href="#"><i class="em-tab__icon">⌕</i>Search</a>
+        </nav>
+      </div>
+    </div>
+
+    <aside class="em-notes">
+      <p class="em-notes__title">W-12 · spec notes</p>
+      <p class="em-notes__item"><b>1</b><span>Warm framing: “Ember is holding these — 9 sparks”. Count is an ember count, never red, never “inbox” (terminology rule).</span></p>
+      <p class="em-notes__item"><b>2</b><span>Returning-after-weeks state: one gentle merge offer batch-files everything above threshold in one tap (M1 §6).</span></p>
+      <p class="em-notes__item"><b>3</b><span>Every card: top-2 thread guess chips (<code>alt_thread_ids ≤2</code> from the classifier) + “new thread?”. One tap files it and logs a training exemplar (§7-W2).</span></p>
+      <p class="em-notes__item"><b>4</b><span>Cards are draggable (dashed border, grab cursor) onto the Shelf strip below — the one-drag correction path. Loose sparks never expire, never auto-archive; M5 resurfaces each at most once.</span></p>
+      <p class="em-notes__item"><b>5</b><span>ASR-fail and offline/AI-outage sparks live here too, with retry and “settling later” chips — nothing is ever silently dropped.</span></p>
+      <p class="em-notes__item"><b>6</b><span>Visual cap: top 20 + “older sparks” fold, regardless of pile-up size — the tray never becomes a wall (M1 §9, 100× scale).</span></p>
+    </aside>
+  </div>
+</section>
+
+<!-- ================================================================
+     W-13 — IMPORT WIZARD
+     ================================================================ -->
+<section>
+  <div class="wf-section-head">
+    <h2><span class="wf-id">W-13</span>Import wizard — “Import the wreckage” (web)</h2>
+    <p>Settings → import. Apple Notes / Notion export zips. Local parse + dedupe first, then batched classification under a hard $1.50 model-spend cap per batch (M1 §8).</p>
+  </div>
+  <div class="em-canvas wf-canvas">
+
+    <div class="em-desktop wf-frame">
+      <span class="em-note-dot" style="top: 150px; left: 640px;">1</span>
+      <span class="em-note-dot" style="top: 356px; left: 300px;">2</span>
+      <span class="em-note-dot" style="top: 560px; left: 640px;">3</span>
+      <span class="em-note-dot" style="top: 700px; left: 300px;">4</span>
+      <div class="em-desktop__bar">
+        <div class="em-desktop__dots"><i></i><i></i><i></i></div>
+        <div class="em-desktop__url">app.ember.day/settings/import</div>
+      </div>
+      <div class="em-desktop__body">
+        <nav class="em-sidebar">
+          <div class="em-sidebar__wordmark">ember</div>
+          <div class="em-quickcapture">✦ Catch a thought… <kbd>C</kbd></div>
+          <a class="em-sidebar__item" href="#">◠ Doorway</a>
+          <a class="em-sidebar__item" href="#">▤ Shelf</a>
+          <a class="em-sidebar__item" href="#">⌕ Search</a>
+          <a class="em-sidebar__item" href="#">✦ Loose Sparks</a>
+          <span class="em-spacer"></span>
+          <a class="em-sidebar__item is-active" href="#">⚙ Settings</a>
+        </nav>
+        <main class="em-main em-prose" style="max-width: none;">
+          <h3 class="em-title-1" style="margin: 0 0 var(--em-space-2);">Bring the wreckage.</h3>
+          <p style="max-width: var(--em-measure); color: var(--em-text-2); margin: 0 0 var(--em-space-6);">
+            Got old notes rotting somewhere? Bring them here — they become memory, not guilt.
+            Ember reads them, skips duplicates, and files what it can into your threads.
+          </p>
+
+          <div class="em-row" style="align-items: stretch; gap: var(--em-space-4); max-width: 720px;">
+            <div class="em-card" style="flex: 1; cursor: pointer;">
+              <p class="em-title-3" style="margin: 0 0 var(--em-space-1);">🗒 Apple Notes</p>
+              <p class="em-meta" style="margin: 0;">.zip of exported .txt / .html</p>
+            </div>
+            <div class="em-card" style="flex: 1; cursor: pointer; border-color: var(--em-accent); box-shadow: var(--em-shadow-glow);">
+              <p class="em-title-3" style="margin: 0 0 var(--em-space-1);">▦ Notion export</p>
+              <p class="em-meta" style="margin: 0;">.zip of markdown / csv · selected</p>
+            </div>
+          </div>
+
+          <div class="wf-dropzone" style="max-width: 720px; margin-top: var(--em-space-5);">
+            <p style="margin: 0 0 var(--em-space-3);"><strong>Notes-export-2026.zip</strong> · 4,000 notes found</p>
+            <p class="em-meta" style="margin: 0 0 var(--em-space-4);">Read and de-duplicated in your browser first — nothing uploads until you say so.</p>
+            <button class="em-btn em-btn--primary em-btn--lg">Start the import</button>
+          </div>
+
+          <hr class="em-divider" style="max-width: 720px; margin-block: var(--em-space-8);">
+          <p class="em-caption" style="letter-spacing: 0.03em;">STATE · IMPORT IN PROGRESS (pausable · resumable)</p>
+          <div class="em-card" style="max-width: 720px; margin-top: var(--em-space-3);">
+            <div class="em-row em-row--between" style="margin-bottom: var(--em-space-3);">
+              <p class="em-title-3" style="margin: 0;">Reading your old notes…</p>
+              <button class="em-btn em-btn--quiet">Pause</button>
+            </div>
+            <div class="wf-progress"><i></i></div>
+            <p class="em-meta" style="margin: var(--em-space-3) 0 0;">312 of 4,000 notes read · 61 duplicates skipped · you can close this tab — it keeps going.</p>
+            <div class="em-banner em-banner--rest" style="margin-top: var(--em-space-4);">
+              Paused to keep things affordable — the rest files itself tonight. A big pile can take 2–3 nights; it will say so.
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <aside class="em-notes">
+      <p class="em-notes__title">W-13 · spec notes</p>
+      <p class="em-notes__item"><b>1</b><span>Framing is memory-not-guilt (winner.md #16): “wreckage → memory”. Never “clean up your backlog”.</span></p>
+      <p class="em-notes__item"><b>2</b><span>Dedupe pre-pass is local &amp; deterministic: normalized-text hash + MinHash near-dupe, in-batch and against the corpus. Re-running the same zip is idempotent — skipped, counted, never doubled (M1 §9–10).</span></p>
+      <p class="em-notes__item"><b>3</b><span>Deterministic progress numbers, never a bare spinner; pausable/resumable; uploaded files purged from server storage when the batch completes or cancels (M1 §11).</span></p>
+      <p class="em-notes__item"><b>4</b><span>Cost-cap state: hard $1.50 model spend per ImportBatch on the Batch API (50% off); past cap, leftovers land pre-deduped in “Imported, unsorted” and drain nightly (M1 §8).</span></p>
+    </aside>
+  </div>
+</section>
+
+<!-- ================================================================
+     W-13b — IMPORT SUMMARY + GUIDED TRIAGE
+     ================================================================ -->
+<section>
+  <div class="wf-section-head">
+    <h2><span class="wf-id">W-13b</span>Import summary + guided Loose triage (web)</h2>
+    <p>The receipt: “1,204 sparks joined 9 threads.” Then a guided pass over the top Loose clusters — one decision per cluster, not per note.</p>
+  </div>
+  <div class="em-canvas wf-canvas">
+
+    <div class="em-desktop wf-frame">
+      <span class="em-note-dot" style="top: 176px; left: 640px;">1</span>
+      <span class="em-note-dot" style="top: 330px; left: 300px;">2</span>
+      <span class="em-note-dot" style="top: 470px; left: 880px;">3</span>
+      <span class="em-note-dot" style="top: 660px; left: 300px;">4</span>
+      <div class="em-desktop__bar">
+        <div class="em-desktop__dots"><i></i><i></i><i></i></div>
+        <div class="em-desktop__url">app.ember.day/settings/import/receipt</div>
+      </div>
+      <div class="em-desktop__body">
+        <nav class="em-sidebar">
+          <div class="em-sidebar__wordmark">ember</div>
+          <div class="em-quickcapture">✦ Catch a thought… <kbd>C</kbd></div>
+          <a class="em-sidebar__item" href="#">◠ Doorway</a>
+          <a class="em-sidebar__item" href="#">▤ Shelf</a>
+          <a class="em-sidebar__item" href="#">⌕ Search</a>
+          <a class="em-sidebar__item" href="#">✦ Loose Sparks</a>
+          <span class="em-spacer"></span>
+          <a class="em-sidebar__item is-active" href="#">⚙ Settings</a>
+        </nav>
+        <main class="em-main">
+          <div class="em-card em-card--briefing em-glow" style="max-width: 720px;">
+            <p class="em-briefing__kicker">IMPORT COMPLETE · APPLE NOTES</p>
+            <h3 class="em-briefing__headline">1,204 notes are now memory.</h3>
+            <p class="em-briefing__body" style="margin: 0;">
+              They joined <strong>9 threads</strong>. 61 duplicates skipped. 312 sparks are resting in
+              Loose Sparks until you point them home. 7 couldn’t be read —
+              <a href="#" style="color: var(--em-accent-text);">retry these</a>.
+            </p>
+            <div class="em-row" style="margin-top: var(--em-space-5); flex-wrap: wrap; gap: var(--em-space-2);">
+              <span class="em-chip em-chip--warm">Novel · 402 joined</span>
+              <span class="em-chip em-chip--warm">Etsy shop · 214</span>
+              <span class="em-chip">Taxes · 188</span>
+              <span class="em-chip">Two-color room · 96</span>
+              <span class="em-chip em-chip--resting">Macramé · 87</span>
+              <span class="em-chip">+4 more threads</span>
+            </div>
+            <p style="margin: var(--em-space-5) 0 0; color: var(--em-text-2);">
+              3 threads look alive — want a Warm Start on any of them?
+              <span class="em-chip em-chip--action" style="margin-left: var(--em-space-2);">Novel</span>
+              <span class="em-chip em-chip--action">Etsy shop</span>
+              <span class="em-chip em-chip--action">Two-color room</span>
+            </p>
+          </div>
+
+          <h4 class="em-title-3" style="margin: var(--em-space-8) 0 var(--em-space-2);">Point the biggest piles home — one decision each</h4>
+          <p class="em-meta" style="margin: 0 0 var(--em-space-4); max-width: var(--em-measure);">Ember grouped the 312 loose sparks into clusters. Decide the cluster; the sparks follow. Skip any — they’ll keep.</p>
+
+          <div class="em-stack" style="max-width: 720px;">
+            <div class="em-card">
+              <div class="em-row em-row--between">
+                <div>
+                  <p class="em-title-3" style="margin: 0;">34 sparks about knitting &amp; yarn suppliers</p>
+                  <p class="em-spark-row__text" style="margin: var(--em-space-1) 0 0;">“the chunky merino from that Vermont farm — reorder?”</p>
+                </div>
+                <div class="em-row" style="flex: none;">
+                  <button class="em-chip em-chip--action">→ Macramé</button>
+                  <button class="em-chip em-chip--action">new thread?</button>
+                  <button class="em-btn em-btn--quiet">Skip</button>
+                </div>
+              </div>
+            </div>
+            <div class="em-card">
+              <div class="em-row em-row--between">
+                <div>
+                  <p class="em-title-3" style="margin: 0;">21 sparks about apartment fixes</p>
+                  <p class="em-spark-row__text" style="margin: var(--em-space-1) 0 0;">“landlord said the radiator key is behind the meter box”</p>
+                </div>
+                <div class="em-row" style="flex: none;">
+                  <button class="em-chip em-chip--action">→ Two-color room</button>
+                  <button class="em-chip em-chip--action">new thread?</button>
+                  <button class="em-btn em-btn--quiet">Skip</button>
+                </div>
+              </div>
+            </div>
+            <div class="em-card">
+              <div class="em-row em-row--between">
+                <div>
+                  <p class="em-title-3" style="margin: 0;">17 sparks about old job applications</p>
+                  <p class="em-spark-row__text" style="margin: var(--em-space-1) 0 0;">“the portfolio pdf anna helped compress — where”</p>
+                </div>
+                <div class="em-row" style="flex: none;">
+                  <button class="em-chip em-chip--action">→ Job hunt</button>
+                  <button class="em-chip em-chip--action">new thread?</button>
+                  <button class="em-btn em-btn--quiet">Skip</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="em-meta" style="margin-top: var(--em-space-4);">240 smaller piles stay in Loose Sparks — the nightly batch keeps quietly filing what it becomes sure of. · <a href="#" style="color: var(--em-text-2);">Remove this import</a></p>
+        </main>
+      </div>
+    </div>
+
+    <aside class="em-notes">
+      <p class="em-notes__title">W-13b · spec notes</p>
+      <p class="em-notes__item"><b>1</b><span>Receipt copy is canonical (§7-W4): counts + “memory” framing; partial items listed with one-tap “retry these” — a batch is never failed wholesale (M1 §10).</span></p>
+      <p class="em-notes__item"><b>2</b><span>Revived-thread hand-off to M3: “3 threads look alive — want a Warm Start?” (import.completed event).</span></p>
+      <p class="em-notes__item"><b>3</b><span>Guided triage = cluster-level decisions with one sample quote each; each choice trains the classifier like any correction.</span></p>
+      <p class="em-notes__item"><b>4</b><span>“Remove this import” deletes the batch as a unit (archives its sparks unless full removal confirmed). ImportBatch kept forever as a receipt (M1 §4).</span></p>
+    </aside>
+  </div>
+</section>
+
+<!-- ================================================================
+     W-16 — ONBOARDING
+     ================================================================ -->
+<section>
+  <div class="wf-section-head">
+    <h2><span class="wf-id">W-16</span>Onboarding — first Catch → first Thread → Doorway preview → notification window → ASR consent</h2>
+    <p>Maya, Day 1, 8:12am: 90 seconds total. No account wall until step 3; no permissions begging; the ASR consent is skippable and revocable in Settings.</p>
+  </div>
+  <div class="em-canvas wf-canvas">
+
+    <!-- Step 1 -->
+    <div class="em-phone wf-frame">
+      <span class="em-note-dot" style="top: 260px; left: 16px;">1</span>
+      <span class="em-note-dot" style="bottom: 220px; right: 16px;">2</span>
+      <div class="em-phone__status"></div>
+      <div class="em-phone__screen">
+        <div class="em-screen" style="justify-content: center; text-align: center; gap: var(--em-space-6); position: relative;">
+          <div class="em-empty__art" style="margin-inline: auto;">✦</div>
+          <h3 class="em-display" style="margin: 0;">Say anything.<br>Ember will file it.</h3>
+          <p style="color: var(--em-text-2); max-width: 30ch; margin-inline: auto;">A thought, a worry, a maybe. No folders, no setup — that’s the whole trick.</p>
+          <button class="em-catch-btn" style="margin: var(--em-space-4) auto 0; width: 84px; height: 84px;" aria-label="Catch your first thought">＋</button>
+          <p class="em-meta">Hold to speak · tap to type</p>
+          <div class="wf-steps"><i class="is-on"></i><i></i><i></i><i></i></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="em-phone wf-frame">
+      <span class="em-note-dot" style="top: 300px; right: 16px;">3</span>
+      <span class="em-note-dot" style="top: 470px; left: 16px;">4</span>
+      <div class="em-phone__status"></div>
+      <div class="em-phone__screen">
+        <div class="em-screen" style="justify-content: center; gap: var(--em-space-5);">
+          <p class="em-caption" style="letter-spacing: 0.04em; text-align: center;">WATCH IT LAND</p>
+          <blockquote class="em-spark-quote">“I still need to deal with the Etsy shop banner”<cite>you, just now</cite></blockquote>
+          <div class="em-toast wf-toast-specimen" role="status" style="max-width: 100%;">
+            <span class="em-toast__spark">✦</span>
+            <span>Caught → it started a thread.</span>
+          </div>
+          <div class="em-card em-card--thread is-warm">
+            <h4 class="em-thread__title">Etsy shop</h4>
+            <p class="em-thread__last">Ember started this thread — rename or merge anytime.</p>
+            <div class="em-row"><span class="em-chip em-chip--warm">warm</span><span class="em-chip">1 spark</span></div>
+          </div>
+          <p style="color: var(--em-text-2); text-align: center; margin: 0;">It went to a thread — that’s where everything you catch will live and stay warm.</p>
+          <button class="em-btn em-btn--primary em-btn--block em-btn--lg">Keep going</button>
+          <div class="wf-steps"><i></i><i class="is-on"></i><i></i><i></i></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="em-phone wf-frame">
+      <span class="em-note-dot" style="top: 210px; left: 16px;">5</span>
+      <span class="em-note-dot" style="top: 500px; right: 16px;">6</span>
+      <div class="em-phone__status"></div>
+      <div class="em-phone__screen">
+        <div class="em-screen" style="justify-content: center; gap: var(--em-space-5);">
+          <p class="em-caption" style="letter-spacing: 0.04em; text-align: center;">TOMORROW MORNING LOOKS LIKE THIS</p>
+          <div class="em-card em-card--doorway em-glow" style="position: relative;">
+            <h3 class="em-doorway__greeting">Morning, Maya.</h3>
+            <p class="em-doorway__promise">One warm thread, one tiny step, ninety seconds. Then go live your day.</p>
+            <div class="em-pebble">Look at the banner file for 2 minutes <span class="em-pebble__time">~2 min</span></div>
+          </div>
+          <h4 class="em-title-3" style="margin: var(--em-space-2) 0 0;">When should mornings knock?</h4>
+          <div class="em-row" style="flex-wrap: wrap; gap: var(--em-space-2);">
+            <button class="em-chip em-chip--action is-active">7–9 am</button>
+            <button class="em-chip em-chip--action">9–11 am</button>
+            <button class="em-chip em-chip--action">Evenings</button>
+            <button class="em-chip em-chip--action">Don’t knock — I’ll come to the door</button>
+          </div>
+          <p class="em-meta" style="margin: 0;">One knock a day at most. If they stop landing, Ember goes quiet on its own.</p>
+          <button class="em-btn em-btn--primary em-btn--block em-btn--lg">Save my window</button>
+          <div class="wf-steps"><i></i><i></i><i class="is-on"></i><i></i></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="em-phone wf-frame">
+      <span class="em-note-dot" style="top: 300px; left: 16px;">7</span>
+      <span class="em-note-dot" style="bottom: 190px; right: 16px;">8</span>
+      <div class="em-phone__status"></div>
+      <div class="em-phone__screen">
+        <div class="em-screen" style="justify-content: center; gap: var(--em-space-5);">
+          <p class="em-caption" style="letter-spacing: 0.04em; text-align: center;">ONE HONEST QUESTION</p>
+          <h3 class="em-title-1" style="margin: 0;">When your phone can’t hear you</h3>
+          <p style="color: var(--em-text-2); margin: 0;">
+            Your voice notes are transcribed <strong>on your phone</strong> — audio never leaves it.
+            Rarely, that fails. If you allow it, Ember can retry that one clip on our server,
+            then delete it. Your call, changeable anytime in Settings.
+          </p>
+          <div class="em-card" style="padding: var(--em-space-4);">
+            <div class="em-row">
+              <button class="em-btn em-btn--secondary" style="min-width: var(--em-tap-min);" aria-label="Play example">▶</button>
+              <div>
+                <p style="margin: 0; font-size: var(--em-text-body-sm);">Example: a mumbled 1 a.m. clip</p>
+                <p class="em-meta" style="margin: 0;">without consent, it simply waits for you to type it</p>
+              </div>
+            </div>
+          </div>
+          <button class="em-btn em-btn--primary em-btn--block em-btn--lg">Allow the server retry</button>
+          <button class="em-btn em-btn--quiet em-btn--block">Skip — on-device only</button>
+          <div class="wf-steps"><i></i><i></i><i></i><i class="is-on"></i></div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="em-notes">
+      <p class="em-notes__title">W-16 · spec notes</p>
+      <p class="em-notes__item"><b>1</b><span>First-run copy is canonical: “Say anything. Ember will file it.” Cold start is expected — the first 1–3 sparks create proposed threads (M1 §6).</span></p>
+      <p class="em-notes__item"><b>2</b><span>Mic permission is requested at first voice capture, not at install (M1 §11). No account wall until step 3.</span></p>
+      <p class="em-notes__item"><b>3</b><span>One-time 3-second toast explainer: “It went to a thread — watch.” Never repeated.</span></p>
+      <p class="em-notes__item"><b>4</b><span>First auto-created threads are labeled “Ember started this thread — rename or merge anytime” (cold-start exception, M1 §8 guardrails).</span></p>
+      <p class="em-notes__item"><b>5</b><span>Doorway preview sets the contract: ≤3 items, ≤90 seconds, no list-of-everything (brand law §9.7).</span></p>
+      <p class="em-notes__item"><b>6</b><span>Notification-window picker: one knock a day max; self-silencing after ignores is disclosed up front (M5 anti-habituation).</span></p>
+      <p class="em-notes__item"><b>7</b><span>Server-ASR consent is explicit, plain-language, skippable, revocable in Settings; declining just ends the retry ladder at “type it” (M1 §11).</span></p>
+      <p class="em-notes__item"><b>8</b><span>Skip is a first-class quiet button — consent is never dark-patterned. Total flow: ~90 seconds (day-in-the-life, Day 1).</span></p>
+    </aside>
+  </div>
+</section>
+
+<!-- ================================================================
+     W-17 — EMPTY / FIRST-RUN STATES
+     ================================================================ -->
+<section>
+  <div class="wf-section-head">
+    <h2><span class="wf-id">W-17</span>Empty states — Shelf · Doorway · Search first-run</h2>
+    <p>Warm invitation, never “no data”. One inviting line + one action per surface; every path leads back to Catch.</p>
+  </div>
+  <div class="em-canvas wf-canvas">
+
+    <!-- Shelf first-run -->
+    <div class="em-phone wf-frame">
+      <span class="em-note-dot" style="top: 330px; left: 16px;">1</span>
+      <div class="em-phone__status"></div>
+      <div class="em-phone__screen">
+        <header class="em-appbar"><span class="em-appbar__title">Shelf</span></header>
+        <div class="em-screen" style="justify-content: center;">
+          <div class="em-empty">
+            <div class="em-empty__art">▤</div>
+            <h3 class="em-empty__title">Your shelf is waiting for its first spark.</h3>
+            <p class="em-empty__line">Catch anything — a thought, a worry, a maybe. Ember will find it a home.</p>
+            <button class="em-btn em-btn--primary em-btn--lg">Catch a thought</button>
+          </div>
+        </div>
+        <nav class="em-bottomnav">
+          <a class="em-tab" href="#"><i class="em-tab__icon">◠</i>Doorway</a>
+          <a class="em-tab is-active" href="#"><i class="em-tab__icon">▤</i>Shelf</a>
+          <button class="em-catch-btn" style="background: var(--em-surface-sunken); color: var(--em-text-2); box-shadow: none;" aria-label="Catch a thought">＋</button>
+          <a class="em-tab" href="#"><i class="em-tab__icon">⌕</i>Search</a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Doorway first-run -->
+    <div class="em-phone wf-frame">
+      <span class="em-note-dot" style="top: 330px; right: 16px;">2</span>
+      <div class="em-phone__status"></div>
+      <div class="em-phone__screen">
+        <header class="em-appbar"><span class="em-appbar__title">Doorway</span></header>
+        <div class="em-screen" style="justify-content: center;">
+          <div class="em-empty em-glow" style="position: relative;">
+            <div class="em-empty__art">◠</div>
+            <h3 class="em-empty__title">Tomorrow, this door knows things.</h3>
+            <p class="em-empty__line">Catch a thought or two today. Tomorrow morning there’ll be something warm waiting here — ninety seconds, no more.</p>
+            <button class="em-btn em-btn--primary em-btn--lg">Catch a thought</button>
+          </div>
+        </div>
+        <nav class="em-bottomnav">
+          <a class="em-tab is-active" href="#"><i class="em-tab__icon">◠</i>Doorway</a>
+          <a class="em-tab" href="#"><i class="em-tab__icon">▤</i>Shelf</a>
+          <button class="em-catch-btn" style="background: var(--em-surface-sunken); color: var(--em-text-2); box-shadow: none;" aria-label="Catch a thought">＋</button>
+          <a class="em-tab" href="#"><i class="em-tab__icon">⌕</i>Search</a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Search first-run -->
+    <div class="em-phone wf-frame">
+      <span class="em-note-dot" style="top: 380px; left: 16px;">3</span>
+      <div class="em-phone__status"></div>
+      <div class="em-phone__screen">
+        <header class="em-appbar"><span class="em-appbar__title">Search</span></header>
+        <div class="em-screen" style="justify-content: center;">
+          <div class="em-quickcapture" style="margin: 0 0 var(--em-space-4);">⌕ ask in your own words…</div>
+          <div class="em-empty">
+            <div class="em-empty__art">⌕</div>
+            <h3 class="em-empty__title">Soon you’ll ask me things like</h3>
+            <p class="em-empty__line em-quote" style="max-width: 32ch;">“that idea about the logo, sometime in spring”</p>
+            <p class="em-empty__line">Once a few sparks live here, Ember can find them by meaning, words, or when — not just exact titles.</p>
+            <button class="em-btn em-btn--primary em-btn--lg">Catch a thought</button>
+          </div>
+        </div>
+        <nav class="em-bottomnav">
+          <a class="em-tab" href="#"><i class="em-tab__icon">◠</i>Doorway</a>
+          <a class="em-tab" href="#"><i class="em-tab__icon">▤</i>Shelf</a>
+          <button class="em-catch-btn" style="background: var(--em-surface-sunken); color: var(--em-text-2); box-shadow: none;" aria-label="Catch a thought">＋</button>
+          <a class="em-tab" href="#"><i class="em-tab__icon">⌕</i>Search</a>
+        </nav>
+      </div>
+    </div>
+
+    <aside class="em-notes">
+      <p class="em-notes__title">W-17 · spec notes</p>
+      <p class="em-notes__item"><b>1</b><span>Canonical empty-Shelf copy (brand §5.2). Warm illustration placeholder, one line, one action — never “No data” / “0 projects”.</span></p>
+      <p class="em-notes__item"><b>2</b><span>Doorway first-run promises the bounded contract (≤90s) instead of demanding setup. The glow motif marks it as the future warm surface.</span></p>
+      <p class="em-notes__item"><b>3</b><span>Search first-run teaches the hybrid query shape (semantic + keyword + time, F8) with a real example query in the user-quote style.</span></p>
+      <p class="em-notes__item"><b>—</b><span>One ember per screen: the empty-state CTA takes the primary; the center Catch button renders in its neutral form on these three frames.</span></p>
+    </aside>
+  </div>
+</section>
+
+<footer style="padding: var(--em-space-8) var(--em-space-12); color: var(--em-text-3); font-size: var(--em-text-body-sm); background: var(--em-surface-sunken);">
+  ember · M1 Catch wireframes · v1.0 · 2026-07-17 · sources: navigation-map.md, M1-catch.md, brand-guidelines.md, day-in-the-life.md · <a href="index.html" style="color: var(--em-accent-text);">wireframe index</a>
+</footer>
+
+</body>
+</html>

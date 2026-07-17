@@ -28,13 +28,13 @@ M2 is Ember's living memory and its browse/find surface — founder mandate #3 (
 | **Breadcrumb** | Touched (auto-written cross-cutting) | rendered inline; immutable |
 | **Briefing** | Touched (owned by M3) | past Briefings rendered inline as story milestones |
 
-**Thread story anatomy (THREAD-01).** A Thread opens as a chronological "story of this project," newest at the bottom, composed of typed entries rendered inline in one stream:
+**Thread story anatomy (W-04).** A Thread opens as a chronological "story of this project," newest at the bottom, composed of typed entries rendered inline in one stream:
 
 - **Sparks** — the user's own words (text, or voice with transcript + play chip), each stamped with time and capture surface;
 - **Pebbles** — suggested → accepted → done/dissolved, shown as quiet milestones ("did the 5-minute 1099 search"), never as unchecked debt;
 - **Decisions** — Sparks or Briefing outcomes the Digest has recognized as decisions get a subtle "decided" marker ("going with the blue-green palette"), so the story's turning points are scannable;
 - **Breadcrumbs** — auto-written stop-notes in a distinct hand ("You stopped after drafting the email to the accountant…"), immutable;
-- **Briefings** — past Warm Starts kept inline as "you came back here" moments, collapsible;
+- **Briefings** — each past Warm Start leaves a lightweight, **permanent "came back here" story marker** (owned here); the full Briefing artifacts themselves are pruned to the last 5 per Thread (M3 retention) and render inline, collapsible, while retained;
 - **Closing Notes** — if the Thread was ever finished/retired and restored, the note stays in the timeline.
 
 Header: title, type badge, state, warmth indicator, "What Ember knows" menu item, and the Arc chip when M4 has an active Arc. Day/month separators; a "jump to when…" scrubber for long stories. Thread **types** share one anatomy but tune defaults: `project` (Arc-capable, deadline chips), `idea cluster` (loose, merge-prone, dedupe suggestions more active), `life-admin arc` (deadline-forward, e.g. taxes/move/job hunt), `person` (gift ideas, conversations to have; no Pebble pressure by default).
@@ -42,11 +42,11 @@ Header: title, type badge, state, warmth indicator, "What Ember knows" menu item
 ## 4. Lifecycle
 
 **Thread:** created by (a) M1 auto-filing proposing a new Thread, (b) explicit "New thread" on the Shelf, (c) graveyard import clustering, (d) merge (survivor absorbs). Transitions:
-- `warm → resting`: manual ("Let it rest") or **auto-rest after N quiet days** (default N=14, user-adjustable 7–45). Copy is amnesty-only: "Moved to the resting shelf — it'll keep warm here." Never "inactive," "stale," or "abandoned."
+- `warm → resting`: manual ("Let it rest") or **auto-rest after N quiet days** (default N=14, user-adjustable 7–45). Copy is amnesty-only: "Moved to the resting shelf — it'll keep warm here." Never "inactive," "stale," or "abandoned." **Deadlines don't sleep:** on a resting Thread with a deadline-bearing Arc, deterministic deadline math and lead-time Doorway surfacing continue (M4 §4); only AI maintenance pauses.
 - `resting → warm`: any touch — new Spark filed, story opened, Pebble accepted, or Warm Start acted on — rekindles it. No ceremony, no "you're back!" guilt framing.
 - `warm/resting → finished`: user marks done; AI drafts a Closing Note (celebratory variant) for the gallery.
 - `warm/resting → retired`: "Retire with honor" (from Shelf or a Briefing's fourth button); AI writes the Closing Note ("You built the hard part. It taught you resin casting.").
-- `finished/retired → warm`: **Restore rekindles.** The Closing Note is kept as a story entry ("Retired in March — restored today"), the Digest is refreshed, and the Thread returns to the Warm row with a Warm Start queued.
+- `finished/retired → warm`: **Restore rekindles** — restore-from-retired is defined here, once; other specs reference it. The Closing Note is kept as a story entry ("Retired in March — restored today"), the Digest is refreshed, and the Thread returns to the Warm row (becomes **warm**) with a gap-tiered Warm Start queued (tier decided by M3 date math).
 - Deletion: explicit only, double-confirmed, 30-day undo window; merge never deletes (sources are tombstoned with pointers). Retention: story history kept indefinitely; raw story pages beyond 12 months move to cold archival storage, transparently rehydrated on scroll.
 
 **Digest:** created with the Thread; rebuilt by nightly Batch job when the Thread changed that day; marked stale (and rebuilt on demand) after merges, bulk moves, or restores. Never deleted while its Thread exists.

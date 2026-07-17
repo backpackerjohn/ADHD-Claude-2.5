@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ember wireframes — M3 Warm Start (W-05 · W-05b · W-06 · W-07 · W-08 · O-03 · O-05 · O-10)</title>
+<link rel="stylesheet" href="../wireframe-kit.css">
+<style>
+  /* ---- page-local spec furniture only (not product UI) ------------------- */
+  .wf-head {
+    padding: var(--em-space-10) var(--em-space-12) var(--em-space-6);
+    background: var(--em-surface-sunken);
+    border-bottom: 1px dashed var(--em-dusty);
+  }
+  .wf-head h1 { font: var(--em-weight-semibold) var(--em-text-title1)/var(--em-leading-tight) var(--em-font-serif); margin: 0 0 var(--em-space-2); }
+  .wf-head p  { margin: 0 0 var(--em-space-2); color: var(--em-text-2); max-width: var(--em-measure); }
+  .wf-head a  { color: var(--em-accent-text); }
+  .wf-section { padding: var(--em-space-10) var(--em-space-6) 0; background: var(--em-surface-sunken); }
+  .wf-section-head { max-width: 1200px; margin: 0 auto var(--em-space-4); }
+  .wf-id {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: var(--em-radius-sm);
+    background: var(--em-dusty-deep);
+    color: #fff;
+    font: var(--em-weight-semibold) var(--em-text-body-sm)/1.6 var(--em-font-mono);
+    margin-right: var(--em-space-2);
+  }
+  .wf-section-head h2 { display: inline; font: var(--em-weight-semibold) var(--em-text-title2)/1.25 var(--em-font-serif); }
+  .wf-section-head p  { color: var(--em-text-2); max-width: var(--em-measure); margin: var(--em-space-2) 0 0; font-size: var(--em-text-body-sm); }
+  .wf-frame { display: flex; flex-direction: column; gap: var(--em-space-2); }
+  .wf-frame > figcaption {
+    font: var(--em-weight-semibold) var(--em-text-caption)/1.4 var(--em-font-mono);
+    color: var(--em-dusty-deep);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .em-desktop { position: relative; }           /* anchor note dots on web frames */
+  .wf-canvas { min-height: 0; padding-top: var(--em-space-4); }
+  .wf-footer { padding: var(--em-space-10) var(--em-space-12); background: var(--em-surface-sunken); color: var(--em-text-3); font-size: var(--em-text-body-sm); border-top: 1px dashed var(--em-dusty); }
+  /* spec-only in-frame markers */
+  .wf-strike { text-decoration: line-through; opacity: .55; }
+</style>
+</head>
+<body class="em-kit">
+
+<!-- ======================================================================
+     PAGE HEADER
+     ====================================================================== -->
+<header class="wf-head">
+  <h1>M3 — Warm Start · wireframes</h1>
+  <p><strong>Ember</strong> · module M3 (crown jewel) · covers W-05, W-05b, W-06, W-07, W-08, O-03, O-05, O-10 plus the insufficient-memory, AI-down and quote-dispute states. Canonical IDs per <code>product/navigation-map.md</code>; hero content is the Day-32 Etsy-shop return briefing from <code>validation/day-in-the-life.md</code>. Static HTML/CSS on <code>wireframe-kit.css</code>. Blue numbered dots are spec annotations — strip before build.</p>
+  <p><a href="index.html">&larr; Back to the wireframe index</a></p>
+</header>
+
+<!-- ======================================================================
+     W-05 — FULL WARM START BRIEFING (gap ≥ 14 days) · mobile + web
+     ====================================================================== -->
+<section class="wf-section" id="w-05">
+  <div class="wf-section-head">
+    <span class="wf-id">W-05</span><h2>Full Warm Start briefing (gap &ge; 14 days) — mobile &amp; web</h2>
+    <p>Flow F3 (crown jewel): Shelf &rarr; resting thread &rarr; this briefing &rarr; four buttons &rarr; W-07. Five fixed sections, then exactly four buttons. Content below is Maya's Day-32 return, verbatim from the validation script.</p>
+  </div>
+  <div class="em-canvas wf-canvas">
+
+    <!-- ················ W-05 mobile ················ -->
+    <figure class="wf-frame">
+      <figcaption>W-05 · mobile · ideal</figcaption>
+      <div class="em-phone">
+        <div class="em-phone__status"></div>
+        <div class="em-phone__screen">
+          <header class="em-appbar">
+            <span aria-hidden="true">&larr;</span>
+            <span class="em-appbar__title">Etsy shop</span>
+            <button class="em-appbar__action" aria-label="Thread options">&#8943;</button>
+          </header>
+          <div class="em-screen">
+            <article class="em-card em-card--briefing em-glow">
+              <p class="em-briefing__kicker">Warm start &middot; you've been away since mid-March</p>
+              <h2 class="em-briefing__headline">Welcome back. Nothing is lost.</h2>
+              <div class="em-stack em-stack--loose em-briefing__body">
+                <section>
+                  <h3 class="em-title-3">Where you were</h3>
+                  <p>You'd exported Anna's banner file and were choosing between two fonts.</p>
+                </section>
+                <section>
+                  <h3 class="em-title-3">What you were thinking</h3>
+                  <blockquote class="em-briefing__quote">&ldquo;the serif one feels more like a real shop but the sans matches the product photos&rdquo;
+                    <cite>you, March 3 &middot; hold if that's not what you meant</cite>
+                  </blockquote>
+                  <blockquote class="em-briefing__quote">&ldquo;just pick one, nobody but me will ever notice.&rdquo;
+                    <cite>you, March 5 &middot; hold if that's not what you meant</cite>
+                  </blockquote>
+                </section>
+                <section>
+                  <h3 class="em-title-3">Why you cared</h3>
+                  <p>You wanted the shop live before the spring craft fair.</p>
+                </section>
+                <section>
+                  <h3 class="em-title-3">What changed while you were gone</h3>
+                  <p>The fair deadline is now 5 weeks out. Your accountant replied &mdash; you haven't read it yet; it's in the <em>Taxes</em> thread.</p>
+                </section>
+                <section>
+                  <h3 class="em-title-3">One tiny step</h3>
+                  <div class="em-pebble">Open the two banner drafts side by side and pick with your gut
+                    <span class="em-pebble__time">~3 min</span>
+                  </div>
+                </section>
+              </div>
+              <div class="em-briefing-actions">
+                <button class="em-btn em-btn--primary">Do it now</button>
+                <button class="em-btn em-btn--quiet">Snooze</button>
+                <button class="em-btn em-btn--quiet">Shrink</button>
+                <button class="em-btn em-btn--quiet em-btn--retire">Retire with honor</button>
+              </div>
+            </article>
+          </div>
+        </div>
+        <span class="em-note-dot" style="top:170px; left:8px;">1</span>
+        <span class="em-note-dot" style="top:330px; left:8px;">2</span>
+        <span class="em-note-dot" style="top:390px; right:8px;">3</span>
+        <span class="em-note-dot" style="top:560px; right:8px;">6</span>
+        <span class="em-note-dot" style="top:640px; left:8px;">7</span>
+        <span class="em-note-dot" style="top:730px; left:8px;">4</span>
+        <span class="em-note-dot" style="top:96px; right:8px;">5</span>
+      </div>
+    </figure>
+
+    <!-- ················ W-05 loading (state matrix) ················ -->
+    <figure class="wf-frame">
+      <figcaption>W-05 · mobile · loading (&lt;300ms shell, honest gap copy)</figcaption>
+      <div class="em-phone">
+        <div class="em-phone__status"></div>
+        <div class="em-phone__screen">
+          <header class="em-appbar">
+            <span aria-hidden="true">&larr;</span>
+            <span class="em-appbar__title">Etsy shop</span>
+          </header>
+          <div class="em-screen">
+            <article class="em-card em-card--briefing">
+              <p class="em-briefing__kicker">Warm start</p>
+              <h2 class="em-briefing__headline em-title-2">You've been away 6 weeks &mdash; warming this up&hellip;</h2>
+              <div class="em-stack em-stack--loose">
+                <div class="em-skeleton em-skeleton--title"></div>
+                <div class="em-skeleton em-skeleton--line"></div>
+                <div class="em-skeleton em-skeleton--line"></div>
+                <div class="em-skeleton em-skeleton--card"></div>
+                <div class="em-skeleton em-skeleton--title"></div>
+                <div class="em-skeleton em-skeleton--line"></div>
+                <div class="em-skeleton em-skeleton--pill"></div>
+              </div>
+            </article>
+          </div>
+        </div>
+        <span class="em-note-dot" style="top:150px; right:8px;">8</span>
+      </div>
+    </figure>
+
+    <!-- ················ W-05 web ················ -->
+    <figure class="wf-frame">
+      <figcaption>W-05 · web (memory-first) · ideal</figcaption>
+      <div class="em-desktop">
+        <div class="em-desktop__bar">
+          <div class="em-desktop__dots"><i></i><i></i><i></i></div>
+          <div class="em-desktop__url">ember.app/thread/etsy-shop</div>
+        </div>
+        <div class="em-desktop__body">
+          <nav class="em-sidebar">
+            <div class="em-sidebar__wordmark">ember</div>
+            <div class="em-quickcapture">Catch a thought&hellip;<kbd>C</kbd></div>
+            <a class="em-sidebar__item" href="#">Doorway</a>
+            <a class="em-sidebar__item is-active" href="#">Shelf</a>
+            <a class="em-sidebar__item" href="#">Search</a>
+            <a class="em-sidebar__item" href="#">Loose Sparks</a>
+            <div class="em-spacer"></div>
+            <a class="em-sidebar__item" href="#">Settings</a>
+          </nav>
+          <main class="em-main">
+            <div class="em-row em-row--between" style="margin-bottom: var(--em-space-5); max-width:560px;">
+              <span class="em-chip em-chip--resting">resting &middot; since mid-March</span>
+              <span class="em-hours"><b>31</b> ember hours on this thread</span>
+            </div>
+            <article class="em-card em-card--briefing em-glow">
+              <p class="em-briefing__kicker">Warm start &middot; Etsy shop</p>
+              <h2 class="em-briefing__headline">Welcome back. Nothing is lost.</h2>
+              <div class="em-stack em-stack--loose em-briefing__body em-prose">
+                <section>
+                  <h3 class="em-title-3">Where you were</h3>
+                  <p>You'd exported Anna's banner file and were choosing between two fonts.</p>
+                </section>
+                <section>
+                  <h3 class="em-title-3">What you were thinking</h3>
+                  <blockquote class="em-briefing__quote">&ldquo;the serif one feels more like a real shop but the sans matches the product photos&rdquo;
+                    <cite>you, March 3 &middot; right-click if that's not what you meant</cite>
+                  </blockquote>
+                  <blockquote class="em-briefing__quote">&ldquo;just pick one, nobody but me will ever notice.&rdquo;
+                    <cite>you, March 5</cite>
+                  </blockquote>
+                </section>
+                <section>
+                  <h3 class="em-title-3">Why you cared</h3>
+                  <p>You wanted the shop live before the spring craft fair.</p>
+                </section>
+                <section>
+                  <h3 class="em-title-3">What changed while you were gone</h3>
+                  <p>The fair deadline is now 5 weeks out. Your accountant replied &mdash; you haven't read it yet; it's in the <em>Taxes</em> thread.</p>
+                </section>
+                <section>
+                  <h3 class="em-title-3">One tiny step</h3>
+                  <div class="em-pebble">Open the two banner drafts side by side and pick with your gut
+                    <span class="em-pebble__time">~3 min</span>
+                  </div>
+                </section>
+              </div>
+              <div class="em-briefing-actions">
+                <button class="em-btn em-btn--primary">Do it now</button>
+                <button class="em-btn em-btn--quiet">Snooze</button>
+                <button class="em-btn em-btn--quiet">Shrink</button>
+                <button class="em-btn em-btn--quiet em-btn--retire">Retire with honor</button>
+              </div>
+            </article>
+          </main>
+        </div>
+        <span class="em-note-dot" style="top:64px; left:236px;">9</span>
+      </div>
+    </figure>
+
+    <!-- W-05 notes -->
+    <aside class="em-notes">
+      <p class="em-notes__title">W-05 annotations</p>
+      <p class="em-notes__item"><b>1</b><span><strong>Digest-first guardrail (R6):</strong> the briefing is synthesized from the Thread's maintained Digest + last 3 Breadcrumbs — never raw history. Every claim in "where you were / what changed" must trace to Digest or Breadcrumb content; the model omits, never invents.</span></p>
+      <p class="em-notes__item"><b>2</b><span><strong>Verbatim-quote verification (R6, hard rule):</strong> each quoted line must byte-match a stored Spark; a deterministic post-generation verifier checks every <code>quoted_spark_id</code>. Mismatch &rarr; strip quote &rarr; regenerate once &rarr; else insufficient-memory state. Never hallucinated memory.</span></p>
+      <p class="em-notes__item"><b>3</b><span>Spark quotes render in serif italic with the 2px amber rule + date — the user's own words are sacred material, visibly distinct from AI prose (brand §4.3). Long-press (mobile) / right-click (web) opens the "that's not what I meant" dispute sheet (see States section).</span></p>
+      <p class="em-notes__item"><b>4</b><span><strong>One ember per screen (law §9.1):</strong> "Do it now" is the only primary. Snooze &amp; Shrink are quiet; "Retire with honor" is quiet + dusty blue — an exit with dignity, never alarm-colored. All targets &ge; 44px, &ge; 8px apart.</span></p>
+      <p class="em-notes__item"><b>5</b><span>Time is soft: "since mid-March", never "47 days ago" — precise elapsed counters are guilt numerals (never-render rule).</span></p>
+      <p class="em-notes__item"><b>6</b><span>"What changed" windows to since-last-touch only; deadline rendered as lead time ("5 weeks out"), never a countdown.</span></p>
+      <p class="em-notes__item"><b>7</b><span>Exactly one Pebble, sized 2 min–1 hr to restart momentum, never a wall of steps (law §9.7). Timer is optional — no time pressure by default.</span></p>
+      <p class="em-notes__item"><b>8</b><span>Loading: shell renders instantly; skeleton shimmer appears only after 300ms; gap copy is honest. Budget p50 &lt; 2.5s, p90 &lt; 4s; 8s hard timeout &rarr; AI-down fallback (below). Briefing cached 24h per thread — no double spend on re-open.</span></p>
+      <p class="em-notes__item"><b>9</b><span>Web is memory-first: sidebar Doorway · Shelf · Search · Loose Sparks · Settings, quick-capture pinned top (<code>C</code>). Briefing column capped at 62ch measure (law §9.6). No badges or dots on nav — ever.</span></p>
+    </aside>
+  </div>
+</section>
+
+<!-- ======================================================================
+     W-05b — WHISPER + BRIEF TIERS (compact variants)
+     ====================================================================== -->
+<section class="wf-section" id="w-05b">
+  <div class="wf-section-head">
+    <span class="wf-id">W-05b</span><h2>Briefing tiers — whisper (&lt; 3 days) &amp; brief (3–13 days)</h2>
+    <p>Tier selection is pure date math, never AI. The whisper is one inline line at the top of the thread story (W-04b), not a screen. The brief is a compact card with the same four buttons.</p>
+  </div>
+  <div class="em-canvas wf-canvas">
+
+    <!-- whisper tier -->
+    <figure class="wf-frame">
+      <figcaption>W-05b · whisper tier · inline atop the thread (gap &lt; 3 days)</figcaption>
+      <div class="em-phone">
+        <div class="em-phone__status"></div>
+        <div class="em-phone__screen">
+          <header class="em-appbar">
+            <span aria-hidden="true">&larr;</span>
+            <span class="em-appbar__title">Taxes</span>
+            <button class="em-appbar__action" aria-label="Thread options">&#8943;</button>
+          </header>
+          <div class="em-screen">
+            <div class="em-card is-warm em-card--thread" style="cursor:default;">
+              <p class="em-quote" style="margin:0;">Yesterday you stopped mid-email to the accountant &mdash; the deduction question.</p>
+              <div class="em-row">
+                <span class="em-chip em-chip--warm">warm &middot; touched yesterday</span>
+                <button class="em-chip em-chip--action">Pebble: finish the draft email &middot; ~5 min</button>
+              </div>
+            </div>
+            <hr class="em-divider">
+            <p class="em-caption">Thread story continues below (W-04)</p>
+            <div class="em-list">
+              <div class="em-spark-row">
+                <span class="em-spark-row__dot em-spark-row__dot--breadcrumb"></span>
+                <div class="em-spark-row__body">
+                  <p class="em-spark-row__meta">Breadcrumb &middot; yesterday</p>
+                  <p class="em-spark-row__text">You stopped mid-email to the accountant; the deduction question was open.</p>
+                </div>
+              </div>
+              <div class="em-spark-row">
+                <span class="em-spark-row__dot"></span>
+                <div class="em-spark-row__body">
+                  <p class="em-spark-row__text">&ldquo;what if the 1099 from the contract gig never came&rdquo;</p>
+                  <p class="em-spark-row__meta">caught at night, a few days ago</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <span class="em-note-dot" style="top:96px; left:8px;">10</span>
+        <span class="em-note-dot" style="top:180px; right:8px;">11</span>
+      </div>
+    </figure>
+
+    <!-- brief tier -->
+    <figure class="wf-frame">
+      <figcaption>W-05b · brief tier · compact card (gap 3–13 days)</figcaption>
+      <div class="em-phone">
+        <div class="em-phone__status"></div>
+        <div class="em-phone__screen">
+          <header class="em-appbar">
+            <span aria-hidden="true">&larr;</span>
+            <span class="em-appbar__title">Taxes</span>
+          </header>
+          <div class="em-screen">
+            <article class="em-card em-card--briefing">
+              <p class="em-briefing__kicker">Warm start &middot; away about a week</p>
+              <h2 class="em-title-2" style="margin:0 0 var(--em-space-3);">Still where you left it.</h2>
+              <p><strong>Where you were:</strong> you sent the accountant the 1099 question and were waiting on his reply.</p>
+              <div class="em-spark-row" style="border:0; padding-inline:0;">
+                <span class="em-spark-row__dot em-spark-row__dot--breadcrumb"></span>
+                <div class="em-spark-row__body">
+                  <p class="em-spark-row__meta">Last breadcrumb</p>
+                  <p class="em-spark-row__text">You stopped after emailing the accountant; you were waiting on his reply.</p>
+                </div>
+              </div>
+              <div class="em-pebble">Open his reply and skim for the answer
+                <span class="em-pebble__time">~2 min</span>
+              </div>
+              <div class="em-briefing-actions">
+                <button class="em-btn em-btn--primary">Do it now</button>
+                <button class="em-btn em-btn--quiet">Snooze</button>
+                <button class="em-btn em-btn--quiet">Shrink</button>
+                <button class="em-btn em-btn--quiet em-btn--retire">Retire with honor</button>
+              </div>
+            </article>
+          </div>
+        </div>
+        <span class="em-note-dot" style="top:300px; left:8px;">12</span>
+      </div>
+    </figure>
+
+    <aside class="em-notes">
+      <p class="em-notes__title">W-05b annotations</p>
+      <p class="em-notes__item"><b>10</b><span><strong>Deterministic tiering:</strong> whisper &lt; 3 days · brief 3–13 days · full &ge; 14 days — computed by date math, not AI. Whisper copy is Haiku-tier, pre-computed by the nightly Batch, rendered from cache instantly.</span></p>
+      <p class="em-notes__item"><b>11</b><span>The whisper is one line inline at the top of the thread — no screen takeover, no buttons except the Pebble chip. Warmth state always carries a text label ("warm · touched yesterday"), never color alone (brand law §3.4.3).</span></p>
+      <p class="em-notes__item"><b>12</b><span>Brief tier = where-you-were + last Breadcrumb + one Pebble + the same four-button row. Same grounding rules as W-05; the Breadcrumb is shown verbatim (auto-notes are neutral-dotted, Sparks amber-dotted).</span></p>
+    </aside>
+  </div>
+</section>
+
+<!-- ======================================================================
+     W-06 — UNSTICK (bounded 3-exchange script)
+     ====================================================================== -->
+<section class="wf-section" id="w-06">
+  <div class="wf-section-head">
+    <span class="wf-id">W-06</span><h2>Unstick — the bounded 3-exchange script (flow F5)</h2>
+    <p>Entered from any Pebble ("why is this hard?"). All three exchanges shown as the complete script — the whole interaction, laid flat. Content is Maya's Day-8 accountant-email freeze.</p>
+  </div>
+  <div class="em-canvas wf-canvas">
+
+    <figure class="wf-frame">
+      <figcaption>W-06 · mobile · full script (exchanges 1 → 2 → 3, then close)</figcaption>
+      <div class="em-phone">
+        <div class="em-phone__status"></div>
+        <div class="em-phone__screen">
+          <header class="em-appbar">
+            <span aria-hidden="true">&times;</span>
+            <span class="em-appbar__title">Why is this hard?</span>
+            <span class="em-appbar__action em-caption" style="font-size:var(--em-text-caption);">1 of 3</span>
+          </header>
+          <div class="em-screen em-stack--loose">
+
+            <!-- Exchange 1 -->
+            <div class="em-card">
+              <p class="em-caption" style="margin:0 0 var(--em-space-2);">Exchange 1 &middot; name the feeling</p>
+              <p class="em-quote" style="margin:0 0 var(--em-space-3);">This one feels heavy. What's the flavor &mdash; which is closest?</p>
+              <div class="em-row" style="flex-wrap:wrap;">
+                <button class="em-chip em-chip--action">too big</button>
+                <button class="em-chip em-chip--action">too boring</button>
+                <button class="em-chip em-chip--action is-active">dread &middot; scared it'll be bad</button>
+                <button class="em-chip em-chip--action">don't know where to start</button>
+              </div>
+              <div class="em-quickcapture" style="margin:var(--em-space-3) 0 0;">or say it in your own words&hellip;</div>
+            </div>
+
+            <!-- Exchange 2 -->
+            <div class="em-card">
+              <p class="em-caption" style="margin:0 0 var(--em-space-2);">Exchange 2 &middot; shrink the stakes</p>
+              <p class="em-quote" style="margin:0;">Worst realistic outcome of a wrong question? He corrects you. That's his job &mdash; you're paying him. This is a question, not a performance; nothing you write today is graded.</p>
+            </div>
+
+            <!-- Exchange 3 -->
+            <div class="em-card">
+              <p class="em-caption" style="margin:0 0 var(--em-space-2);">Exchange 3 &middot; one 2-minute physical first move</p>
+              <p class="em-quote" style="margin:0 0 var(--em-space-3);">Two-minute version: paste the 1099 into a draft, subject &ldquo;quick question&rdquo;, don't send.</p>
+              <div class="em-stack em-stack--tight">
+                <button class="em-btn em-btn--primary em-btn--block">Start the 2 minutes</button>
+                <button class="em-btn em-btn--quiet em-btn--block">Not today</button>
+              </div>
+            </div>
+
+            <p class="em-meta" style="text-align:center;">The script ends here. The session closes.</p>
+          </div>
+        </div>
+        <span class="em-note-dot" style="top:150px; left:8px;">13</span>
+        <span class="em-note-dot" style="top:270px; right:8px;">14</span>
+        <span class="em-note-dot" style="top:640px; right:8px;">15</span>
+        <span class="em-note-dot" style="top:760px; left:8px;">16</span>
+      </div>
+    </figure>
+
+    <aside class="em-notes">
+      <p class="em-notes__title">W-06 annotations</p>
+      <p class="em-notes__item"><b>13</b><span><strong>Bounded, NOT a chat.</strong> Exactly three exchanges: name the feeling &rarr; shrink the stakes &rarr; 2-minute physical first move. The hard cap is structural — <strong>no fourth exchange exists</strong> in the UI, and there is no free-form chat surface anywhere in the flow. Progress marker reads "1 of 3". Haiku-tier; free tier 3 Unsticks/day.</span></p>
+      <p class="em-notes__item"><b>14</b><span>Feeling chips + free text. <code>named_feeling</code> is the most sensitive field in the product: encrypted at rest, excluded from analytics (counts only, never content), never used for training without explicit opt-in. Transcript appends to the thread's story and the golden eval set.</span></p>
+      <p class="em-notes__item"><b>15</b><span>Terminal choice: one primary ("Start the 2 minutes") + quiet "Not today", accepted without guilt — the Thread rests, nothing turns red, no follow-up ping. Session is never resumable; a new freeze starts a fresh session.</span></p>
+      <p class="em-notes__item"><b>16</b><span>Misuse valve: after 3 sessions on the same Pebble in one day, Ember offers Shrink instead ("this step might just be too big").</span></p>
+    </aside>
+  </div>
+</section>
+
+<!-- ======================================================================
+     W-07 — DO-IT-NOW FOCUS SURFACE
+     ====================================================================== -->
+<section class="wf-section" id="w-07">
+  <div class="wf-section-head">
+    <span class="wf-id">W-07</span><h2>Do-it-now focus surface — the Pebble and nothing else</h2>
+    <p>Reached one tap from W-05 ("Do it now") or straight from the Doorway (F2, canonical ruling D-016). Whisper line at top, the Pebble, the thread's key links, a capture field, a done button. Nothing else renders.</p>
+  </div>
+  <div class="em-canvas wf-canvas">
+
+    <!-- ideal -->
+    <figure class="wf-frame">
+      <figcaption>W-07 · mobile · in focus</figcaption>
+      <div class="em-phone">
+        <div class="em-phone__status"></div>
+        <div class="em-phone__screen">
+          <header class="em-appbar">
+            <span aria-hidden="true">&larr;</span>
+            <span class="em-appbar__title">Etsy shop</span>
+          </header>
+          <div class="em-screen em-stack--loose" style="justify-content:center;">
+            <p class="em-quote" style="margin:0; text-align:center; color:var(--em-text-2);">You were choosing between two fonts &mdash; the fair moved closer.</p>
+            <div class="em-card em-card--briefing em-glow" style="max-width:100%;">
+              <div class="em-pebble" style="font-size:var(--em-text-body-lg);">Open the two banner drafts side by side and pick with your gut
+                <span class="em-pebble__time">~3 min</span>
+              </div>
+              <div class="em-stack em-stack--tight" style="margin-top:var(--em-space-4);">
+                <p class="em-caption" style="margin:0;">Key links</p>
+                <a class="em-chip em-chip--action" href="#">banner-serif-v2.png</a>
+                <a class="em-chip em-chip--action" href="#">banner-sans-v2.png</a>
+              </div>
+            </div>
+            <div class="em-quickcapture">Catch a stray thought without leaving&hellip;</div>
+            <button class="em-btn em-btn--primary em-btn--lg em-btn--block">Done</button>
+            <button class="em-btn em-btn--quiet em-btn--block">I'm stuck &mdash; why is this hard?</button>
+          </div>
+        </div>
+        <span class="em-note-dot" style="top:130px; left:8px;">17</span>
+        <span class="em-note-dot" style="top:330px; right:8px;">18</span>
+        <span class="em-note-dot" style="top:640px; right:8px;">19</span>
+        <span class="em-note-dot" style="top:96px; right:8px;">20</span>
+      </div>
+    </figure>
+
+    <!-- done feedback -->
+    <figure class="wf-frame">
+      <figcaption>W-07 · feedback state · Pebble done (reward &lt; 300ms)</figcaption>
+      <div class="em-phone">
+        <div class="em-phone__status"></div>
+        <div class="em-phone__screen">
+          <header class="em-appbar">
+            <span aria-hidden="true">&larr;</span>
+            <span class="em-appbar__title">Etsy shop</span>
+          </header>
+          <div class="em-screen em-stack--loose" style="justify-content:center;">
+            <div class="em-card em-card--briefing em-glow" style="max-width:100%; text-align:center;">
+              <div class="em-empty__art" style="margin:0 auto var(--em-space-4);" aria-hidden="true"></div>
+              <h2 class="em-title-2" style="margin:0 0 var(--em-space-2);">Done. The thread's warmer.</h2>
+              <p class="em-meta" style="margin:0 0 var(--em-space-4);">+3 ember minutes &middot; <span class="em-hours"><b>31</b> hours on this thread</span></p>
+              <span class="em-chip em-chip--done">serif it is &middot; the arc re-plans quietly</span>
+            </div>
+            <button class="em-btn em-btn--secondary em-btn--block">Back to the shelf</button>
+          </div>
+        </div>
+        <span class="em-note-dot" style="top:300px; left:8px;">21</span>
+      </div>
+    </figure>
+
+    <aside class="em-notes">
+      <p class="em-notes__title">W-07 annotations</p>
+      <p class="em-notes__item"><b>17</b><span><strong>Whisper line at top per canonical ruling D-016 (F2):</strong> one tap to action; the thread's whisper context is embedded here so re-entry never detours through the thread view.</span></p>
+      <p class="em-notes__item"><b>18</b><span><strong>Bounded surface:</strong> whisper + Pebble + key links + capture field + done. Nothing else — no thread history, no step list, no nav bar. Timer optional, shown as soft estimate ("~3 min"), never a countdown.</span></p>
+      <p class="em-notes__item"><b>19</b><span>The one primary is "Done". The Unstick entry ("I'm stuck") is quiet and always present at the point of performance (F5). Inline capture files through the normal M1 pipeline without leaving focus.</span></p>
+      <p class="em-notes__item"><b>20</b><span>Leaving any time (back, app switch) auto-writes a Breadcrumb — zero user effort, no time-outs on input (law §9.9); tomorrow's Doorway knows where she stopped.</span></p>
+      <p class="em-notes__item"><b>21</b><span><strong>Deterministic reward, &lt; 300ms:</strong> the glow bloom + haptic tick + copy variant fire from a pre-built, novelty-rotating local pool <em>before any network round-trip</em> (delay-discounting compliance). Bloom &le; 300ms, soft-settle easing; reduced-motion collapses it to a simple fade. Ember minutes accrue deterministically — no AI in the loop, no streaks.</span></p>
+    </aside>
+  </div>
+</section>
+
+<!-- ======================================================================
+     W-08 — RETIRE WITH HONOR (confirm → note preview → gallery)
+     ====================================================================== -->
+<section class="wf-section" id="w-08">
+  <div class="wf-section-head">
+    <span class="wf-id">W-08</span><h2>Retire with honor — confirm &rarr; Closing Note preview &rarr; saved to gallery (flow F7)</h2>
+    <p>Three steps, left to right. Step 2 is overlay O-05 (detailed in its own section below). Content: Maya retiring <em>Macram&eacute;</em> on Day 32.</p>
+  </div>
+  <div class="em-canvas wf-canvas">
+
+    <!-- step 1: confirm -->
+    <figure class="wf-frame">
+      <figcaption>W-08 · step 1 · explicit confirm</figcaption>
+      <div class="em-phone">
+        <div class="em-phone__status"></div>
+        <div class="em-phone__screen">
+          <header class="em-appbar">
+            <span aria-hidden="true">&larr;</span>
+            <span class="em-appbar__title">Macram&eacute;</span>
+          </header>
+          <div class="em-screen" style="justify-content:center;">
+            <div class="em-card em-card--briefing">
+              <h2 class="em-title-2" style="margin:0 0 var(--em-space-2);">Retire this thread with honor?</h2>
+              <p class="em-prose">Retiring isn't quitting &mdash; it's finishing what this was for. Ember will draft a closing note; you confirm before anything moves. You can pick it back up any time, and everything it holds stays findable.</p>
+              <div class="em-stack em-stack--tight" style="margin-top:var(--em-space-4);">
+                <button class="em-btn em-btn--primary em-btn--block">Draft the closing note</button>
+                <button class="em-btn em-btn--quiet em-btn--block">Keep it resting instead</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <span class="em-note-dot" style="top:300px; left:8px;">22</span>
+      </div>
+    </figure>
+
+    <!-- step 2: note preview (compact — full detail at O-05) -->
+    <figure class="wf-frame">
+      <figcaption>W-08 · step 2 · Closing Note preview = O-05 (see below)</figcaption>
+      <div class="em-phone">
+        <div class="em-phone__status"></div>
+        <div class="em-phone__screen">
+          <header class="em-appbar">
+            <span aria-hidden="true">&larr;</span>
+            <span class="em-appbar__title">Macram&eacute;</span>
+          </header>
+          <div class="em-screen" style="justify-content:flex-end;">
+            <div class="em-scrim" style="position:static; background:none; align-items:flex-end;">
+              <div class="em-sheet" style="border:1px solid var(--em-hairline);">
+                <h3 class="em-title-3" style="margin:0 0 var(--em-space-3);">Closing note &mdash; yours to edit</h3>
+                <blockquote class="em-briefing__quote" style="margin-top:0;">You made three wall hangings people actually kept. It taught you knots, patience, and that you like making gifts more than inventory. Retired with honor, March&ndash;December.</blockquote>
+                <div class="em-stack em-stack--tight">
+                  <button class="em-btn em-btn--primary em-btn--block">Keep this note &amp; retire</button>
+                  <button class="em-btn em-btn--secondary em-btn--block">Edit the note</button>
+                  <button class="em-btn em-btn--quiet em-btn--block">Never mind &mdash; keep the thread</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <span class="em-note-dot" style="top:430px; right:8px;">23</span>
+      </div>
+    </figure>
+
+    <!-- step 3: saved to gallery -->
+    <figure class="wf-frame">
+      <figcaption>W-08 · step 3 · saved to the Finished &amp; Retired gallery (W-03)</figcaption>
+      <div class="em-phone">
+        <div class="em-phone__status"></div>
+        <div class="em-phone__screen">
+          <header class="em-appbar">
+            <span class="em-appbar__title">Shelf</span>
+          </header>
+          <div class="em-screen">
+            <p class="em-caption">Finished &amp; Retired</p>
+            <div class="em-card em-card--thread is-retired">
+              <h3 class="em-thread__title">Macram&eacute;</h3>
+              <span class="em-chip em-chip--done">retired with honor &middot; March&ndash;December</span>
+              <p class="em-thread__last em-quote" style="font-size:var(--em-text-body-sm);">&ldquo;You made three wall hangings people actually kept&hellip;&rdquo;</p>
+              <button class="em-btn em-btn--quiet" style="align-self:flex-start;">Pick this back up?</button>
+            </div>
+            <div class="em-card em-card--thread is-retired">
+              <h3 class="em-thread__title">Sourdough starter</h3>
+              <span class="em-chip em-chip--done">finished &middot; last spring</span>
+            </div>
+          </div>
+          <div class="em-toast"><span class="em-toast__spark">&#10022;</span> Retired with honor &mdash; the note is on the shelf.</div>
+        </div>
+        <span class="em-note-dot" style="top:200px; right:8px;">24</span>
+      </div>
+    </figure>
+
+    <aside class="em-notes">
+      <p class="em-notes__title">W-08 annotations</p>
+      <p class="em-notes__item"><b>22</b><span><strong>Retirement never happens on one tap.</strong> Explicit confirm with ink-weight typography — a dignified exit, not a destructive warning. No red, no trash-can iconography (brand Do/Don't #5). Copy avoids "deleted / abandoned / gave up".</span></p>
+      <p class="em-notes__item"><b>23</b><span>AI drafts the Closing Note (Sonnet-tier) &rarr; user optionally edits &rarr; <strong>explicit confirm</strong> stores it with the retired thread. Backing out keeps the thread untouched. Full editable state: O-05 below.</span></p>
+      <p class="em-notes__item"><b>24</b><span>Retired card = neutral surface + sage "finished/growth" mark + note excerpt. Recovery path: "Pick this back up?" un-retires; the thread rekindles warm with a "back from retirement" whisper, and the note is preserved as an immutable log entry — history is never erased, only continued.</span></p>
+    </aside>
+  </div>
+</section>
+
+<!-- ======================================================================
+     O-03 — SNOOZE PICKER
+     ====================================================================== -->
+<section class="wf-section" id="o-03">
+  <div class="wf-section-head">
+    <span class="wf-id">O-03</span><h2>Snooze picker — tomorrow · next week · when I touch it</h2>
+    <p>Bottom sheet over the briefing. Three presets, no date grid, no guilt.</p>
+  </div>
+  <div class="em-canvas wf-canvas">
+
+    <figure class="wf-frame">
+      <figcaption>O-03 · sheet over W-05 · with selected-state feedback</figcaption>
+      <div class="em-phone">
+        <div class="em-phone__status"></div>
+        <div class="em-phone__screen" style="position:relative;">
+          <div class="em-screen" aria-hidden="true">
+            <article class="em-card em-card--briefing">
+              <p class="em-briefing__kicker">Warm start &middot; Etsy shop</p>
+              <h2 class="em-briefing__headline em-title-2">Welcome back. Nothing is lost.</h2>
+              <div class="em-skeleton em-skeleton--line"></div>
+            </article>
+          </div>
+          <div class="em-scrim">
+            <div class="em-sheet">
+              <h3 class="em-title-3" style="margin:0 0 var(--em-space-1);">Rest this briefing</h3>
+              <p class="em-meta" style="margin:0 0 var(--em-space-4);">The thread stays exactly where it is. Warm stays warm.</p>
+              <div class="em-stack em-stack--tight">
+                <button class="em-chip em-chip--action">tomorrow</button>
+                <button class="em-chip em-chip--action is-active">next week</button>
+                <button class="em-chip em-chip--action">when I touch it</button>
+              </div>
+              <hr class="em-divider">
+              <p class="em-quote" style="margin:0;">Resting until next week. It'll keep &mdash; embers do.</p>
+              <button class="em-btn em-btn--quiet em-btn--block" style="margin-top:var(--em-space-3);">Never mind</button>
+            </div>
+          </div>
+        </div>
+        <span class="em-note-dot" style="top:470px; left:8px;">25</span>
+        <span class="em-note-dot" style="top:660px; right:8px;">26</span>
+      </div>
+    </figure>
+
+    <aside class="em-notes">
+      <p class="em-notes__title">O-03 annotations</p>
+      <p class="em-notes__item"><b>25</b><span>Three soft presets only — no calendar, no exact dates, no "overdue in 7 days". Snoozing creates zero reminder debt and no badge anywhere. Deterministic: snooze handling and expiry are code, not AI.</span></p>
+      <p class="em-notes__item"><b>26</b><span>Selecting a chip shows the confirmation line in place ("Resting until next week. It'll keep — embers do.") then the sheet dismisses (200ms exit). A snoozed briefing expires when the thread is next opened and regenerates fresh — the gap has changed. Thread shows a quiet "briefing resting" glyph; no countdown, no red.</span></p>
+    </aside>
+  </div>
+</section>
+
+<!-- ======================================================================
+     O-05 — CLOSING NOTE PREVIEW (editable)
+     ====================================================================== -->
+<section class="wf-section" id="o-05">
+  <div class="wf-section-head">
+    <span class="wf-id">O-05</span><h2>Closing Note preview — editable before saving</h2>
+    <p>The overlay inside W-08 step 2, shown here in its editing state.</p>
+  </div>
+  <div class="em-canvas wf-canvas">
+
+    <figure class="wf-frame">
+      <figcaption>O-05 · editing state · caret in the note</figcaption>
+      <div class="em-phone">
+        <div class="em-phone__status"></div>
+        <div class="em-phone__screen" style="position:relative;">
+          <div class="em-screen" aria-hidden="true"></div>
+          <div class="em-scrim">
+            <div class="em-sheet">
+              <h3 class="em-title-3" style="margin:0 0 var(--em-space-1);">Closing note &mdash; yours to edit</h3>
+              <p class="em-meta" style="margin:0 0 var(--em-space-4);">Ember drafted this from the thread's story. Change anything; it saves only when you confirm.</p>
+              <div class="em-card" style="border-style:dashed;">
+                <p class="em-quote" style="margin:0;">You made three wall hangings people actually <span class="wf-strike">kept</span> <strong>loved</strong>&#9612; It taught you knots, patience, and that you like making gifts more than inventory. Retired with honor, March&ndash;December.</p>
+              </div>
+              <div class="em-stack em-stack--tight" style="margin-top:var(--em-space-4);">
+                <button class="em-btn em-btn--primary em-btn--block">Keep this note &amp; retire</button>
+                <button class="em-btn em-btn--quiet em-btn--block">Never mind &mdash; keep the thread</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <span class="em-note-dot" style="top:400px; left:8px;">27</span>
+        <span class="em-note-dot" style="top:600px; right:8px;">28</span>
+      </div>
+    </figure>
+
+    <aside class="em-notes">
+      <p class="em-notes__title">O-05 annotations</p>
+      <p class="em-notes__item"><b>27</b><span>Note body renders in the serif quote voice — a warmth moment. Fully editable inline (dashed frame + caret shown); the draft persists if she leaves mid-edit and restores on return (no time-outs on input, law §9.9).</span></p>
+      <p class="em-notes__item"><b>28</b><span>One primary: "Keep this note &amp; retire" — the explicit confirm required by M3 (retirement is never a single tap). "Never mind" abandons the retirement entirely with no side effects. Once saved, the note lives in the Finished &amp; Retired gallery and survives un-retiring as immutable history.</span></p>
+    </aside>
+  </div>
+</section>
+
+<!-- ======================================================================
+     O-10 — CRISIS-RESOURCE SHEET
+     ====================================================================== -->
+<section class="wf-section" id="o-10">
+  <div class="wf-section-head">
+    <span class="wf-id">O-10</span><h2>Crisis-resource sheet — static, warm, human resources</h2>
+    <p>Shown when local patterns (+ Haiku assist) detect crisis language in a capture or an Unstick exchange. The response itself is fully deterministic — never AI-improvised.</p>
+  </div>
+  <div class="em-canvas wf-canvas">
+
+    <figure class="wf-frame">
+      <figcaption>O-10 · sheet · deterministic static content</figcaption>
+      <div class="em-phone">
+        <div class="em-phone__status"></div>
+        <div class="em-phone__screen" style="position:relative;">
+          <div class="em-screen" aria-hidden="true"></div>
+          <div class="em-scrim">
+            <div class="em-sheet">
+              <h3 class="em-title-2" style="font-family:var(--em-font-serif); margin:0 0 var(--em-space-2);">This sounds bigger than a project.</h3>
+              <p class="em-prose" style="margin:0 0 var(--em-space-4);">Ember keeps things warm, but it isn't the right companion for a moment like this. A real person is. These are free, confidential, and open right now.</p>
+              <div class="em-stack em-stack--tight">
+                <button class="em-btn em-btn--primary em-btn--lg em-btn--block">Call or text 988 &mdash; Suicide &amp; Crisis Lifeline (US)</button>
+                <button class="em-btn em-btn--secondary em-btn--block">Text HOME to 741741 &mdash; Crisis Text Line</button>
+                <button class="em-btn em-btn--secondary em-btn--block">findahelpline.com &mdash; outside the US</button>
+              </div>
+              <hr class="em-divider">
+              <p class="em-meta" style="margin:0 0 var(--em-space-3);">What you wrote is safe and private, and it stays yours. Nothing was shared.</p>
+              <button class="em-btn em-btn--quiet em-btn--block">Back to your thread &mdash; it'll keep</button>
+            </div>
+          </div>
+        </div>
+        <span class="em-note-dot" style="top:330px; left:8px;">29</span>
+        <span class="em-note-dot" style="top:470px; right:8px;">30</span>
+        <span class="em-note-dot" style="top:700px; right:8px;">31</span>
+      </div>
+    </figure>
+
+    <aside class="em-notes">
+      <p class="em-notes__title">O-10 annotations</p>
+      <p class="em-notes__item"><b>29</b><span><strong>Deterministic static response — never AI-improvised.</strong> Detection is local patterns with a Haiku assist; the sheet content is fixed copy reviewed by humans. Warm serif voice, no clinical framing, no alarm color (terracotta/ink only — no red, per color law §3.4.2).</span></p>
+      <p class="em-notes__item"><b>30</b><span>Resources are real, free, 24/7: 988 Lifeline (call/text), Crisis Text Line (HOME to 741741), findahelpline.com internationally. Call/text buttons are &ge; 52px targets. The single ember goes to the highest-value action.</span></p>
+      <p class="em-notes__item"><b>31</b><span>Privacy: the triggering content is never logged to analytics (counts only, never content — same rule as Unstick's <code>named_feeling</code>) and never leaves the account. Exit is gentle and guilt-free; the thread simply keeps.</span></p>
+    </aside>
+  </div>
+</section>
+
+<!-- ======================================================================
+     STATES & FALLBACKS — insufficient memory · AI down · quote dispute
+     ====================================================================== -->
+<section class="wf-section" id="states">
+  <div class="wf-section-head">
+    <span class="wf-id">STATES</span><h2>Honest fallbacks &amp; the quote-dispute affordance</h2>
+    <p>F3 failure paths: memory too thin &rarr; honest fallback; AI unavailable &rarr; raw story with last breadcrumb pinned; briefing lands wrong &rarr; "that's not what I meant". A thin briefing that admits thinness beats a rich briefing that lies (R6).</p>
+  </div>
+  <div class="em-canvas wf-canvas">
+
+    <!-- insufficient memory -->
+    <figure class="wf-frame">
+      <figcaption>W-05 state · insufficient-memory honest fallback</figcaption>
+      <div class="em-phone">
+        <div class="em-phone__status"></div>
+        <div class="em-phone__screen">
+          <header class="em-appbar">
+            <span aria-hidden="true">&larr;</span>
+            <span class="em-appbar__title">Balcony garden</span>
+          </header>
+          <div class="em-screen">
+            <article class="em-card em-card--briefing">
+              <p class="em-briefing__kicker">Warm start</p>
+              <h2 class="em-title-2" style="margin:0 0 var(--em-space-2);">This thread is young &mdash; here's everything I have.</h2>
+              <p class="em-prose">I don't have enough memory of this thread yet to tell its story, so no guessing &mdash; these are your notes, word for word.</p>
+              <div class="em-list">
+                <div class="em-spark-row">
+                  <span class="em-spark-row__dot"></span>
+                  <div class="em-spark-row__body">
+                    <p class="em-spark-row__text">&ldquo;tomatoes need at least six hours of sun &mdash; measure the balcony&rdquo;</p>
+                    <p class="em-spark-row__meta">a few weeks ago</p>
+                  </div>
+                </div>
+                <div class="em-spark-row">
+                  <span class="em-spark-row__dot"></span>
+                  <div class="em-spark-row__body">
+                    <p class="em-spark-row__text">&ldquo;ask Dana where she got the railing planters&rdquo;</p>
+                    <p class="em-spark-row__meta">a few weeks ago</p>
+                  </div>
+                </div>
+              </div>
+              <div class="em-pebble">Re-read your last three notes
+                <span class="em-pebble__time">~2 min</span>
+              </div>
+              <div class="em-briefing-actions">
+                <button class="em-btn em-btn--primary">Do it now</button>
+                <button class="em-btn em-btn--quiet">Snooze</button>
+                <button class="em-btn em-btn--quiet">Shrink</button>
+                <button class="em-btn em-btn--quiet em-btn--retire">Retire with honor</button>
+              </div>
+            </article>
+          </div>
+        </div>
+        <span class="em-note-dot" style="top:160px; left:8px;">32</span>
+      </div>
+    </figure>
+
+    <!-- AI down -->
+    <figure class="wf-frame">
+      <figcaption>W-05 state · AI-down fallback (raw story + pinned breadcrumb + banner)</figcaption>
+      <div class="em-phone">
+        <div class="em-phone__status"></div>
+        <div class="em-phone__screen">
+          <header class="em-appbar">
+            <span aria-hidden="true">&larr;</span>
+            <span class="em-appbar__title">Etsy shop</span>
+          </header>
+          <div class="em-screen">
+            <div class="em-banner em-banner--rest">Ember's memory is resting &mdash; here's the raw story. Memory view only right now.</div>
+            <div class="em-card is-warm" style="background:var(--em-surface-warm);">
+              <p class="em-caption" style="margin:0 0 var(--em-space-1);">Last breadcrumb &middot; pinned</p>
+              <p class="em-quote" style="margin:0;">You'd exported Anna's banner file and were choosing between two fonts.</p>
+            </div>
+            <p class="em-caption">Thread story &middot; newest first</p>
+            <div class="em-list">
+              <div class="em-spark-row">
+                <span class="em-spark-row__dot"></span>
+                <div class="em-spark-row__body">
+                  <p class="em-spark-row__text">&ldquo;just pick one, nobody but me will ever notice.&rdquo;</p>
+                  <p class="em-spark-row__meta">March 5</p>
+                </div>
+              </div>
+              <div class="em-spark-row">
+                <span class="em-spark-row__dot"></span>
+                <div class="em-spark-row__body">
+                  <p class="em-spark-row__text">&ldquo;the serif one feels more like a real shop but the sans matches the product photos&rdquo;</p>
+                  <p class="em-spark-row__meta">March 3</p>
+                </div>
+              </div>
+              <div class="em-spark-row">
+                <span class="em-spark-row__dot em-spark-row__dot--pebble"></span>
+                <div class="em-spark-row__body">
+                  <p class="em-spark-row__meta">Pebble done &middot; early March</p>
+                  <p class="em-spark-row__text">Exported the banner file Anna sent.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <span class="em-note-dot" style="top:100px; left:8px;">33</span>
+        <span class="em-note-dot" style="top:200px; right:8px;">34</span>
+      </div>
+    </figure>
+
+    <!-- quote dispute -->
+    <figure class="wf-frame">
+      <figcaption>W-05 affordance · "that's not what I meant" (long-press on a quote)</figcaption>
+      <div class="em-phone">
+        <div class="em-phone__status"></div>
+        <div class="em-phone__screen" style="position:relative;">
+          <div class="em-screen" aria-hidden="true">
+            <article class="em-card em-card--briefing">
+              <p class="em-briefing__kicker">Warm start &middot; Etsy shop</p>
+              <blockquote class="em-briefing__quote" style="outline:2px solid var(--em-focus-ring); outline-offset:2px; border-radius:var(--em-radius-sm);">&ldquo;just pick one, nobody but me will ever notice.&rdquo;
+                <cite>you, March 5 &middot; held</cite>
+              </blockquote>
+            </article>
+          </div>
+          <div class="em-scrim">
+            <div class="em-sheet">
+              <h3 class="em-title-3" style="margin:0 0 var(--em-space-1);">That's not what I meant</h3>
+              <p class="em-meta" style="margin:0 0 var(--em-space-3);">Your original words stay untouched. This only changes how briefings use them.</p>
+              <blockquote class="em-briefing__quote" style="margin-top:0;">&ldquo;just pick one, nobody but me will ever notice.&rdquo;<cite>you, March 5</cite></blockquote>
+              <div class="em-quickcapture" style="margin:0 0 var(--em-space-3);">What did you mean? (optional, one line)</div>
+              <div class="em-stack em-stack--tight">
+                <button class="em-btn em-btn--primary em-btn--block">Leave this quote out of briefings</button>
+                <button class="em-btn em-btn--secondary em-btn--block">Regenerate the briefing once</button>
+                <button class="em-btn em-btn--quiet em-btn--block">Never mind</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <span class="em-note-dot" style="top:180px; right:8px;">35</span>
+        <span class="em-note-dot" style="top:560px; left:8px;">36</span>
+      </div>
+    </figure>
+
+    <aside class="em-notes">
+      <p class="em-notes__title">States &amp; dispute annotations</p>
+      <p class="em-notes__item"><b>32</b><span><strong>Never fake richness (R6):</strong> a thread with &lt; 3 Sparks, or a failed grounding check, gets the honest state — "here's everything I have" — with raw Sparks verbatim plus one generic small Pebble ("re-read your last three notes"). The same four buttons remain: re-entry always ends in action.</span></p>
+      <p class="em-notes__item"><b>33</b><span><strong>AI-down fallback is deterministic:</strong> W-04 raw thread story (chronological Sparks, steps, Breadcrumbs from M2) with the last Breadcrumb pinned on top and a gentle rest-toned banner. Never a blank screen; never "try again later" as the only content — the user came to re-enter, and re-entry must always be possible. Triggered by outage, offline, or the 8s briefing timeout after one silent retry.</span></p>
+      <p class="em-notes__item"><b>34</b><span>The pinned breadcrumb answers "where was I?" without any AI. Banner uses the dusty rest palette — informative, never alarming; no error codes.</span></p>
+      <p class="em-notes__item"><b>35</b><span>Long-press (mobile) / right-click (web) any quoted line. The pressed quote shows the standard 2px ember focus ring. Every quote carries this affordance because every quote passed byte-match verification — disputes are about framing, not fabrication.</span></p>
+      <p class="em-notes__item"><b>36</b><span>Effects: quote suppressed thread-wide immediately; the Spark itself is never edited — the optional correction is stored alongside it; the dispute feeds the R6 eval set; one regenerate is offered. Repeated disputes lower the thread's briefing confidence, and future briefings prefer raw Sparks over paraphrase.</span></p>
+    </aside>
+  </div>
+</section>
+
+<footer class="wf-footer">
+  Ember &middot; M3 Warm Start wireframes &middot; v1.0 &middot; 2026-07-17 &middot; IDs per <code>product/navigation-map.md</code> &middot; hero content per <code>validation/day-in-the-life.md</code> Day 32 &middot; <a href="index.html">wireframe index</a>. Spec-annotation layer (blue dots &amp; panels) is not product UI — strip before build.
+</footer>
+
+</body>
+</html>
