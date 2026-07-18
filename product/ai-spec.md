@@ -10,12 +10,11 @@ Every LLM call in the product. Defaults per cost-model rule 1: **Haiku-first; So
 |---|---|---|---|---|---|---:|---:|
 | M1 | Capture filing/triage (per Spark) | Haiku | Sync (<2s target) | 300 + 2,000 = 500 eff | 120 | Frozen sys prompt + thread-name index in cached prefix | $0.0011 |
 | M1 | Voice transcript cleanup (server fallback only; on-device default) | Haiku | Sync | 700 eff | 300 | Same prefix | $0.0022 |
-| M1 | Graveyard import triage (one-time) | Haiku | Batch | 800 eff/item | 150 | Shared prefix across items | $0.0008/item, **hard cap $1.50/user** |
+| M1 | Graveyard import triage (one-time) | Haiku | Batch | 800 eff/item | 150 | Shared prefix across items | $0.0008/item, **hard cap $1.50 per ImportBatch (per-batch)** |
 | M2 | Nightly digest maintenance (only threads touched that day) | Haiku | Batch | 4,000 eff | 400 | Prefix cached; digest-delta prompt | $0.0030 |
 | M2 | Search embedding (per Spark + query) | Embed model | Async on capture | ~200 | — | n/a (vectors stored) | ~$0.00003 |
 | M2 | Search rerank / NL recall answer | Haiku | Sync | 2,000 eff | 250 | Prefix cached | $0.0033 |
-| M2 | Auto-breadcrumb synthesis (evening rollup of exit events) | Haiku | Batch | 1,500 eff | 300 | Prefix cached | $0.0015 |
-| M3 | Warm Start — whisper (<3 days away) | Haiku | Sync | 800 eff | 100 | Prefix + digest head | $0.0013 |
+| M2 | Auto-Breadcrumb prose polish (optional evening pass — Breadcrumbs themselves are written deterministically at exit from exit telemetry: last screen/action/edited item + any capture text) | Haiku | Batch | 1,500 eff | 300 | Prefix cached | $0.0015 |
 | M3 | Warm Start — brief/full (≥3 days) | Sonnet | Sync | 2,800 eff | 350 | Prefix cached; digest after breakpoint | $0.0137 |
 | M3 | Unstick exchange (max 3/session) | Haiku | Sync | 800 eff | 150 | Prefix cached | $0.0016 |
 | M3 | Closing note (Retire with honor) | Sonnet | Sync | 1,500 eff | 250 | Prefix cached | $0.0083 |
@@ -23,8 +22,10 @@ Every LLM call in the product. Defaults per cost-model rule 1: **Haiku-first; So
 | M4 | Standard breakdown / next-Pebble regen | Haiku | Sync | 1,000 eff | 400 | Prefix cached | $0.0030 |
 | M4 | Context-aware re-planning (reality changed) | Sonnet | Batch (overnight) | 2,000 eff | 500 | Prefix cached | $0.0068 |
 | M5 | Doorway card pre-generation | Sonnet | Batch (nightly) | 3,000 eff | 500 | Prefix cached | $0.0083 |
-| M5 | Welcome-back Doorway (return after ≥14d absence) | Sonnet | Sync | 3,000 eff | 400 | Prefix cached | $0.0150 |
+| M5 | Welcome-back Doorway (return after ≥7d absence) | Sonnet | Sync | 3,000 eff | 400 | Prefix cached | $0.0150 |
 | M5 | Notification copy pool (anti-habituation, ~1×/week) | Haiku | Batch | 600 eff | 400 | Prefix cached | $0.0013 |
+
+*The whisper tier (<3 days away) has NO row here: it is deterministic — a template of the last Breadcrumb + the Pebble chip, no AI call — saving ≈$0.0013 × ~30 whispers/mo ≈ $0.04/mo at high usage. Brief/full tiers are unchanged (Sonnet).*
 
 Escalation triggers to Sonnet (cost-model rule 1): re-entry gap ≥ 3 days (aligned to the brief's briefing tiers; the cost model's "≥7 days" wording is superseded — see build-log), arc complexity (≥ N milestones or deadline-bearing), explicit user tap "go deeper".
 
@@ -34,7 +35,7 @@ Escalation triggers to Sonnet (cost-model rule 1): re-entry gap ≥ 3 days (alig
 |---|---:|
 | M1 filing + transcript cleanup (900 + 150 calls) | ≈ $1.32 |
 | M2 digests + breadcrumbs + search + embeddings | ≈ $0.48 |
-| M3 briefings (60, mixed tier) + unstick (90) + closing notes | ≈ $0.90 |
+| M3 briefings (60, brief/full — whispers are deterministic, $0) + unstick (90) + closing notes | ≈ $0.90 |
 | M4 decomposition + standard breakdown + re-planning | ≈ $0.90 |
 | M5 Doorway pre-gen + welcome-back + copy pool | ≈ $0.31 |
 | Subtotal | ≈ $3.91 |
@@ -53,7 +54,7 @@ Common rules for all five: **inputs are digest-first — the model never receive
   "profile": { "...": "cached prefix: frozen system prompt + user profile block" },
   "context": { "digest": "...", "sparks": [{"spark_id": "spk_...", "text": "verbatim"}],
                 "breadcrumbs": [{"crumb_id": "brc_...", "text": "..."}] },
-  "signals": { "days_away": 0, "capacity": "full|low", "exchange_count": 0 }
+  "signals": { "days_away": 0, "capacity": "full|medium|low", "exchange_count": 0 }
 }
 ```
 
@@ -61,7 +62,7 @@ Output is structured JSON validated against schema; invalid JSON → one retry �
 
 ### 2.1 Filing (M1)
 - **In:** Spark text (≤500 tok), thread index (id, name, 1-line digest headline, last-touched), user's last 10 corrections as few-shot exemplars (§6).
-- **Out:** `{spark_id, decision: "file"|"new_thread"|"loose", thread_id?, new_thread_name?, confidence: 0-1, reason: ≤12 words}`
+- **Out (merged filing schema — canonical, referenced by M1 §8):** `{decision: "file"|"propose_new_thread"|"loose", thread_id?, alt_thread_ids: [≤2], reason: ≤12 words, confidence}`
 - **Tone:** reason string is user-visible on tap ("sounded like the Etsy shop"); warm, never defensive.
 - **Grounding:** may only reference thread_ids present in the index. No confidence inflation: uncertainty → `loose`.
 - **Cap:** output ≤ 120 tok.

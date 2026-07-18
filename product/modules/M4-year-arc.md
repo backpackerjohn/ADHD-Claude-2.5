@@ -125,7 +125,7 @@ No new nouns are introduced. An "arc proposal" is a **draft Arc** (pre-lifecycle
 - **10×:** milestone timeline virtualizes; replan_log capped at 50 diffs (older summarized into one line); nightly re-plan checks batch all arcs in one job per user.
 - **100× (long-lived account):** completed arcs are cold storage — rendered from stored summary, no AI reads; search over arc history goes through M2 hybrid search, not M4.
 - **Performance:** arc header + next Pebble render < 200 ms from local store; decomposition is the only slow path and is explicitly framed as "reading your thread."
-- **Cost:** ~15 breakdown/re-plan calls/mo ≈ $0.32 at P90 (thesis-B §8) — within the $5.99 guardrail.
+- **Cost:** per-call figures — see `ai-spec` §1 routing table; within the $5.99 guardrail.
 
 ## 10. Errors
 
@@ -148,5 +148,5 @@ No new nouns are introduced. An "arc proposal" is a **draft Arc** (pre-lifecycle
 - **M5 Doorway:** consumes at most **one arc Pebble per Doorway card**; deadline-approaching surfacing and (phase 2) felt-time lines render only inside Doorway/notification bounds (capped, self-silencing).
 - **M1 Catch:** captures mentioning dates/energy accrue to the Thread and feed re-planning context.
 - **Cross-cutting:** deterministic micro-reward layer (milestone/complete celebrations); auto-breadcrumb (re-entry context); notification system (deterministic scheduling only).
-- **Events emitted:** `arc.created/approved/replanned/paused/resumed/completed`, `arc.deadline_window_entered`, `arc.deadline_passed`, `arc.pebble_suggested`.
-- **Events consumed:** `pebble.done/dissolved`, `thread.paused/retired`, `capture.filed(thread)`, `calendar.day_events` (phase 2), `user.returned_after_absence`.
+- **Events emitted** (names per the product-brief event dictionary): `arc.created`, `arc.replanned`, `arc.shrunk`, `arc.completed`. Draft approval, pause/resume, deadline-window entry/passing, and Pebble suggestion are deterministic module-internal conditions read directly by M5's scheduler — not bus events.
+- **Events consumed:** `pebble.done` / `pebble.dissolved`, `thread.state_changed(resting)` / `thread.state_changed(retired)`, `spark.filed` (thread context for re-planning), `arc.shrunk` (M3 Shrink → re-plan to a smaller goal), `doorway.opened` (return detection → resume-time re-plan check), `calendar.day_events` (phase 2 platform feed, outside the app event dictionary).

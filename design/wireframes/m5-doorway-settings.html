@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ember wireframes — M5 Doorway · Settings · Billing (W-01–W-01d, O-06, O-07, W-14, W-15)</title>
+<link rel="stylesheet" href="../wireframe-kit.css">
+<style>
+  /* ---- page furniture only (.wf-*) — never product UI ------------------- */
+  body { margin: 0; background: var(--em-surface-sunken); }
+  .wf-header {
+    display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--em-space-4);
+    padding: var(--em-space-6) var(--em-space-10);
+    background: var(--em-surface); border-bottom: 1px solid var(--em-border);
+  }
+  .wf-header h1 { margin: 0; font: var(--em-weight-semibold) var(--em-text-title2)/1.2 var(--em-font-serif); }
+  .wf-header a { color: var(--em-accent-text); font-size: var(--em-text-body-sm); text-decoration: none; }
+  .wf-header a:hover { text-decoration: underline; }
+  .wf-header .wf-meta { font-size: var(--em-text-body-sm); color: var(--em-text-3); }
+  .wf-coverage { padding: var(--em-space-4) var(--em-space-10); font-size: var(--em-text-body-sm);
+    color: var(--em-text-2); border-bottom: 1px solid var(--em-hairline); background: var(--em-surface); }
+  .wf-section { padding: var(--em-space-12) var(--em-space-10); border-bottom: 1px solid var(--em-border); }
+  .wf-section__head { max-width: 960px; margin-bottom: var(--em-space-8); }
+  .wf-id {
+    display: inline-block; padding: 2px 10px; border-radius: var(--em-radius-sm);
+    background: var(--em-dusty-deep); color: #fff;
+    font: var(--em-weight-semibold) var(--em-text-caption)/1.7 var(--em-font-mono);
+    vertical-align: middle; margin-right: var(--em-space-3);
+  }
+  .wf-section__head h2 { display: inline; font: var(--em-weight-semibold) var(--em-text-title2)/1.25 var(--em-font-serif); margin: 0; }
+  .wf-refs { margin: var(--em-space-2) 0 0; font-size: var(--em-text-body-sm); color: var(--em-text-3); max-width: 78ch; }
+  .wf-frames { display: flex; flex-wrap: wrap; gap: var(--em-space-10); align-items: flex-start; }
+  .wf-frame { display: flex; flex-direction: column; gap: var(--em-space-3); }
+  .wf-framewrap { position: relative; }
+  .wf-cap {
+    max-width: 390px; font-size: var(--em-text-caption); font-weight: var(--em-weight-medium);
+    letter-spacing: 0.04em; text-transform: uppercase; color: var(--em-text-3);
+  }
+  .wf-cap b { color: var(--em-dusty-deep); }
+  .wf-panel {
+    background: var(--em-surface); border: 1px solid var(--em-border);
+    border-radius: var(--em-radius-lg); padding: var(--em-space-6); width: 420px; max-width: 100%;
+  }
+  /* wireframe toggle — ink fill when on (accent stays reserved for the one primary) */
+  .wf-toggle {
+    flex: none; width: 46px; height: 27px; border-radius: var(--em-radius-full);
+    background: var(--em-border); border: 0; position: relative; cursor: pointer;
+  }
+  .wf-toggle::after {
+    content: ""; position: absolute; top: 3px; left: 3px; width: 21px; height: 21px;
+    border-radius: 50%; background: var(--em-surface); box-shadow: var(--em-shadow-1);
+  }
+  .wf-toggle.is-on { background: var(--em-text); }
+  .wf-toggle.is-on::after { left: auto; right: 3px; }
+  .wf-setrow { display: flex; align-items: flex-start; gap: var(--em-space-4); padding: var(--em-space-4) 0; border-bottom: 1px solid var(--em-hairline); }
+  .wf-setrow:last-child { border-bottom: 0; }
+  .wf-setrow__body { flex: 1; min-width: 0; }
+  .wf-setrow__label { font-weight: var(--em-weight-medium); }
+  .wf-field {
+    display: flex; align-items: center; width: 100%; min-height: var(--em-tap-min);
+    padding: 0 var(--em-space-4); background: var(--em-surface);
+    border: 1px solid var(--em-border); border-radius: var(--em-radius-md);
+    color: var(--em-text-3); font-style: italic; font-family: var(--em-font-serif);
+  }
+  .wf-timechip {
+    display: inline-flex; align-items: center; gap: var(--em-space-1);
+    min-height: 36px; padding: 0 var(--em-space-3);
+    border: 1px solid var(--em-border); border-radius: var(--em-radius-sm);
+    background: var(--em-surface); font-variant-numeric: tabular-nums; font-size: var(--em-text-body-sm);
+  }
+  .wf-dim { opacity: 0.45; pointer-events: none; }
+</style>
+</head>
+<body class="em-kit">
+
+<!-- ======================================================================= -->
+<!-- PAGE HEADER                                                             -->
+<!-- ======================================================================= -->
+<header class="wf-header">
+  <h1>ember — wireframes: M5 Doorway, Settings &amp; Billing</h1>
+  <span class="wf-meta">v1.0 · 2026-07-17 · static HTML/CSS on wireframe-kit.css · annotation layer is spec-only (strip before build)</span>
+  <span class="em-spacer"></span>
+  <a href="index.html">← All wireframes (index)</a>
+</header>
+<p class="wf-coverage">
+  Covers <strong>W-01</strong> Doorway daily card (mobile + web, night-ASR-retry &amp; felt-time variants, skeleton / offline-fallback / nothing-warm states) ·
+  <strong>W-01b</strong> welcome-back · <strong>W-01c</strong> low-spoon · <strong>W-01d</strong> evening close ·
+  <strong>O-06</strong> capacity dial · <strong>O-07</strong> notification check-in ·
+  <strong>W-14</strong> settings · <strong>W-15</strong> billing.
+  Sources: <code>product/modules/M5-doorway.md</code>, <code>product/navigation-map.md</code> (F2 / F6 / F10), <code>design/brand-guidelines.md</code>, <code>validation/day-in-the-life.md</code>.
+</p>
+
+<!-- ======================================================================= -->
+<!-- W-01 · DOORWAY DAILY CARD                                               -->
+<!-- ======================================================================= -->
+<section class="wf-section" id="w-01">
+  <div class="wf-section__head">
+    <span class="wf-id">W-01</span><h2>Doorway — daily card (ideal, mobile + web)</h2>
+    <p class="wf-refs">M5 §6 “normal day”: ≤3 items — warm-threads line, ONE suggested Pebble, ONE resurfaced Spark with an attached action. Readable in ≤90&nbsp;s; no fourth item exists under any condition. Flow F2. Content: Maya, Day&nbsp;4 (day-in-the-life).</p>
+  </div>
+
+  <div class="wf-frames">
+
+    <!-- ============ W-01 mobile · ideal ============ -->
+    <div class="wf-frame">
+      <span class="wf-cap">W-01 · mobile · ideal (normal day, dial = full)</span>
+      <div class="wf-framewrap">
+      <div class="em-phone">
+        <div class="em-phone__status"></div>
+        <div class="em-phone__screen">
+          <header class="em-appbar">
+            <span class="em-appbar__title">ember</span>
+            <button class="em-appbar__action" aria-label="Settings">⚙</button>
+          </header>
+          <div class="em-screen">
+            <section class="em-card em-card--doorway em-glow">
+              <div class="em-row em-row--between">
+                <span class="em-caption">Today · Thursday</span>
+                <span class="em-hours"><b>26</b> ember minutes this week</span>
+              </div>
+              <h2 class="em-doorway__greeting">Morning, Maya.</h2>
+              <p class="em-doorway__promise">One warm line, one pebble, one old spark. Ninety seconds, then go live your day.</p>
+
+              <!-- O-06 capacity dial lives at the top of the card -->
+              <div class="em-capacity" role="radiogroup" aria-label="Capacity today">
+                <button class="em-capacity__seg em-capacity__seg--full is-active" aria-pressed="true"><i>●</i>Full</button>
+                <button class="em-capacity__seg"><i>◐</i>Medium</button>
+                <button class="em-capacity__seg em-capacity__seg--low"><i>○</i>Low-spoon</button>
+              </div>
+
+              <hr class="em-divider">
+
+              <!-- item 1 · warm-threads line -->
+              <p class="em-body-lg" style="margin:0;">Three threads are warm today — <strong>Taxes</strong>, <strong>Etsy shop</strong>, and the <strong>Novel</strong>.</p>
+              <div class="em-row" style="margin: var(--em-space-2) 0 var(--em-space-4);">
+                <span class="em-chip em-chip--warm">warm — touched yesterday</span>
+              </div>
+
+              <!-- item 2 · ONE suggested Pebble -->
+              <div class="em-pebble">
+                Search your email for the 1099-NEC
+                <span class="em-pebble__time">about 5 min</span>
+              </div>
+              <p class="em-meta" style="margin: var(--em-space-1) 0 var(--em-space-4);">Taxes · from your thought at 1&nbsp;am — it’s safe here.</p>
+
+              <!-- item 3 · ONE resurfaced Spark + attached action -->
+              <blockquote class="em-spark-quote" style="margin-bottom: var(--em-space-2);">
+                “what if the shop logo was a little lit match?”
+                <cite>You, Tuesday · Etsy shop</cite>
+              </blockquote>
+              <div class="em-row">
+                <button class="em-chip em-chip--action">Want to look?</button>
+                <button class="em-chip em-chip--action">Keep it for later</button>
+              </div>
+
+              <div class="em-stack em-stack--tight" style="margin-top: var(--em-space-5);">
+                <button class="em-btn em-btn--primary em-btn--block em-btn--lg">Do the pebble</button>
+                <button class="em-btn em-btn--quiet em-btn--block">Not today</button>
+              </div>
+            </section>
+            <p class="em-meta" style="text-align:center;">Swipe any item to let it rest — it sits out today and tomorrow.</p>
+          </div>
+          <nav class="em-bottomnav">
+            <a class="em-tab is-active" href="#"><i class="em-tab__icon">⌂</i>Doorway</a>
+            <a class="em-tab" href="#"><i class="em-tab__icon">▤</i>Shelf</a>
+            <button class="em-catch-btn" aria-label="Catch a thought">+</button>
+            <a class="em-tab" href="#"><i class="em-tab__icon">⌕</i>Search</a>
+          </nav>
+        </div>
+      </div>
+      <!-- annotation dots -->
+      <span class="em-note-dot" style="top: 96px;  left: 12px;">1</span>
+      <span class="em-note-dot" style="top: 268px; left: 12px;">3</span>
+      <span class="em-note-dot" style="top: 330px; left: 12px;">2</span>
+      <span class="em-note-dot" style="top: 436px; left: 12px;">4</span>
+      <span class="em-note-dot" style="top: 540px; left: 12px;">5</span>
+      <span class="em-note-dot" style="top: 764px; left: 12px;">6</span>
+      </div>
+    </div>
+
+    <!-- W-01 annotations, panel A -->
+    <aside class="em-notes">
+      <p class="em-notes__title">W-01 annotations · A (ideal)</p>
+      <p class="em-notes__item"><b>1</b><span><strong>Nightly Batch pre-gen:</strong> card written ~03:00 local by the Batch job (50% off tier); ready at wake, rendered from cache &lt;200&nbsp;ms. Never a blank spinner at wake (M5 §7 WF-D1, §9). Opening the Doorway resets the notification ignore counter to 0 (M5 §5).</span></p>
+      <p class="em-notes__item"><b>2</b><span><strong>Hard cap ≤3 items:</strong> warm line + ONE Pebble + ONE resurfaced Spark. The renderer caps at 3 regardless of model output; invalid refs drop their slot and the card still renders (M5 §8 output contract). ≤90&nbsp;s bounded surface (brand law §9.7).</span></p>
+      <p class="em-notes__item"><b>3</b><span><strong>Capacity dial (O-06)</strong> at top of card. Changing it regenerates a COMPLETE card at the new capacity and sets tomorrow’s pre-gen default (M5 §5).</span></p>
+      <p class="em-notes__item"><b>4</b><span><strong>Pebble tap → W-07 do-it-now directly,</strong> whisper line embedded at the top of the focus surface (ruling D-016, flow F2). One ember primary per screen; “Not today” is always visible and consequence-free — a skipped card is a non-state, tomorrow regenerates as if today went fine (M5 §6).</span></p>
+      <p class="em-notes__item"><b>5</b><span><strong>Resurfaced Spark always carries an action</strong> (look / keep — both undoable). Night-captured Sparks (22:00–06:00) are priority candidates for this slot the NEXT morning (WF-D5). The user’s words render in serif italic with the amber rule — sacred material (brand §4.3).</span></p>
+      <p class="em-notes__item"><b>6</b><span><strong>Notifications (deterministic, never AI):</strong> ≤2/day hard cap, varied copy drawn from a ~2-week pre-generated pool (anti-habituation), quiet-hours guard evaluated at send time, self-silencing at 5 consecutive ignores → O-07 check-in (M5 §3, §8 “deliberately NOT AI”).</span></p>
+    </aside>
+
+    <!-- ============ W-01 web · ideal ============ -->
+    <div class="wf-frame">
+      <span class="wf-cap">W-01 · web (memory-first) · ideal</span>
+      <div class="wf-framewrap">
+      <div class="em-desktop">
+        <div class="em-desktop__bar">
+          <div class="em-desktop__dots"><i></i><i></i><i></i></div>
+          <div class="em-desktop__url">ember.app/doorway</div>
+        </div>
+        <div class="em-desktop__body">
+          <aside class="em-sidebar">
+            <div class="em-sidebar__wordmark">ember</div>
+            <div class="em-quickcapture">Catch a thought… <kbd>C</kbd></div>
+            <a class="em-sidebar__item is-active" href="#">⌂ Doorway</a>
+            <a class="em-sidebar__item" href="#">▤ Shelf</a>
+            <a class="em-sidebar__item" href="#">⌕ Search</a>
+            <a class="em-sidebar__item" href="#">✶ Loose Sparks</a>
+            <span class="em-spacer"></span>
+            <a class="em-sidebar__item" href="#">⚙ Settings</a>
+          </aside>
+          <main class="em-main">
+            <div class="em-row em-row--between" style="max-width: 640px; margin-bottom: var(--em-space-4);">
+              <span class="em-caption">Today · Thursday</span>
+              <span class="em-hours"><b>26</b> ember minutes this week</span>
+            </div>
+            <section class="em-card em-card--doorway em-glow" style="max-width: 640px;">
+              <h2 class="em-doorway__greeting">Morning, Maya.</h2>
+              <p class="em-doorway__promise">One warm line, one pebble, one old spark. Ninety seconds, then go live your day.</p>
+              <div class="em-capacity" role="radiogroup" aria-label="Capacity today" style="max-width: 360px;">
+                <button class="em-capacity__seg em-capacity__seg--full is-active"><i>●</i>Full</button>
+                <button class="em-capacity__seg"><i>◐</i>Medium</button>
+                <button class="em-capacity__seg em-capacity__seg--low"><i>○</i>Low-spoon</button>
+              </div>
+              <hr class="em-divider">
+              <p class="em-body-lg" style="margin:0 0 var(--em-space-4);">Three threads are warm today — <strong>Taxes</strong>, <strong>Etsy shop</strong>, and the <strong>Novel</strong>. <span class="em-chip em-chip--warm">warm</span></p>
+              <div class="em-pebble">
+                Search your email for the 1099-NEC
+                <span class="em-pebble__time">about 5 min</span>
+              </div>
+              <p class="em-meta" style="margin: var(--em-space-1) 0 var(--em-space-4);">Taxes · from your thought at 1&nbsp;am — it’s safe here.</p>
+              <blockquote class="em-spark-quote" style="margin-bottom: var(--em-space-2);">
+                “what if the shop logo was a little lit match?”
+                <cite>You, Tuesday · Etsy shop</cite>
+              </blockquote>
+              <div class="em-row">
+                <button class="em-chip em-chip--action">Want to look?</button>
+                <button class="em-chip em-chip--action">Keep it for later</button>
+              </div>
+              <div class="em-row" style="margin-top: var(--em-space-5);">
+                <button class="em-btn em-btn--primary em-btn--lg">Do the pebble</button>
+                <button class="em-btn em-btn--quiet">Not today</button>
+              </div>
+            </section>
+          </main>
+        </div>
+      </div>
+      <span class="em-note-dot" style="top: 64px;  left: 240px;">7</span>
+      <span class="em-note-dot" style="top: 120px; left: 240px;">8</span>
+      </div>
+    </div>
+
+    <aside class="em-notes">
+      <p class="em-notes__title">W-01 annotations · web</p>
+      <p class="em-notes__item"><b>7</b><span><strong>Web is memory-first:</strong> sidebar Doorway · Shelf · Search · Loose Sparks · Settings, quick-capture pinned top, keyboard <code>C</code> (navigation map, global nav). Same card object as mobile — one card per calendar day, dial synced (conflict = last-write-wins, M5 §10).</span></p>
+      <p class="em-notes__item"><b>8</b><span><strong>No nav badges, no dots, no counts</strong> anywhere in chrome (brand law §9.2). Progress appears only as quiet cumulative ember minutes — streak-free (product brief, cross-cutting).</span></p>
+    </aside>
+  </div>
+
+  <!-- ---- W-01 annotated variants ---- -->
+  <div class="wf-section__head" style="margin-top: var(--em-space-12);">
+    <span class="wf-id">W-01</span><h2>Doorway — annotated variants</h2>
+    <p class="wf-refs">Canonical extra states from the navigation map: the <strong>night-ASR-retry audio card</strong> (failed night transcription, playable audio) and the phase-2 <strong>felt-time line</strong> (“leave by 1:15”).</p>
+  </div>
+
+  <div class="wf-frames">
+
+    <!-- ============ W-01 variant · night-ASR retry ============ -->
+    <div class="wf-frame">
+      <span class="wf-cap">W-01 variant · <b>night-ASR-retry</b> audio card (Spark slot)</span>
+      <div class="wf-framewrap">
+      <div class="em-phone">
+        <div class="em-phone__status"></div>
+        <div class="em-phone__screen">
+          <header class="em-appbar"><span class="em-appbar__title">ember</span><button class="em-appbar__action" aria-label="Settings">⚙</button></header>
+          <div class="em-screen">
+            <section class="em-card em-card--doorway em-glow">
+              <span class="em-caption">Today · Friday</span>
+              <h2 class="em-doorway__greeting">Morning, Maya.</h2>
+              <p class="em-doorway__promise">Two warm threads, one pebble, and something you left at the door overnight.</p>
+              <div class="em-capacity" role="radiogroup" aria-label="Capacity today">
+                <button class="em-capacity__seg em-capacity__seg--full is-active"><i>●</i>Full</button>
+                <button class="em-capacity__seg"><i>◐</i>Medium</button>
+                <button class="em-capacity__seg em-capacity__seg--low"><i>○</i>Low-spoon</button>
+              </div>
+              <hr class="em-divider">
+              <p class="em-body-lg" style="margin:0 0 var(--em-space-4);"><strong>Taxes</strong> and <strong>Etsy shop</strong> are warm today.</p>
+              <div class="em-pebble">
+                Reply “yes” to Anna about the banner file
+                <span class="em-pebble__time">about 2 min</span>
+              </div>
+
+              <!-- the night-ASR-retry audio card -->
+              <div class="em-card" style="margin-top: var(--em-space-4); background: var(--em-surface-sunken); box-shadow: none;">
+                <span class="em-caption">From 1:12&nbsp;am</span>
+                <p style="margin: var(--em-space-2) 0;">You had a thought at 1&nbsp;am — it’s safe here. The words didn’t come through, so Ember kept the recording.</p>
+                <div class="em-row">
+                  <button class="em-chip em-chip--action">▶ Play · 0:14</button>
+                  <button class="em-chip em-chip--action">Try the words again</button>
+                </div>
+                <div class="em-row" style="margin-top: var(--em-space-3);">
+                  <span class="em-chip em-chip--queued">Listening again…</span>
+                  <span class="em-meta">feedback state while retry runs</span>
+                </div>
+              </div>
+
+              <div class="em-stack em-stack--tight" style="margin-top: var(--em-space-5);">
+                <button class="em-btn em-btn--primary em-btn--block em-btn--lg">Do the pebble</button>
+                <button class="em-btn em-btn--quiet em-btn--block">Not today</button>
+              </div>
+            </section>
+          </div>
+          <nav class="em-bottomnav">
+            <a class="em-tab is-active" href="#"><i class="em-tab__icon">⌂</i>Doorway</a>
+            <a class="em-tab" href="#"><i class="em-tab__icon">▤</i>Shelf</a>
+            <button class="em-catch-btn" aria-label="Catch a thought">+</button>
+            <a class="em-tab" href="#"><i class="em-tab__icon">⌕</i>Search</a>
+          </nav>
+        </div>
+      </div>
+      <span class="em-note-dot" style="top: 452px; left: 12px;">9</span>
+      </div>
+    </div>
+
+    <!-- ============ W-01 variant · felt-time line ============ -->
+    <div class="wf-frame">
+      <span class="wf-cap">W-01 variant · <b>phase-2 felt-time line</b> + snooze-undo toast</span>
+      <div class="wf-framewrap">
+      <div class="em-phone">
+        <div class="em-phone__status"></div>
+        <div class="em-phone__screen">
+          <header class="em-appbar"><span class="em-appbar__title">ember</span><button class="em-appbar__action" aria-label="Settings">⚙</button></header>
+          <div class="em-screen">
+            <section class="em-card em-card--doorway em-glow">
+              <span class="em-caption">Today · Monday</span>
+              <h2 class="em-doorway__greeting">Morning, Maya.</h2>
+
+              <!-- phase-2 felt-time line -->
+              <div class="em-banner em-banner--rest" style="margin: var(--em-space-3) 0;">
+                ◔ Leave by 1:15 to make the accountant call.
+              </div>
+
+              <div class="em-capacity" role="radiogroup" aria-label="Capacity today">
+                <button class="em-capacity__seg em-capacity__seg--full is-active"><i>●</i>Full</button>
+                <button class="em-capacity__seg"><i>◐</i>Medium</button>
+                <button class="em-capacity__seg em-capacity__seg--low"><i>○</i>Low-spoon</button>
+              </div>
+              <hr class="em-divider">
+              <p class="em-body-lg" style="margin:0 0 var(--em-space-4);"><strong>Taxes</strong> is warm — your accountant replied.</p>
+              <div class="em-pebble">
+                Read the accountant’s reply
+                <span class="em-pebble__time">about 3 min</span>
+              </div>
+              <blockquote class="em-spark-quote" style="margin: var(--em-space-4) 0 var(--em-space-2);">
+                “gift idea for Sam: the blue mug from the fair”
+                <cite>You, last week · People: Sam</cite>
+              </blockquote>
+              <div class="em-row">
+                <button class="em-chip em-chip--action">Want to look?</button>
+              </div>
+              <div class="em-stack em-stack--tight" style="margin-top: var(--em-space-5);">
+                <button class="em-btn em-btn--primary em-btn--block em-btn--lg">Do the pebble</button>
+                <button class="em-btn em-btn--quiet em-btn--block">Not today</button>
+              </div>
+            </section>
+          </div>
+          <!-- feedback: snoozed-item undo toast -->
+          <div class="em-toast" role="status">
+            <span class="em-toast__spark">✶</span>
+            Resting until tomorrow. It’ll keep — embers do.
+            <button class="em-toast__correct">Undo</button>
+          </div>
+          <nav class="em-bottomnav">
+            <a class="em-tab is-active" href="#"><i class="em-tab__icon">⌂</i>Doorway</a>
+            <a class="em-tab" href="#"><i class="em-tab__icon">▤</i>Shelf</a>
+            <button class="em-catch-btn" aria-label="Catch a thought">+</button>
+            <a class="em-tab" href="#"><i class="em-tab__icon">⌕</i>Search</a>
+          </nav>
+        </div>
+      </div>
+      <span class="em-note-dot" style="top: 208px; left: 12px;">10</span>
+      <span class="em-note-dot" style="top: 640px; left: 12px;">11</span>
+      </div>
+    </div>
+
+    <aside class="em-notes">
+      <p class="em-notes__title">W-01 annotations · B (variants)</p>
+      <p class="em-notes__item"><b>9</b><span><strong>Night-ASR retry:</strong> F1 failure path — transcription fails, raw audio is kept with a retry chip; night captures (22:00–06:00) route to the next morning’s card (WF-D5). Copy never blames (“the words didn’t come through”, not “error”). While retrying, the amber queued chip reassures — the only numeric-free “safe” badge allowed (brand law §9.2). Audio retention follows the keep-audio toggle in W-14.</span></p>
+      <p class="em-notes__item"><b>10</b><span><strong>Phase-2 felt-time line:</strong> calendar-read trigger rendered as lead-time (“leave by 1:15”), never a countdown timer (M4, brand law §9.8). Dusty-blue rest styling — informational, not alarming; the word “urgent” never appears (brand §5.3).</span></p>
+      <p class="em-notes__item"><b>11</b><span><strong>Snooze feedback:</strong> swiping an item excludes it from today’s and tomorrow’s generation; undo via toast (M5 §5). Toast is a polite live region (brand law §9.12).</span></p>
+    </aside>
+  </div>
+
+  <!-- ---- W-01 state-matrix minimums ---- -->
+  <div class="wf-section__head" style="margin-top: var(--em-space-12);">
+    <span class="wf-id">W-01</span><h2>Doorway — state-matrix minimums</h2>
+    <p class="wf-refs">State matrix (navigation map): skeleton/loading, offline + AI-degraded deterministic fallback, and empty/nothing-warm. Never-render rules hold in every state: no red, no badges, no overdue counts, no streaks, no “you missed…”.</p>
+  </div>
+
+  <div class="wf-frames">
+
+    <!-- ============ W-01 state · skeleton (dial regeneration) ============ -->
+    <div class="wf-frame">
+      <span class="wf-cap">W-01 state · <b>loading / regenerating</b> (dial just moved full → medium)</span>
+      <div class="wf-framewrap">
+      <div class="em-phone">
+        <div class="em-phone__status"></div>
+        <div class="em-phone__screen">
+          <header class="em-appbar"><span class="em-appbar__title">ember</span><button class="em-appbar__action" aria-label="Settings">⚙</button></header>
+          <div class="em-screen">
+            <section class="em-card em-card--doorway">
+              <span class="em-caption">Today · Thursday</span>
+              <h2 class="em-doorway__greeting">Reshaping your day…</h2>
+              <div class="em-capacity" role="radiogroup" aria-label="Capacity today">
+                <button class="em-capacity__seg em-capacity__seg--full"><i>●</i>Full</button>
+                <button class="em-capacity__seg is-active"><i>◐</i>Medium</button>
+                <button class="em-capacity__seg em-capacity__seg--low"><i>○</i>Low-spoon</button>
+              </div>
+              <hr class="em-divider">
+              <div class="em-stack">
+                <span class="em-skeleton em-skeleton--title"></span>
+                <span class="em-skeleton em-skeleton--line"></span>
+                <span class="em-skeleton em-skeleton--card"></span>
+                <span class="em-skeleton em-skeleton--pill"></span>
+              </div>
+              <p class="em-meta" style="margin-top: var(--em-space-4);">A new complete plan is on its way — a few seconds.</p>
+            </section>
+          </div>
+          <nav class="em-bottomnav">
+            <a class="em-tab is-active" href="#"><i class="em-tab__icon">⌂</i>Doorway</a>
+            <a class="em-tab" href="#"><i class="em-tab__icon">▤</i>Shelf</a>
+            <button class="em-catch-btn" aria-label="Catch a thought">+</button>
+            <a class="em-tab" href="#"><i class="em-tab__icon">⌕</i>Search</a>
+          </nav>
+        </div>
+      </div>
+      <span class="em-note-dot" style="top: 260px; left: 12px;">12</span>
+      </div>
+    </div>
+
+    <!-- ============ W-01 state · offline / deterministic fallback ============ -->
+    <div class="wf-frame">
+      <span class="wf-cap">W-01 state · <b>offline / AI-degraded fallback</b> (cached card, deterministic)</span>
+      <div class="wf-framewrap">
+      <div class="em-phone">
+        <div class="em-phone__status"></div>
+        <div class="em-phone__screen">
+          <header class="em-appbar"><span class="em-appbar__title">ember</span><button class="em-appbar__action" aria-label="Settings">⚙</button></header>
+          <div class="em-screen">
+            <section class="em-card em-card--doorway">
+              <div class="em-row em-row--between">
+                <span class="em-caption">Today · Saturday</span>
+                <span class="em-chip">as of last night</span>
+              </div>
+              <h2 class="em-doorway__greeting">Morning, Maya.</h2>
+              <p class="em-doorway__promise">Here’s what was warm when the lights went down.</p>
+              <div class="em-capacity" role="radiogroup" aria-label="Capacity today">
+                <button class="em-capacity__seg em-capacity__seg--full is-active"><i>●</i>Full</button>
+                <button class="em-capacity__seg"><i>◐</i>Medium</button>
+                <button class="em-capacity__seg em-capacity__seg--low"><i>○</i>Low-spoon</button>
+              </div>
+              <hr class="em-divider">
+              <p class="em-body-lg" style="margin:0 0 var(--em-space-4);"><strong>Etsy shop</strong> is your warmest thread.</p>
+              <div class="em-pebble">
+                Export the banner file Anna sent
+                <span class="em-pebble__time">about 2 min</span>
+              </div>
+              <blockquote class="em-spark-quote" style="margin: var(--em-space-4) 0 var(--em-space-2);">
+                “what if the 1099 from the contract gig never came”
+                <cite>You, at 1&nbsp;am · Taxes</cite>
+              </blockquote>
+              <div class="em-row">
+                <span class="em-chip em-chip--queued">Safe — will sync when you’re back online</span>
+              </div>
+              <div class="em-stack em-stack--tight" style="margin-top: var(--em-space-5);">
+                <button class="em-btn em-btn--primary em-btn--block em-btn--lg">Do the pebble</button>
+                <button class="em-btn em-btn--quiet em-btn--block">Not today</button>
+              </div>
+            </section>
+          </div>
+          <nav class="em-bottomnav">
+            <a class="em-tab is-active" href="#"><i class="em-tab__icon">⌂</i>Doorway</a>
+            <a class="em-tab" href="#"><i class="em-tab__icon">▤</i>Shelf</a>
+            <button class="em-catch-btn" aria-label="Catch a thought">+</button>
+            <a class="em-tab" href="#"><i class="em-tab__icon">⌕</i>Search</a>
+          </nav>
+        </div>
+      </div>
+      <span class="em-note-dot" style="top: 96px;  left: 12px;">13</span>
+      <span class="em-note-dot" style="top: 560px; left: 12px;">14</span>
+      </div>
+    </div>
+
+    <!-- ============ W-01 state · nothing warm / empty ============ -->
+    <div class="wf-frame">
+      <span class="wf-cap">W-01 state · <b>nothing-warm / first-run</b> (no fake card)</span>
+      <div class="wf-framewrap">
+      <div class="em-phone">
+        <div class="em-phone__status"></div>
+        <div class="em-phone__screen">
+          <header class="em-appbar"><span class="em-appbar__title">ember</span><button class="em-appbar__action" aria-label="Settings">⚙</button></header>
+          <div class="em-screen" style="justify-content: center;">
+            <div class="em-empty em-glow">
+              <div class="em-empty__art">✶</div>
+              <h2 class="em-empty__title">Nothing’s warm yet.</h2>
+              <p class="em-empty__line">Catch a thought and Ember will take it from there.</p>
+              <button class="em-btn em-btn--primary em-btn--lg">Catch a thought</button>
+              <p class="em-meta">Threads resting instead? <a href="#" style="color: var(--em-accent-text);">Your shelf is resting — browse it anytime.</a></p>
+            </div>
+          </div>
+          <nav class="em-bottomnav">
+            <a class="em-tab is-active" href="#"><i class="em-tab__icon">⌂</i>Doorway</a>
+            <a class="em-tab" href="#"><i class="em-tab__icon">▤</i>Shelf</a>
+            <button class="em-catch-btn" aria-label="Catch a thought">+</button>
+            <a class="em-tab" href="#"><i class="em-tab__icon">⌕</i>Search</a>
+          </nav>
+        </div>
+      </div>
+      <span class="em-note-dot" style="top: 300px; left: 12px;">15</span>
+      </div>
+    </div>
+
+    <aside class="em-notes">
+      <p class="em-notes__title">W-01 annotations · C (states)</p>
+      <p class="em-notes__item"><b>12</b><span><strong>Regeneration skeleton:</strong> only shown on dial change — previous card grayed, warm shimmer (1.8&nbsp;s sweep), skeleton appears only after 300&nbsp;ms; &lt;5&nbsp;s p95, deterministic fallback served at 8&nbsp;s (M5 §6, §9; brand §8). Never shown at wake — pre-gen guarantees readiness.</span></p>
+      <p class="em-notes__item"><b>13</b><span><strong>Offline:</strong> last generated card served from local cache with a subtle “as of last night” stamp; skip / dial / snooze queue deterministically and sync later (M5 §6). Queue chip is the single allowed reassurance badge — amber, no numerals of guilt.</span></p>
+      <p class="em-notes__item"><b>14</b><span><strong>AI-degraded / pre-gen failed:</strong> the SAME 3-slot shape assembled deterministically from cached data — warmest Thread by last-touch, its stored next Pebble (from the Arc, no AI), most recent night-captured Spark. The user never sees an error at wake; one background retry improves tomorrow, today’s card never swaps out from under her (M5 §10).</span></p>
+      <p class="em-notes__item"><b>15</b><span><strong>Nothing-warm:</strong> no fake card — a single capture prompt (“no data” is banned copy, brand §5.2); if Threads exist but all rest, one gentle Shelf link (M5 §6). Warm illustration placeholder, no mascots (brand §7).</span></p>
+    </aside>
+  </div>
+</section>
+
+<!-- ======================================================================= -->
+<!-- W-01b · WELCOME-BACK                                                    -->
+<!-- ======================================================================= -->
+<section class="wf-section" id="w-01b">
+  <div class="wf-section__head">
+    <span class="wf-id">W-01b</span><h2>Doorway — welcome-back variant (≥7 quiet days)</h2>
+    <p class="wf-refs">Flow F6 lapse &amp; return; M5 §6 welcome-back state; day-in-the-life Day&nbsp;32. Includes the billing-pause line (45-day auto-pause fired → see W-15 paused state).</p>
+  </div>
+  <div class="wf-frames">
+    <div class="wf-frame">
+      <span class="wf-cap">W-01b · mobile · returning after ~3 weeks, billing auto-paused</span>
+      <div class="wf-framewrap">
+      <div class="em-phone">
+        <div class="em-phone__status"></div>
+        <div class="em-phone__screen">
+          <header class="em-appbar"><span class="em-appbar__title">ember</span><button class="em-appbar__action" aria-label="Settings">⚙</button></header>
+          <div class="em-screen">
+            <section class="em-card em-card--doorway is-welcome-back em-glow">
+              <h2 class="em-doorway__greeting">Welcome back.<br>Nothing is lost.</h2>
+              <p class="em-doorway__promise">Three threads stayed warm underneath while you were away. Here’s what’s still warm.</p>
+              <hr class="em-divider">
+              <div class="em-stack em-stack--tight">
+                <div class="em-row em-row--between">
+                  <span><strong>Etsy shop</strong></span>
+                  <span class="em-chip em-chip--warm">warm — the fair moved closer</span>
+                </div>
+                <p class="em-meta" style="margin:0 0 var(--em-space-3);">The craft fair is about five weeks out. You were choosing between two banner fonts.</p>
+                <div class="em-row em-row--between">
+                  <span><strong>Taxes</strong></span>
+                  <span class="em-chip em-chip--warm">warm — a reply is waiting</span>
+                </div>
+                <p class="em-meta" style="margin:0;">Your accountant replied. You were waiting on him — that’s where you stopped, on purpose.</p>
+              </div>
+              <div class="em-pebble" style="margin-top: var(--em-space-4);">
+                Open the two banner drafts and pick with your gut
+                <span class="em-pebble__time">about 3 min</span>
+              </div>
+
+              <!-- billing-pause line -->
+              <div class="em-banner em-banner--rest" style="margin-top: var(--em-space-4);">
+                We paused your billing while you were away — everything is safe. <a href="#" style="color: inherit;">Details</a>
+              </div>
+
+              <div class="em-stack em-stack--tight" style="margin-top: var(--em-space-5);">
+                <button class="em-btn em-btn--primary em-btn--block em-btn--lg">Show me</button>
+                <button class="em-btn em-btn--quiet em-btn--block">Not today</button>
+              </div>
+            </section>
+          </div>
+          <nav class="em-bottomnav">
+            <a class="em-tab is-active" href="#"><i class="em-tab__icon">⌂</i>Doorway</a>
+            <a class="em-tab" href="#"><i class="em-tab__icon">▤</i>Shelf</a>
+            <button class="em-catch-btn" aria-label="Catch a thought">+</button>
+            <a class="em-tab" href="#"><i class="em-tab__icon">⌕</i>Search</a>
+          </nav>
+        </div>
+      </div>
+      <span class="em-note-dot" style="top: 110px; left: 12px;">1</span>
+      <span class="em-note-dot" style="top: 300px; left: 12px;">2</span>
+      <span class="em-note-dot" style="top: 508px; left: 12px;">3</span>
+      <span class="em-note-dot" style="top: 592px; left: 12px;">4</span>
+      </div>
+    </div>
+
+    <aside class="em-notes">
+      <p class="em-notes__title">W-01b annotations</p>
+      <p class="em-notes__item"><b>1</b><span><strong>“Welcome back. Nothing is lost.”</strong> verbatim — the load-bearing promise on every welcome-back surface (brand §5.1-2). Triggered when absence ≥7 quiet days; it supersedes today’s daily card (M5 §4). No day count anywhere — “while you were away”, never “47 days” (brand §5.1-6).</span></p>
+      <p class="em-notes__item"><b>2</b><span><strong>At most 2 warm Threads + one tiny step.</strong> Explicitly NO backlog wall, no accumulated list, no enumeration of what happened (M5 §6, §8 guardrails). Auto-breadcrumbs feed the “where you stopped” line.</span></p>
+      <p class="em-notes__item"><b>3</b><span><strong>“Show me”</strong> (single primary) opens the Shelf’s Warm row (M2) or the top Thread’s full Briefing (M3, F3). Normal daily cards resume the next morning at her remembered dial position (WF-D3).</span></p>
+      <p class="em-notes__item"><b>4</b><span><strong>Billing-pause line</strong> appears ONLY if the 45-day auto-pause fired: “We paused your billing while you were away — everything is safe.” (brand §5.2). Rendered in dusty rest styling — a kindness, not a warning. Links to W-15 paused state.</span></p>
+    </aside>
+  </div>
+</section>
+
+<!-- ======================================================================= -->
+<!-- W-01c · LOW-SPOON                                                       -->
+<!-- ======================================================================= -->
+<section class="wf-section" id="w-01c">
+  <div class="wf-section__head">
+    <span class="wf-id">W-01c</span><h2>Doorway — low-spoon variant (complete one-item plan)</h2>
+    <p class="wf-refs">M5 §6 low-spoon state + WF-D2; day-in-the-life Day&nbsp;9. The dial at low-spoon renders a COMPLETE plan, never a degraded one.</p>
+  </div>
+  <div class="wf-frames">
+    <div class="wf-frame">
+      <span class="wf-cap">W-01c · mobile · dial = low-spoon (terrible-sleep morning)</span>
+      <div class="wf-framewrap">
+      <div class="em-phone">
+        <div class="em-phone__status"></div>
+        <div class="em-phone__screen">
+          <header class="em-appbar"><span class="em-appbar__title">ember</span><button class="em-appbar__action" aria-label="Settings">⚙</button></header>
+          <div class="em-screen">
+            <section class="em-card em-card--doorway">
+              <span class="em-caption">Today · Tuesday</span>
+              <h2 class="em-doorway__greeting">Morning.</h2>
+              <div class="em-capacity" role="radiogroup" aria-label="Capacity today">
+                <button class="em-capacity__seg em-capacity__seg--full"><i>●</i>Full</button>
+                <button class="em-capacity__seg"><i>◐</i>Medium</button>
+                <button class="em-capacity__seg em-capacity__seg--low is-active" aria-pressed="true"><i>○</i>Low-spoon</button>
+              </div>
+              <hr class="em-divider">
+              <p class="em-body-lg" style="margin: 0 0 var(--em-space-4);">A full plan for a low-tank day: one two-minute pebble. That’s the whole plan. It counts.</p>
+              <div class="em-pebble">
+                Water the plants
+                <span class="em-pebble__time">2 min</span>
+              </div>
+              <p class="em-meta" style="margin: var(--em-space-2) 0 0;">Everything else is keeping warm on its own.</p>
+              <div class="em-stack em-stack--tight" style="margin-top: var(--em-space-5);">
+                <button class="em-btn em-btn--primary em-btn--block em-btn--lg">Do the one thing</button>
+                <button class="em-btn em-btn--quiet em-btn--block">Not today</button>
+              </div>
+            </section>
+          </div>
+          <nav class="em-bottomnav">
+            <a class="em-tab is-active" href="#"><i class="em-tab__icon">⌂</i>Doorway</a>
+            <a class="em-tab" href="#"><i class="em-tab__icon">▤</i>Shelf</a>
+            <button class="em-catch-btn" aria-label="Catch a thought">+</button>
+            <a class="em-tab" href="#"><i class="em-tab__icon">⌕</i>Search</a>
+          </nav>
+        </div>
+      </div>
+      <span class="em-note-dot" style="top: 172px; left: 12px;">1</span>
+      <span class="em-note-dot" style="top: 262px; left: 12px;">2</span>
+      <span class="em-note-dot" style="top: 330px; left: 12px;">3</span>
+      </div>
+    </div>
+
+    <aside class="em-notes">
+      <p class="em-notes__title">W-01c annotations</p>
+      <p class="em-notes__item"><b>1</b><span><strong>Dial at low-spoon,</strong> tinted dusty (rest, not failure — brand §3.4-4). No “reduced mode” label, no comparison, no apology; the words “lazy” and “light mode” are banned (brand §5.2).</span></p>
+      <p class="em-notes__item"><b>2</b><span><strong>A COMPLETE plan of exactly one tiny thing,</strong> framed as the whole day (“That’s the whole plan. It counts.” — canonical copy, brand §5.2). No residue of the fuller card, no grayed-out “should” list (M5 §6, WF-D2).</span></p>
+      <p class="em-notes__item"><b>3</b><span><strong>Persistence:</strong> the position is remembered — a low-spoon week stays low-spoon without re-asking; tomorrow’s Batch pre-generates at low. Dial history is never surfaced, trended, or commented on (M5 §4, §11).</span></p>
+    </aside>
+  </div>
+</section>
+
+<!-- ======================================================================= -->
+<!-- W-01d · EVENING CLOSE                                                   -->
+<!-- ======================================================================= -->
+<section class="wf-section" id="w-01d">
+  <div class="wf-section__head">
+    <span class="wf-id">W-01d</span><h2>Doorway — evening close (optional, silent rollover)</h2>
+    <p class="wf-refs">WF-D4: appears only if the app is opened within 2&nbsp;h before quiet-hours start. It never notifies; anything untouched rolls over silently — there is no overdue state.</p>
+  </div>
+  <div class="wf-frames">
+    <div class="wf-frame">
+      <span class="wf-cap">W-01d · mobile · 8:41&nbsp;pm, quiet hours start at 10</span>
+      <div class="wf-framewrap">
+      <div class="em-phone">
+        <div class="em-phone__status"></div>
+        <div class="em-phone__screen">
+          <header class="em-appbar"><span class="em-appbar__title">ember</span><button class="em-appbar__action" aria-label="Settings">⚙</button></header>
+          <div class="em-screen">
+            <section class="em-card em-card--doorway">
+              <div class="em-row em-row--between">
+                <span class="em-caption">This evening</span>
+                <span class="em-hours"><b>38</b> ember minutes today</span>
+              </div>
+              <h2 class="em-title-2" style="margin: var(--em-space-2) 0;">Today’s card is done with you.</h2>
+              <p class="em-doorway__promise">Anything to drop off before tomorrow?</p>
+              <div class="wf-field">a thought, a worry, a maybe…</div>
+              <div class="em-row" style="margin-top: var(--em-space-3);">
+                <span class="em-chip em-chip--done">1099 pebble — done</span>
+                <span class="em-chip em-chip--resting">logo spark — kept for later</span>
+              </div>
+              <div class="em-stack em-stack--tight" style="margin-top: var(--em-space-5);">
+                <button class="em-btn em-btn--quiet em-btn--block">Nothing tonight</button>
+              </div>
+            </section>
+            <p class="em-meta" style="text-align:center; max-width: 34ch; margin-inline:auto;">Anything untouched keeps quietly. Tomorrow’s card starts fresh.</p>
+          </div>
+          <nav class="em-bottomnav">
+            <a class="em-tab is-active" href="#"><i class="em-tab__icon">⌂</i>Doorway</a>
+            <a class="em-tab" href="#"><i class="em-tab__icon">▤</i>Shelf</a>
+            <button class="em-catch-btn" aria-label="Catch a thought">+</button>
+            <a class="em-tab" href="#"><i class="em-tab__icon">⌕</i>Search</a>
+          </nav>
+        </div>
+      </div>
+      <span class="em-note-dot" style="top: 120px; left: 12px;">1</span>
+      <span class="em-note-dot" style="top: 250px; left: 12px;">2</span>
+      <span class="em-note-dot" style="top: 402px; left: 12px;">3</span>
+      </div>
+    </div>
+
+    <aside class="em-notes">
+      <p class="em-notes__title">W-01d annotations</p>
+      <p class="em-notes__item"><b>1</b><span><strong>Trigger:</strong> in-app only, if Ember is opened within 2&nbsp;h before quiet-hours start (default 22:00). The close NEVER sends a notification and is skippable like everything else (WF-D4). Ember minutes are cumulative and streak-free.</span></p>
+      <p class="em-notes__item"><b>2</b><span><strong>One capture field</strong> — files via normal F1 capture (toast O-01, Loose fallback). The screen’s only ember is the nav Catch button; the close itself has no primary because nothing is demanded.</span></p>
+      <p class="em-notes__item"><b>3</b><span><strong>Silent rollover:</strong> untouched items simply feed tomorrow’s regeneration — nothing “moves to overdue”, no debt is displayed. At local midnight the card archives and tomorrow’s replaces it; “missed” is not a state that exists (M5 §4, §6 card-skipped).</span></p>
+    </aside>
+  </div>
+</section>
+
+<!-- ======================================================================= -->
+<!-- O-06 · CAPACITY DIAL                                                    -->
+<!-- ======================================================================= -->
+<section class="wf-section" id="o-06">
+  <div class="wf-section__head">
+    <span class="wf-id">O-06</span><h2>Capacity dial — 3-position control (component spec)</h2>
+    <p class="wf-refs">M5 §3 Capacity Dial state, §4 lifecycle, §5 “Set capacity dial”. All three states are equal siblings — no position looks like a warning or a downgrade.</p>
+  </div>
+  <div class="wf-frames">
+    <div class="wf-panel">
+      <div class="em-stack em-stack--loose">
+        <div>
+          <p class="em-caption" style="margin: 0 0 var(--em-space-2);">POSITION 1 · FULL (default)</p>
+          <div class="em-capacity" role="radiogroup" aria-label="Capacity today">
+            <button class="em-capacity__seg em-capacity__seg--full is-active" aria-pressed="true"><i>●</i>Full</button>
+            <button class="em-capacity__seg"><i>◐</i>Medium</button>
+            <button class="em-capacity__seg em-capacity__seg--low"><i>○</i>Low-spoon</button>
+          </div>
+          <p class="em-meta" style="margin: var(--em-space-2) 0 0;">Card renders 3 items: warm line · one Pebble · one Spark.</p>
+        </div>
+        <div>
+          <p class="em-caption" style="margin: 0 0 var(--em-space-2);">POSITION 2 · MEDIUM</p>
+          <div class="em-capacity" role="radiogroup" aria-label="Capacity today">
+            <button class="em-capacity__seg em-capacity__seg--full"><i>●</i>Full</button>
+            <button class="em-capacity__seg is-active" aria-pressed="true"><i>◐</i>Medium</button>
+            <button class="em-capacity__seg em-capacity__seg--low"><i>○</i>Low-spoon</button>
+          </div>
+          <p class="em-meta" style="margin: var(--em-space-2) 0 0;">2 items, with a smaller Pebble (M5 §6).</p>
+        </div>
+        <div>
+          <p class="em-caption" style="margin: 0 0 var(--em-space-2);">POSITION 3 · LOW-SPOON</p>
+          <div class="em-capacity" role="radiogroup" aria-label="Capacity today">
+            <button class="em-capacity__seg em-capacity__seg--full"><i>●</i>Full</button>
+            <button class="em-capacity__seg"><i>◐</i>Medium</button>
+            <button class="em-capacity__seg em-capacity__seg--low is-active" aria-pressed="true"><i>○</i>Low-spoon</button>
+          </div>
+          <p class="em-meta" style="margin: var(--em-space-2) 0 0;">A complete plan of exactly one tiny thing (→ W-01c). Dusty tint = rest, never failure.</p>
+        </div>
+      </div>
+    </div>
+
+    <aside class="em-notes">
+      <p class="em-notes__title">O-06 annotations</p>
+      <p class="em-notes__item"><b>1</b><span><strong>Interaction:</strong> tapping a segment regenerates today’s card as a NEW complete card at that capacity (never a filtered one) — skeleton state, &lt;5&nbsp;s p95, deterministic template fallback at 8&nbsp;s with toast “Ember will polish this overnight” (M5 §4, §10). Undo by re-setting the dial.</span></p>
+      <p class="em-notes__item"><b>2</b><span><strong>Persistence:</strong> position is a lasting setting created at onboarding, remembered day-to-day, and it sets tomorrow’s Batch pre-gen default. Never auto-resets, never trends, never commented on (“you’ve been low-spoon 12 days” is forbidden by contract — M5 §11).</span></p>
+      <p class="em-notes__item"><b>3</b><span><strong>Mechanics are deterministic,</strong> not AI (M5 §8 “deliberately NOT AI”). Phone/web conflict: last-write-wins by timestamp, one silent regeneration, no prompt (M5 §10). Segments are ≥44&nbsp;px targets; states carry text labels, never color alone (brand laws §9.3, §3.4-3).</span></p>
+    </aside>
+  </div>
+</section>
+
+<!-- ======================================================================= -->
+<!-- O-07 · NOTIFICATION CHECK-IN                                            -->
+<!-- ======================================================================= -->
+<section class="wf-section" id="o-07">
+  <div class="wf-section__head">
+    <span class="wf-id">O-07</span><h2>Notification check-in — anti-habituation self-silencing</h2>
+    <p class="wf-refs">M5 §4 notification schedule: 5 consecutive ignores → silenced, one gentle check-in queued in place of the next ping. Behind the sheet: the silenced Doorway one-liner.</p>
+  </div>
+  <div class="wf-frames">
+    <div class="wf-frame">
+      <span class="wf-cap">O-07 · mobile · check-in sheet over the silenced Doorway</span>
+      <div class="wf-framewrap">
+      <div class="em-phone">
+        <div class="em-phone__status"></div>
+        <div class="em-phone__screen">
+          <header class="em-appbar"><span class="em-appbar__title">ember</span><button class="em-appbar__action" aria-label="Settings">⚙</button></header>
+          <div class="em-screen">
+            <!-- dimmed silenced doorway behind the scrim -->
+            <section class="em-card em-card--doorway wf-dim">
+              <span class="em-caption">Today · Monday</span>
+              <h2 class="em-doorway__greeting">Morning, Maya.</h2>
+              <p class="em-doorway__promise">Two threads are warm today.</p>
+              <div class="em-banner em-banner--rest">We’ve stopped pinging you — the card is here whenever you want it. Turn pings back on?</div>
+            </section>
+          </div>
+          <!-- scrim + bottom sheet -->
+          <div class="em-scrim">
+            <div class="em-sheet">
+              <h3 class="em-title-3" style="margin: 0 0 var(--em-space-2);">A quick check-in</h3>
+              <p style="margin: 0 0 var(--em-space-4); max-width: var(--em-measure);">These pings don’t seem to be landing lately. Want me to go quiet for a while? Everything stays warm either way.</p>
+              <div class="em-stack em-stack--tight">
+                <button class="em-btn em-btn--primary em-btn--block em-btn--lg">Go quiet for a while</button>
+                <button class="em-btn em-btn--secondary em-btn--block">Keep knocking</button>
+                <button class="em-btn em-btn--quiet em-btn--block">Change my morning window instead</button>
+              </div>
+            </div>
+          </div>
+          <nav class="em-bottomnav">
+            <a class="em-tab is-active" href="#"><i class="em-tab__icon">⌂</i>Doorway</a>
+            <a class="em-tab" href="#"><i class="em-tab__icon">▤</i>Shelf</a>
+            <button class="em-catch-btn" aria-label="Catch a thought">+</button>
+            <a class="em-tab" href="#"><i class="em-tab__icon">⌕</i>Search</a>
+          </nav>
+        </div>
+      </div>
+      <span class="em-note-dot" style="top: 300px; left: 12px;">4</span>
+      <span class="em-note-dot" style="top: 480px; left: 12px;">1</span>
+      <span class="em-note-dot" style="top: 588px; left: 12px;">2</span>
+      <span class="em-note-dot" style="top: 700px; left: 12px;">3</span>
+      </div>
+    </div>
+
+    <aside class="em-notes">
+      <p class="em-notes__title">O-07 annotations</p>
+      <p class="em-notes__item"><b>1</b><span><strong>Trigger:</strong> a deterministic counter — a ping neither opened nor dismissed-with-intent increments <code>ignore_count</code>; at 5 consecutive ignores the engine self-silences and queues this ONE gentle check-in in place of the next ping. No escalation ever follows (M5 §4, WF-D3). Copy per brand §5.2; “You’ve ignored 5 notifications!” is the never-say.</span></p>
+      <p class="em-notes__item"><b>2</b><span><strong>Three honest paths:</strong> go quiet (primary — the kind default) · keep knocking · edit the window inline (deep-links to W-14 notifications). Silenced clears ONLY via this check-in or settings — never automatically (M5 §4).</span></p>
+      <p class="em-notes__item"><b>3</b><span><strong>Any Doorway open resets the ignore count to 0</strong> (M5 §5). The ≤2/day cap and quiet-hours guard remain in force regardless of the answer here — scheduling is never AI (M5 §8).</span></p>
+      <p class="em-notes__item"><b>4</b><span><strong>Silenced state on the card:</strong> the Doorway still generates daily and carries the quiet one-liner with a re-enable link (M5 §6 notification-silenced). Dusty rest styling — silence is rest, not punishment.</span></p>
+    </aside>
+  </div>
+</section>
+
+<!-- ======================================================================= -->
+<!-- W-14 · SETTINGS                                                         -->
+<!-- ======================================================================= -->
+<section class="wf-section" id="w-14">
+  <div class="wf-section__head">
+    <span class="wf-id">W-14</span><h2>Settings — account · notifications · capacity default · privacy &amp; export</h2>
+    <p class="wf-refs">Navigation map W-14 (both platforms). Quiet hours default 22:00–08:00, user-editable (M5 §3). Delete uses typed confirm (O-09). Dial and silencing state are health-adjacent: never exported, never trended (M5 §11).</p>
+  </div>
+  <div class="wf-frames">
+
+    <!-- ============ W-14 web ============ -->
+    <div class="wf-frame">
+      <span class="wf-cap">W-14 · web (settings home)</span>
+      <div class="wf-framewrap">
+      <div class="em-desktop">
+        <div class="em-desktop__bar">
+          <div class="em-desktop__dots"><i></i><i></i><i></i></div>
+          <div class="em-desktop__url">ember.app/settings</div>
+        </div>
+        <div class="em-desktop__body">
+          <aside class="em-sidebar">
+            <div class="em-sidebar__wordmark">ember</div>
+            <div class="em-quickcapture">Catch a thought… <kbd>C</kbd></div>
+            <a class="em-sidebar__item" href="#">⌂ Doorway</a>
+            <a class="em-sidebar__item" href="#">▤ Shelf</a>
+            <a class="em-sidebar__item" href="#">⌕ Search</a>
+            <a class="em-sidebar__item" href="#">✶ Loose Sparks</a>
+            <span class="em-spacer"></span>
+            <a class="em-sidebar__item is-active" href="#">⚙ Settings</a>
+          </aside>
+          <main class="em-main">
+            <h1 class="em-title-1" style="margin: 0 0 var(--em-space-6);">Settings</h1>
+            <div class="em-stack em-stack--loose" style="max-width: 640px;">
+
+              <!-- Account -->
+              <section class="em-card">
+                <h3 class="em-title-3" style="margin: 0 0 var(--em-space-2);">Account</h3>
+                <div class="wf-setrow">
+                  <div class="wf-setrow__body">
+                    <div class="wf-setrow__label">Name</div>
+                    <p class="em-meta" style="margin:0;">Maya Rivera</p>
+                  </div>
+                  <button class="em-chip em-chip--action">Change</button>
+                </div>
+                <div class="wf-setrow">
+                  <div class="wf-setrow__body">
+                    <div class="wf-setrow__label">Email</div>
+                    <p class="em-meta" style="margin:0;">maya.rivera@example.com</p>
+                  </div>
+                  <button class="em-chip em-chip--action">Change</button>
+                </div>
+                <div class="wf-setrow">
+                  <div class="wf-setrow__body">
+                    <div class="wf-setrow__label">Sign-in</div>
+                    <p class="em-meta" style="margin:0;">Passkey on this device · added in March</p>
+                  </div>
+                  <button class="em-chip em-chip--action">Manage</button>
+                </div>
+                <div class="wf-setrow">
+                  <div class="wf-setrow__body">
+                    <div class="wf-setrow__label">Plan &amp; billing</div>
+                    <p class="em-meta" style="margin:0;">Trial — ends Thursday</p>
+                  </div>
+                  <a class="em-chip em-chip--action" href="#w-15">Open billing →</a>
+                </div>
+              </section>
+
+              <!-- Notifications -->
+              <section class="em-card">
+                <h3 class="em-title-3" style="margin: 0 0 var(--em-space-2);">Notifications</h3>
+                <div class="wf-setrow">
+                  <div class="wf-setrow__body">
+                    <div class="wf-setrow__label">Morning ping</div>
+                    <p class="em-meta" style="margin:0;">At most two pings a day — that ceiling is built in, not a setting.</p>
+                  </div>
+                  <button class="wf-toggle is-on" role="switch" aria-checked="true" aria-label="Morning ping"></button>
+                </div>
+                <div class="wf-setrow">
+                  <div class="wf-setrow__body">
+                    <div class="wf-setrow__label">Morning window</div>
+                    <div class="em-row" style="margin-top: var(--em-space-2); flex-wrap: wrap;">
+                      <button class="em-chip em-chip--action">7–8 am</button>
+                      <button class="em-chip em-chip--action is-active">8–9 am</button>
+                      <button class="em-chip em-chip--action">9–10 am</button>
+                      <button class="em-chip em-chip--action">Custom…</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="wf-setrow">
+                  <div class="wf-setrow__body">
+                    <div class="wf-setrow__label">Quiet hours</div>
+                    <div class="em-row" style="margin-top: var(--em-space-2);">
+                      <span class="wf-timechip">10:00 pm</span>
+                      <span class="em-meta">to</span>
+                      <span class="wf-timechip">8:00 am</span>
+                      <button class="em-chip em-chip--action">Edit</button>
+                    </div>
+                    <p class="em-meta" style="margin: var(--em-space-2) 0 0;">Nothing pings inside quiet hours, ever. Night catches wait for morning’s card.</p>
+                  </div>
+                </div>
+                <div class="wf-setrow">
+                  <div class="wf-setrow__body">
+                    <div class="wf-setrow__label">Lockscreen previews</div>
+                    <p class="em-meta" style="margin:0;">Keep thread names off the lockscreen. Turn on for fuller previews.</p>
+                  </div>
+                  <button class="wf-toggle" role="switch" aria-checked="false" aria-label="Lockscreen previews"></button>
+                </div>
+                <div class="wf-setrow">
+                  <div class="wf-setrow__body">
+                    <div class="wf-setrow__label">Right now</div>
+                    <p class="em-meta" style="margin: var(--em-space-1) 0 0;"><span class="em-chip em-chip--resting">Quiet — you asked us to pause</span></p>
+                  </div>
+                  <button class="em-btn em-btn--secondary">Turn pings back on</button>
+                </div>
+              </section>
+
+              <!-- Capacity default -->
+              <section class="em-card">
+                <h3 class="em-title-3" style="margin: 0 0 var(--em-space-2);">Capacity</h3>
+                <div class="wf-setrow">
+                  <div class="wf-setrow__body">
+                    <div class="wf-setrow__label">Default capacity</div>
+                    <div class="em-capacity" role="radiogroup" aria-label="Default capacity" style="max-width: 340px; margin-top: var(--em-space-2);">
+                      <button class="em-capacity__seg em-capacity__seg--full is-active"><i>●</i>Full</button>
+                      <button class="em-capacity__seg"><i>◐</i>Medium</button>
+                      <button class="em-capacity__seg em-capacity__seg--low"><i>○</i>Low-spoon</button>
+                    </div>
+                    <p class="em-meta" style="margin: var(--em-space-2) 0 0;">Tomorrow’s card is planned overnight at this setting. You can change it any morning from the card itself.</p>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Privacy & data -->
+              <section class="em-card">
+                <h3 class="em-title-3" style="margin: 0 0 var(--em-space-2);">Privacy &amp; data</h3>
+                <div class="wf-setrow">
+                  <div class="wf-setrow__body">
+                    <div class="wf-setrow__label">Voice transcription</div>
+                    <p class="em-meta" style="margin:0;">On this device by default. Server transcription only with your consent (from onboarding).</p>
+                  </div>
+                  <span class="em-chip">On this device</span>
+                </div>
+                <div class="wf-setrow">
+                  <div class="wf-setrow__body">
+                    <div class="wf-setrow__label">Keep original audio</div>
+                    <p class="em-meta" style="margin:0;">Keep recordings after they’re transcribed. Night catches always keep audio until the words come through.</p>
+                  </div>
+                  <button class="wf-toggle is-on" role="switch" aria-checked="true" aria-label="Keep original audio"></button>
+                </div>
+                <div class="wf-setrow">
+                  <div class="wf-setrow__body">
+                    <div class="wf-setrow__label">Export everything</div>
+                    <p class="em-meta" style="margin:0;">Markdown + JSON. Yours in minutes, no questions asked.</p>
+                  </div>
+                  <button class="em-btn em-btn--secondary">Export — one tap</button>
+                </div>
+                <div class="wf-setrow">
+                  <div class="wf-setrow__body">
+                    <div class="wf-setrow__label">Delete my data</div>
+                    <p class="em-meta" style="margin:0;">Asks you to type “delete” first — the one deliberate speed bump in the app.</p>
+                  </div>
+                  <button class="em-btn em-btn--quiet" style="color: var(--em-text); font-weight: var(--em-weight-semibold);">Delete everything…</button>
+                </div>
+              </section>
+            </div>
+          </main>
+        </div>
+      </div>
+      <span class="em-note-dot" style="top: 150px; left: 240px;">1</span>
+      <span class="em-note-dot" style="top: 420px; left: 240px;">2</span>
+      <span class="em-note-dot" style="top: 560px; left: 240px;">3</span>
+      </div>
+    </div>
+
+    <!-- ============ W-14 mobile (condensed) ============ -->
+    <div class="wf-frame">
+      <span class="wf-cap">W-14 · mobile · notifications group (condensed mirror)</span>
+      <div class="wf-framewrap">
+      <div class="em-phone">
+        <div class="em-phone__status"></div>
+        <div class="em-phone__screen">
+          <header class="em-appbar">
+            <button class="em-appbar__action" style="margin: 0 var(--em-space-2) 0 0;" aria-label="Back">←</button>
+            <span class="em-appbar__title">Notifications</span>
+          </header>
+          <div class="em-screen">
+            <section class="em-card">
+              <div class="wf-setrow">
+                <div class="wf-setrow__body">
+                  <div class="wf-setrow__label">Morning ping</div>
+                  <p class="em-meta" style="margin:0;">At most two a day, built in.</p>
+                </div>
+                <button class="wf-toggle is-on" role="switch" aria-checked="true" aria-label="Morning ping"></button>
+              </div>
+              <div class="wf-setrow">
+                <div class="wf-setrow__body">
+                  <div class="wf-setrow__label">Morning window</div>
+                  <div class="em-row" style="margin-top: var(--em-space-2); flex-wrap: wrap;">
+                    <button class="em-chip em-chip--action">7–8</button>
+                    <button class="em-chip em-chip--action is-active">8–9</button>
+                    <button class="em-chip em-chip--action">9–10</button>
+                    <button class="em-chip em-chip--action">Custom…</button>
+                  </div>
+                </div>
+              </div>
+              <div class="wf-setrow">
+                <div class="wf-setrow__body">
+                  <div class="wf-setrow__label">Quiet hours</div>
+                  <div class="em-row" style="margin-top: var(--em-space-2);">
+                    <span class="wf-timechip">10:00 pm</span>
+                    <span class="em-meta">to</span>
+                    <span class="wf-timechip">8:00 am</span>
+                  </div>
+                  <p class="em-meta" style="margin: var(--em-space-2) 0 0;">Nothing pings in here, ever.</p>
+                </div>
+              </div>
+              <div class="wf-setrow">
+                <div class="wf-setrow__body">
+                  <div class="wf-setrow__label">Lockscreen previews</div>
+                  <p class="em-meta" style="margin:0;">Thread names stay off by default.</p>
+                </div>
+                <button class="wf-toggle" role="switch" aria-checked="false" aria-label="Lockscreen previews"></button>
+              </div>
+              <div class="wf-setrow">
+                <div class="wf-setrow__body">
+                  <div class="wf-setrow__label">Right now</div>
+                  <p class="em-meta" style="margin: var(--em-space-1) 0 0;"><span class="em-chip em-chip--resting">Quiet — you asked us to pause</span></p>
+                </div>
+                <button class="em-btn em-btn--secondary">Turn back on</button>
+              </div>
+            </section>
+            <section class="em-card">
+              <div class="wf-setrow">
+                <div class="wf-setrow__body">
+                  <div class="wf-setrow__label">Default capacity</div>
+                  <div class="em-capacity" role="radiogroup" aria-label="Default capacity" style="margin-top: var(--em-space-2);">
+                    <button class="em-capacity__seg em-capacity__seg--full is-active"><i>●</i>Full</button>
+                    <button class="em-capacity__seg"><i>◐</i>Medium</button>
+                    <button class="em-capacity__seg em-capacity__seg--low"><i>○</i>Low-spoon</button>
+                  </div>
+                </div>
+              </div>
+              <div class="wf-setrow">
+                <div class="wf-setrow__body">
+                  <div class="wf-setrow__label">Keep original audio</div>
+                </div>
+                <button class="wf-toggle is-on" role="switch" aria-checked="true" aria-label="Keep original audio"></button>
+              </div>
+              <div class="wf-setrow">
+                <div class="wf-setrow__body">
+                  <div class="wf-setrow__label">Export everything</div>
+                </div>
+                <button class="em-chip em-chip--action">One tap</button>
+              </div>
+            </section>
+          </div>
+          <nav class="em-bottomnav">
+            <a class="em-tab" href="#"><i class="em-tab__icon">⌂</i>Doorway</a>
+            <a class="em-tab" href="#"><i class="em-tab__icon">▤</i>Shelf</a>
+            <button class="em-catch-btn" aria-label="Catch a thought">+</button>
+            <a class="em-tab" href="#"><i class="em-tab__icon">⌕</i>Search</a>
+          </nav>
+        </div>
+      </div>
+      <span class="em-note-dot" style="top: 96px; left: 12px;">4</span>
+      </div>
+    </div>
+
+    <aside class="em-notes">
+      <p class="em-notes__title">W-14 annotations</p>
+      <p class="em-notes__item"><b>1</b><span><strong>2/day cap is engineering, not preference:</strong> the master toggle only turns pings on/off; the ≤2/day cap, quiet-hours guard, and self-silencing counter are deterministic and non-configurable (M5 §8 “deliberately NOT AI”). The silenced row mirrors O-07 — settings is one of only two places silence clears (M5 §4).</span></p>
+      <p class="em-notes__item"><b>2</b><span><strong>Window picker + quiet hours:</strong> the morning window comes from onboarding (W-16) and is editable here and inline from the O-07 check-in; quiet hours default 22:00–08:00, user-editable, evaluated deterministically at send time (M5 §3, §7 WF-D5). Lockscreen payloads keep Thread names off by default (M5 §11).</span></p>
+      <p class="em-notes__item"><b>3</b><span><strong>Privacy &amp; export:</strong> on-device transcription default (product brief); keep-audio governs the night-ASR-retry card’s recordings (W-01 variant); export is one tap; delete is a typed confirm (O-09) styled in ink weight — destructive ≠ red (brand §3.4-2). Dial history and silencing state never leave the account (M5 §11).</span></p>
+      <p class="em-notes__item"><b>4</b><span><strong>Mobile mirror:</strong> same objects, stacked list; capacity default is the same persisted dial the Doorway card carries — one setting, two surfaces, last-write-wins on conflict (M5 §10).</span></p>
+    </aside>
+  </div>
+</section>
+
+<!-- ======================================================================= -->
+<!-- W-15 · BILLING                                                          -->
+<!-- ======================================================================= -->
+<section class="wf-section" id="w-15">
+  <div class="wf-section__head">
+    <span class="wf-id">W-15</span><h2>Billing — honest: price · trial state · two-tap cancel · paused + resume</h2>
+    <p class="wf-refs">Flow F10: two taps to cancel, no retention maze; 45 idle days → auto-pause (email + in-app note); resume in one tap. Price $8.99/mo or $79/yr, 21-day full trial, no card up front (product brief).</p>
+  </div>
+  <div class="wf-frames">
+
+    <!-- ============ W-15 · trial state ============ -->
+    <div class="wf-frame">
+      <span class="wf-cap">W-15 · mobile · trial state (tap 1 of cancel = “Pause or cancel”)</span>
+      <div class="wf-framewrap">
+      <div class="em-phone">
+        <div class="em-phone__status"></div>
+        <div class="em-phone__screen">
+          <header class="em-appbar">
+            <button class="em-appbar__action" style="margin: 0 var(--em-space-2) 0 0;" aria-label="Back">←</button>
+            <span class="em-appbar__title">Plan &amp; billing</span>
+          </header>
+          <div class="em-screen">
+            <section class="em-card em-card--doorway">
+              <span class="em-caption">Your plan</span>
+              <h2 class="em-title-2" style="margin: var(--em-space-2) 0;">Free trial — ends Thursday.</h2>
+              <p style="margin: 0 0 var(--em-space-4); max-width: var(--em-measure);">If Ember hasn’t earned a place by then, no hard feelings — export takes one tap.</p>
+              <div class="em-row" style="margin-bottom: var(--em-space-2);">
+                <button class="em-chip em-chip--action is-active">$8.99 / month</button>
+                <button class="em-chip em-chip--action">$79 / year</button>
+              </div>
+              <p class="em-meta" style="margin: 0 0 var(--em-space-4);">No card on file. We only ask if you decide to stay.</p>
+              <div class="em-stack em-stack--tight">
+                <button class="em-btn em-btn--primary em-btn--block em-btn--lg">Keep Ember — $8.99/mo</button>
+                <button class="em-btn em-btn--secondary em-btn--block">Export my data</button>
+                <button class="em-btn em-btn--quiet em-btn--block">Pause or cancel</button>
+              </div>
+            </section>
+            <p class="em-meta" style="max-width: 40ch;">If you drift away for 45 days, billing pauses itself. Everything stays safe and warm — that’s policy, not a promo.</p>
+          </div>
+          <nav class="em-bottomnav">
+            <a class="em-tab" href="#"><i class="em-tab__icon">⌂</i>Doorway</a>
+            <a class="em-tab" href="#"><i class="em-tab__icon">▤</i>Shelf</a>
+            <button class="em-catch-btn" aria-label="Catch a thought">+</button>
+            <a class="em-tab" href="#"><i class="em-tab__icon">⌕</i>Search</a>
+          </nav>
+        </div>
+      </div>
+      <span class="em-note-dot" style="top: 150px; left: 12px;">1</span>
+      <span class="em-note-dot" style="top: 330px; left: 12px;">2</span>
+      <span class="em-note-dot" style="top: 470px; left: 12px;">3</span>
+      </div>
+    </div>
+
+    <!-- ============ W-15 · cancel confirm (tap 2) ============ -->
+    <div class="wf-frame">
+      <span class="wf-cap">W-15 · mobile · cancel confirm sheet (tap 2 of 2 — done)</span>
+      <div class="wf-framewrap">
+      <div class="em-phone">
+        <div class="em-phone__status"></div>
+        <div class="em-phone__screen">
+          <header class="em-appbar">
+            <button class="em-appbar__action" style="margin: 0 var(--em-space-2) 0 0;" aria-label="Back">←</button>
+            <span class="em-appbar__title">Plan &amp; billing</span>
+          </header>
+          <div class="em-screen">
+            <section class="em-card em-card--doorway wf-dim">
+              <span class="em-caption">Your plan</span>
+              <h2 class="em-title-2" style="margin: var(--em-space-2) 0;">Free trial — ends Thursday.</h2>
+            </section>
+          </div>
+          <div class="em-scrim">
+            <div class="em-sheet">
+              <h3 class="em-title-3" style="margin: 0 0 var(--em-space-2);">No maze here.</h3>
+              <p style="margin: 0 0 var(--em-space-4); max-width: var(--em-measure);">One more tap and you’re out. Your words stay yours — export any time, and coming back later brings everything back warm.</p>
+              <div class="em-stack em-stack--tight">
+                <button class="em-btn em-btn--secondary em-btn--block em-btn--lg" style="font-weight: var(--em-weight-semibold);">Yes, cancel my subscription</button>
+                <button class="em-btn em-btn--quiet em-btn--block">Pause instead — $0, everything stays warm</button>
+                <button class="em-btn em-btn--quiet em-btn--block">Never mind</button>
+              </div>
+            </div>
+          </div>
+          <nav class="em-bottomnav">
+            <a class="em-tab" href="#"><i class="em-tab__icon">⌂</i>Doorway</a>
+            <a class="em-tab" href="#"><i class="em-tab__icon">▤</i>Shelf</a>
+            <button class="em-catch-btn" aria-label="Catch a thought">+</button>
+            <a class="em-tab" href="#"><i class="em-tab__icon">⌕</i>Search</a>
+          </nav>
+        </div>
+      </div>
+      <span class="em-note-dot" style="top: 470px; left: 12px;">4</span>
+      <span class="em-note-dot" style="top: 566px; left: 12px;">5</span>
+      </div>
+    </div>
+
+    <!-- ============ W-15 · paused state ============ -->
+    <div class="wf-frame">
+      <span class="wf-cap">W-15 · mobile · PAUSED state (45-day auto-pause) with one-tap resume</span>
+      <div class="wf-framewrap">
+      <div class="em-phone">
+        <div class="em-phone__status"></div>
+        <div class="em-phone__screen">
+          <header class="em-appbar">
+            <button class="em-appbar__action" style="margin: 0 var(--em-space-2) 0 0;" aria-label="Back">←</button>
+            <span class="em-appbar__title">Plan &amp; billing</span>
+          </header>
+          <div class="em-screen">
+            <div class="em-banner em-banner--rest">
+              You’ve been away, so we paused your billing. Everything is safe and warm. Come back whenever.
+            </div>
+            <section class="em-card em-card--doorway">
+              <div class="em-row em-row--between">
+                <span class="em-caption">Your plan</span>
+                <span class="em-chip em-chip--resting">Paused — $0/month</span>
+              </div>
+              <h2 class="em-title-2" style="margin: var(--em-space-2) 0;">Paused, not gone.</h2>
+              <p style="margin: 0 0 var(--em-space-4); max-width: var(--em-measure);">Your threads, sparks, and notes are all here, resting. Nothing expires while you’re away. Resuming picks up at $8.99/mo — nothing back-dated.</p>
+              <div class="em-stack em-stack--tight">
+                <button class="em-btn em-btn--primary em-btn--block em-btn--lg">Resume — one tap</button>
+                <button class="em-btn em-btn--secondary em-btn--block">Export my data</button>
+                <button class="em-btn em-btn--quiet em-btn--block">Cancel instead</button>
+              </div>
+            </section>
+            <p class="em-meta" style="max-width: 40ch;">We sent one email when this happened. No follow-ups, no countdowns.</p>
+          </div>
+          <nav class="em-bottomnav">
+            <a class="em-tab" href="#"><i class="em-tab__icon">⌂</i>Doorway</a>
+            <a class="em-tab" href="#"><i class="em-tab__icon">▤</i>Shelf</a>
+            <button class="em-catch-btn" aria-label="Catch a thought">+</button>
+            <a class="em-tab" href="#"><i class="em-tab__icon">⌕</i>Search</a>
+          </nav>
+        </div>
+      </div>
+      <span class="em-note-dot" style="top: 96px;  left: 12px;">6</span>
+      <span class="em-note-dot" style="top: 380px; left: 12px;">7</span>
+      </div>
+    </div>
+
+    <aside class="em-notes">
+      <p class="em-notes__title">W-15 annotations</p>
+      <p class="em-notes__item"><b>1</b><span><strong>Honest trial copy,</strong> verbatim from brand §5.2: “Your trial ends Thursday. If Ember hasn’t earned a place, no hard feelings — export takes one tap.” 21-day full trial, no card up front (product brief). No “Last chance!”, no countdown.</span></p>
+      <p class="em-notes__item"><b>2</b><span><strong>Plain price, both options visible:</strong> $8.99/mo · $79/yr. The one ember on this screen is “Keep Ember” — cancel/pause are quiet, equally reachable, never hidden (F10).</span></p>
+      <p class="em-notes__item"><b>3</b><span><strong>“Pause or cancel” is tap 1.</strong> The auto-pause policy is stated up front because seeing it exists is why Maya doesn’t preemptively cancel — churn moment converted to trust moment (day-in-the-life, Billing).</span></p>
+      <p class="em-notes__item"><b>4</b><span><strong>Tap 2 completes the cancel.</strong> Exactly two taps, no retention maze, no guilt survey, no “are you sure you want to lose everything?” (F10). Destructive confirm carries ink-weight typography, never red or alarm color (brand §3.4-2).</span></p>
+      <p class="em-notes__item"><b>5</b><span><strong>Pause offered once, quietly,</strong> as a genuine alternative ($0, everything stays warm) — an option, not an obstacle. “Never mind” exits with no further prompts.</span></p>
+      <p class="em-notes__item"><b>6</b><span><strong>Auto-pause at 45 idle days:</strong> one email + this in-app note, verbatim brand §5.2 copy; dusty rest styling. The welcome-back Doorway (W-01b) carries the matching one-liner (F6).</span></p>
+      <p class="em-notes__item"><b>7</b><span><strong>Resume is one tap</strong> (F10) and the screen’s single primary. Paused = $0/month, data intact, nothing expires, nothing back-charged — stated in plain words (honest-billing cross-cutting system).</span></p>
+    </aside>
+  </div>
+</section>
+
+<footer style="padding: var(--em-space-8) var(--em-space-10); color: var(--em-text-3); font-size: var(--em-text-body-sm);">
+  ember wireframes · M5 Doorway &amp; Settings/Billing · annotation dots and notes are spec-only and must be stripped from any user-facing build (kit convention). <a href="index.html" style="color: var(--em-accent-text);">← Back to index</a>
+</footer>
+
+</body>
+</html>

@@ -19,7 +19,7 @@ The Doorway is Ember's daily anchor: one bounded morning card (≤3 items, done 
 
 - **Doorway Card** (owned): today's bounded surface. Fields owned here: `card_date`, `card_type` (today's · welcome-back), `dial_position` (full · medium · low_spoon), `items[]` (max 3: warm-threads line, suggested Pebble ref, resurfaced Spark ref + action), `generated_at`, `generation_source` (batch · on_demand · fallback), `skipped_at`, `closed_at`.
 - **Capacity Dial state** (owned): `current_position`, `last_changed_at`, per-day history (for pre-gen defaults only — never surfaced as a judgment or trend).
-- **Notification schedule** (owned, deterministic): `slots[]` (≤2/day), `quiet_hours` (default 22:00–08:00, user-editable), `copy_pool_refs`, `ignore_count`, `silenced` flag.
+- **Notification schedule** (owned, deterministic): `slots[]` (≤2/day, **including deadline pings**), `quiet_hours` (default 22:00–08:00, user-editable), `copy_pool_refs`, `ignore_count`, `silenced` flag.
 - **Touched, not owned:** Thread (reads warm/resting states — M2), Pebble (surfaces ONE suggested — M4/M3), Spark (surfaces ONE resurfaced, always with an attached action; routes night captures — M1), Digest (read as generation context), Briefing (welcome-back card links into Warm Start — M3), billing-pause state (cross-cutting honest billing).
 
 ## 4. Lifecycle
@@ -39,19 +39,19 @@ The Doorway is Ember's daily anchor: one bounded morning card (≤3 items, done 
 
 **Notification schedule**
 - Created at onboarding (user picks a morning window); lives until edited; deterministic forever.
-- `ignore_count` increments per notification neither opened nor dismissed-with-intent; at N=5 consecutive ignores → `silenced`, and one gentle check-in is queued in its place ("Want us to keep knocking, or just leave the card by the door?").
-- Any Doorway open resets `ignore_count` to 0. `silenced` clears only via the check-in or settings — never automatically.
+- `ignore_count` increments per notification neither opened nor dismissed-with-intent; at N=5 consecutive ignores → `silenced`, and one gentle check-in (O-07) is queued in its place ("Want us to keep knocking, or just leave the card by the door?").
+- Any Doorway open resets `ignore_count` to 0 but does **not** un-silence. `silenced` clears ONLY via the check-in or settings — never automatically.
 
 ## 5. Actions
 
 - **Open Doorway** — app launch to Doorway tab / tap notification. Input: none. Effect: shows today's card; resets notification ignore count. Undo: n/a.
-- **Do the Pebble** — button on the card's Pebble item. Effect: opens the Thread with its Warm Start whisper/brief (M3); Pebble → accepted. Undoable (Pebble returns to suggested).
+- **Do the Pebble** — button on the card's Pebble item. Effect: opens the **W-07 do-it-now focus surface directly**, with the Thread's whisper line embedded at the top (M3); Pebble → accepted. Undoable (Pebble returns to suggested).
 - **Look at resurfaced Spark** — tap the Spark item. Effect: opens Spark in its Thread with its one attached action (add to Thread note / turn into Pebble / archive). All choices undoable.
 - **Set capacity dial** — 3-position control at top of card (full · medium · low-spoon). Effect: regenerates today's card at the new capacity; position persists. Undoable by re-setting the dial.
 - **Not today (skip)** — "Not today" text button, always visible. Effect: closes the card; nothing else happens, ever. No undo needed; card remains reachable until midnight.
 - **Snooze card item** — swipe on any item. Effect: item is excluded from today's and tomorrow's generation. Undo via toast.
 - **Edit quiet hours / notification window / re-enable notifications** — settings, and inline from the gentle check-in. Deterministic effect, immediate.
-- **Welcome-back "show me"** — single button on the welcome-back card. Effect: opens the Shelf's Warm row (M2) or the top Thread's full Briefing (M3).
+- **Welcome-back "show me"** — single button on the welcome-back card. Effect: opens the Shelf's Warm row (M2) or the top Thread's gap-tiered Briefing (M3 date math is the tier authority).
 
 ## 6. States
 
@@ -71,32 +71,32 @@ The Doorway is Ember's daily anchor: one bounded morning card (≤3 items, done 
 
 ## 7. Workflows
 
-**Happy path — morning open (WF-D1, wireframes DW-01 → DW-03)**
+**Happy path — morning open (WF-D1, wireframes W-01 → W-07)**
 1. 03:00 local: nightly Batch job writes today's card at the remembered dial position.
 2. 08:15 (inside her chosen window): ONE notification fires, copy drawn from the varied pool.
-3. Maya taps it → card renders instantly from cache (DW-01); ignore counter resets to 0.
+3. Maya taps it → card renders instantly from cache (W-01); ignore counter resets to 0.
 4. She reads the warm-threads line, glances at the resurfaced Spark, taps "Do the Pebble."
-5. The Thread opens with its Warm Start whisper (M3, WS-01); the Doorway is done in under 90 seconds.
+5. The **W-07 do-it-now focus surface opens directly**, with the Thread's whisper line embedded at the top (M3); the full thread story with its inline briefing (W-04b) is one tap deeper. The Doorway is done in under 90 seconds.
 6. Pebble completion feeds tomorrow's generation and the deterministic micro-reward layer.
 
-**Failure path A — hard morning (WF-D2, DW-01 → DW-04)**
+**Failure path A — hard morning (WF-D2, W-01 → W-01c)**
 1. The normal card feels like too much; she flips the dial to low-spoon.
-2. Card regenerates in ≤5 s into the complete one-tiny-thing plan (DW-04) — no trace of the fuller card.
+2. Card regenerates in ≤5 s into the complete one-tiny-thing plan (W-01c) — no trace of the fuller card.
 3. She does the tiny thing, or taps "Not today." Either way tomorrow pre-generates at low-spoon.
 4. No apology, no comparison, no record shown of what the fuller card would have been.
 
-**Failure path B — three silent weeks (WF-D3, DW-05)**
+**Failure path B — three silent weeks (WF-D3, W-01b)**
 1. Days 1–5 of absence: scheduled pings fire, get ignored; at the 5th consecutive ignore the engine self-silences and queues one gentle check-in.
 2. Days 6–21: fully quiet. No escalation, no "we miss you" pressure.
-3. Day 22: she opens the app → welcome-back Doorway (DW-05): "Welcome back. Nothing is lost. Here's what's still warm." + 2 warm Threads + one tiny step; billing-pause line if the 45-day auto-pause fired.
-4. "Show me" → Shelf Warm row (M2) or the top Thread's full Briefing (M3). Normal daily cards resume the next morning at her remembered dial position.
+3. Day 22: she opens the app → welcome-back Doorway (W-01b): "Welcome back. Nothing is lost. Here's what's still warm." + 2 warm Threads + one tiny step; billing-pause line if the 45-day auto-pause fired.
+4. "Show me" → Shelf Warm row (M2) or the top Thread's gap-tiered Briefing (M3 date math is the tier authority). Normal daily cards resume the next morning at her remembered dial position.
 
-**Evening close — optional (WF-D4, DW-06)**
+**Evening close — optional (WF-D4, W-01d)**
 - If she opens Ember within 2 h before quiet-hours start, an optional one-line close appears: "Today's card is done with you — anything to drop off before tomorrow?" with a capture field.
 - Anything untouched rolls over silently — nothing "moves to overdue"; tomorrow's card simply regenerates fresh. The close never notifies; it exists only in-app and is skippable like everything else.
 
 **Night capture routing (WF-D5, with M1)**
-- Sparks captured 22:00–06:00 via night mode file normally but carry the `night_captured` flag.
+- Sparks captured 22:00–06:00 via night mode are stored locally and flagged `night_captured`; ALL AI filing is deferred to the morning batch (M1 canonical — nothing is processed or shown at night).
 - They become priority candidates for the resurfaced-Spark slot on the NEXT morning's card ("You had a thought at 1 am — it's safe here").
 - Nothing pings at night, ever: the quiet-hours guard is evaluated at send time, deterministically.
 
@@ -123,7 +123,7 @@ The Doorway is Ember's daily anchor: one bounded morning card (≤3 items, done 
 ## 10. Errors
 
 - **Pre-gen failure (Batch job errored / output invalid):** morning open serves a deterministic fallback card assembled from cached data with template copy: warmest Thread by last-touch, its stored next Pebble (from the Arc, no AI), and the most recent night-captured or resurface-queued Spark. Same 3-slot shape; user never sees an error at wake. Retry once on open in background; if it succeeds, tomorrow improves — today's card does not swap out from under the user.
-- **Timezone change (travel/DST):** scheduler keys off device-reported local time; on timezone delta, today's already-generated card is kept (content is date-scoped, not hour-scoped), notification slots re-anchor to the new local window, and the quiet-hours guard re-evaluates before any queued ping fires — a ping that would now land inside 22:00–06:00 local is dropped, not delayed to a weird hour. Next Batch run uses the new zone. Rapid multi-zone hops: at most one card and ≤2 notifications per calendar date, whichever zone.
+- **Timezone change (travel/DST):** scheduler keys off device-reported local time; on timezone delta, today's already-generated card is kept (content is date-scoped, not hour-scoped), notification slots re-anchor to the new local window, and the quiet-hours guard re-evaluates before any queued ping fires — a ping that would now land inside the user's `quiet_hours` setting (local time) is dropped, not delayed to a weird hour. Next Batch run uses the new zone. Rapid multi-zone hops: at most one card and ≤2 notifications per calendar date, whichever zone.
 - **Dial-change regeneration failure:** deterministic degradation-free fallback — low-spoon template card from cached Pebble data; toast "Ember will polish this overnight."
 - **Sync conflict (dial set differently on phone and web):** last-write-wins by timestamp; card regenerates once; no prompt.
 - **User mistakes:** skip is inherently consequence-free; snoozes and Spark actions undoable via toast; notification re-enable is one tap from the check-in.
@@ -135,6 +135,6 @@ Doorway data (dial history, ignore counts, card content) is private to the user;
 
 ## 12. Dependencies
 
-- **Consumes:** M1 Catch (`spark.captured` incl. `night_captured` flag), M2 Threads & Shelf (warm/resting states, Digest read), M3 Warm Start (Briefing hand-off targets; whisper on Pebble-tap), M4 Year Arc (next Pebble per active Arc, deadline lead-time flags), cross-cutting billing (auto-pause state), platform push services, nightly Batch pipeline (shared with Digest maintenance).
-- **Emits:** `doorway.card_viewed / card_skipped / dial_changed / pebble_accepted / spark_actioned / notifications_silenced / welcome_back_shown` — consumed by M3 (briefing context), M4 (re-planning signals), micro-reward layer (deterministic, sub-300ms), and eval telemetry (R6: briefing/card quality).
+- **Consumes:** M1 Catch (`spark.captured` incl. `night_captured` flag), M2 Threads & Shelf (warm/resting states, Digest read), M3 Warm Start (Briefing hand-off targets; W-07 focus-surface hand-off with the embedded whisper line on Pebble-tap), M4 Year Arc (next Pebble per active Arc, deadline lead-time flags), cross-cutting billing (auto-pause state), platform push services, nightly Batch pipeline (shared with Digest maintenance).
+- **Emits** (names per the product-brief event dictionary): `doorway.opened` (view; resets ignore_count; M4 return detection), `pebble.accepted` (card Pebble tap → M3/M4), `notification.sent` / `notification.ignored` (self-silencing counter, eval telemetry) — consumed by M3 (briefing context), M4 (re-planning signals), micro-reward layer (deterministic, sub-300ms), and eval telemetry (R6: briefing/card quality). Card skips, dial changes, silencing, and welcome-back display are module-internal state (capacity-dial state and the notification schedule are internal system objects), not bus events.
 - **Requires:** local-time scheduler service (deterministic), cached-card store on device, notification copy pool store, spend killswitch service (Haiku-only mode).
